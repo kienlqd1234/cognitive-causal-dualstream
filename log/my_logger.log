@@ -1,0 +1,4 @@
+2025-06-01 17:59:43,469 INFO Configuration loaded from: src\config.yml
+2025-06-01 17:59:43,470 INFO Model name for this run: None
+2025-06-01 17:59:43,470 INFO Logging to: ./log/my_logger.log
+2025-06-01 17:59:43,473 INFO Vocabulary loaded. Size: 29867

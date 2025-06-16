@@ -18,6 +18,10 @@ from RewardModel import SimpleRewardModel, TransformerRewardModel, create_explan
 from LLMInterface import create_llm, MockLLM
 from PPOTrainer import PPOTrainer
 
+# Import Meaning-Aware Selection module
+from MeaningAwareSelection import MeaningAwareSelection
+from RelevanceClassifier import RelevanceClassifier
+
 class SEP_PEN_Integration:
     """
     Integration class that combines PEN's Vector of Salience (VoS) explainability
@@ -45,6 +49,26 @@ class SEP_PEN_Integration:
         self.llm = create_llm(self.llm_config)
         self.reward_model = SimpleRewardModel()  # Start with simple reward model
         
+        # Initialize Meaning-Aware Selection module
+        self.meaning_aware_selection = MeaningAwareSelection(self.llm, {
+            'prompt_template': "Given the sentence: \"{text}\", is it relevant to predicting {ticker} stock price movement?\nAnswer with only 'Relevant' or 'Irrelevant'.",
+            'confidence_threshold': 0.3  # Lower threshold for relevance
+        })
+        
+        # Initialize Relevance Classifier (for faster inference)
+        self.relevance_classifier = RelevanceClassifier(model_type='tfidf_logreg')
+        self.use_relevance_classifier = True  # Enable by default
+        
+        # Try to load pre-trained classifier if available
+        classifier_path = os.path.join("results", "relevance_classifier.pkl")
+        if os.path.exists(classifier_path):
+            try:
+                self.relevance_classifier.load(classifier_path)
+                print("Loaded pre-trained relevance classifier")
+            except Exception as e:
+                print(f"Could not load pre-trained classifier: {e}")
+                self.use_relevance_classifier = False
+        
         # Create TF saver and session config
         self.saver = tf.train.Saver()
         self.tf_config = tf.ConfigProto(allow_soft_placement=True)
@@ -57,7 +81,12 @@ class SEP_PEN_Integration:
             'batches': 0,
             'correct_predictions': 0,
             'reflection_improvements': 0,
-            'avg_rewards': []
+            'avg_rewards': [],
+            'relevance_stats': {
+                'total_texts': 0,
+                'relevant_texts': 0,
+                'irrelevant_texts': 0
+            }
         }
         
         # Results storage
@@ -130,6 +159,50 @@ class SEP_PEN_Integration:
                         sample_texts.append(f"Text from day {day}, message {msg}")
             texts.append(sample_texts)
         return texts
+    
+    def _apply_meaning_aware_selection(self, batch_dict, texts_list):
+        """
+        Apply Meaning-Aware Selection to filter out irrelevant texts
+        
+        Args:
+            batch_dict: Batch dictionary
+            texts_list: List of texts for each sample in the batch
+            
+        Returns:
+            Modified batch dictionary with irrelevant texts filtered out
+        """
+        if not texts_list:
+            return batch_dict
+            
+        # Deep copy the batch dict to avoid modifying the original
+        filtered_batch = dict(batch_dict)
+        
+        # For each sample in the batch
+        for i in range(batch_dict['batch_size']):
+            ticker = f"Stock_{batch_dict['stock_batch'][i]}"
+            
+            # Apply Meaning-Aware Selection
+            if self.use_relevance_classifier and self.relevance_classifier and self.relevance_classifier.is_trained:
+                # Use trained classifier for faster inference
+                judgments, _ = self.relevance_classifier.predict(texts_list[i])
+            else:
+                # Use LLM for relevance filtering
+                _, judgments = self.meaning_aware_selection.filter_texts(texts_list[i], ticker)
+                
+            # Update stats
+            self.train_stats['relevance_stats']['total_texts'] += len(judgments)
+            self.train_stats['relevance_stats']['relevant_texts'] += sum(judgments)
+            self.train_stats['relevance_stats']['irrelevant_texts'] += len(judgments) - sum(judgments)
+            
+            # Create a mask for the word embeddings
+            # This is a simplified version - you would need to adapt this to your data structure
+            for day in range(min(5, self.model.max_n_days)):
+                for msg, is_relevant in enumerate(judgments):
+                    if msg < self.model.max_n_msgs and not is_relevant:
+                        # Set n_words to 0 for irrelevant messages to effectively ignore them
+                        filtered_batch['n_words_batch'][i][day][msg] = 0
+        
+        return filtered_batch
     
     def _create_agents_from_batch(self, batch_dict, predictions, actuals, attention_weights):
         """Create PENReflectAgents from batch data"""
@@ -209,10 +282,17 @@ class SEP_PEN_Integration:
             
         return agents
     
-    def train(self, n_epochs=10):
+    def train(self, n_epochs=10, train_relevance_classifier=True):
         """Train model using SEP's self-reflection approach"""
         # Create TensorFlow session without using 'with'
         sess = self._initialize_session()
+        
+        # Collect relevance data for training the classifier
+        if train_relevance_classifier:
+            relevance_data = {
+                'texts': [],
+                'labels': []
+            }
         
         try:
             # Start from current global step
@@ -231,7 +311,24 @@ class SEP_PEN_Integration:
                 
                 # Process each batch
                 for batch_idx, train_batch_dict in enumerate(train_batch_gen):
-                    feed_dict = self._create_feed_dict(train_batch_dict, is_training=True)
+                    # Extract texts for relevance filtering
+                    texts_list = self._extract_texts_from_batch(train_batch_dict)
+                    
+                    # Apply Meaning-Aware Selection to filter irrelevant texts
+                    filtered_batch_dict = self._apply_meaning_aware_selection(train_batch_dict, texts_list)
+                    
+                    # If collecting relevance data for classifier training
+                    if train_relevance_classifier:
+                        for i in range(train_batch_dict['batch_size']):
+                            ticker = f"Stock_{train_batch_dict['stock_batch'][i]}"
+                            _, judgments = self.meaning_aware_selection.filter_texts(texts_list[i], ticker)
+                            
+                            # Add to training data
+                            relevance_data['texts'].extend(texts_list[i])
+                            relevance_data['labels'].extend(judgments)
+                    
+                    # Create feed dict with filtered batch
+                    feed_dict = self._create_feed_dict(filtered_batch_dict, is_training=True)
                     
                     # Forward pass with PEN model
                     ops = [
@@ -245,302 +342,278 @@ class SEP_PEN_Integration:
                     
                     # Create agents for this batch
                     batch_agents = self._create_agents_from_batch(
-                        train_batch_dict, predictions, actuals, vos_weights
+                        filtered_batch_dict, predictions, actuals, vos_weights
                     )
                     
-                    # Generate initial explanations
+                    # Process each agent
                     for agent in batch_agents:
+                        # Generate explanation
                         agent.generate_explanation(self.llm)
-                    
-                    # Run self-reflection loop for incorrectly predicted samples
-                    for agent in batch_agents:
-                        if not agent.is_correct():
-                            agent.run_reflection_loop(
-                                llm_model=self.llm,
-                                reward_model=self.reward_model,
-                                max_iterations=3
-                            )
-                    
-                    # Collect statistics
-                    correct_agents = [a for a in batch_agents if a.is_correct()]
-                    epoch_correct += len(correct_agents)
-                    epoch_total += len(batch_agents)
+                        
+                        # Run reflection loop
+                        agent.run_reflection_loop(self.llm, self.reward_model, max_iterations=2)
+                        
+                        # Update stats
+                        if agent.is_correct():
+                            epoch_correct += 1
+                        epoch_total += 1
+                            
+                    # Add to epoch agents
                     epoch_agents.extend(batch_agents)
                     
-                    # Every 10 batches, print stats
-                    if batch_idx % 10 == 0:
-                        print(f"  Batch {batch_idx}, Accuracy: {len(correct_agents)}/{len(batch_agents)}")
+                    # Save model occasionally
+                    if (batch_idx + 1) % 20 == 0:
+                        step = sess.run(self.model.global_step)
+                        save_path = self.saver.save(sess, self.model.tf_saver_path, global_step=step)
+                        print(f"Model saved at step {step} to {save_path}")
                         
-                    # Every 50 batches, save model
-                    if batch_idx % 50 == 0 and batch_idx > 0:
-                        save_path = self.saver.save(
-                            sess, 
-                            self.model.tf_saver_path, 
-                            global_step=self.model.global_step
-                        )
-                        print(f"  Model saved: {save_path}")
-                
-                # After each epoch, collect explanation pairs for reward model training
-                print("Collecting explanation pairs for reward model training...")
-                explanation_pairs = create_explanation_pairs(epoch_agents, reflection_iterations=1)
-                
-                if explanation_pairs:
-                    # Train reward model if we have enough data
-                    if len(explanation_pairs) >= 20:  # Arbitrary threshold
-                        print(f"Training reward model on {len(explanation_pairs)} explanation pairs")
-                        self._train_reward_model(explanation_pairs)
+                        # Print batch stats
+                        batch_accuracy = epoch_correct / max(1, epoch_total)
+                        print(f"Batch {batch_idx+1}, Loss: {batch_loss:.4f}, Accuracy: {batch_accuracy:.4f}")
+                        print(f"Relevance stats: {self.train_stats['relevance_stats']}")
                 
                 # Save epoch results
                 self._save_epoch_results(epoch, epoch_agents)
                 
-                # Print epoch stats
-                print(f"Epoch {epoch+1} complete. Accuracy: {epoch_correct}/{epoch_total} = {epoch_correct/max(1, epoch_total):.4f}")
-                self.train_stats['epochs'] += 1
+                # Train the reward model with explanation pairs
+                explanation_pairs = create_explanation_pairs(epoch_agents)
+                if explanation_pairs:
+                    self._train_reward_model(explanation_pairs)
                 
-                # Save model after each epoch
-                save_path = self.saver.save(
-                    sess, 
-                    self.model.tf_saver_path, 
-                    global_step=self.model.global_step
-                )
-                print(f"Model saved: {save_path}")
+                # Train the relevance classifier at the end of each epoch
+                if train_relevance_classifier and epoch > 0 and len(relevance_data['texts']) > 100:
+                    if self.relevance_classifier is None:
+                        self.relevance_classifier = RelevanceClassifier(model_type='tfidf_logreg')
+                    
+                    print(f"Training relevance classifier with {len(relevance_data['texts'])} examples...")
+                    self.relevance_classifier.train(
+                        texts=relevance_data['texts'],
+                        labels=relevance_data['labels']
+                    )
+                    
+                    # Save the classifier
+                    classifier_path = os.path.join(self.results_dir, 'relevance_classifier.pkl')
+                    self.relevance_classifier.save(classifier_path)
+                    
+                    # Use the classifier for future epochs
+                    self.use_relevance_classifier = True
+                    
+                    # Clear training data to save memory
+                    relevance_data = {
+                        'texts': [],
+                        'labels': []
+                    }
+                
+                # Save final model for this epoch
+                step = sess.run(self.model.global_step)
+                save_path = self.saver.save(sess, self.model.tf_saver_path, global_step=step)
+                print(f"Epoch {epoch+1} completed. Model saved to {save_path}")
+                
         finally:
             # Close session when done
             sess.close()
     
     def _train_reward_model(self, explanation_pairs):
-        """Train reward model on explanation pairs"""
+        """Train the reward model on pairs of explanations"""
         if not explanation_pairs:
             return
             
-        # Extract good and bad explanations
-        good_explanations = [pair[1] for pair in explanation_pairs]  # improved versions
-        bad_explanations = [pair[0] for pair in explanation_pairs]   # original versions
+        print(f"Training reward model with {len(explanation_pairs)} explanation pairs...")
         
-        # Initialize transformer reward model if we have enough data
-        if len(explanation_pairs) >= 50 and isinstance(self.reward_model, SimpleRewardModel):
-            print("Upgrading to transformer reward model")
-            self.reward_model = TransformerRewardModel()
+        # If using simple reward model, no training needed
+        if isinstance(self.reward_model, SimpleRewardModel):
+            return
             
-        # Train the model
+        # If using transformer reward model, train it
         if isinstance(self.reward_model, TransformerRewardModel):
-            self.reward_model.train(
-                good_explanations=good_explanations,
-                bad_explanations=bad_explanations,
-                epochs=3
-            )
-            
-            # Save the trained model
-            self.reward_model.save(os.path.join(self.results_dir, "reward_model"))
+            self.reward_model.train(explanation_pairs)
     
     def _save_epoch_results(self, epoch, agents):
-        """Save results from an epoch"""
-        epoch_dir = os.path.join(self.results_dir, f"epoch_{epoch}")
-        os.makedirs(epoch_dir, exist_ok=True)
+        """Save results from epoch to file"""
+        if not agents:
+            return
+            
+        # Calculate stats
+        correct = sum(1 for a in agents if a.is_correct())
+        total = len(agents)
+        accuracy = correct / total if total > 0 else 0
         
-        # Save agent examples
-        examples = []
-        for i, agent in enumerate(agents[:10]):  # Save first 10 for brevity
-            example = {
-                "ticker": agent.ticker,
-                "prediction": float(agent.prediction),
-                "target": int(agent.target),
-                "top_texts": agent.top_texts,
-                "explanation": agent.explanation,
-                "reflections": agent.reflections,
-                "is_correct": agent.is_correct()
-            }
-            examples.append(example)
+        # Calculate average reward for explanations
+        rewards = [self.reward_model(a.explanation) for a in agents]
+        avg_reward = sum(rewards) / len(rewards) if rewards else 0
         
-        with open(os.path.join(epoch_dir, "examples.json"), 'w') as f:
-            json.dump(examples, f, indent=2)
+        # Update train stats
+        self.train_stats['epochs'] += 1
+        self.train_stats['correct_predictions'] += correct
+        self.train_stats['avg_rewards'].append(avg_reward)
         
-        # Save statistics
-        correct_agents = [a for a in agents if a.is_correct()]
-        stats = {
-            "epoch": epoch,
-            "total_samples": len(agents),
-            "correct_predictions": len(correct_agents),
-            "accuracy": len(correct_agents) / max(1, len(agents)),
-            "timestamp": datetime.now().isoformat()
+        # Create results dictionary
+        results = {
+            'epoch': epoch,
+            'accuracy': accuracy,
+            'avg_reward': avg_reward,
+            'relevance_stats': self.train_stats['relevance_stats'],
+            'examples': []
         }
         
-        # Save automated metrics (replacing human evaluation metrics)
-        if hasattr(self.model, 'automated_metrics'):
-            metrics = {}
-            for key, tensor in self.model.automated_metrics.items():
-                if isinstance(tensor, tf.Tensor):
-                    # Create a new session instead of using with
-                    sess = self._initialize_session()
-                    try:
-                        metrics[key] = float(sess.run(tensor))
-                    finally:
-                        sess.close()
-                else:
-                    metrics[key] = tensor
-            stats["automated_metrics"] = metrics
-        
-        with open(os.path.join(epoch_dir, "stats.json"), 'w') as f:
-            json.dump(stats, f, indent=2)
+        # Add sample examples
+        for i, agent in enumerate(agents[:5]):  # Just add first 5 for brevity
+            example = {
+                'ticker': agent.ticker,
+                'prediction': float(agent.prediction),
+                'target': int(agent.target),
+                'explanation': agent.explanation,
+                'reflections': agent.reflections
+            }
+            results['examples'].append(example)
             
+        # Save to file
+        filename = os.path.join(self.results_dir, f'epoch_{epoch}_results.json')
+        with open(filename, 'w') as f:
+            json.dump(results, f, indent=2)
+            
+        print(f"Epoch {epoch} results - Accuracy: {accuracy:.4f}, Avg Reward: {avg_reward:.4f}")
+        print(f"Relevance stats: Total: {self.train_stats['relevance_stats']['total_texts']}, " +
+              f"Relevant: {self.train_stats['relevance_stats']['relevant_texts']} " +
+              f"({self.train_stats['relevance_stats']['relevant_texts']/max(1, self.train_stats['relevance_stats']['total_texts']):.2%})")
+    
     def optimize_llm_with_ppo(self, n_iterations=5):
-        """
-        Optimize the LLM for generating high-quality explanations using PPO
-        based on the reward model trained during the regular training process.
-        
-        Args:
-            n_iterations: Number of PPO optimization iterations
-        """
-        print("Optimizing LLM with PPO for explanation generation...")
-        
-        # Skip if LLM is not optimizable or reward model is not available
-        if self.llm_config["type"] == "mock" or not hasattr(self, "reward_model"):
-            print("Skipping PPO optimization: requires a real LLM and reward model")
+        """Optimize LLM explanations using PPO"""
+        # Only applicable if using a trainable LLM
+        if self.llm_config['type'] not in ['transformer']:
+            print("LLM optimization only supported for transformer-based models")
             return
             
         # Create PPO trainer
-        ppo_trainer = PPOTrainer(
-            model=self.llm.model if hasattr(self.llm, "model") else None,
-            tokenizer=self.llm.tokenizer if hasattr(self.llm, "tokenizer") else None,
+        trainer = PPOTrainer(
+            llm=self.llm,
             reward_model=self.reward_model
         )
         
-        # Collect prompts from previous examples
-        prompts = []
-        for root, dirs, files in os.walk(self.results_dir):
-            for file in files:
-                if file == "examples.json":
-                    with open(os.path.join(root, file), 'r') as f:
-                        examples = json.load(f)
-                        for example in examples:
-                            ticker = example.get("ticker", "Stock")
-                            texts = example.get("top_texts", [])
-                            
-                            if texts:
-                                prompt = f"Stock: {ticker}\nRelevant information:\n"
-                                for i, text in enumerate(texts):
-                                    prompt += f"- {text}\n"
-                                prompt += "Based only on this information, explain the stock price movement."
-                                prompts.append(prompt)
+        # Sample batch for training
+        train_batch_gen = self.pipe.batch_gen(phase='train')
+        batch_dict = next(train_batch_gen)
         
-        if not prompts:
-            print("No prompts found for PPO training. Skipping.")
-            return
-            
-        # Train with PPO
-        unique_prompts = list(set(prompts))  # Remove duplicates
-        print(f"Training with {len(unique_prompts)} unique prompts")
-        
-        ppo_trainer.train(unique_prompts, n_epochs=n_iterations)
-        
-        # Save optimized model
-        ppo_save_path = os.path.join(self.results_dir, "ppo_optimized_model")
-        ppo_trainer.save(ppo_save_path)
-        print(f"PPO-optimized model saved to {ppo_save_path}")
-        
-        # Update the LLM to use the optimized model if possible
-        if hasattr(self.llm, "update_model") and callable(self.llm.update_model):
-            self.llm.update_model(ppo_save_path)
-            print("LLM updated to use PPO-optimized model")
-    
-    def evaluate(self, phase="test"):
-        """
-        Evaluate model on test set using the SEP approach of self-reflection
-        and multi-shot sampling for best explanation generation
-        """
-        # Create TensorFlow session without using 'with'
+        # Create session for evaluation
         sess = self._initialize_session()
         
         try:
-            # Test data generator
-            test_gen = self.pipe.batch_gen_by_stocks(phase)
+            # Extract texts and create agents
+            feed_dict = self._create_feed_dict(batch_dict, is_training=False)
+            actuals, predictions, _, vos_weights = sess.run(
+                [self.model.y_T, self.model.y_T_, self.model.loss, self.model.P],
+                feed_dict
+            )
             
-            all_agents = []
-            total_correct = 0
-            total_samples = 0
+            agents = self._create_agents_from_batch(
+                batch_dict, predictions, actuals, vos_weights
+            )
             
-            print(f"Evaluating on {phase} set")
+            # Run PPO optimization
+            print(f"Optimizing LLM with PPO for {n_iterations} iterations...")
+            trainer.train(agents, n_iterations=n_iterations)
             
-            for batch_idx, test_batch_dict in enumerate(tqdm(test_gen)):
-                feed_dict = self._create_feed_dict(test_batch_dict, is_training=False)
+        finally:
+            sess.close()
+    
+    def evaluate(self, phase="test"):
+        """Evaluate model on validation or test set"""
+        # Create session for evaluation
+        sess = self._initialize_session()
+        
+        try:
+            # Evaluation batch generator
+            eval_batch_gen = self.pipe.batch_gen(phase=phase)
+            
+            eval_agents = []
+            eval_predictions = []
+            eval_actuals = []
+            eval_losses = []  # Track losses
+            
+            # Process each batch
+            for batch_idx, eval_batch_dict in enumerate(eval_batch_gen):
+                # Extract texts for relevance filtering
+                texts_list = self._extract_texts_from_batch(eval_batch_dict)
                 
-                # Forward pass with PEN model
-                ops = [
-                    self.model.y_T,       # True labels
-                    self.model.y_T_,      # Predictions
-                    self.model.loss,      # Loss
-                    self.model.P,         # Use P instead of vos_weights for consistency
-                ]
+                # Apply Meaning-Aware Selection
+                filtered_batch_dict = self._apply_meaning_aware_selection(eval_batch_dict, texts_list)
                 
-                actuals, predictions, batch_loss, vos_weights = sess.run(ops, feed_dict)
+                # Create feed dict
+                feed_dict = self._create_feed_dict(filtered_batch_dict, is_training=False)
+                
+                # Forward pass
+                actuals, predictions, batch_loss, vos_weights = sess.run(
+                    [self.model.y_T, self.model.y_T_, self.model.loss, self.model.P],
+                    feed_dict
+                )
+                
+                # Store predictions, actuals, and loss
+                eval_predictions.extend(predictions)
+                eval_actuals.extend(actuals)
+                eval_losses.append(batch_loss)  # Store batch loss
                 
                 # Create agents for this batch
                 batch_agents = self._create_agents_from_batch(
-                    test_batch_dict, predictions, actuals, vos_weights
+                    filtered_batch_dict, predictions, actuals, vos_weights
                 )
                 
-                # For each agent, generate multiple explanations and pick the best one
+                # Generate explanations
                 for agent in batch_agents:
-                    # Generate multiple explanations and select the best one
-                    # using the reward model for scoring
-                    
-                    best_explanation = ""
-                    best_score = -float("inf")
-                    
-                    for _ in range(5):  # Generate 5 explanations
-                        explanation = agent.generate_explanation(self.llm)
-                        score = self.reward_model(explanation)
-                        
-                        if score > best_score:
-                            best_score = score
-                            best_explanation = explanation
-                    
-                    agent.explanation = best_explanation
+                    agent.generate_explanation(self.llm)
                 
-                # Collect statistics
-                total_correct += sum(1 for a in batch_agents if a.is_correct())
-                total_samples += len(batch_agents)
-                all_agents.extend(batch_agents)
+                # Add to evaluation agents
+                eval_agents.extend(batch_agents)
+                
+                # Print progress
+                if (batch_idx + 1) % 10 == 0:
+                    print(f"Processed {batch_idx+1} evaluation batches")
+
+                if (batch_idx + 1) == 100:
+                    break
             
-            # Calculate final metrics
-            accuracy = total_correct / max(1, total_samples)
+            # Convert predictions and actuals to numpy arrays if they aren't already
+            eval_predictions = np.array(eval_predictions)
+            eval_actuals = np.array(eval_actuals)
             
-            # Save evaluation results
-            eval_dir = os.path.join(self.results_dir, f"{phase}_evaluation")
-            os.makedirs(eval_dir, exist_ok=True)
+            # Get the predicted class (argmax for one-hot encoded predictions)
+            pred_classes = np.argmax(eval_predictions, axis=1)
+            actual_classes = np.argmax(eval_actuals, axis=1)
             
-            # Save examples
-            examples = []
-            for i, agent in enumerate(all_agents[:50]):  # Save first 50 for analysis
-                example = {
-                    "ticker": agent.ticker,
-                    "prediction": float(agent.prediction),
-                    "target": int(agent.target),
-                    "top_texts": agent.top_texts,
-                    "explanation": agent.explanation,
-                    "is_correct": agent.is_correct()
-                }
-                examples.append(example)
+            # Calculate evaluation metrics
+            gen_n_acc = np.sum(pred_classes == actual_classes)
+            gen_size = len(eval_predictions)
+            gen_loss_list = eval_losses  # Use collected losses
             
-            with open(os.path.join(eval_dir, "examples.json"), 'w') as f:
-                json.dump(examples, f, indent=2)
+            # Calculate results using eval_res
+            results = eval_res(
+                gen_n_acc=gen_n_acc,
+                gen_size=gen_size,
+                gen_loss_list=gen_loss_list,
+                y_list=pred_classes,  # Pass class indices instead of one-hot vectors
+                y_list_=actual_classes,  # Pass class indices instead of one-hot vectors
+                use_mcc=True
+            )
             
-            # Save statistics
-            stats = {
-                "phase": phase,
-                "total_samples": total_samples,
-                "correct_predictions": total_correct,
-                "accuracy": accuracy,
-                "timestamp": datetime.now().isoformat()
-            }
+            # Add explanation rewards
+            explanation_rewards = [agent.get_explanation_reward() for agent in eval_agents]
+            results['avg_explanation_reward'] = np.mean(explanation_rewards) if explanation_rewards else 0.0
             
-            with open(os.path.join(eval_dir, "stats.json"), 'w') as f:
-                json.dump(stats, f, indent=2)
+            # Add relevance stats
+            results['relevance_stats'] = self.train_stats['relevance_stats']
             
-            print(f"Evaluation on {phase} complete. Accuracy: {total_correct}/{total_samples} = {accuracy:.4f}")
-            return accuracy, examples
+            # Print results
+            print("\nTest Results:")
+            print(f"Accuracy: {results['acc']:.4f}")
+            print(f"MCC Score: {results['mcc']:.4f}")
+            print(f"Loss: {results['loss']:.4f}")
+            print(f"Avg Explanation Reward: {results['avg_explanation_reward']:.4f}")
+            print(f"Relevance Filtering: {results['relevance_stats']['relevant_texts']} / " +
+                  f"{results['relevance_stats']['total_texts']} texts deemed relevant " +
+                  f"({results['relevance_stats']['relevant_texts']/max(1, results['relevance_stats']['total_texts']):.2%})")
+            
+            return results
+            
         finally:
-            # Close session when done
             sess.close()
 
 

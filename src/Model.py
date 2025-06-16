@@ -223,35 +223,37 @@ class Model:
     def _create_corpus_embed(self):
         """
             msg_embed: batch_size * max_n_days * max_n_msgs * msg_embed_size
-
+            This is the TSU (Text Selection Unit)
             => corpus_embed: batch_size * max_n_days * corpus_embed_size
         """
         
         
-        with tf.name_scope('corpus_embed'):
-            """
-            cell = msin()
-            corpus_embed = 
-            self.corpus_embed = tf.nn.dropout(corpus_embed, keep_prob=1-self.dropout_ce, name='corpus_embed')
-            """
-            
+        with tf.name_scope('corpus_embed'): # This scope acts as TSU
+            # The TSU now operates on msg_embed which should already be filtered by DataPipe
             with tf.variable_scope('u_t'):
                 proj_u = self._linear(self.msg_embed, self.msg_embed_size, 'tanh', use_bias=False)
                 w_u = tf.get_variable('w_u', shape=(self.msg_embed_size, 1), initializer=self.initializer)
-            u = tf.reduce_mean(tf.tensordot(proj_u, w_u, axes=1), axis=-1)  # batch_size * max_n_days * max_n_msgs
+            u_scores = tf.reduce_mean(tf.tensordot(proj_u, w_u, axes=1), axis=-1)  # scores: batch_size * max_n_days * max_n_msgs
 
-            mask_msgs = tf.sequence_mask(self.n_msgs_ph, maxlen=self.max_n_msgs, dtype=tf.bool, name='mask_msgs')
-            ninf = tf.fill(tf.shape(mask_msgs), np.NINF)
-            masked_score = tf.where(mask_msgs, u, ninf)
-            u = neural.softmax(masked_score)  # batch_size * max_n_days * max_n_msgs
-            u = tf.where(tf.is_nan(u), tf.zeros_like(u), u)  # replace nan with 0.0
-
-            u = tf.expand_dims(u, axis=-2)  # batch_size * max_n_days * 1 * max_n_msgs
-            corpus_embed = tf.matmul(u, self.msg_embed)  # batch_size * max_n_days * 1 * msg_embed_size
-            corpus_embed = tf.reduce_mean(corpus_embed, axis=-2)  # batch_size * max_n_days * msg_embed_size
-            self.corpus_embed = tf.nn.dropout(corpus_embed, keep_prob=1-self.dropout_ce, name='corpus_embed')
+            # Mask for padding based on actual number of messages (n_msgs_ph now reflects relevant messages)
+            mask_msgs_padding = tf.sequence_mask(self.n_msgs_ph, maxlen=self.max_n_msgs, dtype=tf.bool, name='mask_msgs_padding')
             
+            ninf = tf.fill(tf.shape(u_scores), -np.inf) # Use -np.inf for softmax
+            # Apply the padding mask: if it's a padding message, set score to -infinity
+            masked_score = tf.where(mask_msgs_padding, u_scores, ninf)
+            
+            # Calculate attention weights (alpha_t in some papers)
+            u_weights = tf.nn.softmax(masked_score, axis=-1) # Softmax over messages for each day
+            # Replace NaN with 0.0 (e.g., if all messages on a day are masked out by padding)
+            u_weights = tf.where(tf.is_nan(u_weights), tf.zeros_like(u_weights), u_weights)
 
+            u_weights_expanded = tf.expand_dims(u_weights, axis=-2)  # batch_size * max_n_days * 1 * max_n_msgs
+            # Weighted sum of message embeddings to get daily corpus embedding
+            corpus_embed_G = tf.matmul(u_weights_expanded, self.msg_embed)  # batch_size * max_n_days * 1 * msg_embed_size
+            self.corpus_embed = tf.squeeze(corpus_embed_G, axis=-2) # Squeeze to [batch_size, max_n_days, corpus_embed_size]
+            
+            # Optional: re-add dropout if it was originally here and is still desired
+            self.corpus_embed = tf.nn.dropout(self.corpus_embed, keep_prob=1-self.dropout_ce, name='corpus_embed_dropout')
 
     def _build_mie(self):
         """

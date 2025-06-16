@@ -1,6 +1,6 @@
 #!/usr/local/bin/python
 import metrics as metrics
-from ConfigLoader import logger
+from ConfigLoader_tx_lf import logger
 
 
 def print_batch_stat(n_iter, train_batch_loss, train_batch_n_acc, train_batch_size):

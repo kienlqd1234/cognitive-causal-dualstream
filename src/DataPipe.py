@@ -5,7 +5,7 @@ import json
 import numpy as np
 from datetime import datetime, timedelta
 import random
-from ConfigLoader import logger, path_parser, config_model, dates, stock_symbols, vocab, vocab_size
+from ConfigLoader_tx_lf import logger, path_parser, config_model, dates, stock_symbols, vocab, vocab_size
 
 
 
@@ -75,7 +75,7 @@ class DataPipe:
         elif phase == 'unit_test':
             return 5
         else:
-            return 1
+            return min(32, self.batch_size)  # Use a reasonable batch size for eval
 
     def index_token(self, token_list, key='id', type='word'):
         assert key in ('id', 'token')

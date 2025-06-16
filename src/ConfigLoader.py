@@ -38,8 +38,10 @@ def update_config(config_path):
     
     # Update all dependent variables
     config_model = config['model']
+    #config_path_dict = config['paths'] # Store the paths dictionary
     dates = config['dates']
     config_stocks = config['stocks']
+    
     stock_symbols = list(itertools.chain.from_iterable(config_stocks.values()))
     ss_size = len(stock_symbols)
     path_parser = PathParser(config_path=config['paths'])
@@ -64,19 +66,23 @@ path_parser = PathParser(config_path=config['paths'])
 
 # logger
 logger = logging.getLogger('my_logger')
-logger.setLevel(logging.DEBUG)
 
-log_dir = os.path.dirname(path_parser.log)
-os.makedirs(log_dir, exist_ok=True)  # Create the log directory if it doesn't exist
+# Only configure if no handlers are already present for this logger
+if not logger.hasHandlers():
+    logger.setLevel(logging.DEBUG)
 
-log_fp = os.path.join(path_parser.log, '{0}.log'.format('model'))
-file_handler = logging.FileHandler(log_fp)
-console_handler = logging.StreamHandler(sys.stdout)
-formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-file_handler.setFormatter(formatter)
-console_handler.setFormatter(formatter)
-logger.addHandler(file_handler)
-logger.addHandler(console_handler)
+    log_dir = os.path.dirname(path_parser.log)
+    os.makedirs(log_dir, exist_ok=True)  # Create the log directory if it doesn't exist
+
+    log_fp = os.path.join(path_parser.log, '{0}.log'.format('model'))
+    file_handler = logging.FileHandler(log_fp)
+    console_handler = logging.StreamHandler(sys.stdout)
+    formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+    file_handler.setFormatter(formatter)
+    console_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
+    logger.addHandler(console_handler)
+    # Consider adding logger.propagate = False if this configuration is applied
 
 with io.open(str(path_parser.vocab), 'r', encoding='utf-8') as vocab_f:
     vocab = json.load(vocab_f)

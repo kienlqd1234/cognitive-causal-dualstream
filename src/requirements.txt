@@ -8,7 +8,9 @@
 
 # Core requirements for SEP-PEN with OpenAI
 #tensorflow==1.4.0
-#numpy>=1.14.0,<1.15.0
+# Pin specific versions for compatibility
+numpy==1.16.5  # Last version supporting Python 3.6
+scipy==1.2.1   # Compatible with numpy 1.16.5
 
 # Compatible versions for Python 3.6
 # Lower transformers version for numpy compatibility
@@ -23,6 +25,9 @@ tenacity==7.0.0  # For retry logic with OpenAI API
 # Data processing
 pandas==1.1.5  # Last version supporting Python 3.6
 
+# Machine learning for relevance classifier
+scikit-learn==0.24.2  # Last version compatible with Python 3.6
+
 # Other requirements
 tqdm==4.64.1
 typing-extensions==4.1.1
@@ -31,3 +36,9 @@ pyyaml==5.4.1
 #torch==1.10.2
 #transformers==4.18.0
 #tokenizers<0.13.0
+matplotlib==3.3.4 # Added for plotting
+
+#tensorflow-gpu==1.15.0
+#PyYAML==5.1.2
+#scikit-learn==0.20.0
+optuna

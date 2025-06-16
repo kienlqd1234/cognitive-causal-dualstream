@@ -70,7 +70,8 @@ stocks:
   finance: ['BCH', 'BSAC', 'BRK-A', 'JPM', 'WFC', 'BAC', 'V', 'C', 'HSBC', 'MA']
   industrial_goods: ['GE', 'MMM', 'BA', 'HON', 'UTX', 'LMT', 'CAT', 'GD', 'DHR', 'ABB']
   tech: ['GOOG', 'MSFT', 'FB', 'T', 'CHL', 'ORCL', 'TSM', 'VZ', 'INTC', 'CSCO']
-
+LLM_SETTINGS:
+  nli_model_name: "bert-base-uncased"
 paths:
   data: 'data/'
   tweet_retrieved: 'tweet/raw'

@@ -1,0 +1,4 @@
+2025-06-01 17:59:43,845 - model_logger_tx_lf - INFO - Configuration loaded from: src\config_tx_lf.yml
+2025-06-01 17:59:43,846 - model_logger_tx_lf - INFO - Model name for this run: None
+2025-06-01 17:59:43,846 - model_logger_tx_lf - INFO - Logging to: ./log_tx_lf\model_logger_tx_lf.log
+2025-06-01 17:59:43,850 - model_logger_tx_lf - INFO - Vocabulary loaded. Size: 29867

@@ -12,7 +12,7 @@ import sys
 class PathParser:
 
     def __init__(self, config_path):
-        self.root = './'
+        self.root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
         self.log = os.path.join(self.root, config_path['log'])
 
         self.data = os.path.join(self.root, config_path['data'])
@@ -26,6 +26,10 @@ class PathParser:
         self.preprocessed = os.path.join(self.data, config_path['tweet_preprocessed'])
         self.movement = os.path.join(self.data, config_path['price'])
         self.vocab = os.path.join(self.res, config_path['vocab_tweet'])
+        
+        print(f"Root path: {self.root}")
+        print(f"Vocab path: {self.vocab}")
+        print(f"Vocab exists: {os.path.exists(self.vocab)}")
 
 # Default attention config
 DEFAULT_ATTENTION_CONFIG = {

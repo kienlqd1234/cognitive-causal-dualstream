@@ -1,0 +1,1609 @@
+2025-05-29 11:58:08,678 INFO Starting noise-aware loss test...
+2025-05-29 11:58:08,679 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-05-29 12:08:05,033 INFO Starting noise-aware loss test...
+2025-05-29 12:08:05,033 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-05-29 12:08:05,035 INFO Start graph assembling...
+2025-05-29 12:10:46,979 INFO Starting noise-aware loss test...
+2025-05-29 12:10:46,980 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-05-29 12:10:46,982 INFO Start graph assembling...
+2025-05-29 12:20:43,676 INFO Starting noise-aware loss test...
+2025-05-29 12:20:43,677 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-05-29 12:20:43,679 INFO Start graph assembling...
+2025-05-29 12:21:07,749 INFO Word table init: done!
+2025-05-29 12:21:07,750 INFO Model: all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp, start a new session!
+2025-05-29 12:21:07,750 INFO Starting test run for 5 batches...
+2025-05-29 12:44:10,724 INFO Starting noise-aware loss test...
+2025-05-29 12:44:10,724 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-05-29 12:44:10,726 INFO Start graph assembling...
+2025-05-29 12:48:56,122 INFO Starting noise-aware loss test...
+2025-05-29 12:48:56,122 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-05-29 12:48:56,124 INFO Start graph assembling...
+2025-05-29 13:00:55,074 INFO Starting noise-aware loss test...
+2025-05-29 13:00:55,074 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-05-29 13:00:55,077 INFO Start graph assembling...
+2025-05-29 13:01:19,685 INFO Word table init: done!
+2025-05-29 13:01:19,686 INFO Model: all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp, start a new session!
+2025-05-29 13:01:19,686 INFO Starting test run for 5 batches...
+2025-05-29 13:01:56,179 INFO --- Batch 1 ---
+2025-05-29 13:01:56,179 INFO Total Loss: 2.1609435081481934
+2025-05-29 13:01:56,179 INFO Attention Penalty: 5.003200931241736e-05
+2025-05-29 13:01:56,181 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):
+[[0.05599098 0.04427797 0.05540673 0.05540673 0.05540673]
+ [0.05570275 0.05574378 0.05551257 0.05527284 0.05569356]
+ [0.05903488 0.05526908 0.05526908 0.05703473 0.05526908]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 13:02:17,887 INFO --- Batch 2 ---
+2025-05-29 13:02:17,888 INFO Total Loss: 2.61797833442688
+2025-05-29 13:02:17,888 INFO Attention Penalty: 4.9518392188474536e-05
+2025-05-29 13:02:17,888 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):
+[[0.05642062 0.05504574 0.0554992  0.05590856 0.04442098]
+ [0.05523097 0.06311735 0.04330926 0.0468731  0.05909687]
+ [0.04452672 0.04450642 0.03365479 0.0442741  0.04397095]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 13:02:42,342 INFO --- Batch 3 ---
+2025-05-29 13:02:42,343 INFO Total Loss: 3.3818485736846924
+2025-05-29 13:02:42,343 INFO Attention Penalty: 5.039292955189012e-05
+2025-05-29 13:02:42,344 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):
+[[0.05472862 0.04778641 0.06174224 0.04631555 0.04330505]
+ [0.05555792 0.05529369 0.05589724 0.05593214 0.05558997]
+ [0.03245112 0.04568202 0.03401881 0.05544884 0.04433161]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 13:03:05,408 INFO --- Batch 4 ---
+2025-05-29 13:03:05,408 INFO Total Loss: 3.6370441913604736
+2025-05-29 13:03:05,408 INFO Attention Penalty: 4.971150337951258e-05
+2025-05-29 13:03:05,409 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):
+[[0.05630822 0.04567802 0.02232726 0.05540981 0.05582017]
+ [0.05536462 0.05552213 0.04439873 0.05581501 0.04440532]
+ [0.05580946 0.03337491 0.05552981 0.05552457 0.04444537]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 13:03:25,204 INFO --- Batch 5 ---
+2025-05-29 13:03:25,204 INFO Total Loss: 4.099321365356445
+2025-05-29 13:03:25,205 INFO Attention Penalty: 4.9627407861407846e-05
+2025-05-29 13:03:25,205 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):
+[[0.05553943 0.05555096 0.05553129 0.05572075 0.04446138]
+ [0.05557079 0.03359625 0.0554845  0.03337269 0.04439811]
+ [0.04443233 0.05565659 0.04443403 0.05555878 0.05559022]
+ [0.03019705 0.0447716  0.04409786 0.04471105 0.05659114]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 13:03:28,373 INFO --- Test run completed for 5 batches ---
+2025-05-29 13:03:28,483 INFO Noise-aware loss test finished.
+2025-05-29 16:58:52,822 INFO Starting noise-aware loss test...
+2025-05-29 16:58:52,822 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-05-29 16:58:52,829 INFO Start graph assembling...
+2025-05-29 16:59:18,856 INFO Word table init: done!
+2025-05-29 16:59:18,857 INFO Model: all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp, start a new session!
+2025-05-29 16:59:18,857 INFO Starting test run for 5 batches...
+2025-05-29 16:59:54,162 INFO --- Batch 1 ---
+2025-05-29 16:59:54,163 INFO Total Loss: 2.181091785430908
+2025-05-29 16:59:54,164 INFO Attention Penalty: 5.0910373829538e-05
+2025-05-29 16:59:54,166 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):
+[[0.04382948 0.05585197 0.05585197 0.05475222 0.04470602]
+ [0.04349008 0.04457726 0.0441628  0.05542667 0.04429691]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:00:23,053 INFO --- Batch 2 ---
+2025-05-29 17:00:23,053 INFO Total Loss: 2.6074578762054443
+2025-05-29 17:00:23,055 INFO Attention Penalty: 4.9625446990830824e-05
+2025-05-29 17:00:23,055 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):
+[[0.04506349 0.04492801 0.05552659 0.05505828 0.04431791]
+ [0.04460844 0.04449039 0.04415778 0.05563406 0.03338283]
+ [0.0555068  0.05561093 0.05561025 0.03335635 0.04412733]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:00:50,053 INFO --- Batch 3 ---
+2025-05-29 17:00:50,054 INFO Total Loss: 3.473550796508789
+2025-05-29 17:00:50,054 INFO Attention Penalty: 5.0916376494569704e-05
+2025-05-29 17:00:50,055 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):
+[[0.05556529 0.04453406 0.05509811 0.05541787 0.05579229]
+ [0.04463131 0.05520979 0.04415148 0.05523805 0.05523916]
+ [0.0551853  0.0444883  0.04443589 0.0445292  0.03333971]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:01:06,773 INFO --- Batch 4 ---
+2025-05-29 17:01:06,774 INFO Total Loss: 3.3386974334716797
+2025-05-29 17:01:06,774 INFO Attention Penalty: 5.013545887777582e-05
+2025-05-29 17:01:06,775 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):
+[[0.05513479 0.05564737 0.0560349  0.04407087 0.04487138]
+ [0.05561811 0.02216386 0.05584768 0.05563682 0.04432314]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:01:23,254 INFO --- Batch 5 ---
+2025-05-29 17:01:23,255 INFO Total Loss: 3.769794225692749
+2025-05-29 17:01:23,255 INFO Attention Penalty: 5.0204173021484166e-05
+2025-05-29 17:01:23,256 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):
+[[0.04451057 0.05552657 0.05553759 0.05550876 0.04442139]
+ [0.03322702 0.05562273 0.05513648 0.05582928 0.04418714]
+ [0.05580827 0.03323064 0.05512862 0.05552503 0.03337184]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:01:28,232 INFO --- Test run completed for 5 batches ---
+2025-05-29 17:01:28,355 INFO Noise-aware loss test finished.
+2025-05-29 17:13:47,685 INFO Starting noise-aware loss test...
+2025-05-29 17:13:47,685 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-05-29 17:13:47,688 INFO Start graph assembling...
+2025-05-29 17:14:12,267 INFO Word table init: done!
+2025-05-29 17:14:12,267 INFO Model: all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp, start a new session!
+2025-05-29 17:14:12,268 INFO Starting test run for 20 batches...
+2025-05-29 17:14:47,138 INFO --- Batch 1 ---
+2025-05-29 17:14:47,139 INFO Total Loss: 1.305382490158081
+2025-05-29 17:14:47,139 INFO Attention Penalty: 5.030197644373402e-05
+2025-05-29 17:14:47,139 INFO Accuracy: 0.5000
+2025-05-29 17:14:47,139 INFO MCC: 0.0727
+2025-05-29 17:14:47,140 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):\n[[0.05537436 0.05552455 0.05563719 0.03338157 0.04453641]
+ [0.03299043 0.03325101 0.05532942 0.05685459 0.05633048]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:15:06,918 INFO --- Batch 2 ---
+2025-05-29 17:15:06,919 INFO Total Loss: 2.188387393951416
+2025-05-29 17:15:06,919 INFO Attention Penalty: 4.982008249498904e-05
+2025-05-29 17:15:06,919 INFO Accuracy: 0.4688
+2025-05-29 17:15:06,919 INFO MCC: -0.0929
+2025-05-29 17:15:06,920 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):\n[[0.04379993 0.05559726 0.04444542 0.04419461 0.03353373]
+ [0.04495143 0.04493057 0.05605345 0.04298308 0.05597781]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:15:28,901 INFO --- Batch 3 ---
+2025-05-29 17:15:28,902 INFO Total Loss: 2.7141408920288086
+2025-05-29 17:15:28,902 INFO Attention Penalty: 4.973617251380347e-05
+2025-05-29 17:15:28,902 INFO Accuracy: 0.5625
+2025-05-29 17:15:28,902 INFO MCC: 0.0348
+2025-05-29 17:15:28,903 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):\n[[0.04397291 0.06015084 0.04739792 0.03868661 0.03279844]
+ [0.05439795 0.05480633 0.04426966 0.05531018 0.05678347]
+ [0.05582044 0.05590659 0.0532978  0.04453426 0.05589553]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:15:55,369 INFO --- Batch 4 ---
+2025-05-29 17:15:55,370 INFO Total Loss: 3.3888587951660156
+2025-05-29 17:15:55,370 INFO Attention Penalty: 5.099577538203448e-05
+2025-05-29 17:15:55,370 INFO Accuracy: 0.6250
+2025-05-29 17:15:55,371 INFO MCC: 0.2182
+2025-05-29 17:15:55,371 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):\n[[0.0436622  0.0329399  0.05686212 0.03222427 0.04391764]
+ [0.05567456 0.04410224 0.05562689 0.0445302  0.04454475]
+ [0.04385113 0.05486208 0.05523037 0.05621418 0.04496521]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:16:11,019 INFO --- Batch 5 ---
+2025-05-29 17:16:11,019 INFO Total Loss: 4.070974826812744
+2025-05-29 17:16:11,020 INFO Attention Penalty: 5.026289727538824e-05
+2025-05-29 17:16:11,020 INFO Accuracy: 0.4062
+2025-05-29 17:16:11,020 INFO MCC: -0.1773
+2025-05-29 17:16:11,021 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):\n[[0.04531161 0.05570153 0.03303196 0.04420694 0.05558063]
+ [0.05544284 0.04523148 0.04393937 0.0226783  0.05584344]
+ [0.05412387 0.05720373 0.04591907 0.05606401 0.04305928]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:16:27,334 INFO --- Batch 6 ---
+2025-05-29 17:16:27,335 INFO Total Loss: 4.233227729797363
+2025-05-29 17:16:27,335 INFO Attention Penalty: 4.967063796357252e-05
+2025-05-29 17:16:27,336 INFO Accuracy: 0.4062
+2025-05-29 17:16:27,336 INFO MCC: -0.2164
+2025-05-29 17:16:27,336 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):\n[[0.05543879 0.05570022 0.03386261 0.0559217  0.055506  ]
+ [0.05549075 0.04471069 0.05575611 0.04471342 0.0553681 ]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:16:43,145 INFO --- Batch 7 ---
+2025-05-29 17:16:43,145 INFO Total Loss: 4.475428104400635
+2025-05-29 17:16:43,146 INFO Attention Penalty: 5.006041101296432e-05
+2025-05-29 17:16:43,146 INFO Accuracy: 0.4688
+2025-05-29 17:16:43,146 INFO MCC: -0.1078
+2025-05-29 17:16:43,146 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):\n[[0.05575098 0.04440521 0.05554764 0.05555147 0.04441665]
+ [0.05605661 0.05557664 0.04505773 0.05595234 0.03376943]
+ [0.05393954 0.05626477 0.04435167 0.05630855 0.0544067 ]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:17:02,987 INFO --- Batch 8 ---
+2025-05-29 17:17:02,987 INFO Total Loss: 4.92312479019165
+2025-05-29 17:17:02,987 INFO Attention Penalty: 5.013367626816034e-05
+2025-05-29 17:17:02,987 INFO Accuracy: 0.6562
+2025-05-29 17:17:02,989 INFO MCC: 0.3077
+2025-05-29 17:17:02,989 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):\n[[0.05563387 0.05518529 0.05564603 0.05559327 0.05562913]
+ [0.05668169 0.0443572  0.05583144 0.02234818 0.05581548]
+ [0.05632321 0.05560057 0.0555771  0.05566036 0.04444331]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:17:19,156 INFO --- Batch 9 ---
+2025-05-29 17:17:19,157 INFO Total Loss: 5.237770080566406
+2025-05-29 17:17:19,157 INFO Attention Penalty: 4.9733986088540405e-05
+2025-05-29 17:17:19,157 INFO Accuracy: 0.4688
+2025-05-29 17:17:19,157 INFO MCC: -0.0882
+2025-05-29 17:17:19,158 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):\n[[0.05514179 0.05561622 0.05564574 0.04446824 0.04442735]
+ [0.05583795 0.032834   0.03304649 0.05560295 0.05556414]
+ [0.05592636 0.05555283 0.04448784 0.03364489 0.0442984 ]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:17:34,677 INFO --- Batch 10 ---
+2025-05-29 17:17:34,677 INFO Total Loss: 5.149503231048584
+2025-05-29 17:17:34,677 INFO Attention Penalty: 5.013769623474218e-05
+2025-05-29 17:17:34,678 INFO Accuracy: 0.5938
+2025-05-29 17:17:34,678 INFO MCC: 0.1879
+2025-05-29 17:17:34,679 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):\n[[0.04442586 0.04481681 0.04457404 0.04438267 0.04402459]
+ [0.04375607 0.05627633 0.05537674 0.05507592 0.05540826]
+ [0.05573331 0.04468972 0.05579734 0.04424331 0.04443463]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:17:49,305 INFO --- Batch 11 ---
+2025-05-29 17:17:49,305 INFO Total Loss: 5.668709754943848
+2025-05-29 17:17:49,306 INFO Attention Penalty: 5.061762567493133e-05
+2025-05-29 17:17:49,306 INFO Accuracy: 0.5625
+2025-05-29 17:17:49,306 INFO MCC: 0.1216
+2025-05-29 17:17:49,307 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):\n[[0.0336198  0.04542197 0.0445497  0.02155771 0.05592358]
+ [0.05472454 0.04442696 0.05497344 0.05552965 0.04507282]
+ [0.02263229 0.04512339 0.05520723 0.05563029 0.04440746]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:18:03,709 INFO --- Batch 12 ---
+2025-05-29 17:18:03,709 INFO Total Loss: 5.99693489074707
+2025-05-29 17:18:03,710 INFO Attention Penalty: 5.034502828493714e-05
+2025-05-29 17:18:03,710 INFO Accuracy: 0.4375
+2025-05-29 17:18:03,710 INFO MCC: -0.1294
+2025-05-29 17:18:03,711 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):\n[[0.03321411 0.05499648 0.05612053 0.04446542 0.05579852]
+ [0.04442704 0.05584977 0.03342089 0.04440727 0.05555529]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:18:18,217 INFO --- Batch 13 ---
+2025-05-29 17:18:18,218 INFO Total Loss: 6.1645660400390625
+2025-05-29 17:18:18,218 INFO Attention Penalty: 4.964691470377147e-05
+2025-05-29 17:18:18,218 INFO Accuracy: 0.4688
+2025-05-29 17:18:18,219 INFO MCC: -0.0695
+2025-05-29 17:18:18,219 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):\n[[0.0552587  0.05525793 0.05553391 0.03306221 0.05579576]
+ [0.04335166 0.04297461 0.05534907 0.05576248 0.05406287]
+ [0.05569782 0.0439125  0.04496722 0.03343857 0.0445656 ]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:18:34,139 INFO --- Batch 14 ---
+2025-05-29 17:18:34,140 INFO Total Loss: 6.266312599182129
+2025-05-29 17:18:34,140 INFO Attention Penalty: 5.0560342060634866e-05
+2025-05-29 17:18:34,141 INFO Accuracy: 0.5938
+2025-05-29 17:18:34,141 INFO MCC: 0.1683
+2025-05-29 17:18:34,143 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):\n[[0.05548803 0.05575388 0.05539644 0.05556403 0.05570944]
+ [0.0452606  0.05524601 0.05517473 0.04395208 0.05523455]
+ [0.055638   0.04320399 0.05359628 0.05626335 0.05616018]
+ [0.05569047 0.05549596 0.05566923 0.04443944 0.03335996]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:18:49,850 INFO --- Batch 15 ---
+2025-05-29 17:18:49,851 INFO Total Loss: 6.554660797119141
+2025-05-29 17:18:49,852 INFO Attention Penalty: 4.9704951379681006e-05
+2025-05-29 17:18:49,852 INFO Accuracy: 0.5625
+2025-05-29 17:18:49,853 INFO MCC: 0.0303
+2025-05-29 17:18:49,853 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):\n[[0.03158037 0.05751423 0.05511536 0.05462895 0.04318635]
+ [0.04463745 0.05563474 0.04443907 0.04451349 0.04451899]
+ [0.05599581 0.0554189  0.05537099 0.04456284 0.05514368]
+ [0.04400725 0.05590351 0.04249436 0.04459866 0.05566353]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:19:04,173 INFO --- Batch 16 ---
+2025-05-29 17:19:04,174 INFO Total Loss: 7.041289806365967
+2025-05-29 17:19:04,174 INFO Attention Penalty: 5.028916348237544e-05
+2025-05-29 17:19:04,174 INFO Accuracy: 0.5938
+2025-05-29 17:19:04,174 INFO MCC: 0.1974
+2025-05-29 17:19:04,175 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):\n[[0.05892459 0.06045981 0.02880716 0.05215203 0.05912045]
+ [0.10606669 0.06757538 0.07004837 0.05725533 0.04708461]
+ [0.04450781 0.04457765 0.05564158 0.04453283 0.05556319]
+ [0.04335846 0.04509707 0.04277647 0.04862915 0.04281821]
+ [0.06268965 0.06647383 0.07716451 0.05096777 0.05478363]]
+2025-05-29 17:19:19,978 INFO --- Batch 17 ---
+2025-05-29 17:19:19,979 INFO Total Loss: 6.7419047355651855
+2025-05-29 17:19:19,979 INFO Attention Penalty: 5.000434975954704e-05
+2025-05-29 17:19:19,979 INFO Accuracy: 0.6250
+2025-05-29 17:19:19,979 INFO MCC: 0.2582
+2025-05-29 17:19:19,980 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):\n[[0.05615394 0.05555303 0.04423678 0.05569922 0.02205377]
+ [0.04490479 0.03370611 0.05591342 0.04473275 0.04424489]
+ [0.0553124  0.05587064 0.0455068  0.05519287 0.04436822]
+ [0.05583367 0.04525346 0.04530196 0.05511259 0.03391718]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:19:34,067 INFO --- Batch 18 ---
+2025-05-29 17:19:34,067 INFO Total Loss: 6.882973670959473
+2025-05-29 17:19:34,067 INFO Attention Penalty: 4.96528300573118e-05
+2025-05-29 17:19:34,067 INFO Accuracy: 0.5625
+2025-05-29 17:19:34,068 INFO MCC: 0.1395
+2025-05-29 17:19:34,068 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):\n[[0.03392307 0.04463404 0.04464363 0.05553482 0.04439887]
+ [0.0447877  0.05554982 0.05502397 0.05512512 0.05504499]
+ [0.03554614 0.05403838 0.03228114 0.05837171 0.06055973]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:19:50,190 INFO --- Batch 19 ---
+2025-05-29 17:19:50,191 INFO Total Loss: 7.13711404800415
+2025-05-29 17:19:50,191 INFO Attention Penalty: 5.027699808124453e-05
+2025-05-29 17:19:50,191 INFO Accuracy: 0.5312
+2025-05-29 17:19:50,191 INFO MCC: 0.1150
+2025-05-29 17:19:50,193 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):\n[[0.03352361 0.04433794 0.05576175 0.05550215 0.04430312]
+ [0.03344839 0.05609034 0.04372559 0.056838   0.05489104]
+ [0.05575737 0.04432542 0.04415254 0.0554931  0.05528051]
+ [0.05396904 0.05606855 0.05655713 0.05618621 0.03407743]
+ [0.04441753 0.05580856 0.05546975 0.05544793 0.04433879]]
+2025-05-29 17:20:04,377 INFO --- Batch 20 ---
+2025-05-29 17:20:04,378 INFO Total Loss: 7.0291900634765625
+2025-05-29 17:20:04,378 INFO Attention Penalty: 4.973683462594636e-05
+2025-05-29 17:20:04,378 INFO Accuracy: 0.6250
+2025-05-29 17:20:04,378 INFO MCC: 0.2471
+2025-05-29 17:20:04,380 INFO MSIN Cross Attention Weights (first item in batch, first 5 messages if available):\n[[0.04419774 0.04453928 0.05482605 0.03301911 0.05523498]
+ [0.05537105 0.05547832 0.04453806 0.033402   0.03302369]
+ [0.0552151  0.04520818 0.03263647 0.05463563 0.04503201]
+ [0.         0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.        ]]
+2025-05-29 17:20:07,071 INFO --- Test run completed for 20 batches ---
+2025-05-29 17:20:07,201 INFO Noise-aware loss test finished.
+2025-05-30 10:30:26,232 INFO Starting noise-aware loss test...
+2025-05-30 10:30:26,232 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-05-30 10:30:26,238 INFO Start graph assembling...
+2025-05-30 10:30:49,463 INFO Word table init: done!
+2025-05-30 10:30:49,464 INFO Model: all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp, start a new session!
+2025-05-30 10:30:49,464 INFO Starting Epoch 1/10...
+2025-05-30 10:41:17,676 INFO Starting noise-aware loss test...
+2025-05-30 10:41:17,677 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-05-30 10:41:17,679 INFO Start graph assembling...
+2025-05-30 10:41:40,929 INFO Word table init: done!
+2025-05-30 10:41:40,929 INFO Model: all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp, start a new session!
+2025-05-30 10:41:40,930 INFO Starting Epoch 1/10...
+2025-05-30 10:44:59,713 INFO --- Epoch 1, Batch 10 ---
+2025-05-30 10:44:59,714 INFO Total Loss: 5.642637729644775
+2025-05-30 10:44:59,714 INFO Attention Penalty: 5.006646824767813e-05
+2025-05-30 10:44:59,714 INFO Accuracy: 0.4375
+2025-05-30 10:44:59,715 INFO MCC: -0.0976
+2025-05-30 10:47:25,960 INFO --- Epoch 1, Batch 20 ---
+2025-05-30 10:47:25,960 INFO Total Loss: 7.394880294799805
+2025-05-30 10:47:25,961 INFO Attention Penalty: 5.010521999793127e-05
+2025-05-30 10:47:25,961 INFO Accuracy: 0.5000
+2025-05-30 10:47:25,961 INFO MCC: -0.0206
+2025-05-30 10:49:44,394 INFO --- Epoch 1, Batch 30 ---
+2025-05-30 10:49:44,394 INFO Total Loss: 6.554584980010986
+2025-05-30 10:49:44,395 INFO Attention Penalty: 4.965309926774353e-05
+2025-05-30 10:49:44,395 INFO Accuracy: 0.5625
+2025-05-30 10:49:44,395 INFO MCC: 0.1524
+2025-05-30 10:51:52,104 INFO --- Epoch 1, Batch 40 ---
+2025-05-30 10:51:52,104 INFO Total Loss: 4.465388298034668
+2025-05-30 10:51:52,105 INFO Attention Penalty: 5.0186336011392996e-05
+2025-05-30 10:51:52,105 INFO Accuracy: 0.5312
+2025-05-30 10:51:52,106 INFO MCC: 0.0626
+2025-05-30 10:53:58,077 INFO --- Epoch 1, Batch 50 ---
+2025-05-30 10:53:58,078 INFO Total Loss: 2.3979039192199707
+2025-05-30 10:53:58,078 INFO Attention Penalty: 5.016355498810299e-05
+2025-05-30 10:53:58,078 INFO Accuracy: 0.5312
+2025-05-30 10:53:58,078 INFO MCC: 0.0929
+2025-05-30 10:56:02,023 INFO --- Epoch 1, Batch 60 ---
+2025-05-30 10:56:02,024 INFO Total Loss: 1.6270290613174438
+2025-05-30 10:56:02,024 INFO Attention Penalty: 5.107703691464849e-05
+2025-05-30 10:56:02,025 INFO Accuracy: 0.4688
+2025-05-30 10:56:02,025 INFO MCC: -0.0636
+2025-05-30 10:58:07,009 INFO --- Epoch 1, Batch 70 ---
+2025-05-30 10:58:07,010 INFO Total Loss: 1.569972038269043
+2025-05-30 10:58:07,010 INFO Attention Penalty: 5.0461821956560016e-05
+2025-05-30 10:58:07,010 INFO Accuracy: 0.5000
+2025-05-30 10:58:07,011 INFO MCC: -0.1009
+2025-05-30 11:00:10,297 INFO --- Epoch 1, Batch 80 ---
+2025-05-30 11:00:10,297 INFO Total Loss: 1.0417072772979736
+2025-05-30 11:00:10,298 INFO Attention Penalty: 5.050650725024752e-05
+2025-05-30 11:00:10,298 INFO Accuracy: 0.6562
+2025-05-30 11:00:10,298 INFO MCC: 0.3254
+2025-05-30 11:02:14,717 INFO --- Epoch 1, Batch 90 ---
+2025-05-30 11:02:14,718 INFO Total Loss: 1.1367850303649902
+2025-05-30 11:02:14,718 INFO Attention Penalty: 4.986275962437503e-05
+2025-05-30 11:02:14,718 INFO Accuracy: 0.5312
+2025-05-30 11:02:14,718 INFO MCC: 0.0249
+2025-05-30 11:04:18,299 INFO --- Epoch 1, Batch 100 ---
+2025-05-30 11:04:18,299 INFO Total Loss: 1.0785105228424072
+2025-05-30 11:04:18,299 INFO Attention Penalty: 4.966055348631926e-05
+2025-05-30 11:04:18,300 INFO Accuracy: 0.5312
+2025-05-30 11:04:18,300 INFO MCC: 0.0626
+2025-05-30 11:06:17,706 INFO --- Epoch 1, Batch 110 ---
+2025-05-30 11:06:17,706 INFO Total Loss: 1.6725221872329712
+2025-05-30 11:06:17,707 INFO Attention Penalty: 4.861778870690614e-05
+2025-05-30 11:06:17,707 INFO Accuracy: 0.4062
+2025-05-30 11:06:17,707 INFO MCC: -0.1972
+2025-05-30 11:08:16,711 INFO --- Epoch 1, Batch 120 ---
+2025-05-30 11:08:16,711 INFO Total Loss: 1.0616121292114258
+2025-05-30 11:08:16,712 INFO Attention Penalty: 5.0058919441653416e-05
+2025-05-30 11:08:16,712 INFO Accuracy: 0.5000
+2025-05-30 11:08:16,712 INFO MCC: 0.0120
+2025-05-30 11:10:16,081 INFO --- Epoch 1, Batch 130 ---
+2025-05-30 11:10:16,082 INFO Total Loss: 1.3363014459609985
+2025-05-30 11:10:16,082 INFO Attention Penalty: 5.09480778418947e-05
+2025-05-30 11:10:16,083 INFO Accuracy: 0.6250
+2025-05-30 11:10:16,083 INFO MCC: 0.2698
+2025-05-30 11:12:13,647 INFO --- Epoch 1, Batch 140 ---
+2025-05-30 11:12:13,647 INFO Total Loss: 1.6461669206619263
+2025-05-30 11:12:13,647 INFO Attention Penalty: 4.972926763002761e-05
+2025-05-30 11:12:13,648 INFO Accuracy: 0.3125
+2025-05-30 11:12:13,648 INFO MCC: -0.2981
+2025-05-30 11:14:15,781 INFO --- Epoch 1, Batch 150 ---
+2025-05-30 11:14:15,782 INFO Total Loss: 1.1136422157287598
+2025-05-30 11:14:15,782 INFO Attention Penalty: 5.0051814469043165e-05
+2025-05-30 11:14:15,783 INFO Accuracy: 0.4062
+2025-05-30 11:14:15,783 INFO MCC: -0.0897
+2025-05-30 11:15:16,694 INFO --- Epoch 1 Completed ---
+2025-05-30 11:15:16,694 INFO Starting Epoch 2/10...
+2025-05-30 11:17:11,451 INFO --- Epoch 2, Batch 160 ---
+2025-05-30 11:17:11,452 INFO Total Loss: 1.0778766870498657
+2025-05-30 11:17:11,452 INFO Attention Penalty: 4.990073648514226e-05
+2025-05-30 11:17:11,452 INFO Accuracy: 0.5000
+2025-05-30 11:17:11,452 INFO MCC: -0.0628
+2025-05-30 11:19:43,948 INFO --- Epoch 2, Batch 170 ---
+2025-05-30 11:19:43,949 INFO Total Loss: 1.0888179540634155
+2025-05-30 11:19:43,949 INFO Attention Penalty: 4.961249578627758e-05
+2025-05-30 11:19:43,949 INFO Accuracy: 0.4375
+2025-05-30 11:19:43,949 INFO MCC: -0.0476
+2025-05-30 11:22:07,152 INFO --- Epoch 2, Batch 180 ---
+2025-05-30 11:22:07,152 INFO Total Loss: 1.0963480472564697
+2025-05-30 11:22:07,152 INFO Attention Penalty: 5.0127218855777755e-05
+2025-05-30 11:22:07,153 INFO Accuracy: 0.5312
+2025-05-30 11:22:07,153 INFO MCC: -0.1584
+2025-05-30 11:24:20,318 INFO --- Epoch 2, Batch 190 ---
+2025-05-30 11:24:20,319 INFO Total Loss: 1.0708544254302979
+2025-05-30 11:24:20,319 INFO Attention Penalty: 5.077906826045364e-05
+2025-05-30 11:24:20,319 INFO Accuracy: 0.5938
+2025-05-30 11:24:20,319 INFO MCC: 0.2037
+2025-05-30 11:26:27,529 INFO --- Epoch 2, Batch 200 ---
+2025-05-30 11:26:27,529 INFO Total Loss: 1.0439599752426147
+2025-05-30 11:26:27,530 INFO Attention Penalty: 5.089782644063234e-05
+2025-05-30 11:26:27,530 INFO Accuracy: 0.6250
+2025-05-30 11:26:27,530 INFO MCC: 0.2431
+2025-05-30 11:28:33,170 INFO --- Epoch 2, Batch 210 ---
+2025-05-30 11:28:33,170 INFO Total Loss: 1.1265850067138672
+2025-05-30 11:28:33,170 INFO Attention Penalty: 4.98795197927393e-05
+2025-05-30 11:28:33,171 INFO Accuracy: 0.3125
+2025-05-30 11:28:33,171 INFO MCC: -0.2928
+2025-05-30 11:30:35,626 INFO --- Epoch 2, Batch 220 ---
+2025-05-30 11:30:35,627 INFO Total Loss: 1.134785771369934
+2025-05-30 11:30:35,627 INFO Attention Penalty: 5.2149262046441436e-05
+2025-05-30 11:30:35,628 INFO Accuracy: 0.3750
+2025-05-30 11:30:35,628 INFO MCC: 0.0000
+2025-05-30 11:32:38,929 INFO --- Epoch 2, Batch 230 ---
+2025-05-30 11:32:38,930 INFO Total Loss: 1.0429961681365967
+2025-05-30 11:32:38,930 INFO Attention Penalty: 4.9342892452841625e-05
+2025-05-30 11:32:38,930 INFO Accuracy: 0.6562
+2025-05-30 11:32:38,931 INFO MCC: 0.2547
+2025-05-30 11:34:41,890 INFO --- Epoch 2, Batch 240 ---
+2025-05-30 11:34:41,891 INFO Total Loss: 1.1316572427749634
+2025-05-30 11:34:41,891 INFO Attention Penalty: 5.144240640220232e-05
+2025-05-30 11:34:41,892 INFO Accuracy: 0.5312
+2025-05-30 11:34:41,892 INFO MCC: 0.0658
+2025-05-30 11:36:46,953 INFO --- Epoch 2, Batch 250 ---
+2025-05-30 11:36:46,954 INFO Total Loss: 1.080037236213684
+2025-05-30 11:36:46,954 INFO Attention Penalty: 5.009485175833106e-05
+2025-05-30 11:36:46,954 INFO Accuracy: 0.5000
+2025-05-30 11:36:46,955 INFO MCC: 0.0000
+2025-05-30 11:38:50,297 INFO --- Epoch 2, Batch 260 ---
+2025-05-30 11:38:50,297 INFO Total Loss: 1.1123367547988892
+2025-05-30 11:38:50,297 INFO Attention Penalty: 5.1524963055271655e-05
+2025-05-30 11:38:50,298 INFO Accuracy: 0.4688
+2025-05-30 11:38:50,298 INFO MCC: 0.0095
+2025-05-30 11:40:51,687 INFO --- Epoch 2, Batch 270 ---
+2025-05-30 11:40:51,687 INFO Total Loss: 1.7410087585449219
+2025-05-30 11:40:51,687 INFO Attention Penalty: 5.083398355054669e-05
+2025-05-30 11:40:51,688 INFO Accuracy: 0.5000
+2025-05-30 11:40:51,688 INFO MCC: 0.0000
+2025-05-30 11:42:54,476 INFO --- Epoch 2, Batch 280 ---
+2025-05-30 11:42:54,477 INFO Total Loss: 2.3489840030670166
+2025-05-30 11:42:54,477 INFO Attention Penalty: 5.07814584125299e-05
+2025-05-30 11:42:54,477 INFO Accuracy: 0.4375
+2025-05-30 11:42:54,477 INFO MCC: 0.0478
+2025-05-30 11:44:55,802 INFO --- Epoch 2, Batch 290 ---
+2025-05-30 11:44:55,802 INFO Total Loss: 1.1076399087905884
+2025-05-30 11:44:55,802 INFO Attention Penalty: 5.026578946853988e-05
+2025-05-30 11:44:55,803 INFO Accuracy: 0.5312
+2025-05-30 11:44:55,803 INFO MCC: 0.0636
+2025-05-30 11:46:56,815 INFO --- Epoch 2, Batch 300 ---
+2025-05-30 11:46:56,816 INFO Total Loss: 1.0634989738464355
+2025-05-30 11:46:56,816 INFO Attention Penalty: 5.0289898354094476e-05
+2025-05-30 11:46:56,816 INFO Accuracy: 0.4688
+2025-05-30 11:46:56,817 INFO MCC: -0.1304
+2025-05-30 11:48:57,467 INFO --- Epoch 2, Batch 310 ---
+2025-05-30 11:48:57,467 INFO Total Loss: 1.0674519538879395
+2025-05-30 11:48:57,468 INFO Attention Penalty: 5.0072605517925695e-05
+2025-05-30 11:48:57,468 INFO Accuracy: 0.4688
+2025-05-30 11:48:57,468 INFO MCC: -0.1657
+2025-05-30 11:48:57,900 INFO --- Epoch 2 Completed ---
+2025-05-30 11:48:57,900 INFO Starting Epoch 3/10...
+2025-05-30 11:52:13,290 INFO --- Epoch 3, Batch 320 ---
+2025-05-30 11:52:13,291 INFO Total Loss: 1.0580246448516846
+2025-05-30 11:52:13,291 INFO Attention Penalty: 5.013124973629601e-05
+2025-05-30 11:52:13,292 INFO Accuracy: 0.4375
+2025-05-30 11:52:13,292 INFO MCC: -0.1260
+2025-05-30 16:59:58,224 INFO Starting noise-aware loss test...
+2025-05-30 16:59:58,224 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-05-30 16:59:58,233 INFO Start graph assembling...
+2025-05-30 17:02:50,960 INFO Starting noise-aware loss test...
+2025-05-30 17:02:50,960 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-05-30 17:02:50,962 INFO Start graph assembling...
+2025-05-30 17:04:31,559 INFO Starting noise-aware loss test...
+2025-05-30 17:04:31,560 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-05-30 17:04:31,562 INFO Start graph assembling...
+2025-05-30 17:07:23,154 INFO Starting noise-aware loss test...
+2025-05-30 17:07:23,154 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-05-30 17:07:23,156 INFO Start graph assembling...
+2025-05-30 17:07:45,050 INFO Word table init: done!
+2025-05-30 17:07:45,051 INFO Model: all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp, start a new session!
+2025-05-30 17:07:45,051 INFO Starting Epoch 1/10...
+2025-05-30 17:09:54,423 INFO Starting noise-aware loss test...
+2025-05-30 17:09:54,423 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-05-30 17:09:54,425 INFO Start graph assembling...
+2025-05-30 17:10:15,665 INFO Word table init: done!
+2025-05-30 17:10:15,666 INFO Model: all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp, start a new session!
+2025-05-30 17:10:15,666 INFO Starting Epoch 1/10...
+2025-05-30 17:10:54,705 INFO --- Epoch 1, Batch 1 (Overall batch 1) ---
+2025-05-30 17:10:54,706 INFO Total Loss: 1.0596506595611572
+2025-05-30 17:10:54,706 INFO Causal Consistency Loss: 0.036768000572919846
+2025-05-30 17:10:54,706 INFO Accuracy: 0.6250
+2025-05-30 17:10:54,706 INFO MCC: 0.2471
+2025-05-30 17:10:54,708 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-05-30 17:10:54,708 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-05-30 17:11:13,112 INFO --- Epoch 1, Batch 2 (Overall batch 2) ---
+2025-05-30 17:11:13,113 INFO Total Loss: 2.2788872718811035
+2025-05-30 17:11:13,113 INFO Causal Consistency Loss: 0.021352693438529968
+2025-05-30 17:11:13,113 INFO Accuracy: 0.4062
+2025-05-30 17:11:13,114 INFO MCC: -0.1972
+2025-05-30 17:11:13,114 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.51421994 0.48578006 0.         0.         0.        ]
+2025-05-30 17:11:13,115 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.50547236 0.4945276  0.         0.         0.        ]
+2025-05-30 17:11:31,444 INFO --- Epoch 1, Batch 3 (Overall batch 3) ---
+2025-05-30 17:11:31,445 INFO Total Loss: 3.239506959915161
+2025-05-30 17:11:31,445 INFO Causal Consistency Loss: 0.02083662524819374
+2025-05-30 17:11:31,445 INFO Accuracy: 0.4375
+2025-05-30 17:11:31,446 INFO MCC: -0.1294
+2025-05-30 17:11:31,446 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.49443486 0.5055651  0.         0.         0.        ]
+2025-05-30 17:11:31,446 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.5007551  0.49924496 0.         0.         0.        ]
+2025-05-30 17:11:51,772 INFO --- Epoch 1, Batch 4 (Overall batch 4) ---
+2025-05-30 17:11:51,773 INFO Total Loss: 4.844338417053223
+2025-05-30 17:11:51,773 INFO Causal Consistency Loss: 0.01865590550005436
+2025-05-30 17:11:51,774 INFO Accuracy: 0.3750
+2025-05-30 17:11:51,774 INFO MCC: -0.2431
+2025-05-30 17:11:51,774 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.4646027  0.25200185 0.28339535 0.         0.        ]
+2025-05-30 17:11:51,774 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.37381157 0.31719533 0.30899307 0.         0.        ]
+2025-05-30 17:12:12,523 INFO --- Epoch 1, Batch 5 (Overall batch 5) ---
+2025-05-30 17:12:12,524 INFO Total Loss: 5.006699562072754
+2025-05-30 17:12:12,524 INFO Causal Consistency Loss: 0.017815742641687393
+2025-05-30 17:12:12,525 INFO Accuracy: 0.4375
+2025-05-30 17:12:12,525 INFO MCC: -0.0976
+2025-05-30 17:12:12,525 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.2801288  0.12251612 0.14048958 0.07024685 0.1297665 ]
+2025-05-30 17:12:12,526 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.15236825 0.14703768 0.15093894 0.12283619 0.10349121]
+2025-05-30 17:12:34,678 INFO --- Epoch 1, Batch 6 (Overall batch 6) ---
+2025-05-30 17:12:34,678 INFO Total Loss: 5.347234725952148
+2025-05-30 17:12:34,678 INFO Causal Consistency Loss: 0.021417653188109398
+2025-05-30 17:12:34,678 INFO Accuracy: 0.5938
+2025-05-30 17:12:34,679 INFO MCC: 0.1287
+2025-05-30 17:12:34,679 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.34810504 0.40280262 0.2490923  0.         0.        ]
+2025-05-30 17:12:34,680 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.2640867  0.30844527 0.4274681  0.         0.        ]
+2025-05-30 17:12:49,279 INFO --- Epoch 1, Batch 7 (Overall batch 7) ---
+2025-05-30 17:12:49,280 INFO Total Loss: 5.670431613922119
+2025-05-30 17:12:49,280 INFO Causal Consistency Loss: 0.015534944832324982
+2025-05-30 17:12:49,280 INFO Accuracy: 0.6250
+2025-05-30 17:12:49,281 INFO MCC: 0.2277
+2025-05-30 17:12:49,281 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-05-30 17:12:49,281 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-05-30 17:13:04,072 INFO --- Epoch 1, Batch 8 (Overall batch 8) ---
+2025-05-30 17:13:04,072 INFO Total Loss: 6.035113334655762
+2025-05-30 17:13:04,073 INFO Causal Consistency Loss: 0.013761459849774837
+2025-05-30 17:13:04,073 INFO Accuracy: 0.5000
+2025-05-30 17:13:04,073 INFO MCC: -0.0120
+2025-05-30 17:13:04,073 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-05-30 17:13:04,074 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-05-30 17:13:21,242 INFO --- Epoch 1, Batch 9 (Overall batch 9) ---
+2025-05-30 17:13:21,242 INFO Total Loss: 6.573054313659668
+2025-05-30 17:13:21,243 INFO Causal Consistency Loss: 0.01843952387571335
+2025-05-30 17:13:21,243 INFO Accuracy: 0.5312
+2025-05-30 17:13:21,243 INFO MCC: 0.0552
+2025-05-30 17:13:21,243 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.35399643 0.64600354 0.         0.         0.        ]
+2025-05-30 17:13:21,244 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.5757853  0.42421472 0.         0.         0.        ]
+2025-05-30 17:13:37,650 INFO --- Epoch 1, Batch 10 (Overall batch 10) ---
+2025-05-30 17:13:37,650 INFO Total Loss: 6.772058010101318
+2025-05-30 17:13:37,650 INFO Causal Consistency Loss: 0.02007902041077614
+2025-05-30 17:13:37,651 INFO Accuracy: 0.5312
+2025-05-30 17:13:37,651 INFO MCC: 0.0552
+2025-05-30 17:13:37,651 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.15623385 0.16873601 0.14169213 0.17731024 0.11807868]
+2025-05-30 17:13:37,652 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.12825288 0.17450261 0.09685402 0.18699713 0.13893344]
+2025-05-30 17:13:54,593 INFO --- Epoch 1, Batch 11 (Overall batch 11) ---
+2025-05-30 17:13:54,594 INFO Total Loss: 6.783687591552734
+2025-05-30 17:13:54,595 INFO Causal Consistency Loss: 0.02031722106039524
+2025-05-30 17:13:54,595 INFO Accuracy: 0.5000
+2025-05-30 17:13:54,595 INFO MCC: -0.0120
+2025-05-30 17:13:54,595 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.19371407 0.11057856 0.12256616 0.18150087 0.05744988]
+2025-05-30 17:13:54,596 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.09307092 0.08205523 0.17190793 0.13566335 0.12152887]
+2025-05-30 17:14:09,698 INFO --- Epoch 1, Batch 12 (Overall batch 12) ---
+2025-05-30 17:14:09,698 INFO Total Loss: 7.2353835105896
+2025-05-30 17:14:09,698 INFO Causal Consistency Loss: 0.022314317524433136
+2025-05-30 17:14:09,699 INFO Accuracy: 0.5000
+2025-05-30 17:14:09,699 INFO MCC: 0.0000
+2025-05-30 17:14:09,699 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-05-30 17:14:09,699 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-05-30 17:14:24,778 INFO --- Epoch 1, Batch 13 (Overall batch 13) ---
+2025-05-30 17:14:24,779 INFO Total Loss: 6.866353988647461
+2025-05-30 17:14:24,779 INFO Causal Consistency Loss: 0.019164294004440308
+2025-05-30 17:14:24,779 INFO Accuracy: 0.6562
+2025-05-30 17:14:24,779 INFO MCC: 0.3631
+2025-05-30 17:14:24,780 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-05-30 17:14:24,781 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-05-30 17:14:39,271 INFO --- Epoch 1, Batch 14 (Overall batch 14) ---
+2025-05-30 17:14:39,272 INFO Total Loss: 7.432855129241943
+2025-05-30 17:14:39,272 INFO Causal Consistency Loss: 0.017808299511671066
+2025-05-30 17:14:39,272 INFO Accuracy: 0.5312
+2025-05-30 17:14:39,273 INFO MCC: 0.0710
+2025-05-30 17:14:39,273 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.71182823 0.28817177 0.         0.         0.        ]
+2025-05-30 17:14:39,273 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.4987959  0.50120413 0.         0.         0.        ]
+2025-05-30 17:14:53,713 INFO --- Epoch 1, Batch 15 (Overall batch 15) ---
+2025-05-30 17:14:53,714 INFO Total Loss: 7.63582706451416
+2025-05-30 17:14:53,714 INFO Causal Consistency Loss: 0.022455990314483643
+2025-05-30 17:14:53,714 INFO Accuracy: 0.6250
+2025-05-30 17:14:53,714 INFO MCC: 0.2520
+2025-05-30 17:14:53,714 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-05-30 17:14:53,716 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-05-30 17:15:07,393 INFO --- Epoch 1, Batch 16 (Overall batch 16) ---
+2025-05-30 17:15:07,394 INFO Total Loss: 7.267291069030762
+2025-05-30 17:15:07,394 INFO Causal Consistency Loss: 0.017861586064100266
+2025-05-30 17:15:07,394 INFO Accuracy: 0.5312
+2025-05-30 17:15:07,395 INFO MCC: 0.0626
+2025-05-30 17:15:07,395 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-05-30 17:15:07,395 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-05-30 17:15:20,780 INFO --- Epoch 1, Batch 17 (Overall batch 17) ---
+2025-05-30 17:15:20,780 INFO Total Loss: 7.858359336853027
+2025-05-30 17:15:20,780 INFO Causal Consistency Loss: 0.017593488097190857
+2025-05-30 17:15:20,781 INFO Accuracy: 0.4375
+2025-05-30 17:15:20,781 INFO MCC: -0.1869
+2025-05-30 17:15:20,781 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.40769836 0.2906579  0.3016437  0.         0.        ]
+2025-05-30 17:15:20,782 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.33670396 0.30457094 0.3587251  0.         0.        ]
+2025-05-30 17:15:34,211 INFO --- Epoch 1, Batch 18 (Overall batch 18) ---
+2025-05-30 17:15:34,211 INFO Total Loss: 8.019923210144043
+2025-05-30 17:15:34,212 INFO Causal Consistency Loss: 0.022594941779971123
+2025-05-30 17:15:34,212 INFO Accuracy: 0.6562
+2025-05-30 17:15:34,212 INFO MCC: 0.2966
+2025-05-30 17:15:34,212 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.22036156 0.3931943  0.38644424 0.         0.        ]
+2025-05-30 17:15:34,213 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.3417388  0.26626778 0.3919934  0.         0.        ]
+2025-05-30 17:15:48,675 INFO --- Epoch 1, Batch 19 (Overall batch 19) ---
+2025-05-30 17:15:48,677 INFO Total Loss: 8.069632530212402
+2025-05-30 17:15:48,677 INFO Causal Consistency Loss: 0.027273792773485184
+2025-05-30 17:15:48,677 INFO Accuracy: 0.5000
+2025-05-30 17:15:48,677 INFO MCC: -0.0120
+2025-05-30 17:15:48,678 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.4807561  0.51924396 0.         0.         0.        ]
+2025-05-30 17:15:48,678 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.48795864 0.5120414  0.         0.         0.        ]
+2025-05-30 17:16:01,644 INFO --- Epoch 1, Batch 20 (Overall batch 20) ---
+2025-05-30 17:16:01,644 INFO Total Loss: 8.037296295166016
+2025-05-30 17:16:01,645 INFO Causal Consistency Loss: 0.026004284620285034
+2025-05-30 17:16:01,645 INFO Accuracy: 0.5312
+2025-05-30 17:16:01,645 INFO MCC: 0.0710
+2025-05-30 17:16:01,646 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.14105135 0.20281115 0.2049032  0.27679297 0.17444132]
+2025-05-30 17:16:01,646 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.1232072  0.31458145 0.13768366 0.22147156 0.20305617]
+2025-05-30 17:16:03,715 INFO Reached max_batches_to_test (20). Stopping training for test.
+2025-05-30 17:16:03,715 INFO --- Training completed for 10 epochs ---
+2025-05-30 17:16:03,716 INFO --- Final Average Metrics ---
+2025-05-30 17:16:03,716 INFO Average Total Loss: 6.10167932510376
+2025-05-30 17:16:03,718 INFO Average Causal Consistency Loss: 0.020902488380670547
+2025-05-30 17:16:03,718 INFO Average Accuracy: 0.5266
+2025-05-30 17:16:03,718 INFO Average MCC: 0.0470
+2025-05-30 17:16:04,278 INFO Total Loss plot saved to results/total_loss_plot.png
+2025-05-30 17:16:04,465 INFO Accuracy plot saved to results/accuracy_plot.png
+2025-05-30 17:16:04,653 INFO MCC plot saved to results/mcc_plot.png
+2025-05-30 17:16:04,842 INFO Causal Loss plot saved to results/causal_loss_plot.png
+2025-05-30 17:16:04,932 INFO Noise-aware loss test finished.
+2025-06-01 00:45:46,634 INFO Starting noise-aware loss test...
+2025-06-01 00:45:46,634 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-06-01 00:45:46,640 INFO Start graph assembling...
+2025-06-01 00:46:08,422 INFO Word table init: done!
+2025-06-01 00:46:08,423 INFO Model: all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp, start a new session!
+2025-06-01 00:46:08,423 INFO Starting Epoch 1/10...
+2025-06-01 00:46:39,401 INFO --- Epoch 1, Batch 1 (Overall batch 1) ---
+2025-06-01 00:46:39,402 INFO Total Loss: 1.328033208847046
+2025-06-01 00:46:39,402 INFO Causal Consistency Loss: 0.05498528108000755
+2025-06-01 00:46:39,402 INFO Accuracy: 0.5312
+2025-06-01 00:46:39,402 INFO MCC: 0.0658
+2025-06-01 00:46:39,404 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 00:46:39,404 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 00:46:39,405 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05496537 0.03316788 0.04401806 0.05562419 0.05557173]
+2025-06-01 00:47:00,095 INFO --- Epoch 1, Batch 2 (Overall batch 2) ---
+2025-06-01 00:47:00,095 INFO Total Loss: 2.6791274547576904
+2025-06-01 00:47:00,095 INFO Causal Consistency Loss: 0.03491755947470665
+2025-06-01 00:47:00,096 INFO Accuracy: 0.5625
+2025-06-01 00:47:00,096 INFO MCC: 0.1216
+2025-06-01 00:47:00,096 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.10629486 0.15627044 0.05934349 0.1672427  0.12037811]
+2025-06-01 00:47:00,097 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.1201165  0.17853256 0.14182734 0.12990436 0.11835637]
+2025-06-01 00:47:00,097 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05540006 0.04416917 0.05518837 0.05578477 0.04467166]
+2025-06-01 00:47:23,308 INFO --- Epoch 1, Batch 3 (Overall batch 3) ---
+2025-06-01 00:47:23,309 INFO Total Loss: 2.7037301063537598
+2025-06-01 00:47:23,309 INFO Causal Consistency Loss: 0.030969081446528435
+2025-06-01 00:47:23,310 INFO Accuracy: 0.5625
+2025-06-01 00:47:23,310 INFO MCC: 0.1260
+2025-06-01 00:47:23,311 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 00:47:23,311 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 00:47:23,311 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05527925 0.03419345 0.05552887 0.0444854  0.04487175]
+2025-06-01 00:47:43,758 INFO --- Epoch 1, Batch 4 (Overall batch 4) ---
+2025-06-01 00:47:43,759 INFO Total Loss: 3.6356701850891113
+2025-06-01 00:47:43,759 INFO Causal Consistency Loss: 0.02336145006120205
+2025-06-01 00:47:43,760 INFO Accuracy: 0.4688
+2025-06-01 00:47:43,760 INFO MCC: -0.0552
+2025-06-01 00:47:43,760 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.29738292 0.18039928 0.29856881 0.22364898 0.        ]
+2025-06-01 00:47:43,761 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.37649316 0.2407857  0.21718207 0.16553912 0.        ]
+2025-06-01 00:47:43,761 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05531822 0.05369914 0.05510577 0.05596567 0.05568683]
+2025-06-01 00:48:06,534 INFO --- Epoch 1, Batch 5 (Overall batch 5) ---
+2025-06-01 00:48:06,534 INFO Total Loss: 4.04944372177124
+2025-06-01 00:48:06,535 INFO Causal Consistency Loss: 0.018974581733345985
+2025-06-01 00:48:06,536 INFO Accuracy: 0.5625
+2025-06-01 00:48:06,536 INFO MCC: 0.1291
+2025-06-01 00:48:06,536 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.51674306 0.48325694 0.         0.         0.        ]
+2025-06-01 00:48:06,536 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.4699721 0.5300279 0.        0.        0.       ]
+2025-06-01 00:48:06,537 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05565543 0.04423422 0.05568521 0.03432753 0.05546643]
+2025-06-01 00:48:27,572 INFO --- Epoch 1, Batch 6 (Overall batch 6) ---
+2025-06-01 00:48:27,572 INFO Total Loss: 4.850998401641846
+2025-06-01 00:48:27,573 INFO Causal Consistency Loss: 0.02138081006705761
+2025-06-01 00:48:27,573 INFO Accuracy: 0.3125
+2025-06-01 00:48:27,573 INFO MCC: -0.2790
+2025-06-01 00:48:27,573 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.26874396 0.18425195 0.39936104 0.14764306 0.        ]
+2025-06-01 00:48:27,574 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.2657781  0.22556192 0.1815961  0.32706383 0.        ]
+2025-06-01 00:48:27,574 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05589413 0.05611105 0.04426981 0.05542292 0.05547348]
+2025-06-01 00:48:40,937 INFO --- Epoch 1, Batch 7 (Overall batch 7) ---
+2025-06-01 00:48:40,938 INFO Total Loss: 4.849875450134277
+2025-06-01 00:48:40,938 INFO Causal Consistency Loss: 0.03199481591582298
+2025-06-01 00:48:40,938 INFO Accuracy: 0.5312
+2025-06-01 00:48:40,938 INFO MCC: 0.0401
+2025-06-01 00:48:40,939 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.05712565 0.08191591 0.05612079 0.04583085 0.04706928]
+2025-06-01 00:48:40,939 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.06267633 0.06147158 0.06688741 0.04904688 0.04935973]
+2025-06-01 00:48:40,939 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05161911 0.05358668 0.05307684 0.05458326 0.04623051]
+2025-06-01 00:49:01,122 INFO --- Epoch 1, Batch 8 (Overall batch 8) ---
+2025-06-01 00:49:01,122 INFO Total Loss: 5.6524271965026855
+2025-06-01 00:49:01,123 INFO Causal Consistency Loss: 0.017786433920264244
+2025-06-01 00:49:01,123 INFO Accuracy: 0.4062
+2025-06-01 00:49:01,123 INFO MCC: -0.1879
+2025-06-01 00:49:01,124 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.2203777  0.2647931  0.23445792 0.28037125 0.        ]
+2025-06-01 00:49:01,124 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.22084273 0.22794065 0.28153017 0.26968643 0.        ]
+2025-06-01 00:49:01,124 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05578201 0.05555927 0.04429819 0.03327971 0.0566088 ]
+2025-06-01 00:49:15,029 INFO --- Epoch 1, Batch 9 (Overall batch 9) ---
+2025-06-01 00:49:15,030 INFO Total Loss: 5.489293098449707
+2025-06-01 00:49:15,030 INFO Causal Consistency Loss: 0.019040817394852638
+2025-06-01 00:49:15,030 INFO Accuracy: 0.5625
+2025-06-01 00:49:15,031 INFO MCC: 0.1260
+2025-06-01 00:49:15,031 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 00:49:15,031 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 00:49:15,032 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05423733 0.05508804 0.05568337 0.05635064 0.05568337]
+2025-06-01 00:49:28,716 INFO --- Epoch 1, Batch 10 (Overall batch 10) ---
+2025-06-01 00:49:28,716 INFO Total Loss: 6.067511558532715
+2025-06-01 00:49:28,717 INFO Causal Consistency Loss: 0.02357097528874874
+2025-06-01 00:49:28,717 INFO Accuracy: 0.7188
+2025-06-01 00:49:28,717 INFO MCC: 0.4107
+2025-06-01 00:49:28,718 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 00:49:28,719 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 00:49:28,719 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05564798 0.05564026 0.05564026 0.05564026 0.05529092]
+2025-06-01 00:49:44,351 INFO --- Epoch 1, Batch 11 (Overall batch 11) ---
+2025-06-01 00:49:44,351 INFO Total Loss: 5.908755779266357
+2025-06-01 00:49:44,352 INFO Causal Consistency Loss: 0.02290990762412548
+2025-06-01 00:49:44,352 INFO Accuracy: 0.3750
+2025-06-01 00:49:44,352 INFO MCC: -0.2208
+2025-06-01 00:49:44,352 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 00:49:44,353 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 00:49:44,353 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.0557366  0.05556256 0.03317561 0.0551792  0.05556256]
+2025-06-01 00:49:58,621 INFO --- Epoch 1, Batch 12 (Overall batch 12) ---
+2025-06-01 00:49:58,622 INFO Total Loss: 5.8600311279296875
+2025-06-01 00:49:58,622 INFO Causal Consistency Loss: 0.023458361625671387
+2025-06-01 00:49:58,622 INFO Accuracy: 0.5312
+2025-06-01 00:49:58,623 INFO MCC: 0.0552
+2025-06-01 00:49:58,623 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 00:49:58,623 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 00:49:58,624 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.04425246 0.04425811 0.05594671 0.04449215 0.05594671]
+2025-06-01 00:50:12,265 INFO --- Epoch 1, Batch 13 (Overall batch 13) ---
+2025-06-01 00:50:12,265 INFO Total Loss: 6.218167781829834
+2025-06-01 00:50:12,265 INFO Causal Consistency Loss: 0.021682798862457275
+2025-06-01 00:50:12,266 INFO Accuracy: 0.6562
+2025-06-01 00:50:12,266 INFO MCC: 0.2660
+2025-06-01 00:50:12,266 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 00:50:12,266 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 00:50:12,267 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.04506095 0.05427361 0.05427361 0.05543648 0.04257495]
+2025-06-01 00:50:27,594 INFO --- Epoch 1, Batch 14 (Overall batch 14) ---
+2025-06-01 00:50:27,595 INFO Total Loss: 6.294802665710449
+2025-06-01 00:50:27,595 INFO Causal Consistency Loss: 0.013866197317838669
+2025-06-01 00:50:27,595 INFO Accuracy: 0.6250
+2025-06-01 00:50:27,596 INFO MCC: 0.1780
+2025-06-01 00:50:27,596 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 00:50:27,596 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 00:50:27,597 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.03386938 0.04752153 0.04763081 0.04562744 0.04751451]
+2025-06-01 00:50:43,134 INFO --- Epoch 1, Batch 15 (Overall batch 15) ---
+2025-06-01 00:50:43,134 INFO Total Loss: 6.596072673797607
+2025-06-01 00:50:43,135 INFO Causal Consistency Loss: 0.017072957009077072
+2025-06-01 00:50:43,135 INFO Accuracy: 0.4688
+2025-06-01 00:50:43,135 INFO MCC: -0.0710
+2025-06-01 00:50:43,135 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.24824612 0.17644854 0.21377695 0.36152837 0.        ]
+2025-06-01 00:50:43,136 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.23339638 0.26564905 0.21654285 0.28441173 0.        ]
+2025-06-01 00:50:43,136 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.03425105 0.05557573 0.04407734 0.05436788 0.05590906]
+2025-06-01 00:50:57,347 INFO --- Epoch 1, Batch 16 (Overall batch 16) ---
+2025-06-01 00:50:57,347 INFO Total Loss: 6.985090732574463
+2025-06-01 00:50:57,347 INFO Causal Consistency Loss: 0.017429901286959648
+2025-06-01 00:50:57,348 INFO Accuracy: 0.5312
+2025-06-01 00:50:57,348 INFO MCC: -0.0976
+2025-06-01 00:50:57,348 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.51424545 0.4857546  0.         0.         0.        ]
+2025-06-01 00:50:57,349 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.5023552  0.49764478 0.         0.         0.        ]
+2025-06-01 00:50:57,349 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.04524825 0.05781956 0.05192756 0.04488448 0.04344138]
+2025-06-01 00:51:10,522 INFO --- Epoch 1, Batch 17 (Overall batch 17) ---
+2025-06-01 00:51:10,523 INFO Total Loss: 7.264942169189453
+2025-06-01 00:51:10,523 INFO Causal Consistency Loss: 0.019453134387731552
+2025-06-01 00:51:10,523 INFO Accuracy: 0.4688
+2025-06-01 00:51:10,524 INFO MCC: -0.0422
+2025-06-01 00:51:10,524 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.03309449 0.0304558  0.03223357 0.06772108 0.04848529]
+2025-06-01 00:51:10,525 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.03785184 0.03875363 0.03410922 0.07561064 0.03956601]
+2025-06-01 00:51:10,525 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05544841 0.05256354 0.05583239 0.04674392 0.05443688]
+2025-06-01 00:51:24,185 INFO --- Epoch 1, Batch 18 (Overall batch 18) ---
+2025-06-01 00:51:24,185 INFO Total Loss: 7.134353160858154
+2025-06-01 00:51:24,186 INFO Causal Consistency Loss: 0.02328673005104065
+2025-06-01 00:51:24,186 INFO Accuracy: 0.5000
+2025-06-01 00:51:24,186 INFO MCC: 0.0000
+2025-06-01 00:51:24,187 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 00:51:24,187 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 00:51:24,188 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05562831 0.04459615 0.04408838 0.03339846 0.05508572]
+2025-06-01 00:51:39,532 INFO --- Epoch 1, Batch 19 (Overall batch 19) ---
+2025-06-01 00:51:39,533 INFO Total Loss: 7.163941860198975
+2025-06-01 00:51:39,533 INFO Causal Consistency Loss: 0.01428951509296894
+2025-06-01 00:51:39,533 INFO Accuracy: 0.6250
+2025-06-01 00:51:39,533 INFO MCC: 0.2431
+2025-06-01 00:51:39,534 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.21988262 0.2897288  0.17029    0.32009858 0.        ]
+2025-06-01 00:51:39,534 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.20510045 0.21039967 0.23897193 0.34552792 0.        ]
+2025-06-01 00:51:39,535 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.04447244 0.05510902 0.05610251 0.0452165  0.04441126]
+2025-06-01 00:51:53,445 INFO --- Epoch 1, Batch 20 (Overall batch 20) ---
+2025-06-01 00:51:53,446 INFO Total Loss: 7.406354904174805
+2025-06-01 00:51:53,446 INFO Causal Consistency Loss: 0.020195048302412033
+2025-06-01 00:51:53,446 INFO Accuracy: 0.4688
+2025-06-01 00:51:53,446 INFO MCC: -0.1459
+2025-06-01 00:51:53,447 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 00:51:53,447 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 00:51:53,447 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.04510998 0.04251561 0.04251561 0.04565456 0.0533712 ]
+2025-06-01 00:51:55,410 INFO Reached max_batches_to_test (20). Stopping training for test.
+2025-06-01 00:51:55,992 INFO Saved training metrics plot to results\all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp_training_metrics.png
+2025-06-01 01:03:56,601 INFO Starting noise-aware loss test...
+2025-06-01 01:03:56,601 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-06-01 01:03:56,603 INFO Start graph assembling...
+2025-06-01 01:03:59,399 INFO Ensured checkpoint directory exists: ./checkpoints_tx_lf\all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp
+2025-06-01 01:03:59,400 INFO Ensured graph directory exists: ./graphs_tx_lf\all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp
+2025-06-01 01:04:17,886 INFO Word table init: done!
+2025-06-01 01:04:17,886 INFO Model: all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp, start a new session!
+2025-06-01 01:04:17,887 INFO Starting Epoch 1/10...
+2025-06-01 01:04:56,147 INFO --- Epoch 1, Batch 1 (Overall batch 1) ---
+2025-06-01 01:04:56,148 INFO Total Loss: 1.447408676147461
+2025-06-01 01:04:56,148 INFO Causal Consistency Loss: 0.03665522485971451
+2025-06-01 01:04:56,148 INFO Accuracy: 0.5000
+2025-06-01 01:04:56,149 INFO MCC: 0.0628
+2025-06-01 01:04:56,149 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.12370086 0.14673878 0.07497285 0.11780858 0.2060691 ]
+2025-06-01 01:04:56,149 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.15688512 0.15174912 0.09880472 0.10450181 0.16162121]
+2025-06-01 01:04:56,150 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05586577 0.05573828 0.05584634 0.04462161 0.05538149]
+2025-06-01 01:05:22,130 INFO --- Epoch 1, Batch 2 (Overall batch 2) ---
+2025-06-01 01:05:22,131 INFO Total Loss: 2.3106942176818848
+2025-06-01 01:05:22,131 INFO Causal Consistency Loss: 0.02803140878677368
+2025-06-01 01:05:22,131 INFO Accuracy: 0.5625
+2025-06-01 01:05:22,131 INFO MCC: 0.1260
+2025-06-01 01:05:22,132 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.6287799  0.37122014 0.         0.         0.        ]
+2025-06-01 01:05:22,132 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.5887004 0.4112996 0.        0.        0.       ]
+2025-06-01 01:05:22,132 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.04474653 0.04434216 0.04438547 0.0442994  0.05605615]
+2025-06-01 01:05:40,675 INFO --- Epoch 1, Batch 3 (Overall batch 3) ---
+2025-06-01 01:05:40,675 INFO Total Loss: 3.0122454166412354
+2025-06-01 01:05:40,676 INFO Causal Consistency Loss: 0.028421951457858086
+2025-06-01 01:05:40,676 INFO Accuracy: 0.5938
+2025-06-01 01:05:40,676 INFO MCC: 0.2164
+2025-06-01 01:05:40,676 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 01:05:40,677 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 01:05:40,677 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05571641 0.0555769  0.04443921 0.0555769  0.05551527]
+2025-06-01 01:05:57,463 INFO --- Epoch 1, Batch 4 (Overall batch 4) ---
+2025-06-01 01:05:57,463 INFO Total Loss: 3.65970778465271
+2025-06-01 01:05:57,463 INFO Causal Consistency Loss: 0.018839562311768532
+2025-06-01 01:05:57,464 INFO Accuracy: 0.5000
+2025-06-01 01:05:57,464 INFO MCC: -0.0628
+2025-06-01 01:05:57,464 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.17383297 0.15269071 0.2164563  0.15833554 0.16543616]
+2025-06-01 01:05:57,465 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.2319436  0.11996585 0.19016492 0.13104625 0.15545179]
+2025-06-01 01:05:57,465 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05947547 0.04235702 0.03615505 0.05735517 0.01619797]
+2025-06-01 01:06:12,127 INFO --- Epoch 1, Batch 5 (Overall batch 5) ---
+2025-06-01 01:06:12,128 INFO Total Loss: 3.983586311340332
+2025-06-01 01:06:12,129 INFO Causal Consistency Loss: 0.01901097781956196
+2025-06-01 01:06:12,129 INFO Accuracy: 0.4688
+2025-06-01 01:06:12,129 INFO MCC: -0.0552
+2025-06-01 01:06:12,130 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.05861582 0.11115032 0.0438612  0.06968185 0.06090813]
+2025-06-01 01:06:12,130 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.07818889 0.05462134 0.05268123 0.04275086 0.05323269]
+2025-06-01 01:06:12,130 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05559327 0.04244754 0.05614205 0.05595745 0.04439358]
+2025-06-01 01:06:30,356 INFO --- Epoch 1, Batch 6 (Overall batch 6) ---
+2025-06-01 01:06:30,357 INFO Total Loss: 4.534835338592529
+2025-06-01 01:06:30,357 INFO Causal Consistency Loss: 0.014857237227261066
+2025-06-01 01:06:30,358 INFO Accuracy: 0.5312
+2025-06-01 01:06:30,358 INFO MCC: 0.1657
+2025-06-01 01:06:30,358 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 01:06:30,359 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 01:06:30,359 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05404316 0.05576948 0.05637472 0.05554637 0.05519013]
+2025-06-01 01:06:45,719 INFO --- Epoch 1, Batch 7 (Overall batch 7) ---
+2025-06-01 01:06:45,719 INFO Total Loss: 5.194164752960205
+2025-06-01 01:06:45,720 INFO Causal Consistency Loss: 0.014226425439119339
+2025-06-01 01:06:45,720 INFO Accuracy: 0.5000
+2025-06-01 01:06:45,720 INFO MCC: 0.0727
+2025-06-01 01:06:45,720 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.3142792  0.15980405 0.52591676 0.         0.        ]
+2025-06-01 01:06:45,721 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.36794463 0.26028165 0.3717737  0.         0.        ]
+2025-06-01 01:06:45,721 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.04463905 0.04428231 0.05545218 0.04441363 0.04405733]
+2025-06-01 01:07:01,791 INFO --- Epoch 1, Batch 8 (Overall batch 8) ---
+2025-06-01 01:07:01,792 INFO Total Loss: 5.438678741455078
+2025-06-01 01:07:01,792 INFO Causal Consistency Loss: 0.01778237707912922
+2025-06-01 01:07:01,792 INFO Accuracy: 0.4688
+2025-06-01 01:07:01,793 INFO MCC: -0.0882
+2025-06-01 01:07:01,793 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 01:07:01,794 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 01:07:01,794 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05462425 0.04419012 0.05580263 0.05580263 0.05580263]
+2025-06-01 01:07:16,582 INFO --- Epoch 1, Batch 9 (Overall batch 9) ---
+2025-06-01 01:07:16,583 INFO Total Loss: 5.748836517333984
+2025-06-01 01:07:16,583 INFO Causal Consistency Loss: 0.01814792864024639
+2025-06-01 01:07:16,583 INFO Accuracy: 0.4062
+2025-06-01 01:07:16,584 INFO MCC: -0.1779
+2025-06-01 01:07:16,584 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.21840663 0.14024456 0.17655517 0.171107   0.2936867 ]
+2025-06-01 01:07:16,584 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.20714591 0.17937215 0.22231579 0.19207543 0.19909072]
+2025-06-01 01:07:16,585 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.04454971 0.03369672 0.05588199 0.05602989 0.04471663]
+2025-06-01 01:07:33,172 INFO --- Epoch 1, Batch 10 (Overall batch 10) ---
+2025-06-01 01:07:33,173 INFO Total Loss: 5.992730617523193
+2025-06-01 01:07:33,173 INFO Causal Consistency Loss: 0.0212554931640625
+2025-06-01 01:07:33,173 INFO Accuracy: 0.3750
+2025-06-01 01:07:33,173 INFO MCC: -0.2500
+2025-06-01 01:07:33,174 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 01:07:33,174 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 01:07:33,174 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05565507 0.04440601 0.04442414 0.04440601 0.04440601]
+2025-06-01 01:07:47,748 INFO --- Epoch 1, Batch 11 (Overall batch 11) ---
+2025-06-01 01:07:47,748 INFO Total Loss: 5.920767784118652
+2025-06-01 01:07:47,749 INFO Causal Consistency Loss: 0.01726624183356762
+2025-06-01 01:07:47,749 INFO Accuracy: 0.7188
+2025-06-01 01:07:47,749 INFO MCC: 0.4228
+2025-06-01 01:07:47,750 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 01:07:47,750 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 01:07:47,750 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05481964 0.05536186 0.04448595 0.04479327 0.03279874]
+2025-06-01 01:08:02,482 INFO --- Epoch 1, Batch 12 (Overall batch 12) ---
+2025-06-01 01:08:02,483 INFO Total Loss: 6.258114337921143
+2025-06-01 01:08:02,483 INFO Causal Consistency Loss: 0.0173766128718853
+2025-06-01 01:08:02,483 INFO Accuracy: 0.3750
+2025-06-01 01:08:02,484 INFO MCC: -0.2431
+2025-06-01 01:08:02,484 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.46467566 0.53532434 0.         0.         0.        ]
+2025-06-01 01:08:02,484 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.4566584  0.54334164 0.         0.         0.        ]
+2025-06-01 01:08:02,485 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05578908 0.04503027 0.03345128 0.04481406 0.04391794]
+2025-06-01 01:08:16,027 INFO --- Epoch 1, Batch 13 (Overall batch 13) ---
+2025-06-01 01:08:16,028 INFO Total Loss: 6.817468643188477
+2025-06-01 01:08:16,028 INFO Causal Consistency Loss: 0.019710492342710495
+2025-06-01 01:08:16,030 INFO Accuracy: 0.4688
+2025-06-01 01:08:16,030 INFO MCC: -0.0626
+2025-06-01 01:08:16,030 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 01:08:16,031 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 01:08:16,031 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.03346341 0.05555086 0.04444228 0.04442871 0.04444228]
+2025-06-01 01:08:30,930 INFO --- Epoch 1, Batch 14 (Overall batch 14) ---
+2025-06-01 01:08:30,931 INFO Total Loss: 6.842898845672607
+2025-06-01 01:08:30,931 INFO Causal Consistency Loss: 0.017261359840631485
+2025-06-01 01:08:30,932 INFO Accuracy: 0.4062
+2025-06-01 01:08:30,932 INFO MCC: -0.1909
+2025-06-01 01:08:30,933 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.49910218 0.2990426  0.20185512 0.         0.        ]
+2025-06-01 01:08:30,933 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.4037839 0.3316272 0.2645889 0.        0.       ]
+2025-06-01 01:08:30,933 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05708314 0.04483162 0.05591647 0.04435114 0.04378138]
+2025-06-01 01:08:45,491 INFO --- Epoch 1, Batch 15 (Overall batch 15) ---
+2025-06-01 01:08:45,491 INFO Total Loss: 7.044229984283447
+2025-06-01 01:08:45,492 INFO Causal Consistency Loss: 0.01970336027443409
+2025-06-01 01:08:45,492 INFO Accuracy: 0.6250
+2025-06-01 01:08:45,492 INFO MCC: 0.2843
+2025-06-01 01:08:45,492 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.37966633 0.6203337  0.         0.         0.        ]
+2025-06-01 01:08:45,492 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.29218608 0.7078139  0.         0.         0.        ]
+2025-06-01 01:08:45,494 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05608544 0.05576784 0.05591921 0.0557976  0.05550089]
+2025-06-01 01:09:00,189 INFO --- Epoch 1, Batch 16 (Overall batch 16) ---
+2025-06-01 01:09:00,190 INFO Total Loss: 7.041679859161377
+2025-06-01 01:09:00,190 INFO Causal Consistency Loss: 0.019459256902337074
+2025-06-01 01:09:00,190 INFO Accuracy: 0.5625
+2025-06-01 01:09:00,191 INFO MCC: 0.1260
+2025-06-01 01:09:00,191 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 01:09:00,191 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 01:09:00,191 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05605685 0.04445549 0.03334685 0.04443973 0.0555537 ]
+2025-06-01 01:09:14,751 INFO --- Epoch 1, Batch 17 (Overall batch 17) ---
+2025-06-01 01:09:14,751 INFO Total Loss: 7.165589809417725
+2025-06-01 01:09:14,752 INFO Causal Consistency Loss: 0.022588243708014488
+2025-06-01 01:09:14,752 INFO Accuracy: 0.4688
+2025-06-01 01:09:14,752 INFO MCC: -0.0658
+2025-06-01 01:09:14,753 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.07835595 0.10467315 0.15253405 0.16376084 0.07986356]
+2025-06-01 01:09:14,753 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.07992769 0.07420395 0.10090287 0.13950558 0.09205797]
+2025-06-01 01:09:14,753 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.0561079  0.04476158 0.05566182 0.04549558 0.05549993]
+2025-06-01 01:09:29,490 INFO --- Epoch 1, Batch 18 (Overall batch 18) ---
+2025-06-01 01:09:29,490 INFO Total Loss: 7.513984680175781
+2025-06-01 01:09:29,490 INFO Causal Consistency Loss: 0.018874075263738632
+2025-06-01 01:09:29,491 INFO Accuracy: 0.6562
+2025-06-01 01:09:29,491 INFO MCC: 0.3181
+2025-06-01 01:09:29,491 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.3569188  0.34038925 0.30269197 0.         0.        ]
+2025-06-01 01:09:29,492 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.3343109  0.41278568 0.25290346 0.         0.        ]
+2025-06-01 01:09:29,492 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05578203 0.05638605 0.0553172  0.04429412 0.04453234]
+2025-06-01 01:09:43,690 INFO --- Epoch 1, Batch 19 (Overall batch 19) ---
+2025-06-01 01:09:43,690 INFO Total Loss: 7.569461822509766
+2025-06-01 01:09:43,690 INFO Causal Consistency Loss: 0.01716739498078823
+2025-06-01 01:09:43,690 INFO Accuracy: 0.4688
+2025-06-01 01:09:43,691 INFO MCC: 0.0713
+2025-06-01 01:09:43,691 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 01:09:43,691 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 01:09:43,692 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05566616 0.05552966 0.05554295 0.0443629  0.05554295]
+2025-06-01 01:09:58,920 INFO --- Epoch 1, Batch 20 (Overall batch 20) ---
+2025-06-01 01:09:58,921 INFO Total Loss: 7.687431335449219
+2025-06-01 01:09:58,921 INFO Causal Consistency Loss: 0.021220015361905098
+2025-06-01 01:09:58,921 INFO Accuracy: 0.6875
+2025-06-01 01:09:58,922 INFO MCC: 0.3725
+2025-06-01 01:09:58,922 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.17008738 0.13419464 0.3738211  0.32189685 0.        ]
+2025-06-01 01:09:58,923 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.24486451 0.19418319 0.25173768 0.30921465 0.        ]
+2025-06-01 01:09:58,923 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.0214606  0.04290845 0.0552397  0.05520225 0.03333799]
+2025-06-01 01:10:00,596 INFO Reached max_batches_to_test (20). Stopping training for test.
+2025-06-01 01:10:01,076 INFO Saved training metrics plot to results\all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp_training_metrics.png
+2025-06-01 01:10:01,648 INFO Model all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp saved at step 20
+2025-06-01 01:10:01,649 INFO Start dev phase...
+2025-06-01 14:15:43,770 INFO Starting noise-aware loss test...
+2025-06-01 14:15:43,770 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-06-01 14:15:43,776 INFO Start graph assembling...
+2025-06-01 14:15:46,559 INFO Ensured checkpoint directory exists: ./checkpoints_tx_lf\all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp
+2025-06-01 14:15:46,560 INFO Ensured graph directory exists: ./graphs_tx_lf\all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp
+2025-06-01 14:16:05,574 INFO Word table init: done!
+2025-06-01 14:16:06,129 INFO Model: all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp, session restored!
+2025-06-01 14:16:06,130 INFO Starting Epoch 1/10...
+2025-06-01 14:16:41,706 INFO --- Epoch 1, Batch 21 (Overall batch 1) ---
+2025-06-01 14:16:41,707 INFO Total Loss: 8.13239860534668
+2025-06-01 14:16:41,707 INFO Causal Consistency Loss: 0.014679254032671452
+2025-06-01 14:16:41,707 INFO Accuracy: 0.4688
+2025-06-01 14:16:41,708 INFO MCC: -0.0808
+2025-06-01 14:16:41,709 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.6095986  0.39040142 0.         0.         0.        ]
+2025-06-01 14:16:41,710 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.590314 0.409686 0.       0.       0.      ]
+2025-06-01 14:16:41,710 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05649522 0.05642853 0.0557263  0.04447883 0.05534874]
+2025-06-01 14:17:07,429 INFO --- Epoch 1, Batch 22 (Overall batch 2) ---
+2025-06-01 14:17:07,429 INFO Total Loss: 7.805368900299072
+2025-06-01 14:17:07,430 INFO Causal Consistency Loss: 0.012309418059885502
+2025-06-01 14:17:07,430 INFO Accuracy: 0.5000
+2025-06-01 14:17:07,430 INFO MCC: 0.0000
+2025-06-01 14:17:07,431 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.17144962 0.10279329 0.09676295 0.177766   0.05997036]
+2025-06-01 14:17:07,431 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.1689837  0.08473742 0.10991212 0.19181351 0.09872667]
+2025-06-01 14:17:07,431 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05609449 0.04459003 0.04459712 0.05576868 0.03368588]
+2025-06-01 14:17:26,875 INFO --- Epoch 1, Batch 23 (Overall batch 3) ---
+2025-06-01 14:17:26,876 INFO Total Loss: 8.07409954071045
+2025-06-01 14:17:26,876 INFO Causal Consistency Loss: 0.012027567252516747
+2025-06-01 14:17:26,877 INFO Accuracy: 0.6562
+2025-06-01 14:17:26,877 INFO MCC: 0.3290
+2025-06-01 14:17:26,877 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.2373268  0.082175   0.14044169 0.11236376 0.2146882 ]
+2025-06-01 14:17:26,878 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.18728992 0.12854213 0.17583193 0.12654409 0.17747469]
+2025-06-01 14:17:26,878 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.03309124 0.05527799 0.0555057  0.05576531 0.04423769]
+2025-06-01 14:17:45,145 INFO --- Epoch 1, Batch 24 (Overall batch 4) ---
+2025-06-01 14:17:45,146 INFO Total Loss: 8.498611450195312
+2025-06-01 14:17:45,146 INFO Causal Consistency Loss: 0.011076248250901699
+2025-06-01 14:17:45,147 INFO Accuracy: 0.4375
+2025-06-01 14:17:45,147 INFO MCC: -0.1291
+2025-06-01 14:17:45,147 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.42481577 0.5751843  0.         0.         0.        ]
+2025-06-01 14:17:45,148 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.48992005 0.5100799  0.         0.         0.        ]
+2025-06-01 14:17:45,148 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.04358823 0.05186208 0.04399876 0.05521915 0.05521915]
+2025-06-01 14:18:01,477 INFO --- Epoch 1, Batch 25 (Overall batch 5) ---
+2025-06-01 14:18:01,478 INFO Total Loss: 8.489055633544922
+2025-06-01 14:18:01,479 INFO Causal Consistency Loss: 0.009240916930139065
+2025-06-01 14:18:01,479 INFO Accuracy: 0.5000
+2025-06-01 14:18:01,479 INFO MCC: 0.0325
+2025-06-01 14:18:01,480 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.12470369 0.08327118 0.13845041 0.30045334 0.23521301]
+2025-06-01 14:18:01,480 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.14007139 0.14736956 0.16168226 0.23154888 0.19559966]
+2025-06-01 14:18:01,480 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05628339 0.05602861 0.05602907 0.0559399  0.05573786]
+2025-06-01 14:18:18,757 INFO --- Epoch 1, Batch 26 (Overall batch 6) ---
+2025-06-01 14:18:18,758 INFO Total Loss: 8.15131664276123
+2025-06-01 14:18:18,758 INFO Causal Consistency Loss: 0.007057896349579096
+2025-06-01 14:18:18,758 INFO Accuracy: 0.5312
+2025-06-01 14:18:18,759 INFO MCC: 0.0485
+2025-06-01 14:18:18,759 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 14:18:18,759 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 14:18:18,760 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05617176 0.05552774 0.05589424 0.05552774 0.05552774]
+2025-06-01 14:18:33,656 INFO --- Epoch 1, Batch 27 (Overall batch 7) ---
+2025-06-01 14:18:33,657 INFO Total Loss: 8.37299919128418
+2025-06-01 14:18:33,657 INFO Causal Consistency Loss: 0.007862553931772709
+2025-06-01 14:18:33,657 INFO Accuracy: 0.4062
+2025-06-01 14:18:33,657 INFO MCC: -0.1773
+2025-06-01 14:18:33,658 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.23185448 0.287045   0.24816345 0.23293707 0.        ]
+2025-06-01 14:18:33,658 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.20765248 0.32613674 0.2205156  0.24569519 0.        ]
+2025-06-01 14:18:33,658 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.03354817 0.04452883 0.04471636 0.05573062 0.04430736]
+2025-06-01 14:18:49,037 INFO --- Epoch 1, Batch 28 (Overall batch 8) ---
+2025-06-01 14:18:49,038 INFO Total Loss: 8.13171100616455
+2025-06-01 14:18:49,038 INFO Causal Consistency Loss: 0.007645280100405216
+2025-06-01 14:18:49,039 INFO Accuracy: 0.6562
+2025-06-01 14:18:49,039 INFO MCC: 0.2333
+2025-06-01 14:18:49,039 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 14:18:49,040 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 14:18:49,040 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.03091601 0.05423915 0.04402203 0.05865961 0.05956933]
+2025-06-01 14:19:04,244 INFO --- Epoch 1, Batch 29 (Overall batch 9) ---
+2025-06-01 14:19:04,244 INFO Total Loss: 8.21527099609375
+2025-06-01 14:19:04,244 INFO Causal Consistency Loss: 0.010329480282962322
+2025-06-01 14:19:04,245 INFO Accuracy: 0.5625
+2025-06-01 14:19:04,245 INFO MCC: 0.1660
+2025-06-01 14:19:04,245 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.2332119  0.27633354 0.4904546  0.         0.        ]
+2025-06-01 14:19:04,245 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.31038016 0.3528791  0.33674067 0.         0.        ]
+2025-06-01 14:19:04,246 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.04436767 0.03294189 0.05557508 0.05559276 0.05573716]
+2025-06-01 14:19:17,658 INFO --- Epoch 1, Batch 30 (Overall batch 10) ---
+2025-06-01 14:19:17,658 INFO Total Loss: 8.04670524597168
+2025-06-01 14:19:17,659 INFO Causal Consistency Loss: 0.01092689298093319
+2025-06-01 14:19:17,659 INFO Accuracy: 0.6562
+2025-06-01 14:19:17,659 INFO MCC: 0.3077
+2025-06-01 14:19:17,660 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.49435395 0.50564605 0.         0.         0.        ]
+2025-06-01 14:19:17,660 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.49014488 0.5098551  0.         0.         0.        ]
+2025-06-01 14:19:17,660 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05572095 0.05569719 0.04434761 0.04443819 0.05585523]
+2025-06-01 14:19:31,952 INFO --- Epoch 1, Batch 31 (Overall batch 11) ---
+2025-06-01 14:19:31,953 INFO Total Loss: 7.80162239074707
+2025-06-01 14:19:31,953 INFO Causal Consistency Loss: 0.008584926836192608
+2025-06-01 14:19:31,953 INFO Accuracy: 0.6875
+2025-06-01 14:19:31,954 INFO MCC: 0.3706
+2025-06-01 14:19:31,954 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.2852066  0.44940847 0.26538494 0.         0.        ]
+2025-06-01 14:19:31,955 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.3043725  0.3979994  0.29762805 0.         0.        ]
+2025-06-01 14:19:31,955 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05641203 0.04516633 0.05661799 0.0551946  0.03315668]
+2025-06-01 14:19:45,399 INFO --- Epoch 1, Batch 32 (Overall batch 12) ---
+2025-06-01 14:19:45,400 INFO Total Loss: 7.863861083984375
+2025-06-01 14:19:45,400 INFO Causal Consistency Loss: 0.00972050428390503
+2025-06-01 14:19:45,400 INFO Accuracy: 0.6250
+2025-06-01 14:19:45,401 INFO MCC: 0.2520
+2025-06-01 14:19:45,401 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.5558997  0.44410032 0.         0.         0.        ]
+2025-06-01 14:19:45,401 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.5593823  0.44061768 0.         0.         0.        ]
+2025-06-01 14:19:45,402 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05413456 0.0441154  0.04384413 0.04433471 0.04467482]
+2025-06-01 14:20:00,395 INFO --- Epoch 1, Batch 33 (Overall batch 13) ---
+2025-06-01 14:20:00,396 INFO Total Loss: 8.158185005187988
+2025-06-01 14:20:00,396 INFO Causal Consistency Loss: 0.009579307399690151
+2025-06-01 14:20:00,396 INFO Accuracy: 0.3438
+2025-06-01 14:20:00,397 INFO MCC: -0.3077
+2025-06-01 14:20:00,397 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 14:20:00,397 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 14:20:00,398 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05479258 0.05713213 0.0555558  0.0555558  0.03321875]
+2025-06-01 14:20:13,270 INFO --- Epoch 1, Batch 34 (Overall batch 14) ---
+2025-06-01 14:20:13,270 INFO Total Loss: 7.681035995483398
+2025-06-01 14:20:13,271 INFO Causal Consistency Loss: 0.00952999573200941
+2025-06-01 14:20:13,271 INFO Accuracy: 0.7188
+2025-06-01 14:20:13,271 INFO MCC: 0.4107
+2025-06-01 14:20:13,272 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.5957673  0.40423268 0.         0.         0.        ]
+2025-06-01 14:20:13,272 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.573639   0.42636102 0.         0.         0.        ]
+2025-06-01 14:20:13,272 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05568199 0.05575106 0.04431377 0.05570446 0.0332777 ]
+2025-06-01 14:20:26,912 INFO --- Epoch 1, Batch 35 (Overall batch 15) ---
+2025-06-01 14:20:26,912 INFO Total Loss: 7.9665398597717285
+2025-06-01 14:20:26,913 INFO Causal Consistency Loss: 0.009554595686495304
+2025-06-01 14:20:26,913 INFO Accuracy: 0.6562
+2025-06-01 14:20:26,913 INFO MCC: 0.3290
+2025-06-01 14:20:26,914 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.5534263  0.44657373 0.         0.         0.        ]
+2025-06-01 14:20:26,914 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.5309091 0.4690909 0.        0.        0.       ]
+2025-06-01 14:20:26,914 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.04447846 0.0437003  0.05559798 0.05595504 0.01110225]
+2025-06-01 14:20:41,813 INFO --- Epoch 1, Batch 36 (Overall batch 16) ---
+2025-06-01 14:20:41,813 INFO Total Loss: 7.557824611663818
+2025-06-01 14:20:41,814 INFO Causal Consistency Loss: 0.011075662449002266
+2025-06-01 14:20:41,814 INFO Accuracy: 0.5625
+2025-06-01 14:20:41,814 INFO MCC: 0.0712
+2025-06-01 14:20:41,814 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 14:20:41,815 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 14:20:41,815 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.04467786 0.05536107 0.05536107 0.02223726 0.05536107]
+2025-06-01 14:20:56,390 INFO --- Epoch 1, Batch 37 (Overall batch 17) ---
+2025-06-01 14:20:56,391 INFO Total Loss: 7.407392501831055
+2025-06-01 14:20:56,391 INFO Causal Consistency Loss: 0.0077268145978450775
+2025-06-01 14:20:56,391 INFO Accuracy: 0.5312
+2025-06-01 14:20:56,392 INFO MCC: 0.0552
+2025-06-01 14:20:56,392 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 14:20:56,392 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 14:20:56,393 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05584145 0.05587963 0.0443943  0.05526907 0.03317701]
+2025-06-01 14:21:09,864 INFO --- Epoch 1, Batch 38 (Overall batch 18) ---
+2025-06-01 14:21:09,865 INFO Total Loss: 7.125601291656494
+2025-06-01 14:21:09,865 INFO Causal Consistency Loss: 0.01115039549767971
+2025-06-01 14:21:09,866 INFO Accuracy: 0.6250
+2025-06-01 14:21:09,866 INFO MCC: 0.2431
+2025-06-01 14:21:09,866 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 14:21:09,867 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 14:21:09,867 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05396504 0.05527195 0.05745229 0.05497929 0.0440669 ]
+2025-06-01 14:21:24,444 INFO --- Epoch 1, Batch 39 (Overall batch 19) ---
+2025-06-01 14:21:24,445 INFO Total Loss: 7.258159637451172
+2025-06-01 14:21:24,445 INFO Causal Consistency Loss: 0.007039685267955065
+2025-06-01 14:21:24,445 INFO Accuracy: 0.5312
+2025-06-01 14:21:24,446 INFO MCC: 0.1150
+2025-06-01 14:21:24,446 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.19091392 0.2682972  0.29326734 0.24752152 0.        ]
+2025-06-01 14:21:24,446 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.23105866 0.24761675 0.27724418 0.24408038 0.        ]
+2025-06-01 14:21:24,447 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.04451875 0.05614579 0.05689624 0.05620259 0.02168552]
+2025-06-01 14:21:37,950 INFO --- Epoch 1, Batch 40 (Overall batch 20) ---
+2025-06-01 14:21:37,951 INFO Total Loss: 7.039198398590088
+2025-06-01 14:21:37,951 INFO Causal Consistency Loss: 0.009088159538805485
+2025-06-01 14:21:37,951 INFO Accuracy: 0.4688
+2025-06-01 14:21:37,952 INFO MCC: -0.0636
+2025-06-01 14:21:37,952 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 14:21:37,952 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 14:21:37,953 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.03323806 0.05571174 0.05571174 0.05413531 0.05571174]
+2025-06-01 14:21:41,327 INFO Reached max_batches_to_test (20). Stopping training for test.
+2025-06-01 14:21:41,957 INFO Saved training metrics plot to results\all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp_training_metrics.png
+2025-06-01 14:21:42,516 INFO Model all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp saved at step 40
+2025-06-01 14:21:42,517 INFO Start dev phase...
+2025-06-01 14:23:13,924 INFO Noise-aware loss test finished.
+2025-06-01 15:43:54,537 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-06-01 15:43:54,540 INFO Start graph assembling...
+2025-06-01 15:44:15,559 INFO Word table init: done!
+2025-06-01 15:44:16,169 INFO Model: all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp, session restored!
+2025-06-01 15:44:16,169 INFO Starting Epoch 1/10...
+2025-06-01 15:44:40,569 INFO --- Epoch 1, Batch 41 (Overall batch 1) ---
+2025-06-01 15:44:40,570 INFO Total Loss: 7.124276638031006
+2025-06-01 15:44:40,570 INFO Causal Consistency Loss: 0.006145084742456675
+2025-06-01 15:44:40,570 INFO Accuracy: 0.5625
+2025-06-01 15:44:40,570 INFO MCC: 0.1429
+2025-06-01 15:44:40,571 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.32093635 0.24181049 0.43725315 0.         0.        ]
+2025-06-01 15:44:40,571 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.28954077 0.28087837 0.42958087 0.         0.        ]
+2025-06-01 15:45:00,592 INFO --- Epoch 1, Batch 42 (Overall batch 2) ---
+2025-06-01 15:45:00,593 INFO Total Loss: 6.730451583862305
+2025-06-01 15:45:00,593 INFO Causal Consistency Loss: 0.005556162446737289
+2025-06-01 15:45:00,593 INFO Accuracy: 0.5000
+2025-06-01 15:45:00,594 INFO MCC: -0.0325
+2025-06-01 15:45:00,594 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:45:00,594 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:45:28,374 INFO --- Epoch 1, Batch 43 (Overall batch 3) ---
+2025-06-01 15:45:28,375 INFO Total Loss: 6.674910545349121
+2025-06-01 15:45:28,375 INFO Causal Consistency Loss: 0.0057127103209495544
+2025-06-01 15:45:28,375 INFO Accuracy: 0.5938
+2025-06-01 15:45:28,376 INFO MCC: 0.1974
+2025-06-01 15:45:28,376 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:45:28,376 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:45:47,892 INFO --- Epoch 1, Batch 44 (Overall batch 4) ---
+2025-06-01 15:45:47,893 INFO Total Loss: 6.337246417999268
+2025-06-01 15:45:47,893 INFO Causal Consistency Loss: 0.0070187365636229515
+2025-06-01 15:45:47,893 INFO Accuracy: 0.5625
+2025-06-01 15:45:47,893 INFO MCC: 0.1429
+2025-06-01 15:45:47,894 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.31837896 0.17419684 0.18480006 0.32262412 0.        ]
+2025-06-01 15:45:47,894 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.20940503 0.20534591 0.2078231  0.37742597 0.        ]
+2025-06-01 15:46:09,162 INFO --- Epoch 1, Batch 45 (Overall batch 5) ---
+2025-06-01 15:46:09,163 INFO Total Loss: 6.301579475402832
+2025-06-01 15:46:09,163 INFO Causal Consistency Loss: 0.005176532547920942
+2025-06-01 15:46:09,163 INFO Accuracy: 0.5000
+2025-06-01 15:46:09,164 INFO MCC: 0.0325
+2025-06-01 15:46:09,164 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:46:09,164 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:46:25,499 INFO --- Epoch 1, Batch 46 (Overall batch 6) ---
+2025-06-01 15:46:25,499 INFO Total Loss: 6.401061058044434
+2025-06-01 15:46:25,500 INFO Causal Consistency Loss: 0.006639769766479731
+2025-06-01 15:46:25,500 INFO Accuracy: 0.5000
+2025-06-01 15:46:25,500 INFO MCC: 0.0000
+2025-06-01 15:46:25,501 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.34731218 0.65268785 0.         0.         0.        ]
+2025-06-01 15:46:25,501 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.46231148 0.53768855 0.         0.         0.        ]
+2025-06-01 15:46:42,280 INFO --- Epoch 1, Batch 47 (Overall batch 7) ---
+2025-06-01 15:46:42,281 INFO Total Loss: 5.997101306915283
+2025-06-01 15:46:42,281 INFO Causal Consistency Loss: 0.004865299444645643
+2025-06-01 15:46:42,281 INFO Accuracy: 0.6250
+2025-06-01 15:46:42,282 INFO MCC: 0.2582
+2025-06-01 15:46:42,282 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.40043852 0.2905312  0.3090303  0.         0.        ]
+2025-06-01 15:46:42,282 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.3544269  0.28490114 0.360672   0.         0.        ]
+2025-06-01 15:46:59,258 INFO --- Epoch 1, Batch 48 (Overall batch 8) ---
+2025-06-01 15:46:59,258 INFO Total Loss: 5.805637359619141
+2025-06-01 15:46:59,259 INFO Causal Consistency Loss: 0.005528184585273266
+2025-06-01 15:46:59,259 INFO Accuracy: 0.6562
+2025-06-01 15:46:59,259 INFO MCC: 0.2793
+2025-06-01 15:46:59,260 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.24948455 0.22750977 0.52300566 0.         0.        ]
+2025-06-01 15:46:59,260 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.30751196 0.24271412 0.44977394 0.         0.        ]
+2025-06-01 15:47:14,763 INFO --- Epoch 1, Batch 49 (Overall batch 9) ---
+2025-06-01 15:47:14,763 INFO Total Loss: 5.627496242523193
+2025-06-01 15:47:14,764 INFO Causal Consistency Loss: 0.005888258572667837
+2025-06-01 15:47:14,764 INFO Accuracy: 0.6875
+2025-06-01 15:47:14,764 INFO MCC: 0.4667
+2025-06-01 15:47:14,764 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:47:14,765 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:47:32,472 INFO --- Epoch 1, Batch 50 (Overall batch 10) ---
+2025-06-01 15:47:32,473 INFO Total Loss: 5.854625701904297
+2025-06-01 15:47:32,473 INFO Causal Consistency Loss: 0.005146148148924112
+2025-06-01 15:47:32,473 INFO Accuracy: 0.4688
+2025-06-01 15:47:32,474 INFO MCC: -0.0658
+2025-06-01 15:47:32,474 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:47:32,474 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:47:46,038 INFO --- Epoch 1, Batch 51 (Overall batch 11) ---
+2025-06-01 15:47:46,039 INFO Total Loss: 5.806748390197754
+2025-06-01 15:47:46,039 INFO Causal Consistency Loss: 0.005223277024924755
+2025-06-01 15:47:46,039 INFO Accuracy: 0.5000
+2025-06-01 15:47:46,039 INFO MCC: 0.0206
+2025-06-01 15:47:46,040 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:47:46,040 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:48:00,287 INFO --- Epoch 1, Batch 52 (Overall batch 12) ---
+2025-06-01 15:48:00,288 INFO Total Loss: 5.37053918838501
+2025-06-01 15:48:00,288 INFO Causal Consistency Loss: 0.005114138592034578
+2025-06-01 15:48:00,289 INFO Accuracy: 0.6250
+2025-06-01 15:48:00,289 INFO MCC: 0.2431
+2025-06-01 15:48:00,289 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:48:00,289 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:48:16,388 INFO --- Epoch 1, Batch 53 (Overall batch 13) ---
+2025-06-01 15:48:16,389 INFO Total Loss: 5.367546558380127
+2025-06-01 15:48:16,389 INFO Causal Consistency Loss: 0.0062849815003573895
+2025-06-01 15:48:16,389 INFO Accuracy: 0.7188
+2025-06-01 15:48:16,390 INFO MCC: 0.4606
+2025-06-01 15:48:16,390 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:48:16,390 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:48:30,584 INFO --- Epoch 1, Batch 54 (Overall batch 14) ---
+2025-06-01 15:48:30,584 INFO Total Loss: 5.539999961853027
+2025-06-01 15:48:30,584 INFO Causal Consistency Loss: 0.00661850580945611
+2025-06-01 15:48:30,585 INFO Accuracy: 0.4688
+2025-06-01 15:48:30,585 INFO MCC: 0.0621
+2025-06-01 15:48:30,585 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:48:30,586 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:48:46,527 INFO --- Epoch 1, Batch 55 (Overall batch 15) ---
+2025-06-01 15:48:46,528 INFO Total Loss: 5.157985210418701
+2025-06-01 15:48:46,528 INFO Causal Consistency Loss: 0.005849377252161503
+2025-06-01 15:48:46,528 INFO Accuracy: 0.5938
+2025-06-01 15:48:46,528 INFO MCC: 0.1683
+2025-06-01 15:48:46,529 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.43269938 0.5673007  0.         0.         0.        ]
+2025-06-01 15:48:46,529 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.47375986 0.52624017 0.         0.         0.        ]
+2025-06-01 15:49:00,660 INFO --- Epoch 1, Batch 56 (Overall batch 16) ---
+2025-06-01 15:49:00,661 INFO Total Loss: 5.234724998474121
+2025-06-01 15:49:00,661 INFO Causal Consistency Loss: 0.00726720504462719
+2025-06-01 15:49:00,662 INFO Accuracy: 0.5000
+2025-06-01 15:49:00,662 INFO MCC: -0.0159
+2025-06-01 15:49:00,662 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:49:00,663 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:49:14,704 INFO --- Epoch 1, Batch 57 (Overall batch 17) ---
+2025-06-01 15:49:14,705 INFO Total Loss: 4.8473639488220215
+2025-06-01 15:49:14,705 INFO Causal Consistency Loss: 0.006361319217830896
+2025-06-01 15:49:14,705 INFO Accuracy: 0.6875
+2025-06-01 15:49:14,706 INFO MCC: 0.3945
+2025-06-01 15:49:14,706 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:49:14,706 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:49:28,586 INFO --- Epoch 1, Batch 58 (Overall batch 18) ---
+2025-06-01 15:49:28,587 INFO Total Loss: 4.84786319732666
+2025-06-01 15:49:28,587 INFO Causal Consistency Loss: 0.007230149116367102
+2025-06-01 15:49:28,587 INFO Accuracy: 0.6875
+2025-06-01 15:49:28,587 INFO MCC: 0.3578
+2025-06-01 15:49:28,588 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.32917827 0.384033   0.28678876 0.         0.        ]
+2025-06-01 15:49:28,588 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.3319236  0.37001073 0.2980657  0.         0.        ]
+2025-06-01 15:49:41,847 INFO --- Epoch 1, Batch 59 (Overall batch 19) ---
+2025-06-01 15:49:41,848 INFO Total Loss: 4.611983776092529
+2025-06-01 15:49:41,848 INFO Causal Consistency Loss: 0.007317132782191038
+2025-06-01 15:49:41,848 INFO Accuracy: 0.6562
+2025-06-01 15:49:41,848 INFO MCC: 0.3254
+2025-06-01 15:49:41,849 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.29119685 0.2456063  0.46319684 0.         0.        ]
+2025-06-01 15:49:41,849 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.3179198  0.28344557 0.39863464 0.         0.        ]
+2025-06-01 15:49:55,738 INFO --- Epoch 1, Batch 60 (Overall batch 20) ---
+2025-06-01 15:49:55,738 INFO Total Loss: 4.7044854164123535
+2025-06-01 15:49:55,739 INFO Causal Consistency Loss: 0.005043454933911562
+2025-06-01 15:49:55,739 INFO Accuracy: 0.5312
+2025-06-01 15:49:55,739 INFO MCC: 0.1150
+2025-06-01 15:49:55,740 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:49:55,740 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:49:57,540 INFO Reached max_batches_to_test (20). Stopping training for test.
+2025-06-01 15:49:57,540 INFO --- Training completed for 10 epochs ---
+2025-06-01 15:49:57,541 INFO --- Final Average Metrics ---
+2025-06-01 15:49:57,541 INFO Average Total Loss: 5.717181205749512
+2025-06-01 15:49:57,541 INFO Average Causal Consistency Loss: 0.005999321583658457
+2025-06-01 15:49:57,541 INFO Average Accuracy: 0.5813
+2025-06-01 15:49:57,541 INFO Average MCC: 0.1776
+2025-06-01 15:49:57,777 INFO Total Loss plot saved to results/total_loss_plot.png
+2025-06-01 15:49:57,962 INFO Accuracy plot saved to results/accuracy_plot.png
+2025-06-01 15:49:58,144 INFO MCC plot saved to results/mcc_plot.png
+2025-06-01 15:49:58,330 INFO Causal Loss plot saved to results/causal_loss_plot.png
+2025-06-01 15:49:58,886 INFO Model all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp saved at step 60
+2025-06-01 15:49:58,887 INFO Start dev phase...
+2025-06-01 15:51:32,777 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-06-01 15:51:32,779 INFO Start graph assembling...
+2025-06-01 15:53:42,435 INFO Starting noise-aware loss test...
+2025-06-01 15:53:42,435 INFO INIT: #stock: 9, #vocab+1: 29867
+2025-06-01 15:53:42,438 INFO Start graph assembling...
+2025-06-01 15:53:45,190 INFO Ensured checkpoint directory exists: ./checkpoints_tx_lf\all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp
+2025-06-01 15:53:45,190 INFO Ensured graph directory exists: ./graphs_tx_lf\all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp
+2025-06-01 15:54:03,575 INFO Word table init: done!
+2025-06-01 15:54:04,186 INFO Model: all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp, session restored!
+2025-06-01 15:54:04,187 INFO Starting Epoch 1/10...
+2025-06-01 15:54:39,832 INFO --- Epoch 1, Batch 61 (Overall batch 1) ---
+2025-06-01 15:54:39,833 INFO Total Loss: 4.520437717437744
+2025-06-01 15:54:39,833 INFO Causal Consistency Loss: 0.0067122383043169975
+2025-06-01 15:54:39,833 INFO Accuracy: 0.5938
+2025-06-01 15:54:39,833 INFO MCC: 0.1879
+2025-06-01 15:54:39,834 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.04595396 0.06557753 0.04898797 0.04911579 0.06298797]
+2025-06-01 15:54:39,834 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.04311553 0.03026404 0.05402746 0.06600084 0.06707892]
+2025-06-01 15:54:39,834 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05568191 0.04491477 0.04388868 0.05557828 0.05533656]
+2025-06-01 15:55:06,992 INFO --- Epoch 1, Batch 62 (Overall batch 2) ---
+2025-06-01 15:55:06,993 INFO Total Loss: 4.609591007232666
+2025-06-01 15:55:06,993 INFO Causal Consistency Loss: 0.005824557971209288
+2025-06-01 15:55:06,993 INFO Accuracy: 0.4688
+2025-06-01 15:55:06,994 INFO MCC: -0.0710
+2025-06-01 15:55:06,994 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:55:06,995 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:55:06,995 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05607765 0.05551728 0.04444193 0.05497105 0.05551728]
+2025-06-01 15:55:26,936 INFO --- Epoch 1, Batch 63 (Overall batch 3) ---
+2025-06-01 15:55:26,937 INFO Total Loss: 4.330231189727783
+2025-06-01 15:55:26,937 INFO Causal Consistency Loss: 0.005003535654395819
+2025-06-01 15:55:26,937 INFO Accuracy: 0.5312
+2025-06-01 15:55:26,938 INFO MCC: 0.0088
+2025-06-01 15:55:26,938 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.3412697  0.27026865 0.38846165 0.         0.        ]
+2025-06-01 15:55:26,938 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.31371915 0.3071984  0.3790824  0.         0.        ]
+2025-06-01 15:55:26,939 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.0553798  0.03322638 0.05491806 0.04462921 0.05611072]
+2025-06-01 15:55:49,048 INFO --- Epoch 1, Batch 64 (Overall batch 4) ---
+2025-06-01 15:55:49,049 INFO Total Loss: 4.24737548828125
+2025-06-01 15:55:49,049 INFO Causal Consistency Loss: 0.005850658286362886
+2025-06-01 15:55:49,049 INFO Accuracy: 0.6875
+2025-06-01 15:55:49,050 INFO MCC: 0.3725
+2025-06-01 15:55:49,050 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.06900638 0.04861866 0.03954747 0.05792686 0.05815502]
+2025-06-01 15:55:49,050 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.06110976 0.05132958 0.04518618 0.04837801 0.0640437 ]
+2025-06-01 15:55:49,051 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.04207971 0.05278715 0.04423469 0.05602365 0.05748649]
+2025-06-01 15:56:04,855 INFO --- Epoch 1, Batch 65 (Overall batch 5) ---
+2025-06-01 15:56:04,855 INFO Total Loss: 4.2684431076049805
+2025-06-01 15:56:04,856 INFO Causal Consistency Loss: 0.003680160967633128
+2025-06-01 15:56:04,856 INFO Accuracy: 0.6562
+2025-06-01 15:56:04,857 INFO MCC: 0.2572
+2025-06-01 15:56:04,857 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.1238214  0.11760442 0.12123396 0.12777252 0.12184642]
+2025-06-01 15:56:04,857 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.10159983 0.13200432 0.12738506 0.1249548  0.13480355]
+2025-06-01 15:56:04,858 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05564483 0.05558389 0.05578671 0.04451231 0.05562738]
+2025-06-01 15:56:19,815 INFO --- Epoch 1, Batch 66 (Overall batch 6) ---
+2025-06-01 15:56:19,816 INFO Total Loss: 4.072748184204102
+2025-06-01 15:56:19,816 INFO Causal Consistency Loss: 0.005098132416605949
+2025-06-01 15:56:19,817 INFO Accuracy: 0.6250
+2025-06-01 15:56:19,817 INFO MCC: 0.2431
+2025-06-01 15:56:19,817 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.05746002 0.06003217 0.04958247 0.05230313 0.05827472]
+2025-06-01 15:56:19,818 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.07222285 0.05828054 0.0506712  0.04906777 0.05292343]
+2025-06-01 15:56:19,819 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.03353905 0.05581214 0.05549713 0.05497164 0.05618374]
+2025-06-01 15:56:34,736 INFO --- Epoch 1, Batch 67 (Overall batch 7) ---
+2025-06-01 15:56:34,736 INFO Total Loss: 4.066232204437256
+2025-06-01 15:56:34,736 INFO Causal Consistency Loss: 0.0051160817965865135
+2025-06-01 15:56:34,736 INFO Accuracy: 0.6875
+2025-06-01 15:56:34,737 INFO MCC: 0.3968
+2025-06-01 15:56:34,737 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:56:34,737 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:56:34,738 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05572646 0.04443454 0.03292225 0.05501349 0.04450162]
+2025-06-01 15:56:50,202 INFO --- Epoch 1, Batch 68 (Overall batch 8) ---
+2025-06-01 15:56:50,203 INFO Total Loss: 3.939784288406372
+2025-06-01 15:56:50,203 INFO Causal Consistency Loss: 0.0034392690286040306
+2025-06-01 15:56:50,203 INFO Accuracy: 0.7500
+2025-06-01 15:56:50,204 INFO MCC: 0.5000
+2025-06-01 15:56:50,204 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:56:50,204 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:56:50,205 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05376229 0.05629289 0.05885541 0.05577255 0.05629289]
+2025-06-01 15:57:04,793 INFO --- Epoch 1, Batch 69 (Overall batch 9) ---
+2025-06-01 15:57:04,793 INFO Total Loss: 3.943143606185913
+2025-06-01 15:57:04,794 INFO Causal Consistency Loss: 0.005263504106551409
+2025-06-01 15:57:04,795 INFO Accuracy: 0.5000
+2025-06-01 15:57:04,795 INFO MCC: 0.0000
+2025-06-01 15:57:04,795 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.22633915 0.19532235 0.2933302  0.2850083  0.        ]
+2025-06-01 15:57:04,796 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.24267629 0.21243928 0.26876512 0.27611932 0.        ]
+2025-06-01 15:57:04,796 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.04454888 0.04460416 0.03380015 0.04435838 0.05533303]
+2025-06-01 15:57:19,469 INFO --- Epoch 1, Batch 70 (Overall batch 10) ---
+2025-06-01 15:57:19,469 INFO Total Loss: 3.9862868785858154
+2025-06-01 15:57:19,469 INFO Causal Consistency Loss: 0.005985195282846689
+2025-06-01 15:57:19,470 INFO Accuracy: 0.4375
+2025-06-01 15:57:19,470 INFO MCC: -0.0976
+2025-06-01 15:57:19,470 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.4899484 0.5100516 0.        0.        0.       ]
+2025-06-01 15:57:19,471 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.49262372 0.5073763  0.         0.         0.        ]
+2025-06-01 15:57:19,471 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.03345666 0.05546686 0.05542994 0.0555776  0.05544143]
+2025-06-01 15:57:35,156 INFO --- Epoch 1, Batch 71 (Overall batch 11) ---
+2025-06-01 15:57:35,157 INFO Total Loss: 3.7007017135620117
+2025-06-01 15:57:35,157 INFO Causal Consistency Loss: 0.0041856952011585236
+2025-06-01 15:57:35,158 INFO Accuracy: 0.6875
+2025-06-01 15:57:35,158 INFO MCC: 0.3333
+2025-06-01 15:57:35,158 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.1867309  0.14831923 0.17581497 0.18721728 0.09925223]
+2025-06-01 15:57:35,159 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.14582792 0.17940569 0.18319903 0.18768592 0.10746112]
+2025-06-01 15:57:35,159 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05550618 0.05533936 0.0558298  0.05532567 0.05571812]
+2025-06-01 15:57:48,780 INFO --- Epoch 1, Batch 72 (Overall batch 12) ---
+2025-06-01 15:57:48,780 INFO Total Loss: 3.963318109512329
+2025-06-01 15:57:48,780 INFO Causal Consistency Loss: 0.0051346528343856335
+2025-06-01 15:57:48,781 INFO Accuracy: 0.5312
+2025-06-01 15:57:48,781 INFO MCC: 0.0626
+2025-06-01 15:57:48,781 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.28435683 0.45734185 0.2583013  0.         0.        ]
+2025-06-01 15:57:48,782 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.33453605 0.39848095 0.26698303 0.         0.        ]
+2025-06-01 15:57:48,782 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05517632 0.0547776  0.05571131 0.04514775 0.05500289]
+2025-06-01 15:58:03,516 INFO --- Epoch 1, Batch 73 (Overall batch 13) ---
+2025-06-01 15:58:03,517 INFO Total Loss: 3.827343463897705
+2025-06-01 15:58:03,517 INFO Causal Consistency Loss: 0.005639122799038887
+2025-06-01 15:58:03,517 INFO Accuracy: 0.4062
+2025-06-01 15:58:03,518 INFO MCC: -0.1879
+2025-06-01 15:58:03,518 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.0708639  0.07519723 0.11156006 0.08988444 0.10505056]
+2025-06-01 15:58:03,518 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.07856963 0.06651004 0.0996144  0.08244741 0.07873043]
+2025-06-01 15:58:03,518 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05493911 0.05528926 0.05577056 0.04440361 0.05522346]
+2025-06-01 15:58:17,954 INFO --- Epoch 1, Batch 74 (Overall batch 14) ---
+2025-06-01 15:58:17,954 INFO Total Loss: 3.610215902328491
+2025-06-01 15:58:17,955 INFO Causal Consistency Loss: 0.0050264764577150345
+2025-06-01 15:58:17,955 INFO Accuracy: 0.6250
+2025-06-01 15:58:17,955 INFO MCC: 0.2381
+2025-06-01 15:58:17,955 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.5702537  0.42974636 0.         0.         0.        ]
+2025-06-01 15:58:17,956 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.546065   0.45393503 0.         0.         0.        ]
+2025-06-01 15:58:17,956 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05567683 0.04469182 0.04415802 0.05543925 0.0444829 ]
+2025-06-01 15:58:33,376 INFO --- Epoch 1, Batch 75 (Overall batch 15) ---
+2025-06-01 15:58:33,376 INFO Total Loss: 3.4344708919525146
+2025-06-01 15:58:33,376 INFO Causal Consistency Loss: 0.005460661835968494
+2025-06-01 15:58:33,377 INFO Accuracy: 0.6562
+2025-06-01 15:58:33,377 INFO MCC: 0.3124
+2025-06-01 15:58:33,377 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:58:33,378 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:58:33,378 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05539829 0.03329022 0.0554383  0.04444603 0.04444603]
+2025-06-01 15:58:46,713 INFO --- Epoch 1, Batch 76 (Overall batch 16) ---
+2025-06-01 15:58:46,714 INFO Total Loss: 3.3624703884124756
+2025-06-01 15:58:46,714 INFO Causal Consistency Loss: 0.0041872663423419
+2025-06-01 15:58:46,715 INFO Accuracy: 0.7812
+2025-06-01 15:58:46,715 INFO MCC: 0.5636
+2025-06-01 15:58:46,715 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.34154016 0.65845984 0.         0.         0.        ]
+2025-06-01 15:58:46,716 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.3985574 0.6014426 0.        0.        0.       ]
+2025-06-01 15:58:46,716 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.04447534 0.0555986  0.04445761 0.05558065 0.02226871]
+2025-06-01 15:59:01,864 INFO --- Epoch 1, Batch 77 (Overall batch 17) ---
+2025-06-01 15:59:01,864 INFO Total Loss: 3.5435667037963867
+2025-06-01 15:59:01,865 INFO Causal Consistency Loss: 0.004454294219613075
+2025-06-01 15:59:01,865 INFO Accuracy: 0.4375
+2025-06-01 15:59:01,865 INFO MCC: -0.1112
+2025-06-01 15:59:01,865 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.36525232 0.2668503  0.3678974  0.         0.        ]
+2025-06-01 15:59:01,866 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.35789046 0.27013323 0.37197635 0.         0.        ]
+2025-06-01 15:59:01,866 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05556024 0.05572905 0.0444021  0.03338717 0.05523374]
+2025-06-01 15:59:16,369 INFO --- Epoch 1, Batch 78 (Overall batch 18) ---
+2025-06-01 15:59:16,370 INFO Total Loss: 3.5705349445343018
+2025-06-01 15:59:16,370 INFO Causal Consistency Loss: 0.003908422309905291
+2025-06-01 15:59:16,370 INFO Accuracy: 0.6562
+2025-06-01 15:59:16,370 INFO MCC: 0.3631
+2025-06-01 15:59:16,371 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.5283673  0.47163275 0.         0.         0.        ]
+2025-06-01 15:59:16,371 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.5067491  0.49325094 0.         0.         0.        ]
+2025-06-01 15:59:16,371 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.05547621 0.05559538 0.05535059 0.05521176 0.04434135]
+2025-06-01 15:59:31,056 INFO --- Epoch 1, Batch 79 (Overall batch 19) ---
+2025-06-01 15:59:31,057 INFO Total Loss: 3.256498098373413
+2025-06-01 15:59:31,058 INFO Causal Consistency Loss: 0.0037438927683979273
+2025-06-01 15:59:31,059 INFO Accuracy: 0.6562
+2025-06-01 15:59:31,059 INFO MCC: 0.3730
+2025-06-01 15:59:31,060 INFO Alpha_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:59:31,060 INFO Omega_i (sample 0, day 0, first 5 msgs): [1. 0. 0. 0. 0.]
+2025-06-01 15:59:31,060 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.04420245 0.04449084 0.04449118 0.05553127 0.04446448]
+2025-06-01 15:59:43,755 INFO --- Epoch 1, Batch 80 (Overall batch 20) ---
+2025-06-01 15:59:43,755 INFO Total Loss: 3.2934510707855225
+2025-06-01 15:59:43,755 INFO Causal Consistency Loss: 0.004766461439430714
+2025-06-01 15:59:43,756 INFO Accuracy: 0.6250
+2025-06-01 15:59:43,756 INFO MCC: 0.2471
+2025-06-01 15:59:43,756 INFO Alpha_i (sample 0, day 0, first 5 msgs): [0.36707875 0.3532409  0.27968034 0.         0.        ]
+2025-06-01 15:59:43,756 INFO Omega_i (sample 0, day 0, first 5 msgs): [0.35958403 0.34796527 0.2924507  0.         0.        ]
+2025-06-01 15:59:43,757 INFO Attention Weights (first item in batch, first day if applicable, first 5 items):
+[0.04467357 0.05502369 0.05464639 0.04515178 0.05635951]
+2025-06-01 15:59:46,107 INFO Reached max_batches_to_test (20). Stopping training for test.
+2025-06-01 15:59:46,577 INFO Saved training metrics plot to results\all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp_training_metrics.png
+2025-06-01 15:59:47,158 INFO Model all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp saved at step 80
+2025-06-01 15:59:47,159 INFO Start dev phase...
+2025-06-01 16:01:20,191 INFO Noise-aware loss test finished.

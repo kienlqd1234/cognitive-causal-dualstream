@@ -12,11 +12,11 @@ import re
 
 class Executor:
 
-    def __init__(self, model, silence_step=200, skip_step=20):
-        self.model = model
+    def __init__(self, model_obj, silence_step=200, skip_step=20):
+        self.pipe = DataPipe()
+        self.model = model_obj()
         self.silence_step = silence_step
         self.skip_step = skip_step
-        self.pipe = DataPipe()
 
         self.saver = tf.train.Saver()
         self.tf_config = tf.ConfigProto(allow_soft_placement=True)

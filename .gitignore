@@ -3,4 +3,5 @@ check3d
 .cursor
 .vscode
 res/glove.twitter.27B.50d.txt
-log
+results
+LLM_Model
