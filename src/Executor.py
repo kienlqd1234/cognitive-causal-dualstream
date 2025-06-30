@@ -12,9 +12,9 @@ import re
 
 class Executor:
 
-    def __init__(self, model_obj, silence_step=200, skip_step=20):
+    def __init__(self, model, silence_step=200, skip_step=20):
         self.pipe = DataPipe()
-        self.model = model_obj()
+        self.model = model
         self.silence_step = silence_step
         self.skip_step = skip_step
 
@@ -114,6 +114,8 @@ class Executor:
             gen_size += batch_size
 
         results = metrics.eval_res(gen_n_acc, gen_size, gen_loss_list, y_list, y_list_,use_mcc =True)
+        logger.info(f"Completed {phase} evaluation: size={gen_size}, acc={gen_n_acc/gen_size:.4f}")
+        
         return results
     
     def train_and_dev(self):
@@ -174,7 +176,18 @@ class Executor:
 
                     ops = [self.model.y_T, self.model.y_T_,  self.model.loss, self.model.optimize,
                            self.model.global_step]
-                    train_batch_y, train_batch_y_,   train_batch_loss, _, n_iter = sess.run(ops, feed_dict)
+                    train_batch_y, train_batch_y_,  train_batch_loss, _, n_iter = sess.run(ops, feed_dict)
+                    
+                    #current_batch_size = train_batch_dict['batch_size']
+                    #batch_n_accurate = metrics.n_accurate(y=train_batch_y, y_=train_batch_y_) 
+                    #batch_n_accurate_val = sess.run(batch_n_accurate) 
+                    
+                    #batch_accuracy = metrics.eval_acc(n_acc=batch_n_accurate_val, total=current_batch_size)
+                    
+                    #tp, fp, tn, fn = metrics.create_confusion_matrix(y=train_batch_y, y_=train_batch_y_)
+                    #batch_mcc = metrics.eval_mcc(tp, fp, tn, fn)
+                    #if batch_mcc is None: 
+                        #batch_mcc = 0.0 
                     
                     # training batch stat
                     epoch_size += float(train_batch_dict['batch_size'])
@@ -189,10 +202,19 @@ class Executor:
                     if n_iter >= self.silence_step and n_iter % self.skip_step == 0:
                         stat_logger.print_batch_stat(n_iter, train_batch_loss, train_batch_n_acc,
                                                      train_batch_dict['batch_size'])
+                        #logger.info(f"--- Epoch {epoch+1}, Batch {n_iter} ---")
+                        #logger.info(f"Total Loss: {train_batch_loss}")
+                        #logger.info(f"Causal Consistency Loss: {causal_loss_val}") # Log Ca-TSU loss
+                        #logger.info(f"Accuracy: {batch_accuracy:.4f}")
+                        #logger.info(f"MCC: {batch_mcc:.4f}")
+                        # Log alpha_i and omega_i for the first sample, first day, first 5 messages
+                        #if alpha_i_val.ndim >= 3 and omega_i_val.ndim >=3:
+                            #logger.info(f"Alpha_i (sample 0, day 0, first 5 msgs): {alpha_i_val[0, 0, :5]}")
+                            #logger.info(f"Omega_i (sample 0, day 0, first 5 msgs): {omega_i_val[0, 0, :5]}")
                         os.makedirs(os.path.dirname(self.model.tf_saver_path), exist_ok=True)  # Ensure the directory exists
                         self.saver.save(sess, self.model.tf_saver_path, n_iter)
-                        #res= self.generation(sess, phase='dev')
-                        #stat_logger.print_eval_res(res)
+                        res= self.generation(sess, phase='dev')
+                        stat_logger.print_eval_res(res,use_mcc =True)
 
                 # print training epoch stat
                 epoch_loss, epoch_acc = metrics.basic_train_stat(train_batch_loss_list, epoch_n_acc, epoch_size)

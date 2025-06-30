@@ -1,0 +1,6 @@
+model_checkpoint_path: "sess-860"
+all_model_checkpoint_paths: "sess-780"
+all_model_checkpoint_paths: "sess-800"
+all_model_checkpoint_paths: "sess-820"
+all_model_checkpoint_paths: "sess-840"
+all_model_checkpoint_paths: "sess-860"

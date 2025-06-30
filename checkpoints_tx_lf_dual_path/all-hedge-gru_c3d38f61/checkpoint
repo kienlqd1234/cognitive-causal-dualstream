@@ -1,4 +1,0 @@
-model_checkpoint_path: "D:\\FinalYear\\KLTN\\PEN\\PEN-main\\PEN-main\\checkpoints_tx_lf_dual_path\\all-hedge-gru_c3d38f61\\sess-60"
-all_model_checkpoint_paths: "D:\\FinalYear\\KLTN\\PEN\\PEN-main\\PEN-main\\checkpoints_tx_lf_dual_path\\all-hedge-gru_c3d38f61\\sess-20"
-all_model_checkpoint_paths: "D:\\FinalYear\\KLTN\\PEN\\PEN-main\\PEN-main\\checkpoints_tx_lf_dual_path\\all-hedge-gru_c3d38f61\\sess-40"
-all_model_checkpoint_paths: "D:\\FinalYear\\KLTN\\PEN\\PEN-main\\PEN-main\\checkpoints_tx_lf_dual_path\\all-hedge-gru_c3d38f61\\sess-60"

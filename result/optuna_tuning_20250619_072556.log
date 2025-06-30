@@ -1,0 +1,218 @@
+2025-06-19 07:25:56,333 - INFO - Starting hyperparameter tuning. Results will be saved to result/optuna_tuning_20250619_072556.log
+2025-06-19 07:42:44,285 - INFO - Trial 0 finished. Validation MCC: -0.0015, Accuracy: 0.5429, Parameters: {'causal_loss_lambda': 0.30308040047790696, 'path_separation_margin': 1.346800065155419, 'srl_loss_weight': 0.7546182067314519}
+2025-06-19 07:42:44,291 - INFO - Trial 0 completed. MCC: -0.0015, Accuracy: 0.5429
+2025-06-19 07:42:44,291 - INFO - Current parameters: {'causal_loss_lambda': 0.30308040047790696, 'path_separation_margin': 1.346800065155419, 'srl_loss_weight': 0.7546182067314519}
+2025-06-19 07:42:44,291 - INFO - Current Pareto front size: 1
+2025-06-19 07:53:25,386 - INFO - Trial 1 finished. Validation MCC: -0.0445, Accuracy: 0.4476, Parameters: {'causal_loss_lambda': 1.6500408399613231, 'path_separation_margin': 1.8051320056022828, 'srl_loss_weight': 0.7460814213017074}
+2025-06-19 07:53:25,390 - INFO - Trial 1 completed. MCC: -0.0445, Accuracy: 0.4476
+2025-06-19 07:53:25,391 - INFO - Current parameters: {'causal_loss_lambda': 1.6500408399613231, 'path_separation_margin': 1.8051320056022828, 'srl_loss_weight': 0.7460814213017074}
+2025-06-19 07:53:25,392 - INFO - Current Pareto front size: 1
+2025-06-19 08:04:19,944 - INFO - Trial 2 finished. Validation MCC: -0.0001, Accuracy: 0.5310, Parameters: {'causal_loss_lambda': 0.6191633188380717, 'path_separation_margin': 1.7001343092915409, 'srl_loss_weight': 0.09945073675641418}
+2025-06-19 08:04:19,949 - INFO - Trial 2 completed. MCC: -0.0001, Accuracy: 0.5310
+2025-06-19 08:04:19,950 - INFO - Current parameters: {'causal_loss_lambda': 0.6191633188380717, 'path_separation_margin': 1.7001343092915409, 'srl_loss_weight': 0.09945073675641418}
+2025-06-19 08:04:19,950 - INFO - Current Pareto front size: 2
+2025-06-19 08:15:19,374 - INFO - Trial 3 finished. Validation MCC: 0.0309, Accuracy: 0.5429, Parameters: {'causal_loss_lambda': 0.4527243377898904, 'path_separation_margin': 0.7872719505830108, 'srl_loss_weight': 0.4506024066919985}
+2025-06-19 08:15:19,377 - INFO - Trial 3 completed. MCC: 0.0309, Accuracy: 0.5429
+2025-06-19 08:15:19,378 - INFO - Current parameters: {'causal_loss_lambda': 0.4527243377898904, 'path_separation_margin': 0.7872719505830108, 'srl_loss_weight': 0.4506024066919985}
+2025-06-19 08:15:19,380 - INFO - Current Pareto front size: 1
+2025-06-19 08:26:13,730 - INFO - Trial 4 finished. Validation MCC: -0.0159, Accuracy: 0.5286, Parameters: {'causal_loss_lambda': 0.12800600532735698, 'path_separation_margin': 0.8534622424862731, 'srl_loss_weight': 0.2316644514546762}
+2025-06-19 08:26:13,736 - INFO - Trial 4 completed. MCC: -0.0159, Accuracy: 0.5286
+2025-06-19 08:26:13,736 - INFO - Current parameters: {'causal_loss_lambda': 0.12800600532735698, 'path_separation_margin': 0.8534622424862731, 'srl_loss_weight': 0.2316644514546762}
+2025-06-19 08:26:13,737 - INFO - Current Pareto front size: 1
+2025-06-19 08:37:06,237 - INFO - Trial 5 finished. Validation MCC: 0.1971, Accuracy: 0.5524, Parameters: {'causal_loss_lambda': 0.8796138490573318, 'path_separation_margin': 1.6529435129873686, 'srl_loss_weight': 0.06696069975917733}
+2025-06-19 08:37:06,244 - INFO - Trial 5 completed. MCC: 0.1971, Accuracy: 0.5524
+2025-06-19 08:37:06,244 - INFO - Current parameters: {'causal_loss_lambda': 0.8796138490573318, 'path_separation_margin': 1.6529435129873686, 'srl_loss_weight': 0.06696069975917733}
+2025-06-19 08:37:06,245 - INFO - Current Pareto front size: 1
+2025-06-19 08:48:23,859 - INFO - Trial 6 finished. Validation MCC: 0.0529, Accuracy: 0.4357, Parameters: {'causal_loss_lambda': 0.6091103314031094, 'path_separation_margin': 1.6559477310669766, 'srl_loss_weight': 0.0893003645958055}
+2025-06-19 08:48:23,869 - INFO - Trial 6 completed. MCC: 0.0529, Accuracy: 0.4357
+2025-06-19 08:48:23,869 - INFO - Current parameters: {'causal_loss_lambda': 0.6091103314031094, 'path_separation_margin': 1.6559477310669766, 'srl_loss_weight': 0.0893003645958055}
+2025-06-19 08:48:23,871 - INFO - Current Pareto front size: 1
+2025-06-19 08:59:13,555 - INFO - Trial 7 finished. Validation MCC: 0.1842, Accuracy: 0.6214, Parameters: {'causal_loss_lambda': 1.1672080799898263, 'path_separation_margin': 1.3034919316131326, 'srl_loss_weight': 0.6593086321646012}
+2025-06-19 08:59:13,560 - INFO - Trial 7 completed. MCC: 0.1842, Accuracy: 0.6214
+2025-06-19 08:59:13,561 - INFO - Current parameters: {'causal_loss_lambda': 1.1672080799898263, 'path_separation_margin': 1.3034919316131326, 'srl_loss_weight': 0.6593086321646012}
+2025-06-19 08:59:13,563 - INFO - Current Pareto front size: 2
+2025-06-19 09:10:01,396 - INFO - Trial 8 finished. Validation MCC: 0.1124, Accuracy: 0.5167, Parameters: {'causal_loss_lambda': 0.7180395647030267, 'path_separation_margin': 0.5385325081318058, 'srl_loss_weight': 0.11670285911004272}
+2025-06-19 09:10:01,400 - INFO - Trial 8 completed. MCC: 0.1124, Accuracy: 0.5167
+2025-06-19 09:10:01,401 - INFO - Current parameters: {'causal_loss_lambda': 0.7180395647030267, 'path_separation_margin': 0.5385325081318058, 'srl_loss_weight': 0.11670285911004272}
+2025-06-19 09:10:01,404 - INFO - Current Pareto front size: 2
+2025-06-19 09:20:46,503 - INFO - Trial 9 finished. Validation MCC: 0.0073, Accuracy: 0.5810, Parameters: {'causal_loss_lambda': 0.11397005017049971, 'path_separation_margin': 1.8692584889009767, 'srl_loss_weight': 0.3181595113532243}
+2025-06-19 09:20:46,510 - INFO - Trial 9 completed. MCC: 0.0073, Accuracy: 0.5810
+2025-06-19 09:20:46,510 - INFO - Current parameters: {'causal_loss_lambda': 0.11397005017049971, 'path_separation_margin': 1.8692584889009767, 'srl_loss_weight': 0.3181595113532243}
+2025-06-19 09:20:46,512 - INFO - Current Pareto front size: 2
+2025-06-19 09:31:17,757 - INFO - Trial 10 finished. Validation MCC: 0.1020, Accuracy: 0.5571, Parameters: {'causal_loss_lambda': 0.21396625539975597, 'path_separation_margin': 1.2247144488025796, 'srl_loss_weight': 0.10469279903121272}
+2025-06-19 09:31:17,763 - INFO - Trial 10 completed. MCC: 0.1020, Accuracy: 0.5571
+2025-06-19 09:31:17,764 - INFO - Current parameters: {'causal_loss_lambda': 0.21396625539975597, 'path_separation_margin': 1.2247144488025796, 'srl_loss_weight': 0.10469279903121272}
+2025-06-19 09:31:17,766 - INFO - Current Pareto front size: 2
+2025-06-19 09:41:56,078 - INFO - Trial 11 finished. Validation MCC: 0.1381, Accuracy: 0.6143, Parameters: {'causal_loss_lambda': 1.0533735334108045, 'path_separation_margin': 0.52268829787063, 'srl_loss_weight': 0.43490984210752415}
+2025-06-19 09:41:56,081 - INFO - Trial 11 completed. MCC: 0.1381, Accuracy: 0.6143
+2025-06-19 09:41:56,082 - INFO - Current parameters: {'causal_loss_lambda': 1.0533735334108045, 'path_separation_margin': 0.52268829787063, 'srl_loss_weight': 0.43490984210752415}
+2025-06-19 09:41:56,087 - INFO - Current Pareto front size: 2
+2025-06-19 09:52:43,323 - INFO - Trial 12 finished. Validation MCC: 0.0556, Accuracy: 0.5405, Parameters: {'causal_loss_lambda': 0.3586072719845855, 'path_separation_margin': 1.5568212965993726, 'srl_loss_weight': 0.11754428977784008}
+2025-06-19 09:52:43,327 - INFO - Trial 12 completed. MCC: 0.0556, Accuracy: 0.5405
+2025-06-19 09:52:43,328 - INFO - Current parameters: {'causal_loss_lambda': 0.3586072719845855, 'path_separation_margin': 1.5568212965993726, 'srl_loss_weight': 0.11754428977784008}
+2025-06-19 09:52:43,332 - INFO - Current Pareto front size: 2
+2025-06-19 10:03:31,412 - INFO - Trial 13 finished. Validation MCC: 0.0360, Accuracy: 0.4881, Parameters: {'causal_loss_lambda': 0.5925814548019864, 'path_separation_margin': 1.9016857467591954, 'srl_loss_weight': 0.5275728723955814}
+2025-06-19 10:03:31,415 - INFO - Trial 13 completed. MCC: 0.0360, Accuracy: 0.4881
+2025-06-19 10:03:31,416 - INFO - Current parameters: {'causal_loss_lambda': 0.5925814548019864, 'path_separation_margin': 1.9016857467591954, 'srl_loss_weight': 0.5275728723955814}
+2025-06-19 10:03:31,421 - INFO - Current Pareto front size: 2
+2025-06-19 10:14:17,239 - INFO - Trial 14 finished. Validation MCC: -0.0137, Accuracy: 0.5357, Parameters: {'causal_loss_lambda': 0.2953856994029518, 'path_separation_margin': 1.1792975944657027, 'srl_loss_weight': 0.2581688180279486}
+2025-06-19 10:14:17,246 - INFO - Trial 14 completed. MCC: -0.0137, Accuracy: 0.5357
+2025-06-19 10:14:17,246 - INFO - Current parameters: {'causal_loss_lambda': 0.2953856994029518, 'path_separation_margin': 1.1792975944657027, 'srl_loss_weight': 0.2581688180279486}
+2025-06-19 10:14:17,249 - INFO - Current Pareto front size: 2
+2025-06-19 10:24:52,252 - INFO - Trial 15 finished. Validation MCC: 0.0972, Accuracy: 0.5071, Parameters: {'causal_loss_lambda': 0.16504021220152645, 'path_separation_margin': 0.5075117110943876, 'srl_loss_weight': 0.10221435251154816}
+2025-06-19 10:24:52,255 - INFO - Trial 15 completed. MCC: 0.0972, Accuracy: 0.5071
+2025-06-19 10:24:52,256 - INFO - Current parameters: {'causal_loss_lambda': 0.16504021220152645, 'path_separation_margin': 0.5075117110943876, 'srl_loss_weight': 0.10221435251154816}
+2025-06-19 10:24:52,262 - INFO - Current Pareto front size: 2
+2025-06-19 10:35:26,872 - INFO - Trial 16 finished. Validation MCC: 0.0723, Accuracy: 0.5548, Parameters: {'causal_loss_lambda': 0.3153319463414833, 'path_separation_margin': 0.7588951492483335, 'srl_loss_weight': 0.10348955729844916}
+2025-06-19 10:35:26,876 - INFO - Trial 16 completed. MCC: 0.0723, Accuracy: 0.5548
+2025-06-19 10:35:26,876 - INFO - Current parameters: {'causal_loss_lambda': 0.3153319463414833, 'path_separation_margin': 0.7588951492483335, 'srl_loss_weight': 0.10348955729844916}
+2025-06-19 10:35:26,883 - INFO - Current Pareto front size: 2
+2025-06-19 10:46:16,783 - INFO - Trial 17 finished. Validation MCC: 0.0549, Accuracy: 0.5262, Parameters: {'causal_loss_lambda': 1.8066225999535326, 'path_separation_margin': 0.5453239191585342, 'srl_loss_weight': 0.30323581857189896}
+2025-06-19 10:46:16,790 - INFO - Trial 17 completed. MCC: 0.0549, Accuracy: 0.5262
+2025-06-19 10:46:16,790 - INFO - Current parameters: {'causal_loss_lambda': 1.8066225999535326, 'path_separation_margin': 0.5453239191585342, 'srl_loss_weight': 0.30323581857189896}
+2025-06-19 10:46:16,794 - INFO - Current Pareto front size: 2
+2025-06-19 10:57:05,389 - INFO - Trial 18 finished. Validation MCC: 0.1094, Accuracy: 0.6071, Parameters: {'causal_loss_lambda': 0.3584746333842024, 'path_separation_margin': 1.515511880692493, 'srl_loss_weight': 0.6138860863549992}
+2025-06-19 10:57:05,393 - INFO - Trial 18 completed. MCC: 0.1094, Accuracy: 0.6071
+2025-06-19 10:57:05,395 - INFO - Current parameters: {'causal_loss_lambda': 0.3584746333842024, 'path_separation_margin': 1.515511880692493, 'srl_loss_weight': 0.6138860863549992}
+2025-06-19 10:57:05,399 - INFO - Current Pareto front size: 2
+2025-06-19 11:07:49,745 - INFO - Trial 19 finished. Validation MCC: 0.0651, Accuracy: 0.4690, Parameters: {'causal_loss_lambda': 0.2880672700696477, 'path_separation_margin': 1.2377613892323907, 'srl_loss_weight': 0.08767434389054433}
+2025-06-19 11:07:49,750 - INFO - Trial 19 completed. MCC: 0.0651, Accuracy: 0.4690
+2025-06-19 11:07:49,750 - INFO - Current parameters: {'causal_loss_lambda': 0.2880672700696477, 'path_separation_margin': 1.2377613892323907, 'srl_loss_weight': 0.08767434389054433}
+2025-06-19 11:07:49,757 - INFO - Current Pareto front size: 2
+2025-06-19 11:18:37,516 - INFO - Trial 20 finished. Validation MCC: -0.0327, Accuracy: 0.4738, Parameters: {'causal_loss_lambda': 0.6089846503859784, 'path_separation_margin': 1.5615476267330441, 'srl_loss_weight': 0.2565544099926234}
+2025-06-19 11:18:37,521 - INFO - Trial 20 completed. MCC: -0.0327, Accuracy: 0.4738
+2025-06-19 11:18:37,522 - INFO - Current parameters: {'causal_loss_lambda': 0.6089846503859784, 'path_separation_margin': 1.5615476267330441, 'srl_loss_weight': 0.2565544099926234}
+2025-06-19 11:18:37,527 - INFO - Current Pareto front size: 2
+2025-06-19 11:29:19,056 - INFO - Trial 21 finished. Validation MCC: 0.0915, Accuracy: 0.5714, Parameters: {'causal_loss_lambda': 0.5800279648709556, 'path_separation_margin': 1.1514199945008663, 'srl_loss_weight': 0.24173114639745816}
+2025-06-19 11:29:19,060 - INFO - Trial 21 completed. MCC: 0.0915, Accuracy: 0.5714
+2025-06-19 11:29:19,061 - INFO - Current parameters: {'causal_loss_lambda': 0.5800279648709556, 'path_separation_margin': 1.1514199945008663, 'srl_loss_weight': 0.24173114639745816}
+2025-06-19 11:29:19,068 - INFO - Current Pareto front size: 2
+2025-06-19 11:40:04,369 - INFO - Trial 22 finished. Validation MCC: 0.0431, Accuracy: 0.5976, Parameters: {'causal_loss_lambda': 0.9885205816264382, 'path_separation_margin': 0.6862622034759531, 'srl_loss_weight': 0.7331650903710761}
+2025-06-19 11:40:04,374 - INFO - Trial 22 completed. MCC: 0.0431, Accuracy: 0.5976
+2025-06-19 11:40:04,375 - INFO - Current parameters: {'causal_loss_lambda': 0.9885205816264382, 'path_separation_margin': 0.6862622034759531, 'srl_loss_weight': 0.7331650903710761}
+2025-06-19 11:40:04,380 - INFO - Current Pareto front size: 2
+2025-06-19 11:50:53,415 - INFO - Trial 23 finished. Validation MCC: 0.1077, Accuracy: 0.5976, Parameters: {'causal_loss_lambda': 1.8234954484169983, 'path_separation_margin': 1.2500918025394558, 'srl_loss_weight': 0.13868117091343923}
+2025-06-19 11:50:53,419 - INFO - Trial 23 completed. MCC: 0.1077, Accuracy: 0.5976
+2025-06-19 11:50:53,419 - INFO - Current parameters: {'causal_loss_lambda': 1.8234954484169983, 'path_separation_margin': 1.2500918025394558, 'srl_loss_weight': 0.13868117091343923}
+2025-06-19 11:50:53,427 - INFO - Current Pareto front size: 2
+2025-06-19 12:01:41,077 - INFO - Trial 24 finished. Validation MCC: -0.0187, Accuracy: 0.4952, Parameters: {'causal_loss_lambda': 0.4791997230588441, 'path_separation_margin': 0.8726986564538479, 'srl_loss_weight': 0.051407201913209515}
+2025-06-19 12:01:41,082 - INFO - Trial 24 completed. MCC: -0.0187, Accuracy: 0.4952
+2025-06-19 12:01:41,083 - INFO - Current parameters: {'causal_loss_lambda': 0.4791997230588441, 'path_separation_margin': 0.8726986564538479, 'srl_loss_weight': 0.051407201913209515}
+2025-06-19 12:01:41,088 - INFO - Current Pareto front size: 2
+2025-06-19 12:12:34,905 - INFO - Trial 25 finished. Validation MCC: 0.0929, Accuracy: 0.5595, Parameters: {'causal_loss_lambda': 0.1495682296759344, 'path_separation_margin': 1.692626329743693, 'srl_loss_weight': 0.09140851534993477}
+2025-06-19 12:12:34,910 - INFO - Trial 25 completed. MCC: 0.0929, Accuracy: 0.5595
+2025-06-19 12:12:34,910 - INFO - Current parameters: {'causal_loss_lambda': 0.1495682296759344, 'path_separation_margin': 1.692626329743693, 'srl_loss_weight': 0.09140851534993477}
+2025-06-19 12:12:34,916 - INFO - Current Pareto front size: 2
+2025-06-19 12:23:20,082 - INFO - Trial 26 finished. Validation MCC: 0.0119, Accuracy: 0.4976, Parameters: {'causal_loss_lambda': 0.24787159836999154, 'path_separation_margin': 1.493993790531658, 'srl_loss_weight': 0.05564540278399157}
+2025-06-19 12:23:20,088 - INFO - Trial 26 completed. MCC: 0.0119, Accuracy: 0.4976
+2025-06-19 12:23:20,088 - INFO - Current parameters: {'causal_loss_lambda': 0.24787159836999154, 'path_separation_margin': 1.493993790531658, 'srl_loss_weight': 0.05564540278399157}
+2025-06-19 12:23:20,093 - INFO - Current Pareto front size: 2
+2025-06-19 12:34:05,516 - INFO - Trial 27 finished. Validation MCC: 0.2013, Accuracy: 0.5310, Parameters: {'causal_loss_lambda': 1.2886255148792987, 'path_separation_margin': 1.8354743191145138, 'srl_loss_weight': 0.09497348708405047}
+2025-06-19 12:34:05,522 - INFO - Trial 27 completed. MCC: 0.2013, Accuracy: 0.5310
+2025-06-19 12:34:05,522 - INFO - Current parameters: {'causal_loss_lambda': 1.2886255148792987, 'path_separation_margin': 1.8354743191145138, 'srl_loss_weight': 0.09497348708405047}
+2025-06-19 12:34:05,528 - INFO - Current Pareto front size: 3
+2025-06-19 12:44:48,677 - INFO - Trial 28 finished. Validation MCC: 0.1773, Accuracy: 0.5762, Parameters: {'causal_loss_lambda': 1.6700198533646982, 'path_separation_margin': 1.973282037783531, 'srl_loss_weight': 0.1610968737340489}
+2025-06-19 12:44:48,684 - INFO - Trial 28 completed. MCC: 0.1773, Accuracy: 0.5762
+2025-06-19 12:44:48,684 - INFO - Current parameters: {'causal_loss_lambda': 1.6700198533646982, 'path_separation_margin': 1.973282037783531, 'srl_loss_weight': 0.1610968737340489}
+2025-06-19 12:44:48,689 - INFO - Current Pareto front size: 3
+2025-06-19 12:55:35,529 - INFO - Trial 29 finished. Validation MCC: 0.2103, Accuracy: 0.6357, Parameters: {'causal_loss_lambda': 0.45594244201742495, 'path_separation_margin': 1.103815213428419, 'srl_loss_weight': 0.8787882448996054}
+2025-06-19 12:55:35,534 - INFO - Trial 29 completed. MCC: 0.2103, Accuracy: 0.6357
+2025-06-19 12:55:35,535 - INFO - Current parameters: {'causal_loss_lambda': 0.45594244201742495, 'path_separation_margin': 1.103815213428419, 'srl_loss_weight': 0.8787882448996054}
+2025-06-19 12:55:35,542 - INFO - Current Pareto front size: 1
+2025-06-19 13:06:19,948 - INFO - Trial 30 finished. Validation MCC: 0.0696, Accuracy: 0.4119, Parameters: {'causal_loss_lambda': 0.2428919878528414, 'path_separation_margin': 1.4272532914602278, 'srl_loss_weight': 0.08929131695710527}
+2025-06-19 13:06:19,952 - INFO - Trial 30 completed. MCC: 0.0696, Accuracy: 0.4119
+2025-06-19 13:06:19,954 - INFO - Current parameters: {'causal_loss_lambda': 0.2428919878528414, 'path_separation_margin': 1.4272532914602278, 'srl_loss_weight': 0.08929131695710527}
+2025-06-19 13:06:19,960 - INFO - Current Pareto front size: 1
+2025-06-19 13:17:06,390 - INFO - Trial 31 finished. Validation MCC: 0.0872, Accuracy: 0.5786, Parameters: {'causal_loss_lambda': 0.6007158833055048, 'path_separation_margin': 0.5118787943486467, 'srl_loss_weight': 0.5212222828985212}
+2025-06-19 13:17:06,395 - INFO - Trial 31 completed. MCC: 0.0872, Accuracy: 0.5786
+2025-06-19 13:17:06,396 - INFO - Current parameters: {'causal_loss_lambda': 0.6007158833055048, 'path_separation_margin': 0.5118787943486467, 'srl_loss_weight': 0.5212222828985212}
+2025-06-19 13:17:06,405 - INFO - Current Pareto front size: 1
+2025-06-19 13:27:56,476 - INFO - Trial 32 finished. Validation MCC: 0.0472, Accuracy: 0.5643, Parameters: {'causal_loss_lambda': 0.6644015899876377, 'path_separation_margin': 0.5084068757090882, 'srl_loss_weight': 0.24517745893819773}
+2025-06-19 13:27:56,492 - INFO - Trial 32 completed. MCC: 0.0472, Accuracy: 0.5643
+2025-06-19 13:27:56,492 - INFO - Current parameters: {'causal_loss_lambda': 0.6644015899876377, 'path_separation_margin': 0.5084068757090882, 'srl_loss_weight': 0.24517745893819773}
+2025-06-19 13:27:56,498 - INFO - Current Pareto front size: 1
+2025-06-19 13:38:54,874 - INFO - Trial 33 finished. Validation MCC: 0.0087, Accuracy: 0.4714, Parameters: {'causal_loss_lambda': 0.11102038207315187, 'path_separation_margin': 1.0968928182679667, 'srl_loss_weight': 0.33171546163368704}
+2025-06-19 13:38:54,880 - INFO - Trial 33 completed. MCC: 0.0087, Accuracy: 0.4714
+2025-06-19 13:38:54,880 - INFO - Current parameters: {'causal_loss_lambda': 0.11102038207315187, 'path_separation_margin': 1.0968928182679667, 'srl_loss_weight': 0.33171546163368704}
+2025-06-19 13:38:54,887 - INFO - Current Pareto front size: 1
+2025-06-19 13:49:44,020 - INFO - Trial 34 finished. Validation MCC: 0.0217, Accuracy: 0.4952, Parameters: {'causal_loss_lambda': 1.6601962464321112, 'path_separation_margin': 1.0156757171752213, 'srl_loss_weight': 0.3911418454058088}
+2025-06-19 13:49:44,026 - INFO - Trial 34 completed. MCC: 0.0217, Accuracy: 0.4952
+2025-06-19 13:49:44,027 - INFO - Current parameters: {'causal_loss_lambda': 1.6601962464321112, 'path_separation_margin': 1.0156757171752213, 'srl_loss_weight': 0.3911418454058088}
+2025-06-19 13:49:44,033 - INFO - Current Pareto front size: 1
+2025-06-19 14:00:25,810 - INFO - Trial 35 finished. Validation MCC: 0.0474, Accuracy: 0.5214, Parameters: {'causal_loss_lambda': 0.3620501074546032, 'path_separation_margin': 1.0833995602776019, 'srl_loss_weight': 0.08516545365403388}
+2025-06-19 14:00:25,815 - INFO - Trial 35 completed. MCC: 0.0474, Accuracy: 0.5214
+2025-06-19 14:00:25,817 - INFO - Current parameters: {'causal_loss_lambda': 0.3620501074546032, 'path_separation_margin': 1.0833995602776019, 'srl_loss_weight': 0.08516545365403388}
+2025-06-19 14:00:25,826 - INFO - Current Pareto front size: 1
+2025-06-19 14:11:11,561 - INFO - Trial 36 finished. Validation MCC: 0.0208, Accuracy: 0.5381, Parameters: {'causal_loss_lambda': 1.7546974047765171, 'path_separation_margin': 1.929731095081932, 'srl_loss_weight': 0.2630882746689972}
+2025-06-19 14:11:11,568 - INFO - Trial 36 completed. MCC: 0.0208, Accuracy: 0.5381
+2025-06-19 14:11:11,568 - INFO - Current parameters: {'causal_loss_lambda': 1.7546974047765171, 'path_separation_margin': 1.929731095081932, 'srl_loss_weight': 0.2630882746689972}
+2025-06-19 14:11:11,576 - INFO - Current Pareto front size: 1
+2025-06-19 14:21:47,702 - INFO - Trial 37 finished. Validation MCC: -0.0281, Accuracy: 0.4643, Parameters: {'causal_loss_lambda': 0.15908585753607637, 'path_separation_margin': 0.611092401809872, 'srl_loss_weight': 0.09355284200532481}
+2025-06-19 14:21:47,708 - INFO - Trial 37 completed. MCC: -0.0281, Accuracy: 0.4643
+2025-06-19 14:21:47,708 - INFO - Current parameters: {'causal_loss_lambda': 0.15908585753607637, 'path_separation_margin': 0.611092401809872, 'srl_loss_weight': 0.09355284200532481}
+2025-06-19 14:21:47,716 - INFO - Current Pareto front size: 1
+2025-06-19 14:32:35,239 - INFO - Trial 38 finished. Validation MCC: 0.0110, Accuracy: 0.5238, Parameters: {'causal_loss_lambda': 0.4517067761266502, 'path_separation_margin': 1.9559431678715669, 'srl_loss_weight': 0.10434697317522343}
+2025-06-19 14:32:35,244 - INFO - Trial 38 completed. MCC: 0.0110, Accuracy: 0.5238
+2025-06-19 14:32:35,245 - INFO - Current parameters: {'causal_loss_lambda': 0.4517067761266502, 'path_separation_margin': 1.9559431678715669, 'srl_loss_weight': 0.10434697317522343}
+2025-06-19 14:32:35,253 - INFO - Current Pareto front size: 1
+2025-06-19 14:43:24,881 - INFO - Trial 39 finished. Validation MCC: 0.0747, Accuracy: 0.5714, Parameters: {'causal_loss_lambda': 0.11237836746756258, 'path_separation_margin': 1.91456811072111, 'srl_loss_weight': 0.15361214251985536}
+2025-06-19 14:43:24,888 - INFO - Trial 39 completed. MCC: 0.0747, Accuracy: 0.5714
+2025-06-19 14:43:24,889 - INFO - Current parameters: {'causal_loss_lambda': 0.11237836746756258, 'path_separation_margin': 1.91456811072111, 'srl_loss_weight': 0.15361214251985536}
+2025-06-19 14:43:24,896 - INFO - Current Pareto front size: 1
+2025-06-19 14:54:19,056 - INFO - Trial 40 finished. Validation MCC: -0.1266, Accuracy: 0.4548, Parameters: {'causal_loss_lambda': 0.2827355415607534, 'path_separation_margin': 0.9789773343877197, 'srl_loss_weight': 0.9356181469078707}
+2025-06-19 14:54:19,059 - INFO - Trial 40 completed. MCC: -0.1266, Accuracy: 0.4548
+2025-06-19 14:54:19,060 - INFO - Current parameters: {'causal_loss_lambda': 0.2827355415607534, 'path_separation_margin': 0.9789773343877197, 'srl_loss_weight': 0.9356181469078707}
+2025-06-19 14:54:19,070 - INFO - Current Pareto front size: 1
+2025-06-19 15:05:12,566 - INFO - Trial 41 finished. Validation MCC: 0.0688, Accuracy: 0.5500, Parameters: {'causal_loss_lambda': 1.7834640396279804, 'path_separation_margin': 0.5477552320913981, 'srl_loss_weight': 0.23182167088095723}
+2025-06-19 15:05:12,572 - INFO - Trial 41 completed. MCC: 0.0688, Accuracy: 0.5500
+2025-06-19 15:05:12,572 - INFO - Current parameters: {'causal_loss_lambda': 1.7834640396279804, 'path_separation_margin': 0.5477552320913981, 'srl_loss_weight': 0.23182167088095723}
+2025-06-19 15:05:12,580 - INFO - Current Pareto front size: 1
+2025-06-19 15:16:02,204 - INFO - Trial 42 finished. Validation MCC: 0.0693, Accuracy: 0.5238, Parameters: {'causal_loss_lambda': 0.42908002701380177, 'path_separation_margin': 1.2448198208523178, 'srl_loss_weight': 0.30686993693747744}
+2025-06-19 15:16:02,210 - INFO - Trial 42 completed. MCC: 0.0693, Accuracy: 0.5238
+2025-06-19 15:16:02,211 - INFO - Current parameters: {'causal_loss_lambda': 0.42908002701380177, 'path_separation_margin': 1.2448198208523178, 'srl_loss_weight': 0.30686993693747744}
+2025-06-19 15:16:02,219 - INFO - Current Pareto front size: 1
+2025-06-19 15:26:46,683 - INFO - Trial 43 finished. Validation MCC: 0.0697, Accuracy: 0.4786, Parameters: {'causal_loss_lambda': 0.14221372436899013, 'path_separation_margin': 1.5717262019633822, 'srl_loss_weight': 0.3874382698980548}
+2025-06-19 15:26:46,688 - INFO - Trial 43 completed. MCC: 0.0697, Accuracy: 0.4786
+2025-06-19 15:26:46,689 - INFO - Current parameters: {'causal_loss_lambda': 0.14221372436899013, 'path_separation_margin': 1.5717262019633822, 'srl_loss_weight': 0.3874382698980548}
+2025-06-19 15:26:46,698 - INFO - Current Pareto front size: 1
+2025-06-19 15:37:35,978 - INFO - Trial 44 finished. Validation MCC: -0.0376, Accuracy: 0.4833, Parameters: {'causal_loss_lambda': 0.14562378574091087, 'path_separation_margin': 0.8006056349550585, 'srl_loss_weight': 0.9847279850252096}
+2025-06-19 15:37:35,984 - INFO - Trial 44 completed. MCC: -0.0376, Accuracy: 0.4833
+2025-06-19 15:37:35,984 - INFO - Current parameters: {'causal_loss_lambda': 0.14562378574091087, 'path_separation_margin': 0.8006056349550585, 'srl_loss_weight': 0.9847279850252096}
+2025-06-19 15:37:35,993 - INFO - Current Pareto front size: 1
+2025-06-19 15:48:23,033 - INFO - Trial 45 finished. Validation MCC: 0.0634, Accuracy: 0.6000, Parameters: {'causal_loss_lambda': 0.17774769504956794, 'path_separation_margin': 0.8289348546118828, 'srl_loss_weight': 0.2901918571624127}
+2025-06-19 15:48:23,039 - INFO - Trial 45 completed. MCC: 0.0634, Accuracy: 0.6000
+2025-06-19 15:48:23,039 - INFO - Current parameters: {'causal_loss_lambda': 0.17774769504956794, 'path_separation_margin': 0.8289348546118828, 'srl_loss_weight': 0.2901918571624127}
+2025-06-19 15:48:23,051 - INFO - Current Pareto front size: 1
+2025-06-19 15:59:13,402 - INFO - Trial 46 finished. Validation MCC: 0.0060, Accuracy: 0.5024, Parameters: {'causal_loss_lambda': 0.7465994632566179, 'path_separation_margin': 1.1399413288997229, 'srl_loss_weight': 0.16965635778781604}
+2025-06-19 15:59:13,407 - INFO - Trial 46 completed. MCC: 0.0060, Accuracy: 0.5024
+2025-06-19 15:59:13,408 - INFO - Current parameters: {'causal_loss_lambda': 0.7465994632566179, 'path_separation_margin': 1.1399413288997229, 'srl_loss_weight': 0.16965635778781604}
+2025-06-19 15:59:13,419 - INFO - Current Pareto front size: 1
+2025-06-19 16:10:02,779 - INFO - Trial 47 finished. Validation MCC: 0.0603, Accuracy: 0.5643, Parameters: {'causal_loss_lambda': 0.5672227547083019, 'path_separation_margin': 1.669110480246011, 'srl_loss_weight': 0.07913350921024083}
+2025-06-19 16:10:02,787 - INFO - Trial 47 completed. MCC: 0.0603, Accuracy: 0.5643
+2025-06-19 16:10:02,787 - INFO - Current parameters: {'causal_loss_lambda': 0.5672227547083019, 'path_separation_margin': 1.669110480246011, 'srl_loss_weight': 0.07913350921024083}
+2025-06-19 16:10:02,798 - INFO - Current Pareto front size: 1
+2025-06-19 16:20:49,469 - INFO - Trial 48 finished. Validation MCC: 0.1194, Accuracy: 0.6238, Parameters: {'causal_loss_lambda': 0.47973121834100524, 'path_separation_margin': 1.950335406812265, 'srl_loss_weight': 0.06953187890771348}
+2025-06-19 16:20:49,473 - INFO - Trial 48 completed. MCC: 0.1194, Accuracy: 0.6238
+2025-06-19 16:20:49,474 - INFO - Current parameters: {'causal_loss_lambda': 0.47973121834100524, 'path_separation_margin': 1.950335406812265, 'srl_loss_weight': 0.06953187890771348}
+2025-06-19 16:20:49,486 - INFO - Current Pareto front size: 1
+2025-06-19 16:31:35,799 - INFO - Trial 49 finished. Validation MCC: 0.0038, Accuracy: 0.5571, Parameters: {'causal_loss_lambda': 0.6696180235136964, 'path_separation_margin': 0.8452031112004562, 'srl_loss_weight': 0.6600668028049939}
+2025-06-19 16:31:35,806 - INFO - Trial 49 completed. MCC: 0.0038, Accuracy: 0.5571
+2025-06-19 16:31:35,806 - INFO - Current parameters: {'causal_loss_lambda': 0.6696180235136964, 'path_separation_margin': 0.8452031112004562, 'srl_loss_weight': 0.6600668028049939}
+2025-06-19 16:31:35,816 - INFO - Current Pareto front size: 1
+2025-06-19 16:31:35,826 - INFO - 
+========================================
+Hyperparameter tuning finished!
+Number of finished trials: 50
+
+Pareto Front Solutions:
+
+Solution 1:
+  Values: MCC = 0.2103, Accuracy = 0.6357
+  Hyperparameters:
+    causal_loss_lambda: 0.45594244201742495
+    path_separation_margin: 1.103815213428419
+    srl_loss_weight: 0.8787882448996054
+
+========================================
+To use these parameters, update your 'src/config_tx_lf.yml' file and run a full training session.
+2025-06-19 16:31:35,850 - INFO - Best parameters saved to result/optuna_best_params_20250619_072556.yml

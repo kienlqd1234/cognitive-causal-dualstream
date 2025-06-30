@@ -5,3 +5,7 @@ check3d
 res/glove.twitter.27B.50d.txt
 results
 LLM_Model
+*.out
+*.err
+cuda_8.0.61_375.26_linux-run
+*.tgz

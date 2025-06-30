@@ -10,8 +10,9 @@ import sys
 
 
 class PathParser:
+
     def __init__(self, config_path):
-        self.root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+        self.root = './'
         self.log = os.path.join(self.root, config_path['log'])
 
         self.data = os.path.join(self.root, config_path['data'])
@@ -25,10 +26,7 @@ class PathParser:
         self.preprocessed = os.path.join(self.data, config_path['tweet_preprocessed'])
         self.movement = os.path.join(self.data, config_path['price'])
         self.vocab = os.path.join(self.res, config_path['vocab_tweet'])
-        
-        print(f"TX_LF - Root path: {self.root}")
-        print(f"TX_LF - Vocab path: {self.vocab}")
-        print(f"TX_LF - Vocab exists: {os.path.exists(self.vocab)}")
+
 
 def update_config(config_path):
     """Update the configuration with a new config file."""
@@ -49,7 +47,7 @@ def update_config(config_path):
     path_parser = PathParser(config_path=config['paths'])
 
 
-config_fp = os.path.join(os.path.dirname(__file__), 'config_tx_lf_dual_path.yml')
+config_fp = os.path.join(os.path.dirname(__file__), 'config_tx_lf.yml')
 #config = yaml.load(file(config_fp, 'r'))
 with open(config_fp, 'r') as config_file:
     config = yaml.load(config_file, Loader=yaml.FullLoader)
@@ -67,20 +65,16 @@ ss_size = len(stock_symbols)
 path_parser = PathParser(config_path=config['paths'])
 
 # logger
-logger = logging.getLogger('my_logger')
+logger = logging.getLogger('model_logger_tx_lf')  # Use a unique name for the tx_lf model
 
-# Check a custom attribute to ensure configuration happens only once for this logger instance
-if not getattr(logger, '_configured_by_me', False):
+# Only configure if no handlers are already present for this logger
+if not logger.hasHandlers():
     logger.setLevel(logging.DEBUG)
-
-    # Clear existing handlers, if any, to start fresh (belt-and-suspenders)
-    if logger.hasHandlers():
-        logger.handlers.clear()
 
     log_dir = os.path.dirname(path_parser.log)
     os.makedirs(log_dir, exist_ok=True)  # Create the log directory if it doesn't exist
 
-    log_fp = os.path.join(path_parser.log, '{0}.log'.format('model'))
+    log_fp = os.path.join(path_parser.log, 'model_tx_lf.log')  # Use a unique log file name for tx_lf model
     file_handler = logging.FileHandler(log_fp)
     console_handler = logging.StreamHandler(sys.stdout)
     formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
@@ -88,8 +82,7 @@ if not getattr(logger, '_configured_by_me', False):
     console_handler.setFormatter(formatter)
     logger.addHandler(file_handler)
     logger.addHandler(console_handler)
-    logger.propagate = False
-    logger._configured_by_me = True
+    logger.propagate = False  # Prevent log messages from being propagated to the root logger
 
 with io.open(str(path_parser.vocab), 'r', encoding='utf-8') as vocab_f:
     vocab = json.load(vocab_f)

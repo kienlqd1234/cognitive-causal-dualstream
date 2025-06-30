@@ -4,8 +4,9 @@ import os
 import tensorflow as tf
 import numpy as np
 import neural as neural
-#from MSINModule import MSINCell, MSIN, MSINStateTuple
-from MSINModule_MHA import MSINCell, MSIN, MSINStateTuple
+#from MSIN_caTSU_module import MSINCell, MSIN, MSINStateTuple
+from MSINModule import MSINCell, MSIN, MSINStateTuple
+#from MSINModule_MHA import MSINCell, MSIN, MSINStateTuple
 import tensorflow.contrib.distributions as ds
 from tensorflow.contrib.layers import batch_norm
 from ConfigLoader import logger, ss_size, vocab_size, config_model, path_parser
@@ -79,6 +80,7 @@ class Model:
         self.dropout_train_ce = config_model['dropout_ce']
         self.dropout_train_vmd_in = config_model['dropout_vmd_in']
         self.dropout_train_vmd = config_model['dropout_vmd']
+
 
         self.global_step = tf.Variable(0, dtype=tf.int32, trainable=False, name='global_step')
 
@@ -228,32 +230,28 @@ class Model:
         """
         
         
-        with tf.name_scope('corpus_embed'): # This scope acts as TSU
-            # The TSU now operates on msg_embed which should already be filtered by DataPipe
+        with tf.name_scope('corpus_embed'):
+            """
+            cell = msin()
+            corpus_embed = 
+            self.corpus_embed = tf.nn.dropout(corpus_embed, keep_prob=1-self.dropout_ce, name='corpus_embed')
+            """
+            
             with tf.variable_scope('u_t'):
                 proj_u = self._linear(self.msg_embed, self.msg_embed_size, 'tanh', use_bias=False)
                 w_u = tf.get_variable('w_u', shape=(self.msg_embed_size, 1), initializer=self.initializer)
-            u_scores = tf.reduce_mean(tf.tensordot(proj_u, w_u, axes=1), axis=-1)  # scores: batch_size * max_n_days * max_n_msgs
+            u = tf.reduce_mean(tf.tensordot(proj_u, w_u, axes=1), axis=-1)  # batch_size * max_n_days * max_n_msgs
 
-            # Mask for padding based on actual number of messages (n_msgs_ph now reflects relevant messages)
-            mask_msgs_padding = tf.sequence_mask(self.n_msgs_ph, maxlen=self.max_n_msgs, dtype=tf.bool, name='mask_msgs_padding')
-            
-            ninf = tf.fill(tf.shape(u_scores), -np.inf) # Use -np.inf for softmax
-            # Apply the padding mask: if it's a padding message, set score to -infinity
-            masked_score = tf.where(mask_msgs_padding, u_scores, ninf)
-            
-            # Calculate attention weights (alpha_t in some papers)
-            u_weights = tf.nn.softmax(masked_score, axis=-1) # Softmax over messages for each day
-            # Replace NaN with 0.0 (e.g., if all messages on a day are masked out by padding)
-            u_weights = tf.where(tf.is_nan(u_weights), tf.zeros_like(u_weights), u_weights)
+            mask_msgs = tf.sequence_mask(self.n_msgs_ph, maxlen=self.max_n_msgs, dtype=tf.bool, name='mask_msgs')
+            ninf = tf.fill(tf.shape(mask_msgs), np.NINF)
+            masked_score = tf.where(mask_msgs, u, ninf)
+            u = neural.softmax(masked_score)  # batch_size * max_n_days * max_n_msgs
+            u = tf.where(tf.is_nan(u), tf.zeros_like(u), u)  # replace nan with 0.0
 
-            u_weights_expanded = tf.expand_dims(u_weights, axis=-2)  # batch_size * max_n_days * 1 * max_n_msgs
-            # Weighted sum of message embeddings to get daily corpus embedding
-            corpus_embed_G = tf.matmul(u_weights_expanded, self.msg_embed)  # batch_size * max_n_days * 1 * msg_embed_size
-            self.corpus_embed = tf.squeeze(corpus_embed_G, axis=-2) # Squeeze to [batch_size, max_n_days, corpus_embed_size]
-            
-            # Optional: re-add dropout if it was originally here and is still desired
-            self.corpus_embed = tf.nn.dropout(self.corpus_embed, keep_prob=1-self.dropout_ce, name='corpus_embed_dropout')
+            u = tf.expand_dims(u, axis=-2)  # batch_size * max_n_days * 1 * max_n_msgs
+            corpus_embed = tf.matmul(u, self.msg_embed)  # batch_size * max_n_days * 1 * msg_embed_size
+            corpus_embed = tf.reduce_mean(corpus_embed, axis=-2)  # batch_size * max_n_days * msg_embed_size
+            self.corpus_embed = tf.nn.dropout(corpus_embed, keep_prob=1-self.dropout_ce, name='corpus_embed')
 
     def _build_mie(self):
         """
@@ -278,7 +276,13 @@ class Model:
                 cell = MSINCell(input_size=self.price_size ,num_units= self.msin_h_size, v_size= self.msg_embed_size, max_n_msgs=self.max_n_msgs)
                 msin = MSIN()
                 #self.x, state = msin.dynamic_msin(cell = cell, inputs = self.price, s_inputs = self.msg_embed, sequence_length=self.T_ph, initial_state=initial_state, dtype=tf.float32)
-                self.x, self.P, state = msin.dynamic_msin(cell = cell, inputs = self.price, s_inputs = self.msg_embed, sequence_length=self.T_ph, initial_state=initial_state, dtype=tf.float32)
+                #self.x, self.P, state = msin.dynamic_msin(cell = cell, inputs = self.price, s_inputs = self.msg_embed, sequence_length=self.T_ph, initial_state=initial_state, dtype=tf.float32)
+                # Update to capture alpha
+                self.x, self.P, state = msin.dynamic_msin(cell=cell, inputs=self.price, s_inputs=self.msg_embed, sequence_length=self.T_ph, initial_state=initial_state, dtype=tf.float32)
+                
+                # Store omega_i (original attention) for executor
+                #self.omega_i = self.P
+                
                 #self.x = tf.concat([self.corpus_embed , self.price], axis=2)
                 #self.x_size = self.corpus_embed_size + self.price_size
                 """
@@ -689,7 +693,9 @@ class Model:
 
                 obj = obj_T + tf.reduce_sum(tf.multiply(obj_aux, v_aux), axis=1, keep_dims=True)  # batch_size * 1
                 self.loss = tf.reduce_mean(-obj, axis=[0, 1])
-                '''
+                
+                #L2 loss
+                lambda_L2 = 0.1  # Choose a value between 0.05 and 0.2
                 msg_num = tf.to_float(tf.tile(tf.expand_dims(self.n_msgs_ph, axis=-1),[1,1,self.max_n_msgs]))
                 new_P = tf.clip_by_value(self.P, 1e-30, 1)
                 msg_num = tf.clip_by_value(tf.log(msg_num), 1e-30, 30)
@@ -700,9 +706,8 @@ class Model:
                 nonzero = tf.to_float(tf.count_nonzero(self.n_msgs_ph,axis=-1))
                 P_obj = tf.divide(P_obj, nonzero)
 
-                self.loss = self.loss +  tf.reduce_mean(-P_obj)
-                '''
-        
+                self.loss = self.loss +  lambda_L2 * tf.reduce_mean(-P_obj)
+   
                 
     def _create_discriminative_ata(self):
         """

@@ -533,7 +533,6 @@ class MSIN(object):
             output = nest.flatten(output)
             P = nest.flatten(P)
 
-
             if self.in_graph_mode:
                 output_ta_t = tuple(
                 ta.write(time, out) for ta, out in zip(output_ta_t, output))

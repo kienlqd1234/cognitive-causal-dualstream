@@ -1,0 +1,619 @@
+2025-06-19 07:13:38,457 - INFO - Starting hyperparameter tuning. Results will be saved to result/optuna_tuning_20250619_071338.log
+2025-06-19 07:13:44,886 - ERROR - Trial 0 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:13:44,889 - INFO - Trial 0 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:13:44,889 - INFO - Current parameters: {'causal_loss_lambda': 1.3472744093670377, 'path_separation_margin': 1.4224269837264616, 'srl_loss_weight': 0.13994434773108905}
+2025-06-19 07:13:44,889 - INFO - Current Pareto front size: 1
+2025-06-19 07:13:51,663 - ERROR - Trial 1 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:13:51,665 - INFO - Trial 1 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:13:51,665 - INFO - Current parameters: {'causal_loss_lambda': 0.8228852383017986, 'path_separation_margin': 1.3988717274845879, 'srl_loss_weight': 0.13047261352912418}
+2025-06-19 07:13:51,666 - INFO - Current Pareto front size: 2
+2025-06-19 07:13:57,856 - ERROR - Trial 2 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:13:57,858 - INFO - Trial 2 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:13:57,858 - INFO - Current parameters: {'causal_loss_lambda': 0.6754653498785884, 'path_separation_margin': 0.8716604602553628, 'srl_loss_weight': 0.5626362807336843}
+2025-06-19 07:13:57,859 - INFO - Current Pareto front size: 3
+2025-06-19 07:14:04,586 - ERROR - Trial 3 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:14:04,588 - INFO - Trial 3 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:14:04,588 - INFO - Current parameters: {'causal_loss_lambda': 0.13000666809024672, 'path_separation_margin': 0.7899681059453729, 'srl_loss_weight': 0.45783647549403006}
+2025-06-19 07:14:04,588 - INFO - Current Pareto front size: 4
+2025-06-19 07:14:11,025 - ERROR - Trial 4 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:14:11,027 - INFO - Trial 4 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:14:11,027 - INFO - Current parameters: {'causal_loss_lambda': 0.11847373798878244, 'path_separation_margin': 1.4381110110564657, 'srl_loss_weight': 0.05093084182587562}
+2025-06-19 07:14:11,027 - INFO - Current Pareto front size: 5
+2025-06-19 07:14:19,317 - ERROR - Trial 5 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:14:19,321 - INFO - Trial 5 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:14:19,321 - INFO - Current parameters: {'causal_loss_lambda': 0.5935215384498317, 'path_separation_margin': 0.7168401068568866, 'srl_loss_weight': 0.71180472423564}
+2025-06-19 07:14:19,324 - INFO - Current Pareto front size: 6
+2025-06-19 07:14:25,482 - ERROR - Trial 6 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:14:25,483 - INFO - Trial 6 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:14:25,483 - INFO - Current parameters: {'causal_loss_lambda': 1.1335327735001892, 'path_separation_margin': 1.0100222126902358, 'srl_loss_weight': 0.5988406990498614}
+2025-06-19 07:14:25,484 - INFO - Current Pareto front size: 7
+2025-06-19 07:14:31,721 - ERROR - Trial 7 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:14:31,723 - INFO - Trial 7 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:14:31,723 - INFO - Current parameters: {'causal_loss_lambda': 0.35006042225214345, 'path_separation_margin': 1.2370267923051554, 'srl_loss_weight': 0.06357102612260526}
+2025-06-19 07:14:31,724 - INFO - Current Pareto front size: 8
+2025-06-19 07:14:38,092 - ERROR - Trial 8 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:14:38,215 - INFO - Trial 8 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:14:38,215 - INFO - Current parameters: {'causal_loss_lambda': 0.1270957130200213, 'path_separation_margin': 1.5778438805103514, 'srl_loss_weight': 0.8396486940690067}
+2025-06-19 07:14:38,220 - INFO - Current Pareto front size: 9
+2025-06-19 07:14:45,090 - ERROR - Trial 9 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:14:45,187 - INFO - Trial 9 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:14:45,187 - INFO - Current parameters: {'causal_loss_lambda': 0.6866693929805603, 'path_separation_margin': 0.799148307111474, 'srl_loss_weight': 0.3077900058556739}
+2025-06-19 07:14:45,192 - INFO - Current Pareto front size: 10
+2025-06-19 07:14:51,562 - ERROR - Trial 10 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:14:51,565 - INFO - Trial 10 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:14:51,565 - INFO - Current parameters: {'causal_loss_lambda': 0.35049222019328813, 'path_separation_margin': 0.7105544939620819, 'srl_loss_weight': 0.8434167528695946}
+2025-06-19 07:14:51,567 - INFO - Current Pareto front size: 11
+2025-06-19 07:14:58,212 - ERROR - Trial 11 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:14:58,214 - INFO - Trial 11 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:14:58,214 - INFO - Current parameters: {'causal_loss_lambda': 1.0850409787030126, 'path_separation_margin': 1.0187323279060605, 'srl_loss_weight': 0.2820697022370666}
+2025-06-19 07:14:58,216 - INFO - Current Pareto front size: 12
+2025-06-19 07:15:04,575 - ERROR - Trial 12 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:15:04,576 - INFO - Trial 12 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:15:04,576 - INFO - Current parameters: {'causal_loss_lambda': 0.2610751077788682, 'path_separation_margin': 1.5725947454394302, 'srl_loss_weight': 0.3414232485082297}
+2025-06-19 07:15:04,578 - INFO - Current Pareto front size: 13
+2025-06-19 07:15:11,513 - ERROR - Trial 13 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:15:11,515 - INFO - Trial 13 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:15:11,515 - INFO - Current parameters: {'causal_loss_lambda': 1.9944388156621928, 'path_separation_margin': 1.3662889929194053, 'srl_loss_weight': 0.5912252270490762}
+2025-06-19 07:15:11,517 - INFO - Current Pareto front size: 14
+2025-06-19 07:15:17,958 - ERROR - Trial 14 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:15:17,960 - INFO - Trial 14 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:15:17,960 - INFO - Current parameters: {'causal_loss_lambda': 0.38116846782768, 'path_separation_margin': 0.7032585858094795, 'srl_loss_weight': 0.2163028693067244}
+2025-06-19 07:15:17,962 - INFO - Current Pareto front size: 15
+2025-06-19 07:15:25,952 - ERROR - Trial 15 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:15:25,956 - INFO - Trial 15 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:15:25,956 - INFO - Current parameters: {'causal_loss_lambda': 0.47735084735742284, 'path_separation_margin': 1.8360480565024266, 'srl_loss_weight': 0.8320517574756546}
+2025-06-19 07:15:25,963 - INFO - Current Pareto front size: 16
+2025-06-19 07:15:32,887 - ERROR - Trial 16 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:15:33,139 - INFO - Trial 16 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:15:33,139 - INFO - Current parameters: {'causal_loss_lambda': 0.3785232264745189, 'path_separation_margin': 0.867626933809755, 'srl_loss_weight': 0.09093462896827849}
+2025-06-19 07:15:33,148 - INFO - Current Pareto front size: 17
+2025-06-19 07:15:40,909 - ERROR - Trial 17 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:15:41,007 - INFO - Trial 17 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:15:41,007 - INFO - Current parameters: {'causal_loss_lambda': 0.8664331309918565, 'path_separation_margin': 1.1477447866466197, 'srl_loss_weight': 0.1132216644305087}
+2025-06-19 07:15:41,014 - INFO - Current Pareto front size: 18
+2025-06-19 07:15:47,552 - ERROR - Trial 18 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:15:47,672 - INFO - Trial 18 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:15:47,672 - INFO - Current parameters: {'causal_loss_lambda': 0.2480602952879999, 'path_separation_margin': 1.2088303893160837, 'srl_loss_weight': 0.9589382560819844}
+2025-06-19 07:15:47,680 - INFO - Current Pareto front size: 19
+2025-06-19 07:15:54,149 - ERROR - Trial 19 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:15:54,150 - INFO - Trial 19 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:15:54,151 - INFO - Current parameters: {'causal_loss_lambda': 1.0854221386315386, 'path_separation_margin': 1.6589349843728924, 'srl_loss_weight': 0.8458209181589221}
+2025-06-19 07:15:54,153 - INFO - Current Pareto front size: 20
+2025-06-19 07:16:00,819 - ERROR - Trial 20 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:16:00,821 - INFO - Trial 20 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:16:00,821 - INFO - Current parameters: {'causal_loss_lambda': 0.11458053213110247, 'path_separation_margin': 0.6690600346515494, 'srl_loss_weight': 0.2271849206364406}
+2025-06-19 07:16:00,824 - INFO - Current Pareto front size: 21
+2025-06-19 07:16:07,281 - ERROR - Trial 21 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:16:07,283 - INFO - Trial 21 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:16:07,283 - INFO - Current parameters: {'causal_loss_lambda': 0.5576495413769046, 'path_separation_margin': 0.5635430298613494, 'srl_loss_weight': 0.5244662659191535}
+2025-06-19 07:16:07,286 - INFO - Current Pareto front size: 22
+2025-06-19 07:16:14,066 - ERROR - Trial 22 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:16:14,068 - INFO - Trial 22 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:16:14,068 - INFO - Current parameters: {'causal_loss_lambda': 0.13777350807654234, 'path_separation_margin': 1.6070700670846325, 'srl_loss_weight': 0.24526799591393542}
+2025-06-19 07:16:14,071 - INFO - Current Pareto front size: 23
+2025-06-19 07:16:21,951 - ERROR - Trial 23 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:16:21,953 - INFO - Trial 23 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:16:21,953 - INFO - Current parameters: {'causal_loss_lambda': 0.4863602172749382, 'path_separation_margin': 0.6155056157572043, 'srl_loss_weight': 0.20259154384536057}
+2025-06-19 07:16:21,956 - INFO - Current Pareto front size: 24
+2025-06-19 07:16:28,438 - ERROR - Trial 24 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:16:28,443 - INFO - Trial 24 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:16:28,443 - INFO - Current parameters: {'causal_loss_lambda': 0.12952217517756992, 'path_separation_margin': 1.9937458645514419, 'srl_loss_weight': 0.33081368330398636}
+2025-06-19 07:16:28,451 - INFO - Current Pareto front size: 25
+2025-06-19 07:16:36,036 - ERROR - Trial 25 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:16:36,118 - INFO - Trial 25 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:16:36,119 - INFO - Current parameters: {'causal_loss_lambda': 0.19105634626827916, 'path_separation_margin': 1.2682685041953639, 'srl_loss_weight': 0.23907452138760926}
+2025-06-19 07:16:36,128 - INFO - Current Pareto front size: 26
+2025-06-19 07:16:42,706 - ERROR - Trial 26 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:16:42,709 - INFO - Trial 26 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:16:42,709 - INFO - Current parameters: {'causal_loss_lambda': 0.9975023812828768, 'path_separation_margin': 1.7241228907725876, 'srl_loss_weight': 0.05843804315721091}
+2025-06-19 07:16:42,713 - INFO - Current Pareto front size: 27
+2025-06-19 07:16:49,378 - ERROR - Trial 27 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:16:49,381 - INFO - Trial 27 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:16:49,381 - INFO - Current parameters: {'causal_loss_lambda': 0.386672762793792, 'path_separation_margin': 1.3832866756438957, 'srl_loss_weight': 0.1541569125285383}
+2025-06-19 07:16:49,385 - INFO - Current Pareto front size: 28
+2025-06-19 07:16:55,653 - ERROR - Trial 28 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:16:55,654 - INFO - Trial 28 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:16:55,655 - INFO - Current parameters: {'causal_loss_lambda': 0.6886250178421747, 'path_separation_margin': 1.4039295918334311, 'srl_loss_weight': 0.5752713073290308}
+2025-06-19 07:16:55,659 - INFO - Current Pareto front size: 29
+2025-06-19 07:17:02,984 - ERROR - Trial 29 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:17:02,986 - INFO - Trial 29 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:17:02,986 - INFO - Current parameters: {'causal_loss_lambda': 0.14187898581204325, 'path_separation_margin': 1.3883614584189203, 'srl_loss_weight': 0.07326328254180607}
+2025-06-19 07:17:02,990 - INFO - Current Pareto front size: 30
+2025-06-19 07:17:09,419 - ERROR - Trial 30 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:17:09,421 - INFO - Trial 30 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:17:09,421 - INFO - Current parameters: {'causal_loss_lambda': 0.14872710387671373, 'path_separation_margin': 1.4801213290985056, 'srl_loss_weight': 0.08024803193511129}
+2025-06-19 07:17:09,425 - INFO - Current Pareto front size: 31
+2025-06-19 07:17:15,825 - ERROR - Trial 31 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:17:15,826 - INFO - Trial 31 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:17:15,826 - INFO - Current parameters: {'causal_loss_lambda': 0.7792257786778689, 'path_separation_margin': 0.8586679887253437, 'srl_loss_weight': 0.1791714966955664}
+2025-06-19 07:17:15,831 - INFO - Current Pareto front size: 32
+2025-06-19 07:17:22,808 - ERROR - Trial 32 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:17:22,810 - INFO - Trial 32 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:17:22,810 - INFO - Current parameters: {'causal_loss_lambda': 0.4994200033095263, 'path_separation_margin': 1.2328596603194322, 'srl_loss_weight': 0.05363642405937095}
+2025-06-19 07:17:22,954 - INFO - Current Pareto front size: 33
+2025-06-19 07:17:29,134 - ERROR - Trial 33 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:17:29,136 - INFO - Trial 33 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:17:29,136 - INFO - Current parameters: {'causal_loss_lambda': 0.10855846675575834, 'path_separation_margin': 1.4391338762539008, 'srl_loss_weight': 0.08484936959271665}
+2025-06-19 07:17:29,141 - INFO - Current Pareto front size: 34
+2025-06-19 07:17:36,585 - ERROR - Trial 34 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:17:36,762 - INFO - Trial 34 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:17:36,762 - INFO - Current parameters: {'causal_loss_lambda': 0.8447371344668824, 'path_separation_margin': 0.6694549239974971, 'srl_loss_weight': 0.106590264360806}
+2025-06-19 07:17:36,776 - INFO - Current Pareto front size: 35
+2025-06-19 07:17:43,874 - ERROR - Trial 35 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:17:44,129 - INFO - Trial 35 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:17:44,129 - INFO - Current parameters: {'causal_loss_lambda': 1.5235743808125384, 'path_separation_margin': 1.219710247232651, 'srl_loss_weight': 0.1611232847580816}
+2025-06-19 07:17:44,141 - INFO - Current Pareto front size: 36
+2025-06-19 07:17:52,009 - ERROR - Trial 36 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:17:52,195 - INFO - Trial 36 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:17:52,196 - INFO - Current parameters: {'causal_loss_lambda': 0.20072924148511612, 'path_separation_margin': 1.9100526393210469, 'srl_loss_weight': 0.3737391922289575}
+2025-06-19 07:17:52,209 - INFO - Current Pareto front size: 37
+2025-06-19 07:17:59,154 - ERROR - Trial 37 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:17:59,156 - INFO - Trial 37 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:17:59,156 - INFO - Current parameters: {'causal_loss_lambda': 0.800586742030205, 'path_separation_margin': 1.4650052745458264, 'srl_loss_weight': 0.31694627653425256}
+2025-06-19 07:17:59,161 - INFO - Current Pareto front size: 38
+2025-06-19 07:18:05,565 - ERROR - Trial 38 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:18:05,566 - INFO - Trial 38 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:18:05,566 - INFO - Current parameters: {'causal_loss_lambda': 0.7495255569659048, 'path_separation_margin': 1.9768685889659334, 'srl_loss_weight': 0.060285566716731326}
+2025-06-19 07:18:05,572 - INFO - Current Pareto front size: 39
+2025-06-19 07:18:15,391 - ERROR - Trial 39 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:18:15,394 - INFO - Trial 39 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:18:15,394 - INFO - Current parameters: {'causal_loss_lambda': 0.16887799519684552, 'path_separation_margin': 1.8882095152891485, 'srl_loss_weight': 0.8084147882868992}
+2025-06-19 07:18:15,399 - INFO - Current Pareto front size: 40
+2025-06-19 07:18:24,109 - ERROR - Trial 40 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:18:24,111 - INFO - Trial 40 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:18:24,111 - INFO - Current parameters: {'causal_loss_lambda': 0.2769415811145025, 'path_separation_margin': 1.7329448515430534, 'srl_loss_weight': 0.25784437168391583}
+2025-06-19 07:18:24,117 - INFO - Current Pareto front size: 41
+2025-06-19 07:18:33,349 - ERROR - Trial 41 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:18:33,811 - INFO - Trial 41 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:18:33,811 - INFO - Current parameters: {'causal_loss_lambda': 0.20842406341633712, 'path_separation_margin': 1.0485031565630214, 'srl_loss_weight': 0.16278771300091655}
+2025-06-19 07:18:33,825 - INFO - Current Pareto front size: 42
+2025-06-19 07:18:43,131 - ERROR - Trial 42 failed with error: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 567, in init_word_table
+    with io.open(self.glove_path, 'r', encoding='utf-8') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/media02/tvquy/PEN/res/glove.twitter.27B.50d.txt'
+2025-06-19 07:18:45,178 - INFO - Trial 42 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:18:45,178 - INFO - Current parameters: {'causal_loss_lambda': 0.17133010226003012, 'path_separation_margin': 0.5040787596619848, 'srl_loss_weight': 0.9869473319289335}
+2025-06-19 07:18:45,192 - INFO - Current Pareto front size: 43
+2025-06-19 07:21:14,482 - ERROR - Trial 43 failed with error: 'utf-8' codec can't decode byte 0xd8 in position 0: unexpected end of data
+Traceback (most recent call last):
+  File "src/tune_hyperparameters.py", line 74, in objective
+    evaluation_results = executor.run()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 346, in run
+    return self.train_and_dev()
+  File "/media02/tvquy/PEN/src/Executor_tx_lf_dual_path.py", line 195, in train_and_dev
+    feed_table_init = {self.model.word_table_init: self.pipe.init_word_table()}
+  File "/media02/tvquy/PEN/src/DataPipe.py", line 568, in init_word_table
+    for line in f:
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/codecs.py", line 321, in decode
+    (result, consumed) = self._buffer_decode(data, self.errors, final)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xd8 in position 0: unexpected end of data
+2025-06-19 07:21:14,504 - INFO - Trial 43 completed. MCC: -1.0000, Accuracy: -1.0000
+2025-06-19 07:21:14,504 - INFO - Current parameters: {'causal_loss_lambda': 0.20606387172365012, 'path_separation_margin': 0.5637543950667989, 'srl_loss_weight': 0.18467751440243613}
+2025-06-19 07:21:14,514 - INFO - Current Pareto front size: 44

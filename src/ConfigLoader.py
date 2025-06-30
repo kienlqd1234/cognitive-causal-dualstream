@@ -65,7 +65,7 @@ ss_size = len(stock_symbols)
 path_parser = PathParser(config_path=config['paths'])
 
 # logger
-logger = logging.getLogger('my_logger')
+logger = logging.getLogger('model_logger')  # Use a unique name for each model
 
 # Only configure if no handlers are already present for this logger
 if not logger.hasHandlers():
@@ -74,7 +74,7 @@ if not logger.hasHandlers():
     log_dir = os.path.dirname(path_parser.log)
     os.makedirs(log_dir, exist_ok=True)  # Create the log directory if it doesn't exist
 
-    log_fp = os.path.join(path_parser.log, '{0}.log'.format('model'))
+    log_fp = os.path.join(path_parser.log, 'model.log')  # Use a unique log file name
     file_handler = logging.FileHandler(log_fp)
     console_handler = logging.StreamHandler(sys.stdout)
     formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
@@ -82,7 +82,7 @@ if not logger.hasHandlers():
     console_handler.setFormatter(formatter)
     logger.addHandler(file_handler)
     logger.addHandler(console_handler)
-    # Consider adding logger.propagate = False if this configuration is applied
+    logger.propagate = False  # Prevent log messages from being propagated to the root logger
 
 with io.open(str(path_parser.vocab), 'r', encoding='utf-8') as vocab_f:
     vocab = json.load(vocab_f)

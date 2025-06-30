@@ -1,180 +1,90 @@
-LLM_SETTINGS:
-  nli_model_name: bert-base-uncased
-dates:
-  dev_end_date: '2015-10-01'
-  dev_start_date: '2015-08-01'
-  test_end_date: '2016-01-01'
-  test_start_date: '2015-10-01'
-  train_end_date: '2015-08-01'
-  train_start_date: '2014-01-01'
+---
 model:
-  alpha: 0.5
-  batch_size: 32
-  ca_tsu_weight: 0.3
-  causal_loss_lambda: 0.3
-  clip: 15.0
-  consistency_loss_weight: 0.05
-  constant_kl_lambda: 0.1
-  daily_att: y
-  decay_rate: 0.96
-  decay_step: 100
-  dropout_ce: 0.0
-  dropout_mel: 0.0
-  dropout_mel_in: 0.3
-  dropout_vmd: 0.0
+  mode: 'all'
+  variant_type: 'hedge' # hedge, tech, fund, discriminative
+  alpha: 0.5 # 0.1, 0.3, 0.5, 0.7, 0.9, 1.0
   dropout_vmd_in: 0.3
-  enhanced_srl_weight: 0.1
-  entropy_regularization_lambda: 0.001
-  g_size: 50
-  h_size: 150
-  init_stock_with_word: 0
-  kl_lambda_anneal_rate: 0.005
+  dropout_mel_in: 0.3
+  n_epochs: 10
+  batch_size: 32
+
+
+  kl_lambda_anneal_rate: 0.005  # 0.005, 0.002, 0.001, 0.0005
   kl_lambda_start_step: 0
+  daily_att: 'y'  # y, g
+
+  vmd_rec: 'zh'  # zh or h
+
+  opt: 'adam'  # sgd, adam
   lr: 0.001
+  clip: 15.0
+
+  y_size: 2
+  use_constant_kl_lambda: 0
+  constant_kl_lambda: 0.1
+
+  word_embed_type: 'glove'
+  weight_init: 'xavier-uniform'
+  mel_cell_type: 'gru'  # basic, gru, ln-lstm
+  vmd_cell_type: 'gru'  # basic, gru, ln-lstm
+
+  word_embed_size: 50
+  stock_embed_size: 150
+  init_stock_with_word: 0
+  mel_h_size: 100
+  msin_h_size: 100
+  h_size: 150
+  g_size: 50
+
+  shuffle: 1
   max_n_days: 5
   max_n_msgs: 20
   max_n_words: 30
-  mel_cell_type: gru
-  mel_h_size: 100
-  mode: all
+
+  decay_step: 100
+  decay_rate: 0.96
   momentum: 0.9
-  msin_h_size: 100
-  n_epochs: 10
-  noise_aware_weight: 0.5
-  opt: adam
-  path_separation_margin: 0.8
-  pathway_competition_type: dynamic
-  prediction_loss_weight: 0.1
-  residual_connection_weight: 0.1
-  shuffle: 1
-  stock_embed_size: 150
-  td_temporal_attention: true
-  use_ca_tsu: true
-  use_constant_kl_lambda: 0
-  use_dual_path_srl: true
-  use_enhanced_srl: true
-  use_g_bn: 0
+
   use_in_bn: 0
-  use_noise_aware_loss: true
   use_o_bn: 0
-  variant_type: hedge
-  vmd_cell_type: gru
-  vmd_rec: zh
-  volatility_adaptation_factor: 0.3
-  volatility_reg_weight: 0.05
-  weight_init: xavier-uniform
-  word_embed_size: 50
-  word_embed_type: glove
-  y_size: 2
-paths:
-  checkpoints: checkpoints_tx_lf_dual_path
-  data: data/
-  glove: glove.twitter.27B.50d.txt
-  graphs: graphs_tx_lf_dual_path
-  log: log_tx_lf_dual_path
-  price: price/preprocessed
-  res: res/
-  tweet_preprocessed: tweet/preprocessed
-  tweet_retrieved: tweet/raw
-  vocab_tweet: vocab.txt
+  use_g_bn: 0
+  dropout_mel: 0.0
+  dropout_ce: 0.0
+  dropout_vmd: 0.0
+
+  # Cross-pathway communication settings
+  enable_cross_pathway: True
+  causal_to_responsive_strength: 0.5  # Strength of causal pathway influence on responsive
+  responsive_to_causal_strength: 0.3  # Strength of responsive pathway influence on causal
+
+dates:
+  train_start_date: '2014-01-01'
+  train_end_date: '2015-08-01'
+  dev_start_date: '2015-08-01'
+  dev_end_date: '2015-10-01'
+  test_start_date: '2015-10-01'
+  test_end_date: '2016-01-01'
+
 stocks:
-  cong:
-  - IEP
-  - HRG
-  - CODI
-  - REX
-  - SPLP
-  - PICO
-  - AGFS
-  - GMRE
-  consumer_goods:
-  - AAPL
-  - PG
-  - BUD
-  - KO
-  - PM
-  - TM
-  - PEP
-  - UN
-  - UL
-  - MO
-  finance:
-  - BCH
-  - BSAC
-  - BRK-A
-  - JPM
-  - WFC
-  - BAC
-  - V
-  - C
-  - HSBC
-  - MA
-  healthcare:
-  - JNJ
-  - PFE
-  - NVS
-  - UNH
-  - MRK
-  - AMGN
-  - MDT
-  - ABBV
-  - SNY
-  - CELG
-  industrial_goods:
-  - GE
-  - MMM
-  - BA
-  - HON
-  - UTX
-  - LMT
-  - CAT
-  - GD
-  - DHR
-  - ABB
-  materials:
-  - XOM
-  - RDS-B
-  - PTR
-  - CVX
-  - TOT
-  - BP
-  - BHP
-  - SNP
-  - SLB
-  - BBL
-  services:
-  - AMZN
-  - BABA
-  - WMT
-  - CMCSA
-  - HD
-  - DIS
-  - MCD
-  - CHTR
-  - UPS
-  - PCLN
-  tech:
-  - GOOG
-  - MSFT
-  - FB
-  - T
-  - CHL
-  - ORCL
-  - TSM
-  - VZ
-  - INTC
-  - CSCO
-  utilities:
-  - NEE
-  - DUK
-  - D
-  - SO
-  - NGG
-  - AEP
-  - PCG
-  - EXC
-  - SRE
-  - PPL
-test_config:
-  eval_steps: 10
-  max_test_steps: 50
+  materials: ['XOM', 'RDS-B', 'PTR', 'CVX', 'TOT', 'BP', 'BHP', 'SNP', 'SLB', 'BBL']
+  consumer_goods: ['AAPL', 'PG', 'BUD', 'KO', 'PM', 'TM', 'PEP', 'UN', 'UL', 'MO']
+  healthcare: ['JNJ', 'PFE', 'NVS', 'UNH', 'MRK', 'AMGN', 'MDT', 'ABBV', 'SNY', 'CELG']
+  services: ['AMZN', 'BABA', 'WMT', 'CMCSA', 'HD', 'DIS', 'MCD', 'CHTR', 'UPS', 'PCLN']
+  utilities: ['NEE', 'DUK', 'D', 'SO', 'NGG', 'AEP', 'PCG', 'EXC', 'SRE', 'PPL']
+  cong: ['IEP', 'HRG', 'CODI', 'REX', 'SPLP', 'PICO', 'AGFS', 'GMRE']
+  finance: ['BCH', 'BSAC', 'BRK-A', 'JPM', 'WFC', 'BAC', 'V', 'C', 'HSBC', 'MA']
+  industrial_goods: ['GE', 'MMM', 'BA', 'HON', 'UTX', 'LMT', 'CAT', 'GD', 'DHR', 'ABB']
+  tech: ['GOOG', 'MSFT', 'FB', 'T', 'CHL', 'ORCL', 'TSM', 'VZ', 'INTC', 'CSCO']
+LLM_SETTINGS:
+  nli_model_name: "bert-base-uncased"
+paths:
+  data: 'data/'
+  tweet_retrieved: 'tweet/raw'
+  tweet_preprocessed: 'tweet/preprocessed'
+  price: 'price/preprocessed'
+  res: 'res/'
+  glove: 'glove.twitter.27B.50d.txt'
+  vocab_tweet: 'vocab.txt'
+  graphs: 'graphs'
+  checkpoints:  'checkpoints_tx_lf_dual_path'
+  log: 'log/'

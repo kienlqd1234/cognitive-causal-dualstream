@@ -4,8 +4,9 @@ import os
 import tensorflow as tf
 import numpy as np
 import neural as neural
+from MSINModule_caTSU import MSINCell, MSIN, MSINStateTuple
 #from MSINModule import MSINCell, MSIN, MSINStateTuple
-from MSINModule_MHA import MSINCell, MSIN, MSINStateTuple
+#from MSINModule_MHA import MSINCell, MSIN, MSINStateTuple
 import tensorflow.contrib.distributions as ds
 from tensorflow.contrib.layers import batch_norm
 from ConfigLoader_tx_lf import logger, ss_size, vocab_size, config_model, path_parser
@@ -35,9 +36,6 @@ class Model:
 
         self.daily_att = config_model['daily_att']
         self.alpha = config_model['alpha']
-
-        self.entropy_regularization_lambda = config_model.get('entropy_regularization_lambda', 0.0)
-        self.causal_loss_lambda = config_model.get('causal_loss_lambda', 1.0)
 
         self.clip = config_model['clip']
         self.n_epochs = config_model['n_epochs']
@@ -83,6 +81,13 @@ class Model:
         self.dropout_train_vmd_in = config_model['dropout_vmd_in']
         self.dropout_train_vmd = config_model['dropout_vmd']
 
+        self.consistency_lambda_anneal_rate = config_model['consistency_lambda_anneal_rate']
+        self.consistency_lambda_start_step = config_model['consistency_lambda_start_step']
+        self.use_constant_consistency_lambda = config_model['use_constant_consistency_lambda']
+        self.constant_consistency_lambda = config_model['constant_consistency_lambda']
+        self.consistency_lambda_min = config_model['consistency_lambda_min']
+        self.consistency_lambda_max = config_model['consistency_lambda_max']
+
         self.global_step = tf.Variable(0, dtype=tf.int32, trainable=False, name='global_step')
 
         # model name
@@ -98,7 +103,9 @@ class Model:
         name_pattern_train = 'batch-{0}.opt-{1}.lr-{2}-drop-{3}-cell-{4}-tmp'
         name_train = name_pattern_train.format(self.batch_size_for_name, self.opt, self.lr, self.dropout_train_mel_in, self.mel_cell_type)
 
-        name_tuple = (self.mode, name_max_n, name_input_type, name_key, name_train)
+        type_name = 'ca-tsu'
+
+        name_tuple = (self.mode, name_max_n, name_input_type, name_key, name_train, type_name)
         self.model_name = '_'.join(name_tuple)
 
         # paths
@@ -177,228 +184,134 @@ class Model:
             """
                 daily_in: max_n_msgs * max_n_words * word_embed_size
             """
-            current_batch_size = tf.shape(daily_in)[0] # This is max_n_msgs for the current day
+            out, _ = tf.nn.bidirectional_dynamic_rnn(mel_cell_f, mel_cell_b, daily_in, daily_mask,
+                                                     mel_init_f, mel_init_b, dtype=tf.float32)
+            out_f, out_b = out
+            ss_indices = tf.reshape(daily_ss_index_vec, [-1, 1])
 
-            # Create initial states for this specific call, matching the "batch size" of messages for the day
-            mel_init_f_daily = mel_cell_f.zero_state(current_batch_size, dtype=tf.float32)
-            mel_init_b_daily = mel_cell_b.zero_state(current_batch_size, dtype=tf.float32)
+            msg_ids = tf.constant(list(range(0, self.max_n_msgs)), dtype=tf.int32, shape=[self.max_n_msgs, 1])  # [0, 1, 2, ...]
+            out_id = tf.concat([msg_ids, ss_indices], axis=1)
+            # fw, bw and average
+            mel_h_f, mel_h_b = tf.gather_nd(out_f, out_id), tf.gather_nd(out_b, out_id)
+            msg_embed = (mel_h_f + mel_h_b) / 2
 
-            # The daily_mask (n_words_ph for the day) serves as the sequence_length for the RNN
-            _, (final_state_fw, final_state_bw) = tf.nn.bidirectional_dynamic_rnn(
-                cell_fw=mel_cell_f,
-                cell_bw=mel_cell_b,
-                inputs=daily_in,
-                sequence_length=daily_mask, # n_words for each message
-                initial_state_fw=mel_init_f_daily,
-                initial_state_bw=mel_init_b_daily,
-                dtype=tf.float32
-            )
-
-            if self.mel_cell_type in ('ln-lstm', 'basic'): # LSTM cells return LSTMStateTuple
-                msg_embed_fw = final_state_fw.h
-                msg_embed_bw = final_state_bw.h
-            else: # GRU cells return the state directly
-                msg_embed_fw = final_state_fw
-                msg_embed_bw = final_state_bw
-            
-            msg_embed = (msg_embed_fw + msg_embed_bw) / 2.0
             return msg_embed
 
         def _for_one_sample(sample, sample_ss_index, sample_mask):
-            # sample_mask here is n_words_ph for that sample: [max_n_days, max_n_msgs]
-            # sample_ss_index here is ss_index_ph for that sample: [max_n_days, max_n_msgs]
-            # We need to pass the correct mask to _for_one_trading_day, which is n_msgs for each day
-            # The current sample_mask for neural.iter is n_words_ph, which is [max_n_days, max_n_msgs]
-            # _for_one_trading_day expects daily_mask to be the n_words for each of the max_n_msgs messages.
             return neural.iter(size=self.max_n_days, func=_for_one_trading_day,
-                               iter_arg=sample,             # daily_in: [max_n_msgs, max_n_words, word_embed_size]
-                               iter_arg2=sample_ss_index,   # daily_ss_index_vec (unused)
-                               iter_arg3=sample_mask)      # daily_mask: [max_n_msgs] (n_words for each msg)
+                               iter_arg=sample, iter_arg2=sample_ss_index, iter_arg3=sample_mask)
 
         def _for_one_batch():
-            # self.n_words_ph has shape [batch_size, max_n_days, max_n_msgs]
             return neural.iter(size=self.batch_size, func=_for_one_sample,
-                               iter_arg=self.mel_in,       # word_embed for the batch
-                               iter_arg2=self.ss_index_ph, # ss_index_ph for the batch
-                               iter_arg3=self.n_words_ph)  # n_words_ph for the batch
+                               iter_arg=self.mel_in, iter_arg2=self.ss_index_ph, iter_arg3=self.n_words_ph)
 
         with tf.name_scope('mel'):
-            with tf.variable_scope('mel_iter', reuse=tf.AUTO_REUSE): # Removed reuse=True
+            with tf.variable_scope('mel_iter', reuse=tf.AUTO_REUSE):
                 if self.mel_cell_type == 'ln-lstm':
-                    mel_cell_f = tf.contrib.rnn.LayerNormBasicLSTMCell(self.mel_h_size, layer_norm=True,
-                                                                       dropout_keep_prob=1-self.dropout_mel) # Removed reuse=True
-                    mel_cell_b = tf.contrib.rnn.LayerNormBasicLSTMCell(self.mel_h_size, layer_norm=True,
-                                                                       dropout_keep_prob=1-self.dropout_mel) # Removed reuse=True
+                    mel_cell_f = tf.contrib.rnn.LayerNormBasicLSTMCell(self.mel_h_size)
+                    mel_cell_b = tf.contrib.rnn.LayerNormBasicLSTMCell(self.mel_h_size)
                 elif self.mel_cell_type == 'gru':
-                    mel_cell_f = tf.contrib.rnn.GRUCell(self.mel_h_size, kernel_initializer=self.initializer,
-                                                        bias_initializer=self.bias_initializer) # Removed reuse=True
-                    mel_cell_b = tf.contrib.rnn.GRUCell(self.mel_h_size, kernel_initializer=self.initializer,
-                                                        bias_initializer=self.bias_initializer) # Removed reuse=True
-                else:  # basic lstm
-                    mel_cell_f = tf.contrib.rnn.BasicLSTMCell(self.mel_h_size) # Removed reuse=True
-                    mel_cell_b = tf.contrib.rnn.BasicLSTMCell(self.mel_h_size) # Removed reuse=True
+                    mel_cell_f = tf.contrib.rnn.GRUCell(self.mel_h_size)
+                    mel_cell_b = tf.contrib.rnn.GRUCell(self.mel_h_size)
+                else:
+                    mel_cell_f = tf.contrib.rnn.BasicRNNCell(self.mel_h_size)
+                    mel_cell_b = tf.contrib.rnn.BasicRNNCell(self.mel_h_size)
 
-                # These initial states are for the outer loops in neural.iter, not directly for the RNN.
-                # The RNN initial states are created inside _for_one_trading_day.
-                # However, the original code had these. Let's keep them for now, but they seem unused by the new _for_one_trading_day logic.
-                # mel_init_f = mel_cell_f.zero_state(self.batch_size * self.max_n_days, dtype=tf.float32)
-                # mel_init_b = mel_cell_b.zero_state(self.batch_size * self.max_n_days, dtype=tf.float32)
+                mel_cell_f = tf.contrib.rnn.DropoutWrapper(mel_cell_f, output_keep_prob=1.0-self.dropout_mel)
+                mel_cell_b = tf.contrib.rnn.DropoutWrapper(mel_cell_b, output_keep_prob=1.0-self.dropout_mel)
+
+                mel_init_f = mel_cell_f.zero_state([self.max_n_msgs], tf.float32)
+                mel_init_b = mel_cell_f.zero_state([self.max_n_msgs], tf.float32)
 
                 msg_embed_shape = (self.batch_size, self.max_n_days, self.max_n_msgs, self.msg_embed_size)
-                msg_embed_tensor = _for_one_batch()
-                # Ensure the output of _for_one_batch is correctly shaped.
-                # The output of nested neural.iter should match the structure based on iteration counts.
-                # If neural.iter correctly stacks results, msg_embed_tensor should already be
-                # [batch_size, max_n_days, max_n_msgs, msg_embed_size]
-                self.msg_embed = tf.reshape(msg_embed_tensor, shape=msg_embed_shape, name='msg_embed_reshaped')
-                self.msg_embed = tf.nn.dropout(self.msg_embed, keep_prob=1-self.dropout_mel, name='msg_embed')
+                msg_embed = tf.reshape(_for_one_batch(), shape=msg_embed_shape)
+                self.msg_embed = tf.nn.dropout(msg_embed, keep_prob=1-self.dropout_mel, name='msg_embed')
+            
+
+
 
     def _create_corpus_embed(self):
         """
             msg_embed: batch_size * max_n_days * max_n_msgs * msg_embed_size
             This is the TSU (Text Selection Unit)
             => corpus_embed: batch_size * max_n_days * corpus_embed_size
-            Update: This is now Ca-TSU (Causal-Aware Text Selection Unit)
         """
         
         
-        with tf.name_scope('corpus_embed'): # This scope acts as Ca-TSU
-            # The Ca-TSU now operates on msg_embed which should already be filtered by DataPipe
-            with tf.variable_scope('u_t'): # Original TSU weights
+        with tf.name_scope('corpus_embed'):
+            """
+            cell = msin()
+            corpus_embed = 
+            self.corpus_embed = tf.nn.dropout(corpus_embed, keep_prob=1-self.dropout_ce, name='corpus_embed')
+            """
+            
+            with tf.variable_scope('u_t'):
                 proj_u = self._linear(self.msg_embed, self.msg_embed_size, 'tanh', use_bias=False)
-                w_u = tf.get_variable('w_u_original', shape=(self.msg_embed_size, 1), initializer=self.initializer)
-            u_scores = tf.reduce_mean(tf.tensordot(proj_u, w_u, axes=1), axis=-1)  # scores: batch_size * max_n_days * max_n_msgs
+                w_u = tf.get_variable('w_u', shape=(self.msg_embed_size, 1), initializer=self.initializer)
+            u = tf.reduce_mean(tf.tensordot(proj_u, w_u, axes=1), axis=-1)  # batch_size * max_n_days * max_n_msgs
 
-            # Mask for padding based on actual number of messages (n_msgs_ph now reflects relevant messages)
-            mask_msgs_padding = tf.sequence_mask(self.n_msgs_ph, maxlen=self.max_n_msgs, dtype=tf.bool, name='mask_msgs_padding')
-            
-            ninf = tf.fill(tf.shape(u_scores), -np.inf) # Use -np.inf for softmax
-            # Apply the padding mask: if it's a padding message, set score to -infinity
-            masked_u_scores = tf.where(mask_msgs_padding, u_scores, ninf)
-            
-            # Calculate original attention weights omega_i (alpha_t in some papers)
-            # self.omega_i = tf.nn.softmax(masked_u_scores, axis=-1) # Softmax over messages for each day (TF1.4 compatible)
-            exp_masked_u_scores = tf.exp(masked_u_scores - tf.reduce_max(masked_u_scores, axis=[-1], keep_dims=True))
-            self.omega_i = exp_masked_u_scores / tf.reduce_sum(exp_masked_u_scores, axis=[-1], keep_dims=True)
-            # Replace NaN with 0.0 (e.g., if all messages on a day are masked out by padding)
-            self.omega_i = tf.where(tf.is_nan(self.omega_i), tf.zeros_like(self.omega_i), self.omega_i)
+            mask_msgs = tf.sequence_mask(self.n_msgs_ph, maxlen=self.max_n_msgs, dtype=tf.bool, name='mask_msgs')
+            ninf = tf.fill(tf.shape(mask_msgs), np.NINF)
+            masked_score = tf.where(mask_msgs, u, ninf)
+            u = neural.softmax(masked_score)  # batch_size * max_n_days * max_n_msgs
+            u = tf.where(tf.is_nan(u), tf.zeros_like(u), u)  # replace nan with 0.0
 
-            # Ca-TSU specific calculations for alpha_i
-            with tf.variable_scope('ca_tsu'):
-                # ei is self.msg_embed: batch_size * max_n_days * max_n_msgs * msg_embed_size
-                # W_Q and W_K should project ei to a new dimension, or the same dimension if desired.
-                # For simplicity, let's project to the same dimension: self.msg_embed_size
-                W_Q = tf.get_variable("W_Q", shape=(self.msg_embed_size, self.msg_embed_size), initializer=self.initializer)
-                W_K = tf.get_variable("W_K", shape=(self.msg_embed_size, self.msg_embed_size), initializer=self.initializer)
-                b_causal = tf.get_variable("b_causal", shape=(self.msg_embed_size), initializer=self.bias_initializer)
-
-                # q = WQ * ei (element-wise or tensordot? Paper implies WQ is a matrix, ei is a vector)
-                # Assuming WQ and WK are dense layers applied to each e_i
-                # msg_embed shape: (batch, days, msgs, embed_size)
-                q_causal = tf.tensordot(self.msg_embed, W_Q, axes=[[3], [0]]) # (batch, days, msgs, embed_size)
-                k_causal = tf.tensordot(self.msg_embed, W_K, axes=[[3], [0]]) # (batch, days, msgs, embed_size)
-
-                # alpha_i = softmax(q^T tanh(k_i + b))
-                # q^T * tanh(k_i + b) needs to result in a score per message
-                # q_causal is (batch, days, msgs, embed_size), k_causal is (batch, days, msgs, embed_size)
-                # tanh(k_i + b) : (batch, days, msgs, embed_size)
-                tanh_k_b = tf.nn.tanh(k_causal + b_causal) # b_causal broadcasts
-
-                # Element-wise product of q_causal and tanh_k_b, then sum over the last dimension to get scores
-                # This is equivalent to a dot product for each message's q and transformed k
-                alpha_scores_unnormalized = tf.reduce_sum(q_causal * tanh_k_b, axis=-1) # (batch, days, msgs)
-
-                masked_alpha_scores = tf.where(mask_msgs_padding, alpha_scores_unnormalized, ninf)
-                # self.alpha_i = tf.nn.softmax(masked_alpha_scores, axis=-1) # (batch, days, msgs) (TF1.4 compatible)
-                exp_masked_alpha_scores = tf.exp(masked_alpha_scores - tf.reduce_max(masked_alpha_scores, axis=[-1], keep_dims=True))
-                self.alpha_i = exp_masked_alpha_scores / tf.reduce_sum(exp_masked_alpha_scores, axis=[-1], keep_dims=True)
-                self.alpha_i = tf.where(tf.is_nan(self.alpha_i), tf.zeros_like(self.alpha_i), self.alpha_i)
-
-            # Calculate omega_i_prime = omega_i * alpha_i
-            omega_i_prime = self.omega_i * self.alpha_i
-            # Normalize omega_i_prime so that it sums to 1 across messages for each day
-            # This is important if omega_i_prime is to be used as attention weights
-            sum_omega_i_prime = tf.reduce_sum(omega_i_prime, axis=[-1], keep_dims=True) # (batch, days, 1)
-            # Add a small epsilon to prevent division by zero if all omega_i_prime are zero (e.g., all messages masked)
-            u_weights = omega_i_prime / (sum_omega_i_prime + 1e-8) # (batch, days, msgs)
-            # Replace NaN with 0.0 (e.g., if sum_omega_i_prime was 0)
-            u_weights = tf.where(tf.is_nan(u_weights), tf.zeros_like(u_weights), u_weights)
-            self.ca_tsu_weights = u_weights # Store for potential analysis
-
-            u_weights_expanded = tf.expand_dims(u_weights, axis=-2)  # batch_size * max_n_days * 1 * max_n_msgs
-            # Weighted sum of message embeddings to get daily corpus embedding
-            corpus_embed_G = tf.matmul(u_weights_expanded, self.msg_embed)  # batch_size * max_n_days * 1 * msg_embed_size
-            self.daily_text_embed_ca_tsu = tf.squeeze(corpus_embed_G, axis=-2) # Squeeze to [batch_size, max_n_days, corpus_embed_size]
-            
-            # Optional: re-add dropout if it was originally here and is still desired
-            self.daily_text_embed_ca_tsu = tf.nn.dropout(self.daily_text_embed_ca_tsu, keep_prob=1-self.dropout_ce, name='daily_text_embed_ca_tsu_dropout')
+            u = tf.expand_dims(u, axis=-2)  # batch_size * max_n_days * 1 * max_n_msgs
+            corpus_embed = tf.matmul(u, self.msg_embed)  # batch_size * max_n_days * 1 * msg_embed_size
+            corpus_embed = tf.reduce_mean(corpus_embed, axis=-2)  # batch_size * max_n_days * msg_embed_size
+            self.corpus_embed = tf.nn.dropout(corpus_embed, keep_prob=1-self.dropout_ce, name='corpus_embed')
 
     def _build_mie(self):
         """
-            Message Impact Extractor (MIE)
-            Represent all messages within a trading day by a single vector
+            Create market information encoder.
 
-            Input:
-                msg_embed: batch_size * max_n_days * max_n_msgs * msg_embed_size (from _create_msg_embed_layer)
-                n_msgs_ph: batch_size * max_n_days (actual number of messages for each day)
-                price_ph: batch_size * max_n_days * 3 (market data: high, low, close)
-            Output:
-                msg_embeds: batch_size * max_n_days * msg_embed_size (aggregated message embedding per day)
-                P: batch_size * max_n_days * max_n_msgs (attention weights over messages within each day) - these are the cross_weights
+            corpus_embed: batch_size * max_n_days * corpus_embed_size
+            price: batch_size * max_n_days * 3
+            => x: batch_size * max_n_days * x_size
         """
         with tf.name_scope('mie'):
-            with tf.variable_scope('mie'):
-                msin_cell = MSINCell(input_size=3,  # Based on price_ph: high, low, close
-                                     num_units=self.msg_embed_size,  # h_size for MSINCell
-                                     v_size=self.msg_embed_size,    # v_size for MSINCell (memory for text)
-                                     max_n_msgs=self.max_n_msgs)    # To get P in correct shape
+            self.price = self.price_ph
+            self.price_size = 3
 
+            if self.variant_type == 'tech':
+                self.x = self.price
+                self.x_size = self.price_size
+            else:
+                self._create_msg_embed_layer_in()
+                self._create_msg_embed_layer()
+                initial_state = None
+                #cell = MSINCell(input_size=self.price_size ,num_units= self.msin_h_size, v_size= self.msg_embed_size)
+                cell = MSINCell(input_size=self.price_size ,num_units= self.msin_h_size, v_size= self.msg_embed_size, max_n_msgs=self.max_n_msgs)
                 msin = MSIN()
+                #self.x, state = msin.dynamic_msin(cell = cell, inputs = self.price, s_inputs = self.msg_embed, sequence_length=self.T_ph, initial_state=initial_state, dtype=tf.float32)
+                #self.x, self.P, state = msin.dynamic_msin(cell = cell, inputs = self.price, s_inputs = self.msg_embed, sequence_length=self.T_ph, initial_state=initial_state, dtype=tf.float32)
+                # Update to capture alpha
+                self.x, self.P, self.alpha_i, state = msin.dynamic_msin(cell=cell, inputs=self.price, s_inputs=self.msg_embed, sequence_length=self.T_ph, initial_state=initial_state, dtype=tf.float32)
                 
-                # Assuming self.msg_embed is [batch, max_n_days, max_n_msgs, embed_size]
-                # Assuming self.price_ph is [batch, max_n_days, 3]
-                # Assuming self.T_ph is [batch] (number of actual days)
+                # Store omega_i (original attention) for executor
+                self.omega_i = self.P
                 
-                # The dynamic_msin in MSINModule_MHA is designed to iterate over the time dimension (days here)
-                # and call the cell for each day.
-                # inputs to dynamic_msin:
-                #   cell: the MSINCell instance
-                #   inputs (market data): self.price_ph [batch, max_n_days, 3]
-                #   s_inputs (text data): self.msg_embed [batch, max_n_days, max_n_msgs, embed_size]
-                #   sequence_length (number of days): self.T_ph [batch]
+                #self.x = tf.concat([self.corpus_embed , self.price], axis=2)
+                #self.x_size = self.corpus_embed_size + self.price_size
+                """
+                self._create_msg_embed_layer_in()
+                self._create_msg_embed_layer()
+                    
                 
-                msin_batch_size = tf.shape(self.msg_embed)[0]
-                initial_state = msin_cell.zero_state(msin_batch_size, tf.float32)
+                self._create_corpus_embed()
+                if self.variant_type == 'fund':
+                    self.x = self.corpus_embed
+                    self.x_size = self.corpus_embed_size
+                else:
+                    self.x = tf.concat([self.corpus_embed, self.price], axis=2)
+                    self.x_size = self.corpus_embed_size + self.price_size
+                """
 
-                msg_embeds_, P_, _ = msin.dynamic_msin(
-                    cell=msin_cell,
-                    inputs=self.price_ph, 
-                    s_inputs=self.msg_embed,
-                    sequence_length=self.T_ph, 
-                    initial_state=initial_state,
-                    dtype=tf.float32
-                )
-                # Expected shapes after dynamic_msin based on its internal loop:
-                # msg_embeds_ (stacked H from cell): [batch_size, max_n_days_padded, self.msg_embed_size]
-                # P_ (stacked cross_weights from cell): [batch_size, max_n_days_padded, self.max_n_msgs]
 
-                self.msg_embeds = msg_embeds_
-                self.P = P_
-                self.msin_cross_attention_weights = P_ # Assign P_ (cross_weights from MSIN) here
 
-        with tf.name_scope('corpus_embed_layer'): 
-            with tf.variable_scope('corpus_embed_layer'):
-                # average msg_embeds over trading days to get corpus_embed
-                mask_processed_days = tf.sequence_mask(self.T_ph, maxlen=tf.shape(self.msg_embeds)[1], dtype=tf.float32)
-                # Using tf.shape(self.msg_embeds)[1] for maxlen to handle potentially padded day dimension from dynamic_msin
-                mask_processed_days = tf.expand_dims(mask_processed_days, axis=-1)  # batch_size * max_n_days * 1
-                masked_msg_embeds = tf.multiply(self.msg_embeds, mask_processed_days)  # batch_size * max_n_days * msg_embed_size
-                sum_msg_embeds = tf.reduce_sum(masked_msg_embeds, axis=1)  # batch_size * msg_embed_size
-                self.corpus_embed = tf.divide(sum_msg_embeds, tf.expand_dims(tf.cast(self.T_ph, tf.float32), axis=1) + 1e-8) # batch_size * msg_embed_size, add epsilon for stability
 
-                if self.use_o_bn:
-                    self.corpus_embed = neural.bn(self.corpus_embed, self.is_training_phase, bn_scope='bn-corpus_embed')
-                self.corpus_embed = tf.nn.dropout(self.corpus_embed, keep_prob=1-self.dropout_ce, name='corpus_embed')
+
+
 
     def _create_vmd_with_h_rec(self):
         with tf.name_scope('vmd'):
@@ -762,179 +675,151 @@ class Model:
 
     def _create_generative_ata(self):
         """
-            calculate loss.
+             calculate loss.
 
-            g: batch_size * max_n_days * g_size
-            y: batch_size * max_n_days * y_size
-            kl_loss: batch_size * max_n_days
-            self.msin_cross_attention_weights: batch_size * max_n_days_padded * max_n_msgs
-            => loss: batch_size
+             g: batch_size * max_n_days * g_size
+             y: batch_size * max_n_days * y_size
+             kl_loss: batch_size * max_n_days
+             => loss: batch_size
         """
         with tf.name_scope('ata'):
-            with tf.variable_scope('ata_generative'): # Keep the updated scope name
-
+            with tf.variable_scope('ata'):
                 v_aux = self.alpha * self.v_stared  # batch_size * max_n_days
 
-                minor = 0.0 # 0.0, 1e-7* # Reverted to original minor for generative
+                minor = 0.0 # 0.0, 1e-7*
+                
+                # Use standard cross-entropy for traditional likelihood term
                 likelihood_aux = tf.reduce_sum(tf.multiply(self.y_ph, tf.log(self.y + minor)), axis=2)  # batch_size * max_n_days
 
-                kl_lambda = self._kl_lambda() # Reverted: Add back kl_lambda
-                obj_aux = likelihood_aux - kl_lambda * self.kl  # batch_size * max_n_days # Reverted
+                
+                kl_lambda = self._kl_lambda()
+                obj_aux = likelihood_aux - kl_lambda * self.kl  # batch_size * max_n_days
 
-                # deal with T specially, likelihood_T: batch_size, 1
+                # Deal with T specially, likelihood_T: batch_size, 1
                 self.y_T_ = tf.gather_nd(params=self.y_ph, indices=self.indexed_T)  # batch_size * y_size
-                # self.y_T = tf.gather_nd(params=self.y, indices=self.indexed_T) # This was from the incorrect edit, self.y_T is defined later by _build_temporal_att
-                likelihood_T = tf.reduce_sum(tf.multiply(self.y_T_, tf.log(self.y_T + minor)), axis=1, keep_dims=True) # Reverted: Use self.y_T (defined by _build_temporal_att, not self.y here)
+                likelihood_T = tf.reduce_sum(tf.multiply(self.y_T_, tf.log(self.y_T + minor)), axis=1, keep_dims=True)
+                
 
-                kl_T = tf.reshape(tf.gather_nd(params=self.kl, indices=self.indexed_T), shape=[self.batch_size, 1]) # Reverted
-                obj_T = likelihood_T - kl_lambda * kl_T # Reverted
-
-                obj = obj_T + tf.reduce_sum(tf.multiply(obj_aux, v_aux), axis=1, keep_dims=True)  # batch_size * 1 # Reverted
-                self.loss = tf.reduce_mean(-obj, axis=[0, 1]) # Reverted
-                # The P_obj term was from the incorrect merge with discriminative, remove for generative original
-                # self.loss = self.loss +  tf.reduce_mean(-P_obj) 
+                kl_T = tf.reshape(tf.gather_nd(params=self.kl, indices=self.indexed_T), shape=[self.batch_size, 1])
+                obj_T = likelihood_T - kl_lambda * kl_T
 
 
-                # Causal Consistency Loss DKL(alpha || omega)
-                # self.alpha_i and self.omega_i have shape [batch, max_n_days, max_n_msgs]
-                epsilon_kl = 1e-8 
-                day_mask_for_causal_loss = tf.sequence_mask(self.T_ph, self.max_n_days, dtype=tf.float32) 
-                msg_mask_for_causal_loss = tf.sequence_mask(self.n_msgs_ph, self.max_n_msgs, dtype=tf.float32)
-                kl_elements = self.alpha_i * tf.log((self.alpha_i + epsilon_kl) / (self.omega_i + epsilon_kl) + epsilon_kl)
-                masked_kl_elements = kl_elements * msg_mask_for_causal_loss 
-                kl_per_day = tf.reduce_sum(masked_kl_elements, axis=2) 
-                masked_kl_per_day = kl_per_day * day_mask_for_causal_loss 
-                total_batch_kl_causal = tf.reduce_sum(masked_kl_per_day)
-                num_actual_days_in_batch_causal = tf.reduce_sum(day_mask_for_causal_loss) 
-                self.causal_consistency_loss = total_batch_kl_causal / (num_actual_days_in_batch_causal + epsilon_kl)
-                self.loss += self.causal_loss_lambda * self.causal_consistency_loss 
+                obj = obj_T + tf.reduce_sum(tf.multiply(obj_aux, v_aux), axis=1, keep_dims=True)  # batch_size * 1
+                self.loss = tf.reduce_mean(-obj, axis=[0, 1])
 
-                # Add entropy regularization for MSIN cross-attention weights
-                if self.entropy_regularization_lambda > 0.0:
-                    if hasattr(self, 'msin_cross_attention_weights') and self.msin_cross_attention_weights is not None:
-                        epsilon = 1e-8
-                        # Mask for actual number of days
-                        # self.T_ph has shape [batch_size]
-                        day_mask = tf.sequence_mask(self.T_ph, self.max_n_days, dtype=tf.float32) # [batch_size, max_n_days]
+                """
+                #L2 loss
+                lambda_L2 = 0.1  # Choose a value between 0.05 and 0.2
+                msg_num = tf.to_float(tf.tile(tf.expand_dims(self.n_msgs_ph, axis=-1),[1,1,self.max_n_msgs]))
+                new_P = tf.clip_by_value(self.P, 1e-30, 1)
+                msg_num = tf.clip_by_value(tf.log(msg_num), 1e-30, 30)
+                new_msg_num = tf.clip_by_value(1/msg_num, 1e-30, 1)
+                
+                P_obj = tf.reduce_sum(tf.multiply(self.P, tf.multiply( tf.log(new_P), new_msg_num )+1 ), axis=[1,2])
+                
+                nonzero = tf.to_float(tf.count_nonzero(self.n_msgs_ph,axis=-1))
+                P_obj = tf.divide(P_obj, nonzero)
 
-                        # Mask for actual number of messages per day
-                        # self.n_msgs_ph has shape [batch_size, max_n_days]
-                        # self.msin_cross_attention_weights has shape [batch_size, max_n_days, max_n_msgs]
-                        msg_mask_for_entropy = tf.sequence_mask(self.n_msgs_ph, self.max_n_msgs, dtype=tf.float32) # [batch_size, max_n_days, max_n_msgs]
+                self.loss = self.loss +  lambda_L2 * tf.reduce_mean(-P_obj)
+                """
+                # Consistency loss implementation (similar to L2 loss)
 
-                        # Apply message mask to attentions and add epsilon for numerical stability
-                        attentions_for_entropy = self.msin_cross_attention_weights * msg_mask_for_entropy
-                        
-                        # Calculate entropy: -sum(p * log(p))
-                        # Add epsilon to prevent log(0)
-                        entropy_per_msg_element = -attentions_for_entropy * tf.log(attentions_for_entropy + epsilon)
-                        
-                        # Sum entropy contributions over messages for each day
-                        entropy_per_day = tf.reduce_sum(entropy_per_msg_element, axis=2) # [batch_size, max_n_days]
-                        
-                        # Apply day mask to zero out entropy for padded days
-                        masked_entropy_per_day = entropy_per_day * day_mask # [batch_size, max_n_days]
-                        
-                        # Sum entropy across all active days in the batch
-                        total_batch_entropy = tf.reduce_sum(masked_entropy_per_day) 
-                        
-                        # Count the number of actual days in the batch to normalize
-                        num_actual_days_in_batch = tf.reduce_sum(day_mask) # Sum of all 1s in day_mask
-                        
-                        # Average entropy per active day
-                        average_entropy = total_batch_entropy / (num_actual_days_in_batch + epsilon)
-                        
-                        explainability_loss = self.entropy_regularization_lambda * average_entropy
-                        self.loss = self.loss + explainability_loss
-                        self.explainability_loss = explainability_loss # Store for potential logging
-                    else:
-                        logger.warn("entropy_regularization_lambda > 0 but msin_cross_attention_weights not found or None.")
 
+                # Consistency loss implementation with Jensen-Shannon divergence
+                # Clip values to prevent numerical issues
+                new_alpha_i = tf.clip_by_value(self.alpha_i, 1e-6, 1)
+                new_P_alpha_i = tf.clip_by_value(self.P, 1e-6, 1)  # Clip P values too
+                
+                # Consistency coefficient
+                lambda_consistency = self._consistency_lambda()
+                
+                # Calculate Jensen-Shannon divergence
+                M = 0.5 * (new_P_alpha_i + new_alpha_i)
+                M = tf.clip_by_value(M, 1e-6, 1)  # Ensure M is also properly bounded
+                
+                # Calculate JS divergence = 0.5 * [KL(P||M) + KL(alpha||M)]
+                kl_p_m = tf.reduce_sum(
+                    tf.multiply(new_P_alpha_i, tf.log(new_P_alpha_i / (M + 1e-6) + 1e-6)),
+                    axis=[1,2]
+                )
+                kl_alpha_m = tf.reduce_sum(
+                    tf.multiply(new_alpha_i, tf.log(new_alpha_i / (M + 1e-6) + 1e-6)),
+                    axis=[1,2]
+                )
+
+                # JS divergence is half the sum of the KL divergences
+                consistency_obj = 0.5 * (kl_p_m + kl_alpha_m)
+                
+                # Normalize by number of non-zero messages
+                nonzero = tf.to_float(tf.count_nonzero(self.n_msgs_ph,axis=-1))
+                consistency_obj = tf.divide(consistency_obj, nonzero)
+                self.causal_consistency_loss = tf.reduce_mean(consistency_obj)
+
+                # Add to total loss with a stronger weight
+                lambda_consistency = self._consistency_lambda()
+                self.loss = self.loss + lambda_consistency * tf.reduce_mean(consistency_obj)
+
+                # Add temperature-scaled entropy regularization for better attention distribution
+                #temperature = 0.8  # Higher for smoother distributions (0.5-1.0 range works well)
+                                # Add entropy regularization to encourage less extreme distributions
+                alpha_entropy = -tf.reduce_sum(new_alpha_i * tf.log(new_alpha_i + 1e-6), axis=[1,2])
+                #alpha_entropy = -tf.reduce_sum((new_alpha_i/temperature) * tf.log(new_alpha_i/temperature + 1e-6), axis=[1,2])
+                alpha_entropy = tf.divide(alpha_entropy, nonzero)
+                p_entropy = -tf.reduce_sum(new_P_alpha_i * tf.log(new_P_alpha_i + 1e-6), axis=[1,2])
+                #p_entropy = -tf.reduce_sum((new_P_alpha_i/temperature) * tf.log(new_P_alpha_i/temperature + 1e-6), axis=[1,2])
+                p_entropy = tf.divide(p_entropy, nonzero)
+
+                # Entropy weight between 0.02-0.05 provides better balance
+                entropy_weight = 0.01
+                self.loss = self.loss - entropy_weight * tf.reduce_mean(alpha_entropy + p_entropy)
+
+    def _consistency_lambda(self):
+        """
+        Calculate lambda for consistency loss following the same pattern as _kl_lambda
+        """
+        def _nonzero_consistency_lambda():
+            # If you want constant lambda after start_step
+            if hasattr(self, 'use_constant_consistency_lambda') and self.use_constant_consistency_lambda:
+                return self.constant_consistency_lambda
+            else:
+                # More aggressive annealing with higher max value
+                #return tf.minimum(self.consistency_lambda_anneal_rate * 1.5 * global_step, self.consistency_lambda_max * 1.2)
+                return tf.minimum(self.consistency_lambda_anneal_rate * global_step, self.consistency_lambda_max)
+
+        global_step = tf.cast(self.global_step, tf.float32)
+        
+        # Start with a slightly higher minimum value
+        return tf.cond(global_step < self.consistency_lambda_start_step, 
+                    #lambda: self.consistency_lambda_min * 1.2, 
+                    lambda: self.consistency_lambda_min, 
+                    _nonzero_consistency_lambda)
+        
+                
     def _create_discriminative_ata(self):
         """
              calculate discriminative loss.
 
              g: batch_size * max_n_days * g_size
              y: batch_size * max_n_days * y_size
-             self.msin_cross_attention_weights: batch_size * max_n_days_padded * max_n_msgs
              => loss: batch_size
         """
         with tf.name_scope('ata'):
-            with tf.variable_scope('ata_discriminative'): # Keep the updated scope name
+            with tf.variable_scope('ata'):
                 v_aux = self.alpha * self.v_stared  # batch_size * max_n_days
 
-                minor = 1e-7  # 0.0, 1e-7* # This is correct for discriminative
+                minor = 1e-7  # 0.0, 1e-7*
                 likelihood_aux = tf.reduce_sum(tf.multiply(self.y_ph, tf.log(self.y + minor)), axis=2)  # batch_size * max_n_days
 
                 # deal with T specially, likelihood_T: batch_size, 1
                 self.y_T_ = tf.gather_nd(params=self.y_ph, indices=self.indexed_T)  # batch_size * y_size
-                # For discriminative, self.y_T (model's prediction for day T) is used, which is correct.
-                # The original code used self.y_T which is defined in _build_temporal_att
                 likelihood_T = tf.reduce_sum(tf.multiply(self.y_T_, tf.log(self.y_T + minor)), axis=1, keep_dims=True)
 
-
                 obj = likelihood_T + tf.reduce_sum(tf.multiply(likelihood_aux, v_aux), axis=1, keep_dims=True)  # batch_size * 1
-                
-                # The P_obj term is part of the original discriminative loss
                 new_P = tf.clip_by_value(self.P, 1e-8, 1)
                 P_obj = tf.reduce_sum(tf.multiply(self.P, tf.log(new_P)), axis=-1)
                 
                 self.loss = tf.reduce_mean(-obj, axis=[0, 1])
-                self.loss = self.loss +  tf.reduce_mean(-P_obj)
-
-                # Causal Consistency Loss DKL(alpha || omega)
-                epsilon_kl = 1e-8 
-                day_mask_for_causal_loss = tf.sequence_mask(self.T_ph, self.max_n_days, dtype=tf.float32)
-                msg_mask_for_causal_loss = tf.sequence_mask(self.n_msgs_ph, self.max_n_msgs, dtype=tf.float32)
-                kl_elements = self.alpha_i * tf.log((self.alpha_i + epsilon_kl) / (self.omega_i + epsilon_kl) + epsilon_kl)
-                masked_kl_elements = kl_elements * msg_mask_for_causal_loss
-                kl_per_day = tf.reduce_sum(masked_kl_elements, axis=2)
-                masked_kl_per_day = kl_per_day * day_mask_for_causal_loss
-                total_batch_kl_causal = tf.reduce_sum(masked_kl_per_day)
-                num_actual_days_in_batch_causal = tf.reduce_sum(day_mask_for_causal_loss)
-                self.causal_consistency_loss = total_batch_kl_causal / (num_actual_days_in_batch_causal + epsilon_kl)
-                self.loss += self.causal_loss_lambda * self.causal_consistency_loss
-
-                # Add entropy regularization for MSIN cross-attention weights
-                if self.entropy_regularization_lambda > 0.0:
-                    if hasattr(self, 'msin_cross_attention_weights') and self.msin_cross_attention_weights is not None:
-                        epsilon = 1e-8
-                        # Mask for actual number of days
-                        # self.T_ph has shape [batch_size]
-                        day_mask = tf.sequence_mask(self.T_ph, self.max_n_days, dtype=tf.float32) # [batch_size, max_n_days]
-
-                        # Mask for actual number of messages per day
-                        # self.n_msgs_ph has shape [batch_size, max_n_days]
-                        # self.msin_cross_attention_weights has shape [batch_size, max_n_days, max_n_msgs]
-                        msg_mask_for_entropy = tf.sequence_mask(self.n_msgs_ph, self.max_n_msgs, dtype=tf.float32) # [batch_size, max_n_days, max_n_msgs]
-
-                        # Apply message mask to attentions and add epsilon for numerical stability
-                        attentions_for_entropy = self.msin_cross_attention_weights * msg_mask_for_entropy
-                        
-                        # Calculate entropy: -sum(p * log(p))
-                        # Add epsilon to prevent log(0)
-                        entropy_per_msg_element = -attentions_for_entropy * tf.log(attentions_for_entropy + epsilon)
-                        
-                        # Sum entropy contributions over messages for each day
-                        entropy_per_day = tf.reduce_sum(entropy_per_msg_element, axis=2) # [batch_size, max_n_days]
-                        
-                        # Apply day mask to zero out entropy for padded days
-                        masked_entropy_per_day = entropy_per_day * day_mask # [batch_size, max_n_days]
-                        
-                        # Sum entropy across all active days in the batch
-                        total_batch_entropy = tf.reduce_sum(masked_entropy_per_day) 
-                        
-                        # Count the number of actual days in the batch to normalize
-                        num_actual_days_in_batch = tf.reduce_sum(day_mask) # Sum of all 1s in day_mask
-                        
-                        # Average entropy per active day
-                        average_entropy = total_batch_entropy / (num_actual_days_in_batch + epsilon)
-                        
-                        explainability_loss = self.entropy_regularization_lambda * average_entropy
-                        self.loss = self.loss + explainability_loss
-                        self.explainability_loss = explainability_loss # Store for potential logging
-                    else:
-                        logger.warn("entropy_regularization_lambda > 0 but msin_cross_attention_weights not found or None.")
+                self.loss = self.loss +  tf.reduce_mean(-P_obj, axis=[0, 1])
 
     def _build_ata(self):
         if self.variant_type == 'discriminative':
@@ -960,16 +845,7 @@ class Model:
         with tf.device('/device:GPU:0'):
             self._build_placeholders()
             self._build_embeds()
-            self._create_msg_embed_layer_in()
-            self._create_msg_embed_layer()      # Defines self.msg_embed
-            
-            self._create_corpus_embed()         # Ca-TSU: Defines self.daily_text_embed_ca_tsu, self.alpha_i, self.omega_i
-            
-            self._build_mie()                   # Defines self.msg_embeds (daily from MSIN), self.P, and self.corpus_embed (global average)
-
-            # Define self.x as input to VMD: using text embeddings from Ca-TSU
-            self.x = tf.concat([self.daily_text_embed_ca_tsu, self.price_ph], axis=-1, name='vmd_input_x')
-
+            self._build_mie()
             self._build_vmd()
             self._build_temporal_att()
             self._build_ata()
@@ -1033,4 +909,4 @@ class Model:
         z = mean if is_prior else mean + tf.multiply(stddev, epsilon)
         pdf_z = ds.Normal(loc=mean, scale=stddev)
 
-        return z, pdf_z 
+        return z, pdf_z
