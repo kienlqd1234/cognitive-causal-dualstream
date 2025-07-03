@@ -2626,3 +2626,102 @@ InvalidArgumentError (see above for traceback): TensorArray mie/dynamic_msin/hid
 2025-07-03 10:45:12,460 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1600, Causal Influence: 0.1929, Responsive Influence: 0.2154
 2025-07-03 10:48:14,035 INFO Recent Cross-Pathway Metrics - Correlation: 0.1607, Causal Influence: 0.1996, Responsive Influence: 0.2208
 2025-07-03 10:48:17,119 INFO dev Cross-Pathway Metrics - Correlation: 0.1508, Causal Influence: 0.1970, Responsive Influence: 0.2089
+2025-07-03 10:50:39,031 INFO dev Cross-Pathway Metrics - Correlation: 0.1758, Causal Influence: 0.2272, Responsive Influence: 0.2407
+2025-07-03 10:50:48,036 INFO Completed dev evaluation: size=656.0, acc=0.5198
+2025-07-03 10:50:48,036 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1583, Causal Influence: 0.2024, Responsive Influence: 0.2152
+2025-07-03 10:53:47,537 INFO Recent Cross-Pathway Metrics - Correlation: 0.1701, Causal Influence: 0.2122, Responsive Influence: 0.2247
+2025-07-03 10:53:50,713 INFO dev Cross-Pathway Metrics - Correlation: 0.1550, Causal Influence: 0.2003, Responsive Influence: 0.2086
+2025-07-03 10:56:09,005 INFO dev Cross-Pathway Metrics - Correlation: 0.1763, Causal Influence: 0.2296, Responsive Influence: 0.2416
+2025-07-03 10:56:18,250 INFO Completed dev evaluation: size=656.0, acc=0.5366
+2025-07-03 10:56:18,250 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1630, Causal Influence: 0.2058, Responsive Influence: 0.2152
+2025-07-03 10:59:08,674 INFO Running validation with dual-pathway attention analysis
+2025-07-03 10:59:08,676 INFO Recent Cross-Pathway Metrics - Correlation: 0.2183, Causal Influence: 0.2181, Responsive Influence: 0.2312
+2025-07-03 10:59:11,873 INFO dev Cross-Pathway Metrics - Correlation: 0.1697, Causal Influence: 0.2020, Responsive Influence: 0.2106
+2025-07-03 10:59:13,395 INFO Dual-pathway attention analysis completed
+2025-07-03 10:59:13,395 INFO --- Attention Analysis for dev Batch 0 Example 0 ---
+2025-07-03 10:59:13,395 INFO Pathway Importance:
+2025-07-03 10:59:13,395 INFO   price_pathway: 0.3476
+2025-07-03 10:59:13,395 INFO   causal_pathway: 0.3008
+2025-07-03 10:59:13,395 INFO   responsive_pathway: 0.3515
+2025-07-03 10:59:13,396 INFO Top Causal Attention:
+2025-07-03 10:59:13,396 INFO   Message 7: 0.0531
+2025-07-03 10:59:13,396 INFO   Message 4: 0.0526
+2025-07-03 10:59:13,396 INFO   Message 0: 0.0522
+2025-07-03 10:59:13,396 INFO Top Responsive Attention:
+2025-07-03 10:59:13,396 INFO   Message 17: 0.3712
+2025-07-03 10:59:13,396 INFO   Message 1: 0.3579
+2025-07-03 10:59:13,396 INFO   Message 14: 0.0845
+2025-07-03 13:46:15,057 INFO Starting a full run. Model configuration will be loaded from the YML config file.
+2025-07-03 13:46:15,058 INFO INIT: #stock: 88, #vocab+1: 29867
+2025-07-03 13:46:15,059 INFO Start graph assembling...
+2025-07-03 13:46:42,012 INFO Word table init: done!
+2025-07-03 13:46:42,013 INFO Model: all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp_dual_path, start a new session!
+2025-07-03 13:46:42,013 INFO Epoch: 1/10 start
+2025-07-03 13:50:58,558 INFO Recent Cross-Pathway Metrics - Correlation: 0.1565, Causal Influence: 0.2099, Responsive Influence: 0.2135
+2025-07-03 13:51:01,678 INFO dev Cross-Pathway Metrics - Correlation: 0.1522, Causal Influence: 0.2031, Responsive Influence: 0.2020
+2025-07-03 13:53:14,018 INFO dev Cross-Pathway Metrics - Correlation: 0.1763, Causal Influence: 0.2343, Responsive Influence: 0.2376
+2025-07-03 13:53:22,542 INFO Completed dev evaluation: size=656.0, acc=0.5549
+2025-07-03 13:53:22,542 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1575, Causal Influence: 0.2148, Responsive Influence: 0.2082
+2025-07-03 13:56:28,256 INFO Recent Cross-Pathway Metrics - Correlation: 0.1588, Causal Influence: 0.2105, Responsive Influence: 0.2041
+2025-07-03 13:56:31,307 INFO dev Cross-Pathway Metrics - Correlation: 0.1512, Causal Influence: 0.2022, Responsive Influence: 0.1908
+2025-07-03 13:58:41,552 INFO dev Cross-Pathway Metrics - Correlation: 0.1757, Causal Influence: 0.2326, Responsive Influence: 0.2297
+2025-07-03 13:58:50,329 INFO Completed dev evaluation: size=656.0, acc=0.5046
+2025-07-03 13:58:50,330 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1568, Causal Influence: 0.2138, Responsive Influence: 0.1985
+2025-07-03 14:01:42,250 INFO Recent Cross-Pathway Metrics - Correlation: 0.1638, Causal Influence: 0.2229, Responsive Influence: 0.2150
+2025-07-03 14:01:45,440 INFO dev Cross-Pathway Metrics - Correlation: 0.1499, Causal Influence: 0.2037, Responsive Influence: 0.1971
+2025-07-03 14:04:04,325 INFO dev Cross-Pathway Metrics - Correlation: 0.1750, Causal Influence: 0.2343, Responsive Influence: 0.2325
+2025-07-03 14:04:13,632 INFO Completed dev evaluation: size=656.0, acc=0.4848
+2025-07-03 14:04:13,632 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1559, Causal Influence: 0.2153, Responsive Influence: 0.2037
+2025-07-03 14:07:00,912 INFO Recent Cross-Pathway Metrics - Correlation: 0.1620, Causal Influence: 0.2218, Responsive Influence: 0.2165
+2025-07-03 14:07:04,040 INFO dev Cross-Pathway Metrics - Correlation: 0.1482, Causal Influence: 0.2059, Responsive Influence: 0.2008
+2025-07-03 14:09:23,001 INFO dev Cross-Pathway Metrics - Correlation: 0.1748, Causal Influence: 0.2368, Responsive Influence: 0.2346
+2025-07-03 14:09:32,209 INFO Completed dev evaluation: size=656.0, acc=0.4954
+2025-07-03 14:09:32,209 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1561, Causal Influence: 0.2173, Responsive Influence: 0.2075
+2025-07-03 14:12:14,977 INFO Running validation with dual-pathway attention analysis
+2025-07-03 14:12:14,979 INFO Recent Cross-Pathway Metrics - Correlation: 0.1699, Causal Influence: 0.2296, Responsive Influence: 0.2229
+2025-07-03 14:12:18,187 INFO dev Cross-Pathway Metrics - Correlation: 0.1449, Causal Influence: 0.2070, Responsive Influence: 0.2027
+2025-07-03 14:12:19,695 INFO Dual-pathway attention analysis completed
+2025-07-03 14:12:19,695 INFO --- Attention Analysis for dev Batch 0 Example 0 ---
+2025-07-03 14:12:19,695 INFO Pathway Importance:
+2025-07-03 14:12:19,695 INFO   price_pathway: 0.3215
+2025-07-03 14:12:19,695 INFO   causal_pathway: 0.3395
+2025-07-03 14:12:19,695 INFO   responsive_pathway: 0.3390
+2025-07-03 14:12:19,695 INFO Top Causal Attention:
+2025-07-03 14:12:19,695 INFO   Message 9: 0.0505
+2025-07-03 14:12:19,695 INFO   Message 17: 0.0505
+2025-07-03 14:12:19,695 INFO   Message 16: 0.0505
+2025-07-03 14:12:19,695 INFO Top Responsive Attention:
+2025-07-03 14:12:19,695 INFO   Message 12: 0.9522
+2025-07-03 14:12:19,695 INFO   Message 6: 0.0341
+2025-07-03 14:12:19,695 INFO   Message 8: 0.0075
+2025-07-03 14:12:24,263 INFO Dual-pathway attention analysis completed
+2025-07-03 14:12:24,264 INFO --- Attention Analysis for dev Batch 1 Example 0 ---
+2025-07-03 14:12:24,264 INFO Pathway Importance:
+2025-07-03 14:12:24,264 INFO   price_pathway: 0.3110
+2025-07-03 14:12:24,264 INFO   causal_pathway: 0.3474
+2025-07-03 14:12:24,264 INFO   responsive_pathway: 0.3417
+2025-07-03 14:12:24,264 INFO Top Causal Attention:
+2025-07-03 14:12:24,264 INFO   Message 9: 0.0506
+2025-07-03 14:12:24,264 INFO   Message 17: 0.0506
+2025-07-03 14:12:24,264 INFO   Message 16: 0.0506
+2025-07-03 14:12:24,264 INFO Top Responsive Attention:
+2025-07-03 14:12:24,264 INFO   Message 16: 0.2527
+2025-07-03 14:12:24,264 INFO   Message 3: 0.2523
+2025-07-03 14:12:24,264 INFO   Message 5: 0.2352
+2025-07-03 14:12:25,895 INFO Dual-pathway attention analysis completed
+2025-07-03 14:12:25,895 INFO --- Attention Analysis for dev Batch 2 Example 0 ---
+2025-07-03 14:12:25,895 INFO Pathway Importance:
+2025-07-03 14:12:25,895 INFO   price_pathway: 0.3066
+2025-07-03 14:12:25,895 INFO   causal_pathway: 0.3505
+2025-07-03 14:12:25,895 INFO   responsive_pathway: 0.3428
+2025-07-03 14:12:25,895 INFO Top Causal Attention:
+2025-07-03 14:12:25,895 INFO   Message 9: 0.0503
+2025-07-03 14:12:25,895 INFO   Message 17: 0.0503
+2025-07-03 14:12:25,895 INFO   Message 16: 0.0503
+2025-07-03 14:12:25,895 INFO Top Responsive Attention:
+2025-07-03 14:12:25,895 INFO   Message 9: 0.0500
+2025-07-03 14:12:25,895 INFO   Message 17: 0.0500
+2025-07-03 14:12:25,895 INFO   Message 16: 0.0500
+2025-07-03 14:14:42,717 INFO dev Cross-Pathway Metrics - Correlation: 0.1735, Causal Influence: 0.2386, Responsive Influence: 0.2360
+2025-07-03 14:14:52,050 INFO Completed dev evaluation: size=656.0, acc=0.4909
+2025-07-03 14:14:52,051 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1564, Causal Influence: 0.2182, Responsive Influence: 0.2098

@@ -1,4 +1,6 @@
-model_checkpoint_path: "sess-60"
+model_checkpoint_path: "sess-100"
 all_model_checkpoint_paths: "sess-20"
 all_model_checkpoint_paths: "sess-40"
 all_model_checkpoint_paths: "sess-60"
+all_model_checkpoint_paths: "sess-80"
+all_model_checkpoint_paths: "sess-100"

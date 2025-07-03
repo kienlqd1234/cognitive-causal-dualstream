@@ -166,10 +166,10 @@ class Executor:
                 cross_pathway_metrics['responsive_influence'].append(float(responsive_influence))
                 
                 # Log metrics for some batches
-                if batch_idx % 50 == 0:
-                    logger.info(f"{phase} Cross-Pathway Metrics - Correlation: {correlation:.4f}, "
-                            f"Causal Influence: {causal_influence:.4f}, "
-                            f"Responsive Influence: {responsive_influence:.4f}")
+                #if batch_idx % 50 == 0:
+                #    logger.info(f"{phase} Cross-Pathway Metrics - Correlation: {correlation:.4f}, "
+                #           f"Causal Influence: {causal_influence:.4f}, "
+                #            f"Responsive Influence: {responsive_influence:.4f}")
             except Exception as e:
                 logger.warning(f"Could not extract cross-pathway metrics: {e}")
 
@@ -206,8 +206,10 @@ class Executor:
                 except Exception as e:
                     logger.error(f"Error analyzing attention: {e}")
                     
-                # Clear unused tensors from memory
-                tf.reset_default_graph()
+                # Instead of resetting the graph (which causes errors), use garbage collection
+                # to help free memory
+                import gc
+                gc.collect()
             
             batch_idx += 1
 
