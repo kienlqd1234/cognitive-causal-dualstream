@@ -687,22 +687,17 @@ class Model:
                 v_aux = self.alpha * self.v_stared  # batch_size * max_n_days
 
                 minor = 0.0 # 0.0, 1e-7*
-                
-                # Use standard cross-entropy for traditional likelihood term
                 likelihood_aux = tf.reduce_sum(tf.multiply(self.y_ph, tf.log(self.y + minor)), axis=2)  # batch_size * max_n_days
 
-                
                 kl_lambda = self._kl_lambda()
                 obj_aux = likelihood_aux - kl_lambda * self.kl  # batch_size * max_n_days
 
-                # Deal with T specially, likelihood_T: batch_size, 1
+                # deal with T specially, likelihood_T: batch_size, 1
                 self.y_T_ = tf.gather_nd(params=self.y_ph, indices=self.indexed_T)  # batch_size * y_size
                 likelihood_T = tf.reduce_sum(tf.multiply(self.y_T_, tf.log(self.y_T + minor)), axis=1, keep_dims=True)
-                
 
                 kl_T = tf.reshape(tf.gather_nd(params=self.kl, indices=self.indexed_T), shape=[self.batch_size, 1])
                 obj_T = likelihood_T - kl_lambda * kl_T
-
 
                 obj = obj_T + tf.reduce_sum(tf.multiply(obj_aux, v_aux), axis=1, keep_dims=True)  # batch_size * 1
                 self.loss = tf.reduce_mean(-obj, axis=[0, 1])
@@ -770,7 +765,7 @@ class Model:
                 p_entropy = tf.divide(p_entropy, nonzero)
 
                 # Entropy weight between 0.02-0.05 provides better balance
-                entropy_weight = 0.01
+                entropy_weight = 0.05 #0.01
                 self.loss = self.loss - entropy_weight * tf.reduce_mean(alpha_entropy + p_entropy)
 
     def _consistency_lambda(self):

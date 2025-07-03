@@ -905,3 +905,1724 @@
 2025-06-27 08:42:05,255 INFO dev Cross-Pathway Metrics - Correlation: 2.4975, Causal Influence: 0.2526, Responsive Influence: 0.2347
 2025-06-27 08:42:23,055 INFO Completed dev evaluation: size=656.0, acc=0.5198
 2025-06-27 08:42:23,055 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.9794, Causal Influence: 0.2335, Responsive Influence: 0.2012
+2025-07-02 12:13:00,983 INFO Starting a full run. Model configuration will be loaded from the YML config file.
+2025-07-02 12:13:00,984 INFO INIT: #stock: 88, #vocab+1: 29867
+2025-07-02 12:13:00,989 INFO Start graph assembling...
+2025-07-02 12:47:39,271 INFO Starting a full run. Model configuration will be loaded from the YML config file.
+2025-07-02 12:47:39,271 INFO INIT: #stock: 88, #vocab+1: 29867
+2025-07-02 12:47:39,274 INFO Start graph assembling...
+2025-07-02 12:48:18,124 INFO Word table init: done!
+2025-07-02 12:48:19,583 INFO Model: all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp_dual_path, session restored!
+2025-07-02 12:48:19,584 INFO Epoch: 1/10 start
+2025-07-02 12:52:48,178 WARNING Could not extract cross-pathway metrics: TensorArray mie/dynamic_msin/hidden_states_10251@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_931, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: optimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/bw/bw/TensorArrayStack/TensorArrayGatherV3_grad/TensorArrayGrad/TensorArrayGradV3/StackPopV2/_15018 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_3311_optimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/bw/bw/TensorArrayStack/TensorArrayGatherV3_grad/TensorArrayGrad/TensorArrayGradV3/StackPopV2", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopoptimizer/gradients/b_sync_1/_14682)]]
+
+Caused by op 'optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 830, in assemble_graph
+    self._create_optimizer()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 816, in _create_optimizer
+    gradients, variables = zip(*optimizer.compute_gradients(self.loss))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/training/optimizer.py", line 414, in compute_gradients
+    colocate_gradients_with_ops=colocate_gradients_with_ops)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in gradients
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 353, in _MaybeCompile
+    return grad_fn()  # Exit early
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in <lambda>
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_grad.py", line 131, in _TensorArrayWriteGrad
+    grad = g.read(index)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 281, in read
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 4445, in _tensor_array_read_v3
+    dtype=dtype, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 2956, in create_op
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1470, in __init__
+    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access
+
+...which was originally created as op 'mie/while/TensorArrayWrite/TensorArrayWriteV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+[elided 0 identical lines from previous traceback]
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 826, in assemble_graph
+    self._build_mie()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 314, in _build_mie
+    swap_memory=True
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1344, in dynamic_dual_msin
+    dtype=dtype)
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1231, in _dynamic_msin_loop
+    swap_memory=swap_memory)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2816, in while_loop
+    result = loop_context.BuildLoop(cond, body, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2640, in BuildLoop
+    pred, body, original_loop_vars, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2590, in _BuildLoop
+    body_result = body(*packed_vars_for_body)
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1209, in _time_step
+    hidden_ta_t = hidden_ta_t.write(time, new_state[0])
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 107, in wrapped
+    return _add_should_use_warning(fn(*args, **kwargs))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 310, in write
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 5038, in _tensor_array_write_v3
+    flow_in=flow_in, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+
+InvalidArgumentError (see above for traceback): TensorArray mie/dynamic_msin/hidden_states_10251@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_931, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: optimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/bw/bw/TensorArrayStack/TensorArrayGatherV3_grad/TensorArrayGrad/TensorArrayGradV3/StackPopV2/_15018 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_3311_optimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/bw/bw/TensorArrayStack/TensorArrayGatherV3_grad/TensorArrayGrad/TensorArrayGradV3/StackPopV2", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopoptimizer/gradients/b_sync_1/_14682)]]
+
+2025-07-02 12:53:38,572 INFO Recent Cross-Pathway Metrics - Correlation: 0.5398, Causal Influence: 0.2339, Responsive Influence: 0.2091
+2025-07-02 12:53:40,885 INFO dev Cross-Pathway Metrics - Correlation: 0.2224, Causal Influence: 0.2228, Responsive Influence: 0.1948
+2025-07-02 12:55:36,896 INFO dev Cross-Pathway Metrics - Correlation: 2.0617, Causal Influence: 0.2541, Responsive Influence: 0.2341
+2025-07-02 12:55:44,791 INFO Completed dev evaluation: size=656.0, acc=0.5152
+2025-07-02 12:55:44,791 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.8612, Causal Influence: 0.2350, Responsive Influence: 0.2006
+2025-07-02 12:57:58,257 WARNING Could not extract cross-pathway metrics: TensorArray mie/dynamic_msin/hidden_states_34868@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_931, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: vmd/vmd_zh_rec/while/iter_body/z_prior/z_prior_1/Tensordot/Gather/_53997 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_5302_vmd/vmd_zh_rec/while/iter_body/z_prior/z_prior_1/Tensordot/Gather", tensor_type=DT_INT32, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopvmd/vmd_zh_rec/while/iter_body/cond/Reshape/_53440)]]
+
+Caused by op 'optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 830, in assemble_graph
+    self._create_optimizer()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 816, in _create_optimizer
+    gradients, variables = zip(*optimizer.compute_gradients(self.loss))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/training/optimizer.py", line 414, in compute_gradients
+    colocate_gradients_with_ops=colocate_gradients_with_ops)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in gradients
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 353, in _MaybeCompile
+    return grad_fn()  # Exit early
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in <lambda>
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_grad.py", line 131, in _TensorArrayWriteGrad
+    grad = g.read(index)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 281, in read
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 4445, in _tensor_array_read_v3
+    dtype=dtype, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 2956, in create_op
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1470, in __init__
+    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access
+
+...which was originally created as op 'mie/while/TensorArrayWrite/TensorArrayWriteV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+[elided 0 identical lines from previous traceback]
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 826, in assemble_graph
+    self._build_mie()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 314, in _build_mie
+    swap_memory=True
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1344, in dynamic_dual_msin
+    dtype=dtype)
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1231, in _dynamic_msin_loop
+    swap_memory=swap_memory)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2816, in while_loop
+    result = loop_context.BuildLoop(cond, body, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2640, in BuildLoop
+    pred, body, original_loop_vars, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2590, in _BuildLoop
+    body_result = body(*packed_vars_for_body)
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1209, in _time_step
+    hidden_ta_t = hidden_ta_t.write(time, new_state[0])
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 107, in wrapped
+    return _add_should_use_warning(fn(*args, **kwargs))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 310, in write
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 5038, in _tensor_array_write_v3
+    flow_in=flow_in, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+
+InvalidArgumentError (see above for traceback): TensorArray mie/dynamic_msin/hidden_states_34868@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_931, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: vmd/vmd_zh_rec/while/iter_body/z_prior/z_prior_1/Tensordot/Gather/_53997 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_5302_vmd/vmd_zh_rec/while/iter_body/z_prior/z_prior_1/Tensordot/Gather", tensor_type=DT_INT32, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopvmd/vmd_zh_rec/while/iter_body/cond/Reshape/_53440)]]
+
+2025-07-02 12:59:40,437 INFO Running validation with dual-pathway attention analysis
+2025-07-02 12:59:40,439 INFO Recent Cross-Pathway Metrics - Correlation: 0.4533, Causal Influence: 0.2367, Responsive Influence: 0.2077
+2025-07-02 12:59:42,753 INFO dev Cross-Pathway Metrics - Correlation: 0.0693, Causal Influence: 0.2243, Responsive Influence: 0.1948
+2025-07-02 12:59:44,995 INFO Dual-pathway attention analysis completed
+2025-07-02 12:59:44,995 INFO --- Attention Analysis for dev Batch 0 Example 0 ---
+2025-07-02 12:59:44,995 INFO Pathway Importance:
+2025-07-02 12:59:44,995 INFO   price_pathway: 0.3090
+2025-07-02 12:59:44,995 INFO   causal_pathway: 0.3536
+2025-07-02 12:59:44,995 INFO   responsive_pathway: 0.3374
+2025-07-02 12:59:44,995 INFO Top Causal Attention:
+2025-07-02 12:59:44,995 INFO   Message 2: 1.0000
+2025-07-02 12:59:44,995 INFO   Message 1: 0.0000
+2025-07-02 12:59:44,995 INFO   Message 0: 0.0000
+2025-07-02 12:59:44,995 INFO Top Responsive Attention:
+2025-07-02 12:59:44,995 INFO   Message 10: 1.0000
+2025-07-02 12:59:44,995 INFO   Message 0: 0.0000
+2025-07-02 12:59:44,995 INFO   Message 7: 0.0000
+2025-07-02 12:59:49,475 INFO Dual-pathway attention analysis completed
+2025-07-02 12:59:49,475 INFO --- Attention Analysis for dev Batch 1 Example 0 ---
+2025-07-02 12:59:49,475 INFO Pathway Importance:
+2025-07-02 12:59:49,475 INFO   price_pathway: 0.3097
+2025-07-02 12:59:49,475 INFO   causal_pathway: 0.3518
+2025-07-02 12:59:49,475 INFO   responsive_pathway: 0.3385
+2025-07-02 12:59:49,475 INFO Top Causal Attention:
+2025-07-02 12:59:49,475 INFO   Message 0: 1.0000
+2025-07-02 12:59:49,475 INFO   Message 1: 0.0000
+2025-07-02 12:59:49,475 INFO   Message 17: 0.0000
+2025-07-02 12:59:49,475 INFO Top Responsive Attention:
+2025-07-02 12:59:49,476 INFO   Message 8: 0.9973
+2025-07-02 12:59:49,476 INFO   Message 19: 0.0013
+2025-07-02 12:59:49,476 INFO   Message 6: 0.0013
+2025-07-02 12:59:51,035 INFO Dual-pathway attention analysis completed
+2025-07-02 12:59:51,035 INFO --- Attention Analysis for dev Batch 2 Example 0 ---
+2025-07-02 12:59:51,035 INFO Pathway Importance:
+2025-07-02 12:59:51,035 INFO   price_pathway: 0.3045
+2025-07-02 12:59:51,035 INFO   causal_pathway: 0.3881
+2025-07-02 12:59:51,035 INFO   responsive_pathway: 0.3075
+2025-07-02 12:59:51,035 INFO Top Causal Attention:
+2025-07-02 12:59:51,036 INFO   Message 0: 1.0000
+2025-07-02 12:59:51,036 INFO   Message 17: 0.0000
+2025-07-02 12:59:51,036 INFO   Message 16: 0.0000
+2025-07-02 12:59:51,036 INFO Top Responsive Attention:
+2025-07-02 12:59:51,036 INFO   Message 0: 0.5109
+2025-07-02 12:59:51,036 INFO   Message 17: 0.0257
+2025-07-02 12:59:51,036 INFO   Message 16: 0.0257
+2025-07-02 13:01:45,206 INFO dev Cross-Pathway Metrics - Correlation: 2.0199, Causal Influence: 0.2558, Responsive Influence: 0.2338
+2025-07-02 13:01:53,159 INFO Completed dev evaluation: size=656.0, acc=0.4954
+2025-07-02 13:01:53,159 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.8001, Causal Influence: 0.2365, Responsive Influence: 0.2004
+2025-07-02 13:04:38,055 INFO Starting a full run. Model configuration will be loaded from the YML config file.
+2025-07-02 13:04:38,055 INFO INIT: #stock: 88, #vocab+1: 29867
+2025-07-02 13:04:38,058 INFO Start graph assembling...
+2025-07-02 13:05:07,209 INFO Word table init: done!
+2025-07-02 13:05:07,210 INFO Model: all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp_dual_path, start a new session!
+2025-07-02 13:05:07,210 INFO Epoch: 1/10 start
+2025-07-02 13:09:23,975 WARNING Could not extract cross-pathway metrics: TensorArray mie/dynamic_msin/hidden_states_9569@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: optimizer/gradients/mie/while/responsive_tsu/Tile_1_grad/stack/_13780 = _HostSend[T=DT_INT32, client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device_incarnation=1, tensor_name="edge_5194_optimizer/gradients/mie/while/responsive_tsu/Tile_1_grad/stack", _device="/job:localhost/replica:0/task:0/device:GPU:0"](optimizer/gradients/mie/while/responsive_tsu/Tile_1_grad/stack)]]
+
+Caused by op 'optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 830, in assemble_graph
+    self._create_optimizer()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 816, in _create_optimizer
+    gradients, variables = zip(*optimizer.compute_gradients(self.loss))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/training/optimizer.py", line 414, in compute_gradients
+    colocate_gradients_with_ops=colocate_gradients_with_ops)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in gradients
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 353, in _MaybeCompile
+    return grad_fn()  # Exit early
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in <lambda>
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_grad.py", line 131, in _TensorArrayWriteGrad
+    grad = g.read(index)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 281, in read
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 4445, in _tensor_array_read_v3
+    dtype=dtype, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 2956, in create_op
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1470, in __init__
+    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access
+
+...which was originally created as op 'mie/while/TensorArrayWrite/TensorArrayWriteV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+[elided 0 identical lines from previous traceback]
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 826, in assemble_graph
+    self._build_mie()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 314, in _build_mie
+    swap_memory=True
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1344, in dynamic_dual_msin
+    dtype=dtype)
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1231, in _dynamic_msin_loop
+    swap_memory=swap_memory)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2816, in while_loop
+    result = loop_context.BuildLoop(cond, body, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2640, in BuildLoop
+    pred, body, original_loop_vars, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2590, in _BuildLoop
+    body_result = body(*packed_vars_for_body)
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1209, in _time_step
+    hidden_ta_t = hidden_ta_t.write(time, new_state[0])
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 107, in wrapped
+    return _add_should_use_warning(fn(*args, **kwargs))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 310, in write
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 5038, in _tensor_array_write_v3
+    flow_in=flow_in, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+
+InvalidArgumentError (see above for traceback): TensorArray mie/dynamic_msin/hidden_states_9569@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: optimizer/gradients/mie/while/responsive_tsu/Tile_1_grad/stack/_13780 = _HostSend[T=DT_INT32, client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device_incarnation=1, tensor_name="edge_5194_optimizer/gradients/mie/while/responsive_tsu/Tile_1_grad/stack", _device="/job:localhost/replica:0/task:0/device:GPU:0"](optimizer/gradients/mie/while/responsive_tsu/Tile_1_grad/stack)]]
+
+2025-07-02 13:10:28,256 INFO Recent Cross-Pathway Metrics - Correlation: 0.1553, Causal Influence: 0.2099, Responsive Influence: 0.2120
+2025-07-02 13:10:30,562 INFO dev Cross-Pathway Metrics - Correlation: 0.1523, Causal Influence: 0.1939, Responsive Influence: 0.2082
+2025-07-02 13:12:23,920 INFO dev Cross-Pathway Metrics - Correlation: 0.1764, Causal Influence: 0.2302, Responsive Influence: 0.2396
+2025-07-02 13:12:31,512 INFO Completed dev evaluation: size=656.0, acc=0.5015
+2025-07-02 13:12:31,513 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1578, Causal Influence: 0.2046, Responsive Influence: 0.2154
+2025-07-02 13:13:27,051 WARNING Could not extract cross-pathway metrics: TensorArray mie/dynamic_msin/hidden_states_30769@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: vmd/vmd_zh_rec/cond/g/g/Tensordot/Gather/_47843 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_5342_vmd/vmd_zh_rec/cond/g/g/Tensordot/Gather", tensor_type=DT_INT32, _device="/job:localhost/replica:0/task:0/device:GPU:0"]()]]
+
+Caused by op 'optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 830, in assemble_graph
+    self._create_optimizer()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 816, in _create_optimizer
+    gradients, variables = zip(*optimizer.compute_gradients(self.loss))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/training/optimizer.py", line 414, in compute_gradients
+    colocate_gradients_with_ops=colocate_gradients_with_ops)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in gradients
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 353, in _MaybeCompile
+    return grad_fn()  # Exit early
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in <lambda>
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_grad.py", line 131, in _TensorArrayWriteGrad
+    grad = g.read(index)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 281, in read
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 4445, in _tensor_array_read_v3
+    dtype=dtype, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 2956, in create_op
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1470, in __init__
+    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access
+
+...which was originally created as op 'mie/while/TensorArrayWrite/TensorArrayWriteV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+[elided 0 identical lines from previous traceback]
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 826, in assemble_graph
+    self._build_mie()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 314, in _build_mie
+    swap_memory=True
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1344, in dynamic_dual_msin
+    dtype=dtype)
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1231, in _dynamic_msin_loop
+    swap_memory=swap_memory)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2816, in while_loop
+    result = loop_context.BuildLoop(cond, body, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2640, in BuildLoop
+    pred, body, original_loop_vars, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2590, in _BuildLoop
+    body_result = body(*packed_vars_for_body)
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1209, in _time_step
+    hidden_ta_t = hidden_ta_t.write(time, new_state[0])
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 107, in wrapped
+    return _add_should_use_warning(fn(*args, **kwargs))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 310, in write
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 5038, in _tensor_array_write_v3
+    flow_in=flow_in, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+
+InvalidArgumentError (see above for traceback): TensorArray mie/dynamic_msin/hidden_states_30769@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: vmd/vmd_zh_rec/cond/g/g/Tensordot/Gather/_47843 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_5342_vmd/vmd_zh_rec/cond/g/g/Tensordot/Gather", tensor_type=DT_INT32, _device="/job:localhost/replica:0/task:0/device:GPU:0"]()]]
+
+2025-07-02 13:16:22,221 INFO Recent Cross-Pathway Metrics - Correlation: 0.1609, Causal Influence: 0.1951, Responsive Influence: 0.2152
+2025-07-02 13:16:24,597 INFO dev Cross-Pathway Metrics - Correlation: 0.1515, Causal Influence: 0.1781, Responsive Influence: 0.2020
+2025-07-02 13:18:22,917 INFO dev Cross-Pathway Metrics - Correlation: 0.1759, Causal Influence: 0.2166, Responsive Influence: 0.2350
+2025-07-02 13:18:30,893 INFO Completed dev evaluation: size=656.0, acc=0.4954
+2025-07-02 13:18:30,894 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1571, Causal Influence: 0.1898, Responsive Influence: 0.2097
+2025-07-02 13:20:44,302 WARNING Could not extract cross-pathway metrics: TensorArray mie/dynamic_msin/hidden_states_63580@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: vmd/vmd_zh_rec/while/iter_body/h_z_post/h_z_post/Tensordot/Gather/_96627 = _HostRecv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_6095_vmd/vmd_zh_rec/while/iter_body/h_z_post/h_z_post/Tensordot/Gather", tensor_type=DT_INT32, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopvmd/vmd_zh_rec/while/iter_body/cond/Reshape/_96072)]]
+
+Caused by op 'optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 830, in assemble_graph
+    self._create_optimizer()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 816, in _create_optimizer
+    gradients, variables = zip(*optimizer.compute_gradients(self.loss))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/training/optimizer.py", line 414, in compute_gradients
+    colocate_gradients_with_ops=colocate_gradients_with_ops)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in gradients
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 353, in _MaybeCompile
+    return grad_fn()  # Exit early
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in <lambda>
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_grad.py", line 131, in _TensorArrayWriteGrad
+    grad = g.read(index)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 281, in read
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 4445, in _tensor_array_read_v3
+    dtype=dtype, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 2956, in create_op
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1470, in __init__
+    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access
+
+...which was originally created as op 'mie/while/TensorArrayWrite/TensorArrayWriteV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+[elided 0 identical lines from previous traceback]
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 826, in assemble_graph
+    self._build_mie()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 314, in _build_mie
+    swap_memory=True
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1344, in dynamic_dual_msin
+    s_inputs: The text inputs (typically shape [batch, time, max_n_msgs, embed_dim])
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1231, in _dynamic_msin_loop
+    # Pass the previous hidden state to the cell
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2816, in while_loop
+    result = loop_context.BuildLoop(cond, body, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2640, in BuildLoop
+    pred, body, original_loop_vars, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2590, in _BuildLoop
+    body_result = body(*packed_vars_for_body)
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1209, in _time_step
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 107, in wrapped
+    return _add_should_use_warning(fn(*args, **kwargs))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 310, in write
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 5038, in _tensor_array_write_v3
+    flow_in=flow_in, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+
+InvalidArgumentError (see above for traceback): TensorArray mie/dynamic_msin/hidden_states_63580@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: vmd/vmd_zh_rec/while/iter_body/h_z_post/h_z_post/Tensordot/Gather/_96627 = _HostRecv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_6095_vmd/vmd_zh_rec/while/iter_body/h_z_post/h_z_post/Tensordot/Gather", tensor_type=DT_INT32, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopvmd/vmd_zh_rec/while/iter_body/cond/Reshape/_96072)]]
+
+2025-07-02 13:21:43,152 WARNING Could not extract cross-pathway metrics: TensorArray mie/dynamic_msin/hidden_states_67675@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: optimizer/gradients/mie/while/pack_attention/Tile_2_grad/stack/_101231 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device_incarnation=1, tensor_name="edge_4117_optimizer/gradients/mie/while/pack_attention/Tile_2_grad/stack", tensor_type=DT_INT32, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^optimizer/gradients/mie/while/pack_attention/Tile_2_grad/stack/_101230)]]
+
+Caused by op 'optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 830, in assemble_graph
+    self._create_optimizer()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 816, in _create_optimizer
+    gradients, variables = zip(*optimizer.compute_gradients(self.loss))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/training/optimizer.py", line 414, in compute_gradients
+    colocate_gradients_with_ops=colocate_gradients_with_ops)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in gradients
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 353, in _MaybeCompile
+    return grad_fn()  # Exit early
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in <lambda>
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_grad.py", line 131, in _TensorArrayWriteGrad
+    grad = g.read(index)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 281, in read
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 4445, in _tensor_array_read_v3
+    dtype=dtype, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 2956, in create_op
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1470, in __init__
+    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access
+
+...which was originally created as op 'mie/while/TensorArrayWrite/TensorArrayWriteV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+[elided 0 identical lines from previous traceback]
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 826, in assemble_graph
+    self._build_mie()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 314, in _build_mie
+    swap_memory=True
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1344, in dynamic_dual_msin
+    s_inputs: The text inputs (typically shape [batch, time, max_n_msgs, embed_dim])
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1231, in _dynamic_msin_loop
+    # Pass the previous hidden state to the cell
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2816, in while_loop
+    result = loop_context.BuildLoop(cond, body, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2640, in BuildLoop
+    pred, body, original_loop_vars, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2590, in _BuildLoop
+    body_result = body(*packed_vars_for_body)
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1209, in _time_step
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 107, in wrapped
+    return _add_should_use_warning(fn(*args, **kwargs))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 310, in write
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 5038, in _tensor_array_write_v3
+    flow_in=flow_in, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+
+InvalidArgumentError (see above for traceback): TensorArray mie/dynamic_msin/hidden_states_67675@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: optimizer/gradients/mie/while/pack_attention/Tile_2_grad/stack/_101231 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device_incarnation=1, tensor_name="edge_4117_optimizer/gradients/mie/while/pack_attention/Tile_2_grad/stack", tensor_type=DT_INT32, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^optimizer/gradients/mie/while/pack_attention/Tile_2_grad/stack/_101230)]]
+
+2025-07-02 13:22:03,868 INFO Recent Cross-Pathway Metrics - Correlation: 0.1630, Causal Influence: 0.2033, Responsive Influence: 0.2217
+2025-07-02 13:22:06,225 INFO dev Cross-Pathway Metrics - Correlation: 0.1503, Causal Influence: 0.1877, Responsive Influence: 0.2061
+2025-07-02 13:24:08,408 INFO dev Cross-Pathway Metrics - Correlation: 0.1751, Causal Influence: 0.2239, Responsive Influence: 0.2392
+2025-07-02 13:24:16,696 INFO Completed dev evaluation: size=656.0, acc=0.4649
+2025-07-02 13:24:16,696 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1560, Causal Influence: 0.1984, Responsive Influence: 0.2132
+2025-07-02 13:27:58,580 INFO Recent Cross-Pathway Metrics - Correlation: 0.1622, Causal Influence: 0.2137, Responsive Influence: 0.2223
+2025-07-02 13:28:01,031 INFO dev Cross-Pathway Metrics - Correlation: 0.1500, Causal Influence: 0.1964, Responsive Influence: 0.2067
+2025-07-02 13:30:06,012 INFO dev Cross-Pathway Metrics - Correlation: 0.1750, Causal Influence: 0.2302, Responsive Influence: 0.2404
+2025-07-02 13:30:14,471 INFO Completed dev evaluation: size=656.0, acc=0.4665
+2025-07-02 13:30:14,471 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1557, Causal Influence: 0.2067, Responsive Influence: 0.2138
+2025-07-02 13:31:04,984 WARNING Could not extract cross-pathway metrics: TensorArray mie/dynamic_msin/hidden_states_114854@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: optimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/bw/bw/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3/StackPushV2/_173930 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_2041_optimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/bw/bw/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3/StackPushV2", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopmie/mel/mel_iter/while/while/bidirectional_rnn/bw/bw/CheckSeqLen/_173721)]]
+
+Caused by op 'optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 830, in assemble_graph
+    self._create_optimizer()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 816, in _create_optimizer
+    gradients, variables = zip(*optimizer.compute_gradients(self.loss))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/training/optimizer.py", line 414, in compute_gradients
+    colocate_gradients_with_ops=colocate_gradients_with_ops)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in gradients
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 353, in _MaybeCompile
+    return grad_fn()  # Exit early
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in <lambda>
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_grad.py", line 131, in _TensorArrayWriteGrad
+    grad = g.read(index)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 281, in read
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 4445, in _tensor_array_read_v3
+    dtype=dtype, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 2956, in create_op
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1470, in __init__
+    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access
+
+...which was originally created as op 'mie/while/TensorArrayWrite/TensorArrayWriteV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+[elided 0 identical lines from previous traceback]
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 826, in assemble_graph
+    self._build_mie()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 314, in _build_mie
+    swap_memory=True
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1344, in dynamic_dual_msin
+    s_inputs: The text inputs (typically shape [batch, time, max_n_msgs, embed_dim])
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1231, in _dynamic_msin_loop
+    # Pass the previous hidden state to the cell
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2816, in while_loop
+    result = loop_context.BuildLoop(cond, body, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2640, in BuildLoop
+    pred, body, original_loop_vars, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2590, in _BuildLoop
+    body_result = body(*packed_vars_for_body)
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1209, in _time_step
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 107, in wrapped
+    return _add_should_use_warning(fn(*args, **kwargs))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 310, in write
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 5038, in _tensor_array_write_v3
+    flow_in=flow_in, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+
+InvalidArgumentError (see above for traceback): TensorArray mie/dynamic_msin/hidden_states_114854@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: optimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/bw/bw/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3/StackPushV2/_173930 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_2041_optimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/bw/bw/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3/StackPushV2", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopmie/mel/mel_iter/while/while/bidirectional_rnn/bw/bw/CheckSeqLen/_173721)]]
+
+2025-07-02 13:32:37,096 WARNING Could not extract cross-pathway metrics: TensorArray mie/dynamic_msin/hidden_states_120999@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: vmd/vmd_zh_rec/while/iter_body/z_post/z_post/Tensordot/Gather/_181879 = _HostRecv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_5969_vmd/vmd_zh_rec/while/iter_body/z_post/z_post/Tensordot/Gather", tensor_type=DT_INT32, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopvmd/vmd_zh_rec/while/iter_body/cond/Reshape/_181292)]]
+
+Caused by op 'optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 830, in assemble_graph
+    self._create_optimizer()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 816, in _create_optimizer
+    gradients, variables = zip(*optimizer.compute_gradients(self.loss))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/training/optimizer.py", line 414, in compute_gradients
+    colocate_gradients_with_ops=colocate_gradients_with_ops)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in gradients
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 353, in _MaybeCompile
+    return grad_fn()  # Exit early
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in <lambda>
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_grad.py", line 131, in _TensorArrayWriteGrad
+    grad = g.read(index)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 281, in read
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 4445, in _tensor_array_read_v3
+    dtype=dtype, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 2956, in create_op
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1470, in __init__
+    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access
+
+...which was originally created as op 'mie/while/TensorArrayWrite/TensorArrayWriteV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+[elided 0 identical lines from previous traceback]
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 826, in assemble_graph
+    self._build_mie()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 314, in _build_mie
+    swap_memory=True
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1344, in dynamic_dual_msin
+    s_inputs: The text inputs (typically shape [batch, time, max_n_msgs, embed_dim])
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1231, in _dynamic_msin_loop
+    # Pass the previous hidden state to the cell
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2816, in while_loop
+    result = loop_context.BuildLoop(cond, body, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2640, in BuildLoop
+    pred, body, original_loop_vars, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2590, in _BuildLoop
+    body_result = body(*packed_vars_for_body)
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1209, in _time_step
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 107, in wrapped
+    return _add_should_use_warning(fn(*args, **kwargs))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 310, in write
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 5038, in _tensor_array_write_v3
+    flow_in=flow_in, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+
+InvalidArgumentError (see above for traceback): TensorArray mie/dynamic_msin/hidden_states_120999@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: vmd/vmd_zh_rec/while/iter_body/z_post/z_post/Tensordot/Gather/_181879 = _HostRecv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_5969_vmd/vmd_zh_rec/while/iter_body/z_post/z_post/Tensordot/Gather", tensor_type=DT_INT32, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopvmd/vmd_zh_rec/while/iter_body/cond/Reshape/_181292)]]
+
+2025-07-02 13:32:51,508 WARNING Could not extract cross-pathway metrics: TensorArray mie/dynamic_msin/hidden_states_122367@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: optimizer/gradients/vmd/vmd_zh_rec/while/iter_body/cond/TensorArrayReadV3_grad/TensorArrayWrite/TensorArrayWriteV3/StackPushV2/_182428 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_2006_optimizer/gradients/vmd/vmd_zh_rec/while/iter_body/cond/TensorArrayReadV3_grad/TensorArrayWrite/TensorArrayWriteV3/StackPushV2", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopvmd/vmd_zh_rec/while/iter_body/cond/Reshape/_182198)]]
+
+Caused by op 'optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 830, in assemble_graph
+    self._create_optimizer()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 816, in _create_optimizer
+    gradients, variables = zip(*optimizer.compute_gradients(self.loss))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/training/optimizer.py", line 414, in compute_gradients
+    colocate_gradients_with_ops=colocate_gradients_with_ops)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in gradients
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 353, in _MaybeCompile
+    return grad_fn()  # Exit early
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in <lambda>
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_grad.py", line 131, in _TensorArrayWriteGrad
+    grad = g.read(index)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 281, in read
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 4445, in _tensor_array_read_v3
+    dtype=dtype, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 2956, in create_op
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1470, in __init__
+    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access
+
+...which was originally created as op 'mie/while/TensorArrayWrite/TensorArrayWriteV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+[elided 0 identical lines from previous traceback]
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 826, in assemble_graph
+    self._build_mie()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 314, in _build_mie
+    swap_memory=True
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1344, in dynamic_dual_msin
+    s_inputs: The text inputs (typically shape [batch, time, max_n_msgs, embed_dim])
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1231, in _dynamic_msin_loop
+    # Pass the previous hidden state to the cell
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2816, in while_loop
+    result = loop_context.BuildLoop(cond, body, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2640, in BuildLoop
+    pred, body, original_loop_vars, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2590, in _BuildLoop
+    body_result = body(*packed_vars_for_body)
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1209, in _time_step
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 107, in wrapped
+    return _add_should_use_warning(fn(*args, **kwargs))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 310, in write
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 5038, in _tensor_array_write_v3
+    flow_in=flow_in, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+
+InvalidArgumentError (see above for traceback): TensorArray mie/dynamic_msin/hidden_states_122367@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: optimizer/gradients/vmd/vmd_zh_rec/while/iter_body/cond/TensorArrayReadV3_grad/TensorArrayWrite/TensorArrayWriteV3/StackPushV2/_182428 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_2006_optimizer/gradients/vmd/vmd_zh_rec/while/iter_body/cond/TensorArrayReadV3_grad/TensorArrayWrite/TensorArrayWriteV3/StackPushV2", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopvmd/vmd_zh_rec/while/iter_body/cond/Reshape/_182198)]]
+
+2025-07-02 13:33:17,066 WARNING Could not extract cross-pathway metrics: TensorArray mie/dynamic_msin/hidden_states_124413@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: optimizer/gradients/vmd/vmd_zh_rec/while/iter_body/cond/TensorArrayReadV3_grad/TensorArrayWrite/TensorArrayWriteV3/StackPopV2/_184440 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_3033_optimizer/gradients/vmd/vmd_zh_rec/while/iter_body/cond/TensorArrayReadV3_grad/TensorArrayWrite/TensorArrayWriteV3/StackPopV2", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopoptimizer/gradients/vmd/vmd_zh_rec/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/b_sync/_184130)]]
+
+Caused by op 'optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 830, in assemble_graph
+    self._create_optimizer()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 816, in _create_optimizer
+    gradients, variables = zip(*optimizer.compute_gradients(self.loss))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/training/optimizer.py", line 414, in compute_gradients
+    colocate_gradients_with_ops=colocate_gradients_with_ops)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in gradients
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 353, in _MaybeCompile
+    return grad_fn()  # Exit early
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in <lambda>
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_grad.py", line 131, in _TensorArrayWriteGrad
+    grad = g.read(index)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 281, in read
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 4445, in _tensor_array_read_v3
+    dtype=dtype, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 2956, in create_op
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1470, in __init__
+    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access
+
+...which was originally created as op 'mie/while/TensorArrayWrite/TensorArrayWriteV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+[elided 0 identical lines from previous traceback]
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 826, in assemble_graph
+    self._build_mie()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 314, in _build_mie
+    swap_memory=True
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1344, in dynamic_dual_msin
+    s_inputs: The text inputs (typically shape [batch, time, max_n_msgs, embed_dim])
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1231, in _dynamic_msin_loop
+    # Pass the previous hidden state to the cell
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2816, in while_loop
+    result = loop_context.BuildLoop(cond, body, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2640, in BuildLoop
+    pred, body, original_loop_vars, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2590, in _BuildLoop
+    body_result = body(*packed_vars_for_body)
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1209, in _time_step
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 107, in wrapped
+    return _add_should_use_warning(fn(*args, **kwargs))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 310, in write
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 5038, in _tensor_array_write_v3
+    flow_in=flow_in, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+
+InvalidArgumentError (see above for traceback): TensorArray mie/dynamic_msin/hidden_states_124413@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: optimizer/gradients/vmd/vmd_zh_rec/while/iter_body/cond/TensorArrayReadV3_grad/TensorArrayWrite/TensorArrayWriteV3/StackPopV2/_184440 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_3033_optimizer/gradients/vmd/vmd_zh_rec/while/iter_body/cond/TensorArrayReadV3_grad/TensorArrayWrite/TensorArrayWriteV3/StackPopV2", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopoptimizer/gradients/vmd/vmd_zh_rec/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/b_sync/_184130)]]
+
+2025-07-02 13:33:26,923 INFO Running validation with dual-pathway attention analysis
+2025-07-02 13:33:26,924 INFO Recent Cross-Pathway Metrics - Correlation: 0.1616, Causal Influence: 0.2174, Responsive Influence: 0.2215
+2025-07-02 13:33:29,417 INFO dev Cross-Pathway Metrics - Correlation: 0.1501, Causal Influence: 0.1993, Responsive Influence: 0.2071
+2025-07-02 13:33:31,781 INFO Dual-pathway attention analysis completed
+2025-07-02 13:33:31,782 INFO --- Attention Analysis for dev Batch 0 Example 0 ---
+2025-07-02 13:33:31,782 INFO Pathway Importance:
+2025-07-02 13:33:31,782 INFO   price_pathway: 0.2767
+2025-07-02 13:33:31,782 INFO   causal_pathway: 0.3758
+2025-07-02 13:33:31,782 INFO   responsive_pathway: 0.3475
+2025-07-02 13:33:31,782 INFO Top Causal Attention:
+2025-07-02 13:33:31,782 INFO   Message 7: 0.0506
+2025-07-02 13:33:31,782 INFO   Message 9: 0.0506
+2025-07-02 13:33:31,782 INFO   Message 17: 0.0506
+2025-07-02 13:33:31,782 INFO Top Responsive Attention:
+2025-07-02 13:33:31,782 INFO   Message 16: 0.0666
+2025-07-02 13:33:31,782 INFO   Message 0: 0.0657
+2025-07-02 13:33:31,782 INFO   Message 19: 0.0572
+2025-07-02 13:33:36,438 INFO Dual-pathway attention analysis completed
+2025-07-02 13:33:36,438 INFO --- Attention Analysis for dev Batch 1 Example 0 ---
+2025-07-02 13:33:36,438 INFO Pathway Importance:
+2025-07-02 13:33:36,438 INFO   price_pathway: 0.3763
+2025-07-02 13:33:36,438 INFO   causal_pathway: 0.2890
+2025-07-02 13:33:36,438 INFO   responsive_pathway: 0.3347
+2025-07-02 13:33:36,438 INFO Top Causal Attention:
+2025-07-02 13:33:36,438 INFO   Message 9: 0.0500
+2025-07-02 13:33:36,438 INFO   Message 17: 0.0500
+2025-07-02 13:33:36,438 INFO   Message 16: 0.0500
+2025-07-02 13:33:36,438 INFO Top Responsive Attention:
+2025-07-02 13:33:36,438 INFO   Message 11: 0.0762
+2025-07-02 13:33:36,438 INFO   Message 5: 0.0716
+2025-07-02 13:33:36,438 INFO   Message 18: 0.0716
+2025-07-02 13:33:38,197 INFO Dual-pathway attention analysis completed
+2025-07-02 13:33:38,197 INFO --- Attention Analysis for dev Batch 2 Example 0 ---
+2025-07-02 13:33:38,197 INFO Pathway Importance:
+2025-07-02 13:33:38,197 INFO   price_pathway: 0.3466
+2025-07-02 13:33:38,197 INFO   causal_pathway: 0.3148
+2025-07-02 13:33:38,197 INFO   responsive_pathway: 0.3385
+2025-07-02 13:33:38,197 INFO Top Causal Attention:
+2025-07-02 13:33:38,197 INFO   Message 0: 0.0502
+2025-07-02 13:33:38,197 INFO   Message 17: 0.0500
+2025-07-02 13:33:38,197 INFO   Message 16: 0.0500
+2025-07-02 13:33:38,197 INFO Top Responsive Attention:
+2025-07-02 13:33:38,197 INFO   Message 9: 0.0500
+2025-07-02 13:33:38,197 INFO   Message 17: 0.0500
+2025-07-02 13:33:38,197 INFO   Message 16: 0.0500
+2025-07-02 13:35:38,879 INFO dev Cross-Pathway Metrics - Correlation: 0.1750, Causal Influence: 0.2326, Responsive Influence: 0.2411
+2025-07-02 13:35:47,586 INFO Completed dev evaluation: size=656.0, acc=0.4863
+2025-07-02 13:35:47,586 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1557, Causal Influence: 0.2096, Responsive Influence: 0.2145
+2025-07-02 13:37:43,243 WARNING Could not extract cross-pathway metrics: TensorArray mie/dynamic_msin/hidden_states_147622@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: optimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/bw/bw/TensorArrayStack/TensorArrayGatherV3_grad/TensorArrayGrad/TensorArrayGradV3/StackPushV2_1/_219572 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_2695_optimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/bw/bw/TensorArrayStack/TensorArrayGatherV3_grad/TensorArrayGrad/TensorArrayGradV3/StackPushV2_1", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopmie/mel/mel_iter/while/while/bidirectional_rnn/fw/fw/while/Enter_3/_219301)]]
+
+Caused by op 'optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 830, in assemble_graph
+    self._create_optimizer()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 816, in _create_optimizer
+    gradients, variables = zip(*optimizer.compute_gradients(self.loss))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/training/optimizer.py", line 414, in compute_gradients
+    colocate_gradients_with_ops=colocate_gradients_with_ops)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in gradients
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 353, in _MaybeCompile
+    return grad_fn()  # Exit early
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in <lambda>
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_grad.py", line 131, in _TensorArrayWriteGrad
+    grad = g.read(index)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 281, in read
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 4445, in _tensor_array_read_v3
+    dtype=dtype, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 2956, in create_op
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1470, in __init__
+    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access
+
+...which was originally created as op 'mie/while/TensorArrayWrite/TensorArrayWriteV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+[elided 0 identical lines from previous traceback]
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 826, in assemble_graph
+    self._build_mie()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 314, in _build_mie
+    swap_memory=True
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1344, in dynamic_dual_msin
+    s_inputs: The text inputs (typically shape [batch, time, max_n_msgs, embed_dim])
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1231, in _dynamic_msin_loop
+    # Pass the previous hidden state to the cell
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2816, in while_loop
+    result = loop_context.BuildLoop(cond, body, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2640, in BuildLoop
+    pred, body, original_loop_vars, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2590, in _BuildLoop
+    body_result = body(*packed_vars_for_body)
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1209, in _time_step
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 107, in wrapped
+    return _add_should_use_warning(fn(*args, **kwargs))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 310, in write
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 5038, in _tensor_array_write_v3
+    flow_in=flow_in, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+
+InvalidArgumentError (see above for traceback): TensorArray mie/dynamic_msin/hidden_states_147622@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: optimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/bw/bw/TensorArrayStack/TensorArrayGatherV3_grad/TensorArrayGrad/TensorArrayGradV3/StackPushV2_1/_219572 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_2695_optimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/bw/bw/TensorArrayStack/TensorArrayGatherV3_grad/TensorArrayGrad/TensorArrayGradV3/StackPushV2_1", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopmie/mel/mel_iter/while/while/bidirectional_rnn/fw/fw/while/Enter_3/_219301)]]
+
+2025-07-02 13:38:30,562 WARNING Could not extract cross-pathway metrics: TensorArray mie/dynamic_msin/hidden_states_151037@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: mie/while/ca_ifu/add_12/_223946 = _Send[T=DT_FLOAT, client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device_incarnation=1, tensor_name="edge_12552_mie/while/ca_ifu/add_12", _device="/job:localhost/replica:0/task:0/device:GPU:0"](mie/while/ca_ifu/add_12)]]
+
+Caused by op 'optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 830, in assemble_graph
+    self._create_optimizer()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 816, in _create_optimizer
+    gradients, variables = zip(*optimizer.compute_gradients(self.loss))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/training/optimizer.py", line 414, in compute_gradients
+    colocate_gradients_with_ops=colocate_gradients_with_ops)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in gradients
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 353, in _MaybeCompile
+    return grad_fn()  # Exit early
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in <lambda>
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_grad.py", line 131, in _TensorArrayWriteGrad
+    grad = g.read(index)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 281, in read
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 4445, in _tensor_array_read_v3
+    dtype=dtype, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 2956, in create_op
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1470, in __init__
+    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access
+
+...which was originally created as op 'mie/while/TensorArrayWrite/TensorArrayWriteV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+[elided 0 identical lines from previous traceback]
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 826, in assemble_graph
+    self._build_mie()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 314, in _build_mie
+    swap_memory=True
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1344, in dynamic_dual_msin
+    s_inputs: The text inputs (typically shape [batch, time, max_n_msgs, embed_dim])
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1231, in _dynamic_msin_loop
+    # Pass the previous hidden state to the cell
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2816, in while_loop
+    result = loop_context.BuildLoop(cond, body, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2640, in BuildLoop
+    pred, body, original_loop_vars, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2590, in _BuildLoop
+    body_result = body(*packed_vars_for_body)
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1209, in _time_step
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 107, in wrapped
+    return _add_should_use_warning(fn(*args, **kwargs))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 310, in write
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 5038, in _tensor_array_write_v3
+    flow_in=flow_in, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+
+InvalidArgumentError (see above for traceback): TensorArray mie/dynamic_msin/hidden_states_151037@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: mie/while/ca_ifu/add_12/_223946 = _Send[T=DT_FLOAT, client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device_incarnation=1, tensor_name="edge_12552_mie/while/ca_ifu/add_12", _device="/job:localhost/replica:0/task:0/device:GPU:0"](mie/while/ca_ifu/add_12)]]
+
+2025-07-02 13:39:13,155 INFO Recent Cross-Pathway Metrics - Correlation: 0.1623, Causal Influence: 0.2227, Responsive Influence: 0.2233
+2025-07-02 13:39:15,695 INFO dev Cross-Pathway Metrics - Correlation: 0.1509, Causal Influence: 0.2020, Responsive Influence: 0.2073
+2025-07-02 13:41:25,060 INFO dev Cross-Pathway Metrics - Correlation: 0.1752, Causal Influence: 0.2350, Responsive Influence: 0.2419
+2025-07-02 13:41:33,931 INFO Completed dev evaluation: size=656.0, acc=0.5290
+2025-07-02 13:41:33,932 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1553, Causal Influence: 0.2125, Responsive Influence: 0.2146
+2025-07-02 13:45:11,259 INFO Recent Cross-Pathway Metrics - Correlation: 0.1760, Causal Influence: 0.2394, Responsive Influence: 0.2366
+2025-07-02 13:45:13,771 INFO dev Cross-Pathway Metrics - Correlation: 0.1607, Causal Influence: 0.2037, Responsive Influence: 0.2087
+2025-07-02 13:47:27,325 INFO dev Cross-Pathway Metrics - Correlation: 0.1783, Causal Influence: 0.2376, Responsive Influence: 0.2434
+2025-07-02 13:47:36,566 INFO Completed dev evaluation: size=656.0, acc=0.4878
+2025-07-02 13:47:36,566 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1546, Causal Influence: 0.2141, Responsive Influence: 0.2163
+2025-07-02 13:51:13,388 INFO Recent Cross-Pathway Metrics - Correlation: 0.2033, Causal Influence: 0.2441, Responsive Influence: 0.2391
+2025-07-02 13:51:15,911 INFO dev Cross-Pathway Metrics - Correlation: 0.1977, Causal Influence: 0.2058, Responsive Influence: 0.2098
+2025-07-02 13:53:31,907 INFO dev Cross-Pathway Metrics - Correlation: 0.1953, Causal Influence: 0.2393, Responsive Influence: 0.2450
+2025-07-02 13:53:41,150 INFO Completed dev evaluation: size=656.0, acc=0.4863
+2025-07-02 13:53:41,150 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1544, Causal Influence: 0.2160, Responsive Influence: 0.2175
+2025-07-02 13:54:07,788 WARNING Could not extract cross-pathway metrics: TensorArray mie/dynamic_msin/hidden_states_226247@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: optimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/fw/fw/TensorArrayStack/TensorArrayGatherV3_grad/TensorArrayGrad/TensorArrayGradV3/StackPushV2/_339314 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_2099_optimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/fw/fw/TensorArrayStack/TensorArrayGatherV3_grad/TensorArrayGrad/TensorArrayGradV3/StackPushV2", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopmie/mel/mel_iter/while/while/bidirectional_rnn/fw/fw/while/Enter_3/_339077)]]
+
+Caused by op 'optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 830, in assemble_graph
+    self._create_optimizer()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 816, in _create_optimizer
+    gradients, variables = zip(*optimizer.compute_gradients(self.loss))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/training/optimizer.py", line 414, in compute_gradients
+    colocate_gradients_with_ops=colocate_gradients_with_ops)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in gradients
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 353, in _MaybeCompile
+    return grad_fn()  # Exit early
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in <lambda>
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_grad.py", line 131, in _TensorArrayWriteGrad
+    grad = g.read(index)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 281, in read
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 4445, in _tensor_array_read_v3
+    dtype=dtype, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 2956, in create_op
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1470, in __init__
+    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access
+
+...which was originally created as op 'mie/while/TensorArrayWrite/TensorArrayWriteV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+[elided 0 identical lines from previous traceback]
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 826, in assemble_graph
+    self._build_mie()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 314, in _build_mie
+    swap_memory=True
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1344, in dynamic_dual_msin
+    s_inputs: The text inputs (typically shape [batch, time, max_n_msgs, embed_dim])
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1231, in _dynamic_msin_loop
+    # Pass the previous hidden state to the cell
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2816, in while_loop
+    result = loop_context.BuildLoop(cond, body, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2640, in BuildLoop
+    pred, body, original_loop_vars, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2590, in _BuildLoop
+    body_result = body(*packed_vars_for_body)
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1209, in _time_step
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 107, in wrapped
+    return _add_should_use_warning(fn(*args, **kwargs))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 310, in write
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 5038, in _tensor_array_write_v3
+    flow_in=flow_in, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+
+InvalidArgumentError (see above for traceback): TensorArray mie/dynamic_msin/hidden_states_226247@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_473, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: optimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/fw/fw/TensorArrayStack/TensorArrayGatherV3_grad/TensorArrayGrad/TensorArrayGradV3/StackPushV2/_339314 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_2099_optimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/fw/fw/TensorArrayStack/TensorArrayGatherV3_grad/TensorArrayGrad/TensorArrayGradV3/StackPushV2", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopmie/mel/mel_iter/while/while/bidirectional_rnn/fw/fw/while/Enter_3/_339077)]]
+
+2025-07-02 13:54:38,561 INFO Epoch 1 Avg Cross-Pathway Metrics - Correlation: 0.1692, Causal Influence: 0.2193, Responsive Influence: 0.2243
+2025-07-02 13:54:38,569 INFO Saved cross-pathway metrics to ./checkpoints_tx_lf_dual_path/metrics/cross_pathway_metrics_20250702_135438.json
+2025-07-02 13:54:38,569 INFO Epoch: 2/10 start
+2025-07-02 14:15:39,234 INFO Starting a full run. Model configuration will be loaded from the YML config file.
+2025-07-02 14:15:39,235 INFO INIT: #stock: 88, #vocab+1: 29867
+2025-07-02 14:15:39,238 INFO Start graph assembling...
+2025-07-02 14:16:10,013 INFO Word table init: done!
+2025-07-02 14:16:11,482 INFO Model: all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp_dual_path, session restored!
+2025-07-02 14:16:11,482 INFO Epoch: 1/10 start
+2025-07-02 14:16:37,634 WARNING Could not extract cross-pathway metrics: TensorArray mie/dynamic_msin/hidden_states_8@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_949, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: optimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/bw/bw/while/TensorArrayWrite/TensorArrayWriteV3_grad/tuple/control_dependency/_1349 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_11893_optimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/bw/bw/while/TensorArrayWrite/TensorArrayWriteV3_grad/tuple/control_dependency", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopoptimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/bw/bw/while/TensorArrayWrite/TensorArrayWriteV3_grad/tuple/group_deps/_581)]]
+
+Caused by op 'optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 830, in assemble_graph
+    self._create_optimizer()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 816, in _create_optimizer
+    gradients, variables = zip(*optimizer.compute_gradients(self.loss))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/training/optimizer.py", line 414, in compute_gradients
+    colocate_gradients_with_ops=colocate_gradients_with_ops)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in gradients
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 353, in _MaybeCompile
+    return grad_fn()  # Exit early
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py", line 581, in <lambda>
+    grad_scope, op, func_call, lambda: grad_fn(op, *out_grads))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_grad.py", line 131, in _TensorArrayWriteGrad
+    grad = g.read(index)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 281, in read
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 4445, in _tensor_array_read_v3
+    dtype=dtype, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 2956, in create_op
+    op_def=op_def)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1470, in __init__
+    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access
+
+...which was originally created as op 'mie/while/TensorArrayWrite/TensorArrayWriteV3', defined at:
+  File "src/Main_tx_lf_dual_path.py", line 57, in <module>
+    main()
+[elided 0 identical lines from previous traceback]
+  File "src/Main_tx_lf_dual_path.py", line 29, in main
+    model.assemble_graph()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 826, in assemble_graph
+    self._build_mie()
+  File "/media02/tvquy/PEN/src/Model_tx_lf_dual_path.py", line 314, in _build_mie
+    swap_memory=True
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1411, in dynamic_dual_msin
+    dtype=dtype)
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1298, in _dynamic_msin_loop
+    swap_memory=swap_memory)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2816, in while_loop
+    result = loop_context.BuildLoop(cond, body, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2640, in BuildLoop
+    pred, body, original_loop_vars, loop_vars, shape_invariants)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py", line 2590, in _BuildLoop
+    body_result = body(*packed_vars_for_body)
+  File "/media02/tvquy/PEN/src/MSINModule_dual_path.py", line 1276, in _time_step
+    hidden_ta_t = hidden_ta_t.write(time, h_to_write)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/util/tf_should_use.py", line 107, in wrapped
+    return _add_should_use_warning(fn(*args, **kwargs))
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/tensor_array_ops.py", line 310, in write
+    name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/ops/gen_data_flow_ops.py", line 5038, in _tensor_array_write_v3
+    flow_in=flow_in, name=name)
+  File "/media02/tvquy/miniconda/envs/kien_py36/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+
+InvalidArgumentError (see above for traceback): TensorArray mie/dynamic_msin/hidden_states_8@optimizer/gradients: Could not read from TensorArray index 4 because it has not yet been written to.
+	 [[Node: optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayReadV3 = TensorArrayReadV3[dtype=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:CPU:0"](optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/TensorArrayGradV3, optimizer/gradients/mie/while/TensorArrayWrite_2/TensorArrayWriteV3_grad/TensorArrayReadV3/StackPopV2/_949, optimizer/gradients/mie/while/TensorArrayWrite/TensorArrayWriteV3_grad/TensorArrayGrad/gradient_flow)]]
+	 [[Node: optimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/bw/bw/while/TensorArrayWrite/TensorArrayWriteV3_grad/tuple/control_dependency/_1349 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_11893_optimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/bw/bw/while/TensorArrayWrite/TensorArrayWriteV3_grad/tuple/control_dependency", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:0"](^_cloopoptimizer/gradients/mie/mel/mel_iter/while/while/bidirectional_rnn/bw/bw/while/TensorArrayWrite/TensorArrayWriteV3_grad/tuple/group_deps/_581)]]
+
+2025-07-02 14:29:37,532 INFO Starting a full run. Model configuration will be loaded from the YML config file.
+2025-07-02 14:29:37,532 INFO INIT: #stock: 88, #vocab+1: 29867
+2025-07-02 14:29:37,535 INFO Start graph assembling...
+2025-07-02 14:30:06,788 INFO Word table init: done!
+2025-07-02 14:30:08,034 INFO Model: all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp_dual_path, session restored!
+2025-07-02 14:30:08,034 INFO Epoch: 1/10 start
+2025-07-02 14:35:32,441 INFO Recent Cross-Pathway Metrics - Correlation: 0.2457, Causal Influence: 0.2205, Responsive Influence: 0.2224
+2025-07-02 14:35:34,799 INFO dev Cross-Pathway Metrics - Correlation: 0.1388, Causal Influence: 0.2064, Responsive Influence: 0.2097
+2025-07-02 14:37:28,732 INFO dev Cross-Pathway Metrics - Correlation: 0.2221, Causal Influence: 0.2409, Responsive Influence: 0.2446
+2025-07-02 14:37:36,609 INFO Completed dev evaluation: size=656.0, acc=0.5046
+2025-07-02 14:37:36,609 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1586, Causal Influence: 0.2169, Responsive Influence: 0.2171
+2025-07-02 14:40:38,357 INFO Starting a full run. Model configuration will be loaded from the YML config file.
+2025-07-02 14:40:38,357 INFO INIT: #stock: 88, #vocab+1: 29867
+2025-07-02 14:40:38,359 INFO Start graph assembling...
+2025-07-02 14:41:07,160 INFO Word table init: done!
+2025-07-02 14:41:07,160 INFO Model: all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp_dual_path, start a new session!
+2025-07-02 14:41:07,161 INFO Epoch: 1/10 start
+2025-07-02 14:46:27,032 INFO Recent Cross-Pathway Metrics - Correlation: 0.1571, Causal Influence: 0.2026, Responsive Influence: 0.2032
+2025-07-02 14:46:29,350 INFO dev Cross-Pathway Metrics - Correlation: 0.1539, Causal Influence: 0.1833, Responsive Influence: 0.1880
+2025-07-02 14:48:22,342 INFO dev Cross-Pathway Metrics - Correlation: 0.1777, Causal Influence: 0.2175, Responsive Influence: 0.2243
+2025-07-02 14:48:30,065 INFO Completed dev evaluation: size=656.0, acc=0.5366
+2025-07-02 14:48:30,065 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1590, Causal Influence: 0.1958, Responsive Influence: 0.1958
+2025-07-02 14:52:32,881 INFO Recent Cross-Pathway Metrics - Correlation: 0.1753, Causal Influence: 0.1949, Responsive Influence: 0.1900
+2025-07-02 14:52:35,223 INFO dev Cross-Pathway Metrics - Correlation: 0.1634, Causal Influence: 0.1824, Responsive Influence: 0.1801
+2025-07-02 14:54:32,569 INFO dev Cross-Pathway Metrics - Correlation: 0.1862, Causal Influence: 0.2147, Responsive Influence: 0.2175
+2025-07-02 14:54:40,377 INFO Completed dev evaluation: size=656.0, acc=0.5061
+2025-07-02 14:54:40,377 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1675, Causal Influence: 0.1941, Responsive Influence: 0.1889
+2025-07-02 14:58:29,661 INFO Recent Cross-Pathway Metrics - Correlation: 0.1670, Causal Influence: 0.2126, Responsive Influence: 0.2105
+2025-07-02 14:58:32,055 INFO dev Cross-Pathway Metrics - Correlation: 0.1604, Causal Influence: 0.1991, Responsive Influence: 0.1961
+2025-07-02 15:00:32,657 INFO dev Cross-Pathway Metrics - Correlation: 0.1759, Causal Influence: 0.2271, Responsive Influence: 0.2291
+2025-07-02 15:00:40,852 INFO Completed dev evaluation: size=656.0, acc=0.5030
+2025-07-02 15:00:40,853 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1546, Causal Influence: 0.2082, Responsive Influence: 0.2038
+2025-07-02 15:04:23,522 INFO Recent Cross-Pathway Metrics - Correlation: 0.1957, Causal Influence: 0.2190, Responsive Influence: 0.2184
+2025-07-02 15:04:25,927 INFO dev Cross-Pathway Metrics - Correlation: 0.1728, Causal Influence: 0.2053, Responsive Influence: 0.2030
+2025-07-02 15:06:30,246 INFO dev Cross-Pathway Metrics - Correlation: 0.2117, Causal Influence: 0.2343, Responsive Influence: 0.2357
+2025-07-02 15:06:38,843 INFO Completed dev evaluation: size=656.0, acc=0.5076
+2025-07-02 15:06:38,843 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1402, Causal Influence: 0.2135, Responsive Influence: 0.2111
+2025-07-02 15:10:24,103 INFO Running validation with dual-pathway attention analysis
+2025-07-02 15:10:24,105 INFO Recent Cross-Pathway Metrics - Correlation: 0.1880, Causal Influence: 0.2200, Responsive Influence: 0.2210
+2025-07-02 15:10:26,603 INFO dev Cross-Pathway Metrics - Correlation: 0.0715, Causal Influence: 0.2084, Responsive Influence: 0.2066
+2025-07-02 15:10:28,947 INFO Dual-pathway attention analysis completed
+2025-07-02 15:10:28,947 INFO --- Attention Analysis for dev Batch 0 Example 0 ---
+2025-07-02 15:10:28,947 INFO Pathway Importance:
+2025-07-02 15:10:28,947 INFO   price_pathway: 0.3242
+2025-07-02 15:10:28,947 INFO   causal_pathway: 0.3390
+2025-07-02 15:10:28,947 INFO   responsive_pathway: 0.3368
+2025-07-02 15:10:28,947 INFO Top Causal Attention:
+2025-07-02 15:10:28,947 INFO   Message 1: 0.7916
+2025-07-02 15:10:28,947 INFO   Message 0: 0.1977
+2025-07-02 15:10:28,947 INFO   Message 17: 0.0006
+2025-07-02 15:10:28,947 INFO Top Responsive Attention:
+2025-07-02 15:10:28,947 INFO   Message 6: 0.9940
+2025-07-02 15:10:28,947 INFO   Message 13: 0.0038
+2025-07-02 15:10:28,947 INFO   Message 19: 0.0008
+2025-07-02 15:10:33,654 INFO Dual-pathway attention analysis completed
+2025-07-02 15:10:33,654 INFO --- Attention Analysis for dev Batch 1 Example 0 ---
+2025-07-02 15:10:33,655 INFO Pathway Importance:
+2025-07-02 15:10:33,655 INFO   price_pathway: 0.3298
+2025-07-02 15:10:33,655 INFO   causal_pathway: 0.3355
+2025-07-02 15:10:33,655 INFO   responsive_pathway: 0.3347
+2025-07-02 15:10:33,655 INFO Top Causal Attention:
+2025-07-02 15:10:33,655 INFO   Message 1: 0.6190
+2025-07-02 15:10:33,655 INFO   Message 0: 0.3762
+2025-07-02 15:10:33,655 INFO   Message 17: 0.0003
+2025-07-02 15:10:33,655 INFO Top Responsive Attention:
+2025-07-02 15:10:33,655 INFO   Message 16: 0.3682
+2025-07-02 15:10:33,655 INFO   Message 3: 0.3682
+2025-07-02 15:10:33,655 INFO   Message 8: 0.2625
+2025-07-02 15:10:35,442 INFO Dual-pathway attention analysis completed
+2025-07-02 15:10:35,442 INFO --- Attention Analysis for dev Batch 2 Example 0 ---
+2025-07-02 15:10:35,442 INFO Pathway Importance:
+2025-07-02 15:10:35,442 INFO   price_pathway: 0.3116
+2025-07-02 15:10:35,442 INFO   causal_pathway: 0.3469
+2025-07-02 15:10:35,442 INFO   responsive_pathway: 0.3414
+2025-07-02 15:10:35,442 INFO Top Causal Attention:
+2025-07-02 15:10:35,443 INFO   Message 0: 0.9933
+2025-07-02 15:10:35,443 INFO   Message 17: 0.0004
+2025-07-02 15:10:35,443 INFO   Message 16: 0.0004
+2025-07-02 15:10:35,443 INFO Top Responsive Attention:
+2025-07-02 15:10:35,443 INFO   Message 9: 0.0503
+2025-07-02 15:10:35,443 INFO   Message 17: 0.0503
+2025-07-02 15:10:35,443 INFO   Message 16: 0.0503
+2025-07-02 15:12:36,850 INFO dev Cross-Pathway Metrics - Correlation: 0.0580, Causal Influence: 0.2405, Responsive Influence: 0.2416
+2025-07-02 15:12:45,599 INFO Completed dev evaluation: size=656.0, acc=0.5305
+2025-07-02 15:12:45,599 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0867, Causal Influence: 0.2161, Responsive Influence: 0.2149
+2025-07-02 15:16:24,983 INFO Recent Cross-Pathway Metrics - Correlation: 0.1284, Causal Influence: 0.2307, Responsive Influence: 0.2390
+2025-07-02 15:16:27,439 INFO dev Cross-Pathway Metrics - Correlation: 0.0372, Causal Influence: 0.2065, Responsive Influence: 0.2107
+2025-07-02 15:18:37,786 INFO dev Cross-Pathway Metrics - Correlation: 0.0178, Causal Influence: 0.2378, Responsive Influence: 0.2463
+2025-07-02 15:18:46,529 INFO Completed dev evaluation: size=656.0, acc=0.5091
+2025-07-02 15:18:46,529 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0557, Causal Influence: 0.2143, Responsive Influence: 0.2200
+2025-07-02 15:22:23,343 INFO Recent Cross-Pathway Metrics - Correlation: 0.1533, Causal Influence: 0.2392, Responsive Influence: 0.2427
+2025-07-02 15:22:25,871 INFO dev Cross-Pathway Metrics - Correlation: 0.0146, Causal Influence: 0.2116, Responsive Influence: 0.2130
+2025-07-02 15:24:39,299 INFO dev Cross-Pathway Metrics - Correlation: 0.0304, Causal Influence: 0.2448, Responsive Influence: 0.2478
+2025-07-02 15:24:48,408 INFO Completed dev evaluation: size=656.0, acc=0.4832
+2025-07-02 15:24:48,408 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0444, Causal Influence: 0.2202, Responsive Influence: 0.2217
+2025-07-02 15:27:31,850 INFO Epoch 1 Avg Cross-Pathway Metrics - Correlation: 0.1702, Causal Influence: 0.2189, Responsive Influence: 0.2195
+2025-07-02 15:27:32,051 INFO Saved cross-pathway metrics to ./checkpoints_tx_lf_dual_path/metrics/cross_pathway_metrics_20250702_152732.json
+2025-07-02 15:27:32,051 INFO Epoch: 2/10 start
+2025-07-02 15:29:38,776 INFO Recent Cross-Pathway Metrics - Correlation: 0.0909, Causal Influence: 0.2206, Responsive Influence: 0.2229
+2025-07-02 15:29:41,392 INFO dev Cross-Pathway Metrics - Correlation: 0.0299, Causal Influence: 0.2115, Responsive Influence: 0.2147
+2025-07-02 15:31:58,776 INFO dev Cross-Pathway Metrics - Correlation: 0.0397, Causal Influence: 0.2444, Responsive Influence: 0.2490
+2025-07-02 15:32:08,217 INFO Completed dev evaluation: size=656.0, acc=0.5000
+2025-07-02 15:32:08,218 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0372, Causal Influence: 0.2202, Responsive Influence: 0.2232
+2025-07-02 15:36:50,909 INFO Recent Cross-Pathway Metrics - Correlation: 0.0579, Causal Influence: 0.2169, Responsive Influence: 0.2214
+2025-07-02 15:36:53,333 INFO dev Cross-Pathway Metrics - Correlation: 0.0241, Causal Influence: 0.2104, Responsive Influence: 0.2130
+2025-07-02 15:39:14,864 INFO dev Cross-Pathway Metrics - Correlation: 0.0088, Causal Influence: 0.2432, Responsive Influence: 0.2477
+2025-07-02 15:39:24,384 INFO Completed dev evaluation: size=656.0, acc=0.4909
+2025-07-02 15:39:24,384 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0348, Causal Influence: 0.2196, Responsive Influence: 0.2219
+2025-07-02 15:43:35,148 INFO Running validation with dual-pathway attention analysis
+2025-07-02 15:43:35,151 INFO Recent Cross-Pathway Metrics - Correlation: 0.1140, Causal Influence: 0.2307, Responsive Influence: 0.2346
+2025-07-02 15:43:37,830 INFO dev Cross-Pathway Metrics - Correlation: 0.0511, Causal Influence: 0.2108, Responsive Influence: 0.2141
+2025-07-02 15:43:40,530 INFO Dual-pathway attention analysis completed
+2025-07-02 15:43:40,530 INFO --- Attention Analysis for dev Batch 0 Example 0 ---
+2025-07-02 15:43:40,530 INFO Pathway Importance:
+2025-07-02 15:43:40,530 INFO   price_pathway: 0.3022
+2025-07-02 15:43:40,530 INFO   causal_pathway: 0.3496
+2025-07-02 15:43:40,530 INFO   responsive_pathway: 0.3483
+2025-07-02 15:43:40,531 INFO Top Causal Attention:
+2025-07-02 15:43:40,531 INFO   Message 1: 0.5881
+2025-07-02 15:43:40,531 INFO   Message 3: 0.3385
+2025-07-02 15:43:40,531 INFO   Message 0: 0.0428
+2025-07-02 15:43:40,531 INFO Top Responsive Attention:
+2025-07-02 15:43:40,531 INFO   Message 14: 0.9999
+2025-07-02 15:43:40,531 INFO   Message 5: 0.0001
+2025-07-02 15:43:40,531 INFO   Message 18: 0.0000
+2025-07-02 15:43:45,788 INFO Dual-pathway attention analysis completed
+2025-07-02 15:43:45,788 INFO --- Attention Analysis for dev Batch 1 Example 0 ---
+2025-07-02 15:43:45,789 INFO Pathway Importance:
+2025-07-02 15:43:45,789 INFO   price_pathway: 0.3171
+2025-07-02 15:43:45,789 INFO   causal_pathway: 0.3413
+2025-07-02 15:43:45,789 INFO   responsive_pathway: 0.3415
+2025-07-02 15:43:45,789 INFO Top Causal Attention:
+2025-07-02 15:43:45,789 INFO   Message 0: 0.9976
+2025-07-02 15:43:45,789 INFO   Message 17: 0.0001
+2025-07-02 15:43:45,789 INFO   Message 16: 0.0001
+2025-07-02 15:43:45,789 INFO Top Responsive Attention:
+2025-07-02 15:43:45,789 INFO   Message 11: 0.5520
+2025-07-02 15:43:45,789 INFO   Message 19: 0.2240
+2025-07-02 15:43:45,789 INFO   Message 6: 0.2240
+2025-07-02 15:43:48,089 INFO Dual-pathway attention analysis completed
+2025-07-02 15:43:48,089 INFO --- Attention Analysis for dev Batch 2 Example 0 ---
+2025-07-02 15:43:48,089 INFO Pathway Importance:
+2025-07-02 15:43:48,089 INFO   price_pathway: 0.2884
+2025-07-02 15:43:48,089 INFO   causal_pathway: 0.3576
+2025-07-02 15:43:48,090 INFO   responsive_pathway: 0.3540
+2025-07-02 15:43:48,090 INFO Top Causal Attention:
+2025-07-02 15:43:48,090 INFO   Message 0: 1.0000
+2025-07-02 15:43:48,090 INFO   Message 17: 0.0000
+2025-07-02 15:43:48,090 INFO   Message 16: 0.0000
+2025-07-02 15:43:48,090 INFO Top Responsive Attention:
+2025-07-02 15:43:48,090 INFO   Message 9: 0.0506
+2025-07-02 15:43:48,090 INFO   Message 17: 0.0506
+2025-07-02 15:43:48,090 INFO   Message 16: 0.0506
+2025-07-02 15:46:05,927 INFO dev Cross-Pathway Metrics - Correlation: 0.0155, Causal Influence: 0.2432, Responsive Influence: 0.2485
+2025-07-02 15:46:15,795 INFO Completed dev evaluation: size=656.0, acc=0.5000
+2025-07-02 15:46:15,795 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0324, Causal Influence: 0.2199, Responsive Influence: 0.2227
+2025-07-02 15:50:14,258 INFO Recent Cross-Pathway Metrics - Correlation: 0.0740, Causal Influence: 0.2241, Responsive Influence: 0.2299
+2025-07-02 15:50:16,911 INFO dev Cross-Pathway Metrics - Correlation: 0.0214, Causal Influence: 0.2110, Responsive Influence: 0.2158
+2025-07-02 15:52:43,254 INFO dev Cross-Pathway Metrics - Correlation: 0.0136, Causal Influence: 0.2438, Responsive Influence: 0.2508
+2025-07-02 15:52:53,163 INFO Completed dev evaluation: size=656.0, acc=0.4985
+2025-07-02 15:52:53,163 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0308, Causal Influence: 0.2200, Responsive Influence: 0.2246
+2025-07-02 15:56:49,571 INFO Recent Cross-Pathway Metrics - Correlation: 0.1259, Causal Influence: 0.2300, Responsive Influence: 0.2357
+2025-07-02 15:56:52,262 INFO dev Cross-Pathway Metrics - Correlation: 0.0026, Causal Influence: 0.2115, Responsive Influence: 0.2155
+2025-07-02 15:59:22,031 INFO dev Cross-Pathway Metrics - Correlation: 0.0084, Causal Influence: 0.2444, Responsive Influence: 0.2501
+2025-07-02 15:59:32,442 INFO Completed dev evaluation: size=656.0, acc=0.5000
+2025-07-02 15:59:32,442 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0275, Causal Influence: 0.2206, Responsive Influence: 0.2242
+2025-07-02 16:03:27,817 INFO Recent Cross-Pathway Metrics - Correlation: 0.0837, Causal Influence: 0.2328, Responsive Influence: 0.2366
+2025-07-02 16:03:30,458 INFO dev Cross-Pathway Metrics - Correlation: 0.0371, Causal Influence: 0.2128, Responsive Influence: 0.2150
+2025-07-02 16:06:05,844 INFO dev Cross-Pathway Metrics - Correlation: 0.0134, Causal Influence: 0.2454, Responsive Influence: 0.2498
+2025-07-02 16:06:16,429 INFO Completed dev evaluation: size=656.0, acc=0.5030
+2025-07-02 16:06:16,430 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0224, Causal Influence: 0.2218, Responsive Influence: 0.2236
+2025-07-02 16:10:06,536 INFO Recent Cross-Pathway Metrics - Correlation: 0.0992, Causal Influence: 0.2404, Responsive Influence: 0.2424
+2025-07-02 16:10:09,263 INFO dev Cross-Pathway Metrics - Correlation: 0.0024, Causal Influence: 0.2119, Responsive Influence: 0.2146
+2025-07-02 16:12:47,292 INFO dev Cross-Pathway Metrics - Correlation: 0.0105, Causal Influence: 0.2444, Responsive Influence: 0.2493
+2025-07-02 16:12:58,241 INFO Completed dev evaluation: size=656.0, acc=0.4787
+2025-07-02 16:12:58,241 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0229, Causal Influence: 0.2209, Responsive Influence: 0.2234
+2025-07-02 16:16:49,060 INFO Running validation with dual-pathway attention analysis
+2025-07-02 16:16:49,064 INFO Recent Cross-Pathway Metrics - Correlation: 0.0872, Causal Influence: 0.2417, Responsive Influence: 0.2467
+2025-07-02 16:16:52,035 INFO dev Cross-Pathway Metrics - Correlation: 0.0361, Causal Influence: 0.2127, Responsive Influence: 0.2152
+2025-07-02 16:16:55,048 INFO Dual-pathway attention analysis completed
+2025-07-02 16:16:55,049 INFO --- Attention Analysis for dev Batch 0 Example 0 ---
+2025-07-02 16:16:55,049 INFO Pathway Importance:
+2025-07-02 16:16:55,049 INFO   price_pathway: 0.3127
+2025-07-02 16:16:55,049 INFO   causal_pathway: 0.3437
+2025-07-02 16:16:55,049 INFO   responsive_pathway: 0.3436
+2025-07-02 16:16:55,049 INFO Top Causal Attention:
+2025-07-02 16:16:55,049 INFO   Message 0: 0.9912
+2025-07-02 16:16:55,049 INFO   Message 3: 0.0069
+2025-07-02 16:16:55,049 INFO   Message 2: 0.0018
+2025-07-02 16:16:55,049 INFO Top Responsive Attention:
+2025-07-02 16:16:55,049 INFO   Message 17: 0.9829
+2025-07-02 16:16:55,049 INFO   Message 1: 0.0168
+2025-07-02 16:16:55,049 INFO   Message 16: 0.0002
+2025-07-02 16:17:00,756 INFO Dual-pathway attention analysis completed
+2025-07-02 16:17:00,756 INFO --- Attention Analysis for dev Batch 1 Example 0 ---
+2025-07-02 16:17:00,756 INFO Pathway Importance:
+2025-07-02 16:17:00,756 INFO   price_pathway: 0.2814
+2025-07-02 16:17:00,756 INFO   causal_pathway: 0.3593
+2025-07-02 16:17:00,756 INFO   responsive_pathway: 0.3593
+2025-07-02 16:17:00,756 INFO Top Causal Attention:
+2025-07-02 16:17:00,756 INFO   Message 1: 0.9749
+2025-07-02 16:17:00,756 INFO   Message 0: 0.0251
+2025-07-02 16:17:00,756 INFO   Message 17: 0.0000
+2025-07-02 16:17:00,756 INFO Top Responsive Attention:
+2025-07-02 16:17:00,756 INFO   Message 14: 0.7343
+2025-07-02 16:17:00,756 INFO   Message 3: 0.1253
+2025-07-02 16:17:00,756 INFO   Message 16: 0.1253
+2025-07-02 16:17:03,567 INFO Dual-pathway attention analysis completed
+2025-07-02 16:17:03,567 INFO --- Attention Analysis for dev Batch 2 Example 0 ---
+2025-07-02 16:17:03,567 INFO Pathway Importance:
+2025-07-02 16:17:03,567 INFO   price_pathway: 0.2821
+2025-07-02 16:17:03,567 INFO   causal_pathway: 0.3590
+2025-07-02 16:17:03,567 INFO   responsive_pathway: 0.3589
+2025-07-02 16:17:03,567 INFO Top Causal Attention:
+2025-07-02 16:17:03,568 INFO   Message 0: 1.0000
+2025-07-02 16:17:03,568 INFO   Message 17: 0.0000
+2025-07-02 16:17:03,568 INFO   Message 16: 0.0000
+2025-07-02 16:17:03,568 INFO Top Responsive Attention:
+2025-07-02 16:17:03,568 INFO   Message 9: 0.0518
+2025-07-02 16:17:03,568 INFO   Message 17: 0.0518
+2025-07-02 16:17:03,568 INFO   Message 16: 0.0518
+2025-07-02 16:19:36,769 INFO dev Cross-Pathway Metrics - Correlation: 0.0102, Causal Influence: 0.2453, Responsive Influence: 0.2492
+2025-07-02 16:19:47,753 INFO Completed dev evaluation: size=656.0, acc=0.4954
+2025-07-02 16:19:47,753 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0179, Causal Influence: 0.2213, Responsive Influence: 0.2243
+2025-07-02 16:21:41,594 INFO Epoch 2 Avg Cross-Pathway Metrics - Correlation: 0.0880, Causal Influence: 0.2304, Responsive Influence: 0.2343
+2025-07-02 16:21:41,727 INFO Saved cross-pathway metrics to ./checkpoints_tx_lf_dual_path/metrics/cross_pathway_metrics_20250702_162141.json
+2025-07-02 16:21:41,728 INFO Epoch: 3/10 start
+2025-07-02 16:25:03,904 INFO Recent Cross-Pathway Metrics - Correlation: 0.0494, Causal Influence: 0.2178, Responsive Influence: 0.2196
+2025-07-02 16:25:06,759 INFO dev Cross-Pathway Metrics - Correlation: 0.0166, Causal Influence: 0.2128, Responsive Influence: 0.2148
+2025-07-02 16:27:49,666 INFO dev Cross-Pathway Metrics - Correlation: 0.0071, Causal Influence: 0.2461, Responsive Influence: 0.2486
+2025-07-02 16:28:00,730 INFO Completed dev evaluation: size=656.0, acc=0.4970
+2025-07-02 16:28:00,730 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0211, Causal Influence: 0.2218, Responsive Influence: 0.2237
+2025-07-02 16:32:48,440 INFO Recent Cross-Pathway Metrics - Correlation: 0.0854, Causal Influence: 0.2225, Responsive Influence: 0.2254
+2025-07-02 16:32:51,284 INFO dev Cross-Pathway Metrics - Correlation: 0.0002, Causal Influence: 0.2119, Responsive Influence: 0.2151
+2025-07-02 16:35:39,677 INFO dev Cross-Pathway Metrics - Correlation: 0.0053, Causal Influence: 0.2456, Responsive Influence: 0.2491
+2025-07-02 16:35:51,204 INFO Completed dev evaluation: size=656.0, acc=0.4878
+2025-07-02 16:35:51,205 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0178, Causal Influence: 0.2210, Responsive Influence: 0.2241
+2025-07-02 16:40:07,307 INFO Recent Cross-Pathway Metrics - Correlation: 0.0653, Causal Influence: 0.2236, Responsive Influence: 0.2265
+2025-07-02 16:40:10,217 INFO dev Cross-Pathway Metrics - Correlation: 0.0027, Causal Influence: 0.2123, Responsive Influence: 0.2155
+2025-07-02 16:43:02,840 INFO dev Cross-Pathway Metrics - Correlation: 0.0048, Causal Influence: 0.2452, Responsive Influence: 0.2498
+2025-07-02 16:43:14,622 INFO Completed dev evaluation: size=656.0, acc=0.4909
+2025-07-02 16:43:14,622 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0180, Causal Influence: 0.2212, Responsive Influence: 0.2245
+2025-07-02 16:47:26,261 INFO Recent Cross-Pathway Metrics - Correlation: 0.0646, Causal Influence: 0.2312, Responsive Influence: 0.2337
+2025-07-02 16:47:29,303 INFO dev Cross-Pathway Metrics - Correlation: 0.0004, Causal Influence: 0.2122, Responsive Influence: 0.2149
+2025-07-02 16:50:25,521 INFO dev Cross-Pathway Metrics - Correlation: 0.0068, Causal Influence: 0.2449, Responsive Influence: 0.2494
+2025-07-02 16:50:37,734 INFO Completed dev evaluation: size=656.0, acc=0.4878
+2025-07-02 16:50:37,735 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0206, Causal Influence: 0.2213, Responsive Influence: 0.2238
+2025-07-02 16:54:46,194 INFO Running validation with dual-pathway attention analysis
+2025-07-02 16:54:46,196 INFO Recent Cross-Pathway Metrics - Correlation: 0.0519, Causal Influence: 0.2358, Responsive Influence: 0.2375
+2025-07-02 16:54:49,178 INFO dev Cross-Pathway Metrics - Correlation: 0.0012, Causal Influence: 0.2129, Responsive Influence: 0.2142
+2025-07-02 16:54:52,547 INFO Dual-pathway attention analysis completed
+2025-07-02 16:54:52,548 INFO --- Attention Analysis for dev Batch 0 Example 0 ---
+2025-07-02 16:54:52,548 INFO Pathway Importance:
+2025-07-02 16:54:52,548 INFO   price_pathway: 0.3038
+2025-07-02 16:54:52,548 INFO   causal_pathway: 0.3477
+2025-07-02 16:54:52,548 INFO   responsive_pathway: 0.3485
+2025-07-02 16:54:52,548 INFO Top Causal Attention:
+2025-07-02 16:54:52,548 INFO   Message 0: 0.9969
+2025-07-02 16:54:52,548 INFO   Message 2: 0.0031
+2025-07-02 16:54:52,548 INFO   Message 3: 0.0000
+2025-07-02 16:54:52,548 INFO Top Responsive Attention:
+2025-07-02 16:54:52,548 INFO   Message 19: 0.9981
+2025-07-02 16:54:52,548 INFO   Message 3: 0.0018
+2025-07-02 16:54:52,548 INFO   Message 13: 0.0000
+2025-07-02 16:54:58,796 INFO Dual-pathway attention analysis completed
+2025-07-02 16:54:58,796 INFO --- Attention Analysis for dev Batch 1 Example 0 ---
+2025-07-02 16:54:58,796 INFO Pathway Importance:
+2025-07-02 16:54:58,796 INFO   price_pathway: 0.2805
+2025-07-02 16:54:58,796 INFO   causal_pathway: 0.3601
+2025-07-02 16:54:58,796 INFO   responsive_pathway: 0.3593
+2025-07-02 16:54:58,796 INFO Top Causal Attention:
+2025-07-02 16:54:58,796 INFO   Message 1: 0.9996
+2025-07-02 16:54:58,797 INFO   Message 0: 0.0004
+2025-07-02 16:54:58,797 INFO   Message 17: 0.0000
+2025-07-02 16:54:58,797 INFO Top Responsive Attention:
+2025-07-02 16:54:58,797 INFO   Message 12: 0.9307
+2025-07-02 16:54:58,797 INFO   Message 7: 0.0693
+2025-07-02 16:54:58,797 INFO   Message 10: 0.0000
+2025-07-02 16:55:02,004 INFO Dual-pathway attention analysis completed
+2025-07-02 16:55:02,004 INFO --- Attention Analysis for dev Batch 2 Example 0 ---
+2025-07-02 16:55:02,004 INFO Pathway Importance:
+2025-07-02 16:55:02,004 INFO   price_pathway: 0.2812
+2025-07-02 16:55:02,004 INFO   causal_pathway: 0.3598
+2025-07-02 16:55:02,004 INFO   responsive_pathway: 0.3590
+2025-07-02 16:55:02,004 INFO Top Causal Attention:
+2025-07-02 16:55:02,004 INFO   Message 0: 1.0000
+2025-07-02 16:55:02,004 INFO   Message 17: 0.0000
+2025-07-02 16:55:02,004 INFO   Message 16: 0.0000
+2025-07-02 16:55:02,004 INFO Top Responsive Attention:
+2025-07-02 16:55:02,004 INFO   Message 9: 0.0510
+2025-07-02 16:55:02,005 INFO   Message 17: 0.0510
+2025-07-02 16:55:02,005 INFO   Message 16: 0.0510
+2025-07-02 16:57:50,482 INFO dev Cross-Pathway Metrics - Correlation: 0.0045, Causal Influence: 0.2453, Responsive Influence: 0.2484
+2025-07-02 16:58:02,541 INFO Completed dev evaluation: size=656.0, acc=0.4985
+2025-07-02 16:58:02,541 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0202, Causal Influence: 0.2219, Responsive Influence: 0.2231
+2025-07-02 17:02:06,299 INFO Recent Cross-Pathway Metrics - Correlation: 0.0596, Causal Influence: 0.2402, Responsive Influence: 0.2428
+2025-07-02 17:02:09,277 INFO dev Cross-Pathway Metrics - Correlation: 0.0034, Causal Influence: 0.2123, Responsive Influence: 0.2147
+2025-07-02 17:05:09,348 INFO dev Cross-Pathway Metrics - Correlation: 0.0043, Causal Influence: 0.2449, Responsive Influence: 0.2489
+2025-07-02 17:05:22,182 INFO Completed dev evaluation: size=656.0, acc=0.4893
+2025-07-02 17:05:22,182 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0169, Causal Influence: 0.2213, Responsive Influence: 0.2237
+2025-07-02 17:09:23,204 INFO Recent Cross-Pathway Metrics - Correlation: 0.0769, Causal Influence: 0.2365, Responsive Influence: 0.2394
+2025-07-02 17:09:26,403 INFO dev Cross-Pathway Metrics - Correlation: 0.0025, Causal Influence: 0.2123, Responsive Influence: 0.2147
+2025-07-02 17:12:30,669 INFO dev Cross-Pathway Metrics - Correlation: 0.0049, Causal Influence: 0.2453, Responsive Influence: 0.2489
+2025-07-02 17:12:43,376 INFO Completed dev evaluation: size=656.0, acc=0.4893
+2025-07-02 17:12:43,376 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0203, Causal Influence: 0.2213, Responsive Influence: 0.2238
+2025-07-02 17:16:44,817 INFO Recent Cross-Pathway Metrics - Correlation: 0.0691, Causal Influence: 0.2403, Responsive Influence: 0.2425
+2025-07-02 17:16:47,856 INFO dev Cross-Pathway Metrics - Correlation: 0.0003, Causal Influence: 0.2125, Responsive Influence: 0.2145
+2025-07-02 17:19:56,504 INFO dev Cross-Pathway Metrics - Correlation: 0.0033, Causal Influence: 0.2452, Responsive Influence: 0.2486
+2025-07-02 17:20:09,557 INFO Completed dev evaluation: size=656.0, acc=0.4924
+2025-07-02 17:20:09,557 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0183, Causal Influence: 0.2215, Responsive Influence: 0.2235
+2025-07-02 17:21:10,145 INFO Epoch 3 Avg Cross-Pathway Metrics - Correlation: 0.0683, Causal Influence: 0.2316, Responsive Influence: 0.2340
+2025-07-02 17:21:10,211 INFO Saved cross-pathway metrics to ./checkpoints_tx_lf_dual_path/metrics/cross_pathway_metrics_20250702_172110.json
+2025-07-02 17:21:10,211 INFO Epoch: 4/10 start
+2025-07-02 17:26:04,883 INFO Recent Cross-Pathway Metrics - Correlation: 0.0323, Causal Influence: 0.2218, Responsive Influence: 0.2249
+2025-07-02 17:26:07,935 INFO dev Cross-Pathway Metrics - Correlation: 0.0349, Causal Influence: 0.2112, Responsive Influence: 0.2144
+2025-07-02 17:29:21,640 INFO dev Cross-Pathway Metrics - Correlation: 0.0026, Causal Influence: 0.2440, Responsive Influence: 0.2487
+2025-07-02 17:29:34,948 INFO Completed dev evaluation: size=656.0, acc=0.4832
+2025-07-02 17:29:34,948 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0190, Causal Influence: 0.2203, Responsive Influence: 0.2235
+2025-07-02 17:34:23,096 INFO Running validation with dual-pathway attention analysis
+2025-07-02 17:34:23,098 INFO Recent Cross-Pathway Metrics - Correlation: 0.0650, Causal Influence: 0.2286, Responsive Influence: 0.2320
+2025-07-02 17:34:26,238 INFO dev Cross-Pathway Metrics - Correlation: 0.0000, Causal Influence: 0.2111, Responsive Influence: 0.2145
+2025-07-02 17:34:29,968 INFO Dual-pathway attention analysis completed
+2025-07-02 17:34:29,968 INFO --- Attention Analysis for dev Batch 0 Example 0 ---
+2025-07-02 17:34:29,968 INFO Pathway Importance:
+2025-07-02 17:34:29,968 INFO   price_pathway: 0.3039
+2025-07-02 17:34:29,968 INFO   causal_pathway: 0.3474
+2025-07-02 17:34:29,968 INFO   responsive_pathway: 0.3487
+2025-07-02 17:34:29,968 INFO Top Causal Attention:
+2025-07-02 17:34:29,968 INFO   Message 4: 0.7952
+2025-07-02 17:34:29,969 INFO   Message 1: 0.2011
+2025-07-02 17:34:29,969 INFO   Message 7: 0.0034
+2025-07-02 17:34:29,969 INFO Top Responsive Attention:
+2025-07-02 17:34:29,969 INFO   Message 11: 1.0000
+2025-07-02 17:34:29,969 INFO   Message 10: 0.0000
+2025-07-02 17:34:29,969 INFO   Message 15: 0.0000
+2025-07-02 17:34:36,777 INFO Dual-pathway attention analysis completed
+2025-07-02 17:34:36,777 INFO --- Attention Analysis for dev Batch 1 Example 0 ---
+2025-07-02 17:34:36,777 INFO Pathway Importance:
+2025-07-02 17:34:36,777 INFO   price_pathway: 0.3418
+2025-07-02 17:34:36,777 INFO   causal_pathway: 0.3282
+2025-07-02 17:34:36,777 INFO   responsive_pathway: 0.3300
+2025-07-02 17:34:36,777 INFO Top Causal Attention:
+2025-07-02 17:34:36,777 INFO   Message 2: 0.9821
+2025-07-02 17:34:36,777 INFO   Message 6: 0.0179
+2025-07-02 17:34:36,777 INFO   Message 4: 0.0000
+2025-07-02 17:34:36,778 INFO Top Responsive Attention:
+2025-07-02 17:34:36,778 INFO   Message 13: 0.9697
+2025-07-02 17:34:36,778 INFO   Message 18: 0.0297
+2025-07-02 17:34:36,778 INFO   Message 0: 0.0006
+2025-07-02 17:34:40,564 INFO Dual-pathway attention analysis completed
+2025-07-02 17:34:40,564 INFO --- Attention Analysis for dev Batch 2 Example 0 ---
+2025-07-02 17:34:40,564 INFO Pathway Importance:
+2025-07-02 17:34:40,564 INFO   price_pathway: 0.2817
+2025-07-02 17:34:40,564 INFO   causal_pathway: 0.3590
+2025-07-02 17:34:40,564 INFO   responsive_pathway: 0.3593
+2025-07-02 17:34:40,564 INFO Top Causal Attention:
+2025-07-02 17:34:40,564 INFO   Message 0: 1.0000
+2025-07-02 17:34:40,564 INFO   Message 17: 0.0000
+2025-07-02 17:34:40,564 INFO   Message 16: 0.0000
+2025-07-02 17:34:40,565 INFO Top Responsive Attention:
+2025-07-02 17:34:40,565 INFO   Message 9: 0.0507
+2025-07-02 17:34:40,565 INFO   Message 17: 0.0507
+2025-07-02 17:34:40,565 INFO   Message 16: 0.0507
+2025-07-02 17:37:44,796 INFO dev Cross-Pathway Metrics - Correlation: 0.0042, Causal Influence: 0.2438, Responsive Influence: 0.2485
+2025-07-02 17:37:57,916 INFO Completed dev evaluation: size=656.0, acc=0.4848
+2025-07-02 17:37:57,916 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0185, Causal Influence: 0.2201, Responsive Influence: 0.2234
+2025-07-02 17:42:24,435 INFO Recent Cross-Pathway Metrics - Correlation: 0.0714, Causal Influence: 0.2253, Responsive Influence: 0.2284
+2025-07-02 17:42:28,140 INFO dev Cross-Pathway Metrics - Correlation: 0.0012, Causal Influence: 0.2116, Responsive Influence: 0.2145
+2025-07-02 17:45:46,058 INFO dev Cross-Pathway Metrics - Correlation: 0.0054, Causal Influence: 0.2441, Responsive Influence: 0.2487
+2025-07-02 17:45:59,636 INFO Completed dev evaluation: size=656.0, acc=0.4802
+2025-07-02 17:45:59,636 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0188, Causal Influence: 0.2205, Responsive Influence: 0.2235
+2025-07-02 17:50:22,467 INFO Recent Cross-Pathway Metrics - Correlation: 0.0718, Causal Influence: 0.2261, Responsive Influence: 0.2293
+2025-07-02 17:50:25,728 INFO dev Cross-Pathway Metrics - Correlation: 0.0303, Causal Influence: 0.2114, Responsive Influence: 0.2145
+2025-07-02 17:53:47,495 INFO dev Cross-Pathway Metrics - Correlation: 0.0031, Causal Influence: 0.2436, Responsive Influence: 0.2487
+2025-07-02 17:54:01,267 INFO Completed dev evaluation: size=656.0, acc=0.4954
+2025-07-02 17:54:01,268 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0184, Causal Influence: 0.2203, Responsive Influence: 0.2235
+2025-07-02 17:58:22,670 INFO Recent Cross-Pathway Metrics - Correlation: 0.0684, Causal Influence: 0.2306, Responsive Influence: 0.2350
+2025-07-02 17:58:25,874 INFO dev Cross-Pathway Metrics - Correlation: 0.0004, Causal Influence: 0.2111, Responsive Influence: 0.2151
+2025-07-02 18:01:53,485 INFO dev Cross-Pathway Metrics - Correlation: 0.0029, Causal Influence: 0.2433, Responsive Influence: 0.2496
+2025-07-02 18:02:08,239 INFO Completed dev evaluation: size=656.0, acc=0.4909
+2025-07-02 18:02:08,239 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0170, Causal Influence: 0.2199, Responsive Influence: 0.2242
+2025-07-02 18:06:25,956 INFO Recent Cross-Pathway Metrics - Correlation: 0.1105, Causal Influence: 0.2402, Responsive Influence: 0.2443
+2025-07-02 18:06:29,302 INFO dev Cross-Pathway Metrics - Correlation: 0.0002, Causal Influence: 0.2112, Responsive Influence: 0.2145
+2025-07-02 18:10:00,264 INFO dev Cross-Pathway Metrics - Correlation: 0.0023, Causal Influence: 0.2432, Responsive Influence: 0.2488
+2025-07-02 18:10:14,815 INFO Completed dev evaluation: size=656.0, acc=0.4832
+2025-07-02 18:10:14,816 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0154, Causal Influence: 0.2199, Responsive Influence: 0.2236
+2025-07-02 18:14:28,871 INFO Running validation with dual-pathway attention analysis
+2025-07-02 18:14:28,874 INFO Recent Cross-Pathway Metrics - Correlation: 0.0902, Causal Influence: 0.2373, Responsive Influence: 0.2391
+2025-07-02 18:14:32,171 INFO dev Cross-Pathway Metrics - Correlation: 0.0007, Causal Influence: 0.2119, Responsive Influence: 0.2138
+2025-07-02 18:14:36,261 INFO Dual-pathway attention analysis completed
+2025-07-02 18:14:36,261 INFO --- Attention Analysis for dev Batch 0 Example 0 ---
+2025-07-02 18:14:36,261 INFO Pathway Importance:
+2025-07-02 18:14:36,262 INFO   price_pathway: 0.2966
+2025-07-02 18:14:36,262 INFO   causal_pathway: 0.3510
+2025-07-02 18:14:36,262 INFO   responsive_pathway: 0.3524
+2025-07-02 18:14:36,262 INFO Top Causal Attention:
+2025-07-02 18:14:36,262 INFO   Message 3: 0.4862
+2025-07-02 18:14:36,262 INFO   Message 1: 0.4195
+2025-07-02 18:14:36,262 INFO   Message 0: 0.0700
+2025-07-02 18:14:36,262 INFO Top Responsive Attention:
+2025-07-02 18:14:36,262 INFO   Message 15: 0.9999
+2025-07-02 18:14:36,262 INFO   Message 13: 0.0001
+2025-07-02 18:14:36,262 INFO   Message 18: 0.0000
+2025-07-02 18:14:43,461 INFO Dual-pathway attention analysis completed
+2025-07-02 18:14:43,462 INFO --- Attention Analysis for dev Batch 1 Example 0 ---
+2025-07-02 18:14:43,462 INFO Pathway Importance:
+2025-07-02 18:14:43,462 INFO   price_pathway: 0.3099
+2025-07-02 18:14:43,462 INFO   causal_pathway: 0.3443
+2025-07-02 18:14:43,462 INFO   responsive_pathway: 0.3458
+2025-07-02 18:14:43,462 INFO Top Causal Attention:
+2025-07-02 18:14:43,462 INFO   Message 0: 0.7795
+2025-07-02 18:14:43,462 INFO   Message 1: 0.2205
+2025-07-02 18:14:43,462 INFO   Message 17: 0.0000
+2025-07-02 18:14:43,462 INFO Top Responsive Attention:
+2025-07-02 18:14:43,462 INFO   Message 11: 0.7864
+2025-07-02 18:14:43,462 INFO   Message 15: 0.1068
+2025-07-02 18:14:43,462 INFO   Message 2: 0.1068
+2025-07-02 18:14:47,773 INFO Dual-pathway attention analysis completed
+2025-07-02 18:14:47,774 INFO --- Attention Analysis for dev Batch 2 Example 0 ---
+2025-07-02 18:14:47,774 INFO Pathway Importance:
+2025-07-02 18:14:47,774 INFO   price_pathway: 0.2824
+2025-07-02 18:14:47,774 INFO   causal_pathway: 0.3584
+2025-07-02 18:14:47,774 INFO   responsive_pathway: 0.3592
+2025-07-02 18:14:47,774 INFO Top Causal Attention:
+2025-07-02 18:14:47,774 INFO   Message 0: 1.0000
+2025-07-02 18:14:47,774 INFO   Message 17: 0.0000
+2025-07-02 18:14:47,774 INFO   Message 16: 0.0000
+2025-07-02 18:14:47,774 INFO Top Responsive Attention:
+2025-07-02 18:14:47,774 INFO   Message 9: 0.0515
+2025-07-02 18:14:47,774 INFO   Message 17: 0.0515
+2025-07-02 18:14:47,774 INFO   Message 16: 0.0515
+2025-07-02 18:18:09,136 INFO dev Cross-Pathway Metrics - Correlation: 0.0046, Causal Influence: 0.2439, Responsive Influence: 0.2480
+2025-07-02 18:18:23,625 INFO Completed dev evaluation: size=656.0, acc=0.5046
+2025-07-02 18:18:23,625 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0124, Causal Influence: 0.2206, Responsive Influence: 0.2229
+2025-07-02 18:22:35,740 INFO Recent Cross-Pathway Metrics - Correlation: 0.0755, Causal Influence: 0.2389, Responsive Influence: 0.2409
+2025-07-02 18:22:39,159 INFO dev Cross-Pathway Metrics - Correlation: 0.0317, Causal Influence: 0.2120, Responsive Influence: 0.2135
+2025-07-02 18:26:11,781 INFO dev Cross-Pathway Metrics - Correlation: 0.0059, Causal Influence: 0.2446, Responsive Influence: 0.2474
+2025-07-02 18:26:26,522 INFO Completed dev evaluation: size=656.0, acc=0.4848
+2025-07-02 18:26:26,522 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0248, Causal Influence: 0.2208, Responsive Influence: 0.2226
+2025-07-02 18:26:27,008 INFO Epoch 4 Avg Cross-Pathway Metrics - Correlation: 0.0716, Causal Influence: 0.2303, Responsive Influence: 0.2336
+2025-07-02 18:26:27,023 INFO Saved cross-pathway metrics to ./checkpoints_tx_lf_dual_path/metrics/cross_pathway_metrics_20250702_182627.json
+2025-07-02 18:26:27,023 INFO Epoch: 5/10 start
+2025-07-02 18:32:39,425 INFO Recent Cross-Pathway Metrics - Correlation: 0.0544, Causal Influence: 0.2213, Responsive Influence: 0.2235
+2025-07-02 18:32:42,741 INFO dev Cross-Pathway Metrics - Correlation: 0.0175, Causal Influence: 0.2119, Responsive Influence: 0.2139
+2025-07-02 18:36:22,504 INFO dev Cross-Pathway Metrics - Correlation: 0.0043, Causal Influence: 0.2446, Responsive Influence: 0.2479
+2025-07-02 18:36:37,693 INFO Completed dev evaluation: size=656.0, acc=0.4909
+2025-07-02 18:36:37,693 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0199, Causal Influence: 0.2206, Responsive Influence: 0.2231
+2025-07-02 18:41:30,664 INFO Recent Cross-Pathway Metrics - Correlation: 0.0397, Causal Influence: 0.2207, Responsive Influence: 0.2237
+2025-07-02 18:41:34,105 INFO dev Cross-Pathway Metrics - Correlation: 0.0000, Causal Influence: 0.2115, Responsive Influence: 0.2139
+2025-07-02 18:45:22,035 INFO dev Cross-Pathway Metrics - Correlation: 0.0039, Causal Influence: 0.2440, Responsive Influence: 0.2481
+2025-07-02 18:45:37,481 INFO Completed dev evaluation: size=656.0, acc=0.4832
+2025-07-02 18:45:37,481 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0176, Causal Influence: 0.2202, Responsive Influence: 0.2232
+2025-07-02 18:50:33,883 INFO Recent Cross-Pathway Metrics - Correlation: 0.0476, Causal Influence: 0.2265, Responsive Influence: 0.2293
+2025-07-02 18:50:37,361 INFO dev Cross-Pathway Metrics - Correlation: 0.0135, Causal Influence: 0.2117, Responsive Influence: 0.2138
+2025-07-02 18:54:27,311 INFO dev Cross-Pathway Metrics - Correlation: 0.0039, Causal Influence: 0.2445, Responsive Influence: 0.2480
+2025-07-02 18:54:42,969 INFO Completed dev evaluation: size=656.0, acc=0.4878
+2025-07-02 18:54:42,969 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0180, Causal Influence: 0.2205, Responsive Influence: 0.2231
+2025-07-02 18:59:35,741 INFO Running validation with dual-pathway attention analysis
+2025-07-02 18:59:35,745 INFO Recent Cross-Pathway Metrics - Correlation: 0.0501, Causal Influence: 0.2333, Responsive Influence: 0.2360
+2025-07-02 18:59:39,197 INFO dev Cross-Pathway Metrics - Correlation: 0.0093, Causal Influence: 0.2116, Responsive Influence: 0.2137
+2025-07-02 18:59:43,599 INFO Dual-pathway attention analysis completed
+2025-07-02 18:59:43,600 INFO --- Attention Analysis for dev Batch 0 Example 0 ---
+2025-07-02 18:59:43,600 INFO Pathway Importance:
+2025-07-02 18:59:43,600 INFO   price_pathway: 0.3046
+2025-07-02 18:59:43,600 INFO   causal_pathway: 0.3468
+2025-07-02 18:59:43,600 INFO   responsive_pathway: 0.3486
+2025-07-02 18:59:43,600 INFO Top Causal Attention:
+2025-07-02 18:59:43,600 INFO   Message 0: 0.9825
+2025-07-02 18:59:43,600 INFO   Message 2: 0.0175
+2025-07-02 18:59:43,600 INFO   Message 3: 0.0000
+2025-07-02 18:59:43,600 INFO Top Responsive Attention:
+2025-07-02 18:59:43,600 INFO   Message 13: 1.0000
+2025-07-02 18:59:43,600 INFO   Message 11: 0.0000
+2025-07-02 18:59:43,600 INFO   Message 15: 0.0000
+2025-07-02 18:59:51,435 INFO Dual-pathway attention analysis completed
+2025-07-02 18:59:51,435 INFO --- Attention Analysis for dev Batch 1 Example 0 ---
+2025-07-02 18:59:51,435 INFO Pathway Importance:
+2025-07-02 18:59:51,436 INFO   price_pathway: 0.2549
+2025-07-02 18:59:51,436 INFO   causal_pathway: 0.3725
+2025-07-02 18:59:51,436 INFO   responsive_pathway: 0.3726
+2025-07-02 18:59:51,436 INFO Top Causal Attention:
+2025-07-02 18:59:51,436 INFO   Message 0: 1.0000
+2025-07-02 18:59:51,436 INFO   Message 17: 0.0000
+2025-07-02 18:59:51,436 INFO   Message 16: 0.0000
+2025-07-02 18:59:51,436 INFO Top Responsive Attention:
+2025-07-02 18:59:51,436 INFO   Message 7: 0.9324
+2025-07-02 18:59:51,436 INFO   Message 19: 0.0338
+2025-07-02 18:59:51,436 INFO   Message 6: 0.0338
+2025-07-02 18:59:56,232 INFO Dual-pathway attention analysis completed
+2025-07-02 18:59:56,232 INFO --- Attention Analysis for dev Batch 2 Example 0 ---
+2025-07-02 18:59:56,232 INFO Pathway Importance:
+2025-07-02 18:59:56,232 INFO   price_pathway: 0.2830
+2025-07-02 18:59:56,232 INFO   causal_pathway: 0.3578
+2025-07-02 18:59:56,232 INFO   responsive_pathway: 0.3592
+2025-07-02 18:59:56,232 INFO Top Causal Attention:
+2025-07-02 18:59:56,232 INFO   Message 0: 1.0000
+2025-07-02 18:59:56,232 INFO   Message 17: 0.0000
+2025-07-02 18:59:56,232 INFO   Message 16: 0.0000
+2025-07-02 18:59:56,232 INFO Top Responsive Attention:
+2025-07-02 18:59:56,232 INFO   Message 9: 0.0507
+2025-07-02 18:59:56,232 INFO   Message 17: 0.0507
+2025-07-02 18:59:56,232 INFO   Message 16: 0.0507
+2025-07-02 19:03:34,996 INFO dev Cross-Pathway Metrics - Correlation: 0.0075, Causal Influence: 0.2442, Responsive Influence: 0.2477
+2025-07-02 19:03:50,418 INFO Completed dev evaluation: size=656.0, acc=0.4863
+2025-07-02 19:03:50,418 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0203, Causal Influence: 0.2204, Responsive Influence: 0.2229
+2025-07-02 19:08:35,580 INFO Recent Cross-Pathway Metrics - Correlation: 0.0593, Causal Influence: 0.2323, Responsive Influence: 0.2354
+2025-07-02 19:08:39,040 INFO dev Cross-Pathway Metrics - Correlation: 0.0189, Causal Influence: 0.2112, Responsive Influence: 0.2136
+2025-07-02 19:12:28,244 INFO dev Cross-Pathway Metrics - Correlation: 0.0032, Causal Influence: 0.2437, Responsive Influence: 0.2477
+2025-07-02 19:12:44,184 INFO Completed dev evaluation: size=656.0, acc=0.4893
+2025-07-02 19:12:44,184 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0154, Causal Influence: 0.2200, Responsive Influence: 0.2228
+2025-07-02 19:17:14,150 INFO Recent Cross-Pathway Metrics - Correlation: 0.0744, Causal Influence: 0.2313, Responsive Influence: 0.2342
+2025-07-02 19:17:17,723 INFO dev Cross-Pathway Metrics - Correlation: 0.0364, Causal Influence: 0.2114, Responsive Influence: 0.2133
+2025-07-02 19:21:16,135 INFO dev Cross-Pathway Metrics - Correlation: 0.0103, Causal Influence: 0.2441, Responsive Influence: 0.2473
+2025-07-02 19:21:32,817 INFO Completed dev evaluation: size=656.0, acc=0.4909
+2025-07-02 19:21:32,817 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0191, Causal Influence: 0.2202, Responsive Influence: 0.2226
+2025-07-02 19:26:04,018 INFO Recent Cross-Pathway Metrics - Correlation: 0.0790, Causal Influence: 0.2410, Responsive Influence: 0.2439
+2025-07-02 19:26:07,545 INFO dev Cross-Pathway Metrics - Correlation: 0.0002, Causal Influence: 0.2110, Responsive Influence: 0.2132
+2025-07-02 19:30:09,828 INFO dev Cross-Pathway Metrics - Correlation: 0.0035, Causal Influence: 0.2435, Responsive Influence: 0.2472
+2025-07-02 19:30:26,653 INFO Completed dev evaluation: size=656.0, acc=0.4893
+2025-07-02 19:30:26,654 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0157, Causal Influence: 0.2197, Responsive Influence: 0.2225
+2025-07-02 19:33:44,517 INFO Epoch 5 Avg Cross-Pathway Metrics - Correlation: 0.0592, Causal Influence: 0.2303, Responsive Influence: 0.2331
+2025-07-02 19:33:44,566 INFO Saved cross-pathway metrics to ./checkpoints_tx_lf_dual_path/metrics/cross_pathway_metrics_20250702_193344.json
+2025-07-02 19:33:44,566 INFO Epoch: 6/10 start
+2025-07-02 19:35:58,119 INFO Recent Cross-Pathway Metrics - Correlation: 0.0455, Causal Influence: 0.2197, Responsive Influence: 0.2222
+2025-07-02 19:36:01,689 INFO dev Cross-Pathway Metrics - Correlation: 0.0326, Causal Influence: 0.2110, Responsive Influence: 0.2130
+2025-07-02 19:40:09,010 INFO dev Cross-Pathway Metrics - Correlation: 0.0158, Causal Influence: 0.2436, Responsive Influence: 0.2470
+2025-07-02 19:40:26,108 INFO Completed dev evaluation: size=656.0, acc=0.4970
+2025-07-02 19:40:26,108 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0155, Causal Influence: 0.2199, Responsive Influence: 0.2223
+2025-07-02 19:46:02,102 INFO Running validation with dual-pathway attention analysis
+2025-07-02 19:46:02,106 INFO Recent Cross-Pathway Metrics - Correlation: 0.0408, Causal Influence: 0.2186, Responsive Influence: 0.2215
+2025-07-02 19:46:06,006 INFO dev Cross-Pathway Metrics - Correlation: 0.0634, Causal Influence: 0.2106, Responsive Influence: 0.2134
+2025-07-02 19:46:10,817 INFO Dual-pathway attention analysis completed
+2025-07-02 19:46:10,817 INFO --- Attention Analysis for dev Batch 0 Example 0 ---
+2025-07-02 19:46:10,817 INFO Pathway Importance:
+2025-07-02 19:46:10,817 INFO   price_pathway: 0.3011
+2025-07-02 19:46:10,817 INFO   causal_pathway: 0.3485
+2025-07-02 19:46:10,817 INFO   responsive_pathway: 0.3505
+2025-07-02 19:46:10,818 INFO Top Causal Attention:
+2025-07-02 19:46:10,818 INFO   Message 6: 0.9989
+2025-07-02 19:46:10,818 INFO   Message 1: 0.0011
+2025-07-02 19:46:10,818 INFO   Message 3: 0.0000
+2025-07-02 19:46:10,818 INFO Top Responsive Attention:
+2025-07-02 19:46:10,818 INFO   Message 15: 1.0000
+2025-07-02 19:46:10,818 INFO   Message 17: 0.0000
+2025-07-02 19:46:10,818 INFO   Message 5: 0.0000
+2025-07-02 19:46:19,124 INFO Dual-pathway attention analysis completed
+2025-07-02 19:46:19,124 INFO --- Attention Analysis for dev Batch 1 Example 0 ---
+2025-07-02 19:46:19,124 INFO Pathway Importance:
+2025-07-02 19:46:19,124 INFO   price_pathway: 0.2872
+2025-07-02 19:46:19,124 INFO   causal_pathway: 0.3556
+2025-07-02 19:46:19,124 INFO   responsive_pathway: 0.3571
+2025-07-02 19:46:19,125 INFO Top Causal Attention:
+2025-07-02 19:46:19,125 INFO   Message 0: 1.0000
+2025-07-02 19:46:19,125 INFO   Message 1: 0.0000
+2025-07-02 19:46:19,125 INFO   Message 17: 0.0000
+2025-07-02 19:46:19,125 INFO Top Responsive Attention:
+2025-07-02 19:46:19,125 INFO   Message 19: 0.4929
+2025-07-02 19:46:19,125 INFO   Message 6: 0.4929
+2025-07-02 19:46:19,125 INFO   Message 11: 0.0143
+2025-07-02 19:46:24,436 INFO Dual-pathway attention analysis completed
+2025-07-02 19:46:24,436 INFO --- Attention Analysis for dev Batch 2 Example 0 ---
+2025-07-02 19:46:24,436 INFO Pathway Importance:
+2025-07-02 19:46:24,436 INFO   price_pathway: 0.2835
+2025-07-02 19:46:24,436 INFO   causal_pathway: 0.3573
+2025-07-02 19:46:24,436 INFO   responsive_pathway: 0.3592
+2025-07-02 19:46:24,436 INFO Top Causal Attention:
+2025-07-02 19:46:24,436 INFO   Message 0: 1.0000
+2025-07-02 19:46:24,436 INFO   Message 17: 0.0000
+2025-07-02 19:46:24,436 INFO   Message 16: 0.0000
+2025-07-02 19:46:24,436 INFO Top Responsive Attention:
+2025-07-02 19:46:24,437 INFO   Message 9: 0.0509
+2025-07-02 19:46:24,437 INFO   Message 17: 0.0509
+2025-07-02 19:46:24,437 INFO   Message 16: 0.0509
+2025-07-02 19:50:20,747 INFO dev Cross-Pathway Metrics - Correlation: 0.0072, Causal Influence: 0.2433, Responsive Influence: 0.2471
+2025-07-02 19:50:37,472 INFO Completed dev evaluation: size=656.0, acc=0.4909
+2025-07-02 19:50:37,472 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0177, Causal Influence: 0.2194, Responsive Influence: 0.2226
+2025-07-02 19:55:33,538 INFO Recent Cross-Pathway Metrics - Correlation: 0.0576, Causal Influence: 0.2246, Responsive Influence: 0.2276
+2025-07-02 19:55:37,118 INFO dev Cross-Pathway Metrics - Correlation: 0.0258, Causal Influence: 0.2104, Responsive Influence: 0.2135
+2025-07-02 19:59:43,219 INFO dev Cross-Pathway Metrics - Correlation: 0.0052, Causal Influence: 0.2432, Responsive Influence: 0.2471
+2025-07-02 20:00:00,484 INFO Completed dev evaluation: size=656.0, acc=0.4893
+2025-07-02 20:00:00,484 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0197, Causal Influence: 0.2194, Responsive Influence: 0.2225
+2025-07-02 20:04:42,592 INFO Recent Cross-Pathway Metrics - Correlation: 0.0627, Causal Influence: 0.2247, Responsive Influence: 0.2267
+2025-07-02 20:04:46,239 INFO dev Cross-Pathway Metrics - Correlation: 0.0005, Causal Influence: 0.2116, Responsive Influence: 0.2135
+2025-07-02 20:08:57,312 INFO dev Cross-Pathway Metrics - Correlation: 0.0054, Causal Influence: 0.2444, Responsive Influence: 0.2470
+2025-07-02 20:09:14,331 INFO Completed dev evaluation: size=656.0, acc=0.4726
+2025-07-02 20:09:14,331 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.0216, Causal Influence: 0.2204, Responsive Influence: 0.2226
+2025-07-03 10:31:31,947 INFO Starting a full run. Model configuration will be loaded from the YML config file.
+2025-07-03 10:31:31,947 INFO INIT: #stock: 88, #vocab+1: 29867
+2025-07-03 10:31:31,949 INFO Start graph assembling...
+2025-07-03 10:32:23,985 INFO Word table init: done!
+2025-07-03 10:32:23,986 INFO Model: all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp_dual_path, start a new session!
+2025-07-03 10:32:23,987 INFO Epoch: 1/10 start
+2025-07-03 10:37:02,123 INFO Recent Cross-Pathway Metrics - Correlation: 0.1637, Causal Influence: 0.2148, Responsive Influence: 0.2188
+2025-07-03 10:37:05,256 INFO dev Cross-Pathway Metrics - Correlation: 0.1559, Causal Influence: 0.2036, Responsive Influence: 0.2022
+2025-07-03 10:39:22,360 INFO dev Cross-Pathway Metrics - Correlation: 0.1788, Causal Influence: 0.2323, Responsive Influence: 0.2330
+2025-07-03 10:39:31,147 INFO Completed dev evaluation: size=656.0, acc=0.4832
+2025-07-03 10:39:31,147 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1606, Causal Influence: 0.2084, Responsive Influence: 0.2078
+2025-07-03 10:42:45,401 INFO Recent Cross-Pathway Metrics - Correlation: 0.1607, Causal Influence: 0.1920, Responsive Influence: 0.2123
+2025-07-03 10:42:48,408 INFO dev Cross-Pathway Metrics - Correlation: 0.1550, Causal Influence: 0.1858, Responsive Influence: 0.2100
+2025-07-03 10:45:03,633 INFO dev Cross-Pathway Metrics - Correlation: 0.1781, Causal Influence: 0.2190, Responsive Influence: 0.2405
+2025-07-03 10:45:12,460 INFO Completed dev evaluation: size=656.0, acc=0.4939
+2025-07-03 10:45:12,460 INFO dev Avg Cross-Pathway Metrics - Correlation: 0.1600, Causal Influence: 0.1929, Responsive Influence: 0.2154
+2025-07-03 10:48:14,035 INFO Recent Cross-Pathway Metrics - Correlation: 0.1607, Causal Influence: 0.1996, Responsive Influence: 0.2208
+2025-07-03 10:48:17,119 INFO dev Cross-Pathway Metrics - Correlation: 0.1508, Causal Influence: 0.1970, Responsive Influence: 0.2089

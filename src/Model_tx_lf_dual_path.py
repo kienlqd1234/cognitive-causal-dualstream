@@ -297,8 +297,12 @@ class Model:
                 
                 # Create the dual pathway MSIN wrapper
                 dual_msin = DualPathwayMSIN()    
-                
+
                 # Use the correct function: dynamic_dual_msin instead of dynamic_msin
+                # This implementation uses directional query sources:
+                # - Causal pathway uses previous hidden state as query to learn text→price relationships
+                # - Responsive pathway uses current price embedding as query to learn price→text relationships
+                # This approach ensures different learning goals at the attention level
                 self.x, self.P_dict, state = dual_msin.dynamic_dual_msin(
                     cell=cell,
                     inputs=self.price,

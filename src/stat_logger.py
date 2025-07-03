@@ -24,6 +24,6 @@ def print_eval_res(result_dict, use_mcc=None):
     info_list = [iter_str, loss_str, acc_str]
     if use_mcc:
         mcc = result_dict['mcc']
-        mcc_str = 'mcc: {:.6f}'.format(mcc) if mcc else 'mcc: {}'.format(mcc)
+        mcc_str = 'mcc: {:.6f}'.format(mcc) if mcc is not None else 'mcc: {}'.format(mcc)
         info_list.append(mcc_str)
     logger.info(', '.join(info_list))

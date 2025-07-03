@@ -1,5 +1,5 @@
 _graphs_all_days-5.msgs-20-words-30_word_embed-glove.vmd_in-hedge_alpha-0.5.anneal-0.005.rec-zh_batch-32.opt-adam.lr-0.001-drop-0.3-cell-gru-tmp
-check3d
+check3d/*
 .cursor
 .vscode
 res/glove.twitter.27B.50d.txt

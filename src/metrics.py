@@ -58,7 +58,9 @@ def eval_res(gen_n_acc, gen_size, gen_loss_list, y_list, y_list_, use_mcc=None):
     if use_mcc:
         gen_y, gen_y_ = np.vstack(y_list), np.vstack(y_list_)
         tp, fp, tn, fn = create_confusion_matrix(y=gen_y, y_=gen_y_)
-        results['mcc'] = eval_mcc(tp, fp, tn, fn)
+        mcc_value = eval_mcc(tp, fp, tn, fn)
+        # Handle None MCC values
+        results['mcc'] = 0.0 if mcc_value is None else mcc_value
 
     return results
 

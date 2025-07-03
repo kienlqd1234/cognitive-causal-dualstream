@@ -130,20 +130,33 @@ class Executor:
                          self.model.dropout_vmd: 0.0,
                          }
 
-            # Run basic metrics
-            #gen_batch_y, gen_batch_y_, gen_batch_loss = sess.run(
-            #    [self.model.y_T, self.model.y_T_, self.model.loss],
-            #    feed_dict=feed_dict
-            #)
+            # Memory optimization: Always run basic metrics separately
+            gen_batch_y, gen_batch_y_, gen_batch_loss = sess.run(
+                [self.model.y_T, self.model.y_T_, self.model.loss],
+                feed_dict=feed_dict
+            )
+            
+            # Gather results
+            y_list.append(gen_batch_y)
+            y_list_.append(gen_batch_y_)
+            gen_loss_list.append(gen_batch_loss)
+            
+            gen_batch_n_acc = float(sess.run(metrics.n_accurate(y=gen_batch_y, y_=gen_batch_y_)))
+            gen_n_acc += gen_batch_n_acc
 
-            # NEW: Extract cross-pathway metrics
+            batch_size = float(gen_batch_dict['batch_size'])
+            gen_size += batch_size
+
+            # Run cross-pathway metrics calculation as a separate step to reduce memory pressure
             try:
-                gen_batch_y, gen_batch_y_, gen_batch_loss, correlation, causal_influence, responsive_influence = sess.run(
-                    [self.model.y_T, self.model.y_T_, self.model.loss, 
-                    # Add these new metrics
-                    tf.reduce_mean(tf.reduce_sum(tf.multiply(self.model.P_causal, self.model.P_responsive), axis=[1, 2])),
-                    tf.reduce_mean(self.model.k_causal),
-                    tf.reduce_mean(self.model.k_responsive)],
+                # NEW: Extract cross-pathway metrics
+                correlation, causal_influence, responsive_influence = sess.run(
+                    [
+                        # Add these new metrics
+                        tf.reduce_mean(tf.reduce_sum(tf.multiply(self.model.P_causal, self.model.P_responsive), axis=[1, 2])),
+                        tf.reduce_mean(self.model.k_causal),
+                        tf.reduce_mean(self.model.k_responsive)
+                    ],
                     feed_dict=feed_dict
                 )
                 
@@ -159,26 +172,11 @@ class Executor:
                             f"Responsive Influence: {responsive_influence:.4f}")
             except Exception as e:
                 logger.warning(f"Could not extract cross-pathway metrics: {e}")
-                gen_batch_y, gen_batch_y_, gen_batch_loss = sess.run(
-                    [self.model.y_T, self.model.y_T_, self.model.loss],
-                    feed_dict=feed_dict
-                )
 
-            # Gather results
-            y_list.append(gen_batch_y)
-            y_list_.append(gen_batch_y_)
-            gen_loss_list.append(gen_batch_loss)
-            
-            gen_batch_n_acc = float(sess.run(metrics.n_accurate(y=gen_batch_y, y_=gen_batch_y_)))
-            gen_n_acc += gen_batch_n_acc
-
-            batch_size = float(gen_batch_dict['batch_size'])
-            gen_size += batch_size
-
-            # Analyze dual pathway attention if requested (limit to first few batches to avoid too much output)
+            # Analyze dual pathway attention if requested, but do this separately and only on small samples
             if analyze_attention and batch_idx < 3:
-                # Extract attention components
                 try:
+                    # Memory optimization: Run this in a separate session run to avoid OOM
                     batch_attention = self.analyze_dual_pathway_attention(sess, feed_dict)
                     attention_results[f'batch_{batch_idx}'] = batch_attention
                     
@@ -207,6 +205,9 @@ class Executor:
                             logger.info(f"  Message {msg_idx}: {weight:.4f}")
                 except Exception as e:
                     logger.error(f"Error analyzing attention: {e}")
+                    
+                # Clear unused tensors from memory
+                tf.reset_default_graph()
             
             batch_idx += 1
 

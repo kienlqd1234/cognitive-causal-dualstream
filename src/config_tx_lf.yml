@@ -87,5 +87,5 @@ paths:
   glove: 'glove.twitter.27B.50d.txt'
   vocab_tweet: 'vocab.txt'
   graphs: 'graphs'
-  checkpoints:  'check3d'
+  checkpoints:  'checkpoints_tx_lf'
   log: 'log/'

@@ -216,10 +216,10 @@ class MSINCell(object):
         
         # Dynamic temperature scaling - based on hidden state norm
         h_norm = tf.norm(h, axis=1, keep_dims=True)
-        base_temp = 0.5  # Base temperature
-        temp_scaling_factor = 0.2  # Controls sensitivity
+        base_temp = 1  # Base temperature
+        temp_scaling_factor = 0.1  # Controls sensitivity
         dynamic_temp = base_temp / (1.0 + temp_scaling_factor * h_norm)  # Lower when h_norm is higher (more confidence)
-        dynamic_temp = tf.clip_by_value(dynamic_temp, 0.3, 0.8)  # Keep within reasonable range
+        dynamic_temp = tf.clip_by_value(dynamic_temp, 0.5, 1.2)  # Keep within reasonable range
         
         # Reshape dynamic_temp to be compatible with causal_score [batch_size, max_n_msgs, max_n_msgs]
         dynamic_temp = tf.reshape(dynamic_temp, [-1, 1, 1])  # Shape: [batch_size, 1, 1]

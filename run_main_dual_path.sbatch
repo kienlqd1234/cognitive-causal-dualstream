@@ -21,10 +21,14 @@ export PATH=$CUDA_HOME/bin:$PATH
 export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 
 # TensorFlow memory optimization settings
-#export TF_FORCE_GPU_ALLOW_GROWTH=true
-#export TF_CPP_MIN_LOG_LEVEL=0  # Enable all log output
-#export TF_ENABLE_WINOGRAD_NONFUSED=1  # Enable fast convolutions
-#export TF_XLA_FLAGS=--tf_xla_auto_jit=2  # Enable XLA JIT
+export TF_FORCE_GPU_ALLOW_GROWTH=true  # Allocate GPU memory gradually
+export TF_CPP_MIN_LOG_LEVEL=0          # Enable all log output
+export TF_ENABLE_WINOGRAD_NONFUSED=1   # Enable fast convolutions
+export TF_XLA_FLAGS=--tf_xla_auto_jit=2  # Enable XLA JIT compilation
+export TF_CUDA_HOST_MEM_LIMIT_IN_MB=16000  # Limit host memory usage
+export TF_GPU_THREAD_MODE=gpu_private     # Use private thread pool for each GPU
+export TF_GPU_ALLOCATOR=cuda_malloc_async # Use async memory allocator
+export TF_CUDNN_USE_AUTOTUNE=1           # Enable auto-tuning for cuDNN
 
 # Load conda
 echo "Activating conda environment"
